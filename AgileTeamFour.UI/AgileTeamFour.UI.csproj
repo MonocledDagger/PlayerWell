@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AgileTeamFour.BL\AgileTeamFour.BL.csproj" />
+    <ProjectReference Include="..\AgileTeamFour.PL\AgileTeamFour.PL.csproj" />
+  </ItemGroup>
+
 </Project>
