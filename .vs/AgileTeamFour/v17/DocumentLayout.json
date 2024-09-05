@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6C158E3F-1ABB-43EC-8D5E-7212EE1DF4B6}|AgileTeamFour.PL.Tests\\AgileTeamFour.PL.Tests.csproj|c:\\users\\intel4400\\source\\repos\\agileteamfour\\agileteamfour.pl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C158E3F-1ABB-43EC-8D5E-7212EE1DF4B6}|AgileTeamFour.PL.Tests\\AgileTeamFour.PL.Tests.csproj|solutionrelative:agileteamfour.pl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B2F5A94-F92C-4619-A89B-4507D07DE214}|AgileTeamFour.BL.Tests\\AgileTeamFour.BL.Tests.csproj|c:\\users\\intel4400\\source\\repos\\agileteamfour\\agileteamfour.bl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B2F5A94-F92C-4619-A89B-4507D07DE214}|AgileTeamFour.BL.Tests\\AgileTeamFour.BL.Tests.csproj|solutionrelative:agileteamfour.bl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,6 +83,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.PL.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "AgileTeamFour.PL.Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T18:13:48.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "AgileTeamFour.BL.Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T18:13:33.003Z",
+              "EditorCaption": ""
             }
           ]
         }
