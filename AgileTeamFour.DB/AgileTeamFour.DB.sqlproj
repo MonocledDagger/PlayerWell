@@ -60,4 +60,10 @@
     <Folder Include="PreDeployment" />
     <Folder Include="Tables" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\tblEvents.sql" />
+    <Build Include="Tables\tblGames.sql" />
+    <Build Include="Tables\tblPlayerEvent.sql" />
+    <Build Include="Tables\tblPlayers.sql" />
+  </ItemGroup>
 </Project>
