@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\",
+  "WorkspaceRootPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C158E3F-1ABB-43EC-8D5E-7212EE1DF4B6}|AgileTeamFour.PL.Tests\\AgileTeamFour.PL.Tests.csproj|c:\\users\\intel4400\\source\\repos\\agileteamfour\\agileteamfour.pl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C158E3F-1ABB-43EC-8D5E-7212EE1DF4B6}|AgileTeamFour.PL.Tests\\AgileTeamFour.PL.Tests.csproj|solutionrelative:agileteamfour.pl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|s:\\classdata\\advanced software development\\10152108_1_2024_fall\\300085063\\agileproject\\agileteamfour.bl.models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|solutionrelative:agileteamfour.bl.models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B2F5A94-F92C-4619-A89B-4507D07DE214}|AgileTeamFour.BL.Tests\\AgileTeamFour.BL.Tests.csproj|c:\\users\\intel4400\\source\\repos\\agileteamfour\\agileteamfour.bl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1B2F5A94-F92C-4619-A89B-4507D07DE214}|AgileTeamFour.BL.Tests\\AgileTeamFour.BL.Tests.csproj|solutionrelative:agileteamfour.bl.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|s:\\classdata\\advanced software development\\10152108_1_2024_fall\\300085063\\agileproject\\agileteamfour.bl.models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|solutionrelative:agileteamfour.bl.models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|s:\\classdata\\advanced software development\\10152108_1_2024_fall\\300085063\\agileproject\\agileteamfour.bl.models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|solutionrelative:agileteamfour.bl.models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|s:\\classdata\\advanced software development\\10152108_1_2024_fall\\300085063\\agileproject\\agileteamfour.bl\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|solutionrelative:agileteamfour.bl\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,28 +94,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UnitTest1.cs",
-              "DocumentMoniker": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL.Tests\\UnitTest1.cs",
-              "RelativeDocumentMoniker": "AgileTeamFour.PL.Tests\\UnitTest1.cs",
-              "ToolTip": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL.Tests\\UnitTest1.cs",
-              "RelativeToolTip": "AgileTeamFour.PL.Tests\\UnitTest1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "PlayerManager.cs",
+              "DocumentMoniker": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\PlayerManager.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL\\PlayerManager.cs",
+              "ToolTip": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\PlayerManager.cs",
+              "RelativeToolTip": "AgileTeamFour.BL\\PlayerManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T18:13:48.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-08T21:52:31.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\Comment.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL.Models\\Comment.cs",
+              "ToolTip": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\Comment.cs",
+              "RelativeToolTip": "AgileTeamFour.BL.Models\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-08T21:33:47.831Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UnitTest1.cs",
-              "DocumentMoniker": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Tests\\UnitTest1.cs",
-              "RelativeDocumentMoniker": "AgileTeamFour.BL.Tests\\UnitTest1.cs",
-              "ToolTip": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Tests\\UnitTest1.cs",
-              "RelativeToolTip": "AgileTeamFour.BL.Tests\\UnitTest1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Review.cs",
+              "DocumentMoniker": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\Review.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL.Models\\Review.cs",
+              "ToolTip": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\Review.cs",
+              "RelativeToolTip": "AgileTeamFour.BL.Models\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAZmZmZmb0vxkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T18:13:33.003Z",
+              "WhenOpened": "2024-09-08T21:33:16.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\Player.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL.Models\\Player.cs",
+              "ToolTip": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\Player.cs",
+              "RelativeToolTip": "AgileTeamFour.BL.Models\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-08T21:32:34.442Z",
               "EditorCaption": ""
             }
           ]
