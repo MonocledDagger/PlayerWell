@@ -121,20 +121,37 @@ namespace AgileTeamFour.BL
         }
 
 
-        public static int Delete()
-        {
+        //public static int Delete(int EventID, bool rollback = false)
+        //{
 
-            try
-            {
-                return 0;
-            }
-            catch (Exception)
-            {
+        //    try
+        //    {
+        //        int results = 0;
+        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+        //        {
+        //            IDbContextTransaction dbContextTransaction = null;
+        //            if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
 
-                throw;
-            }
+        //            tblEvent row = dc.tblEvent.FirstOrDefault(d => d.EventID == EventID);
 
-        }
+
+        //            dc.tblEvent.Remove(row);
+
+        //            results = dc.SaveChanges();
+
+        //            if (rollback) dbContextTransaction.Rollback();
+
+        //        }
+        //        return results;
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
 
 
         public static Events LoadByID(int id)

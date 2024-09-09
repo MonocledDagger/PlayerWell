@@ -24,3 +24,11 @@ body {
 main {
     min-height: 80vh; 
 }
+
+.navbar{
+    max-height:300px;
+}
+
+.lead{
+    color:black;
+}

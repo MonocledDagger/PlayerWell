@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgileTeamFour.UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46b764559c446f0d2c33ba9c81f3f39d4fc6a51c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aeac3b95412cbd34943c253fbdcc32a72e5d6b43")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgileTeamFour.UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgileTeamFour.UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
