@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nh05AQG4uy1MO311CtxCe/Dc+yRDUqrB42j2wEgVAqCblCbj4snNg0hnO3XUZWQPOKLZzai7NbQEyFLeieKm8Q==",
+  "dgSpecHash": "6LuxfB2fJvVhsYww73teLqB3bsVlTuctD9DtJdaTl8mtuZXcWonRfvLg0WMa5ZW6crUQLuU4AuC6CyIfYNuqgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+  "projectFilePath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fired\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.8\\microsoft.entityframeworkcore.8.0.8.nupkg.sha512",
     "C:\\Users\\fired\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.8\\microsoft.entityframeworkcore.abstractions.8.0.8.nupkg.sha512",

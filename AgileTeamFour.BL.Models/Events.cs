@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AgileTeamFour.BL.Models
 {
-        public class Event
+        public class Events
         {
             public int EventID { get; set; }
             public int GameID { get; set; }

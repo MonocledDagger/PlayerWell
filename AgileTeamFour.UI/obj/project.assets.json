@@ -619,9 +619,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectUniqueName": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "projectName": "AgileTeamFour.UI",
-      "projectPath": "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "packagesPath": "C:\\Users\\fired\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.UI\\obj\\",
       "projectStyle": "PackageReference",
@@ -645,11 +645,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
-              "projectPath": "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
+            "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+              "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
             },
-            "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-              "projectPath": "C:\\Users\\fired\\Source\\Repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+            "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+              "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
             }
           }
         }
