@@ -59,5 +59,14 @@
     <Folder Include="PostDeployment" />
     <Folder Include="PreDeployment" />
     <Folder Include="Tables" />
+    <Folder Include="PostDeployment\DefaultData" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeployment\DefaultData\tblPlayers.sql" />
+    <None Include="PostDeployment\DefaultData\tblPlayerEvents.sql" />
+    <None Include="PostDeployment\DefaultData\tblEvents.sql" />
+    <None Include="PostDeployment\DefaultData\tblComments.sql" />
+    <None Include="PostDeployment\DefaultData\tblReviews.sql" />
+    <None Include="PostDeployment\DefaultData\tblGames.sql" />
   </ItemGroup>
 </Project>
