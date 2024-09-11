@@ -105,20 +105,49 @@ namespace AgileTeamFour.BL
 
         //}
 
-        public static int Update()
-        {
-            try
-            {
-                return 0;
+        //public static int Update(Events events, bool rollback=false)
+        //{
+        //    try
+        //    {
+        //        int results = 0;
+        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+        //        {
+        //            IDbContextTransaction transaction = null;
+        //            if (rollback) transaction = dc.Database.BeginTransaction();
 
-            }
-            catch (Exception)
-            {
+        //            // Get the row that we are trying to update
+        //            tblEvents entity = dc.tblEvents.FirstOrDefault(s => s.Id == events.EventID);
 
-                throw;
-            }
+        //            if (entity != null)
+        //            {
+        //                entity.GameID = events.GameID;
+        //                entity.EventName = events.EventName;
+        //                entity.EventID = events.EventID;
+        //                entity.EventType = events.EventType;
+        //                entity.Server = events.Server;
+        //                entity.MaxPlayers = events.MaxPlayers;
+        //                entity.Description = events.Description;
+        //                entity.Time = events.time;
+        //                entity.Platform = events.Platform;
 
-        }
+        //                results = dc.SaveChanges();
+        //            }
+        //            else
+        //            {
+        //                throw new Exception("Row does not exist");
+        //            }
+
+        //            if (rollback) transaction.Rollback();
+        //        }
+        //        return results;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
 
 
         //public static int Delete(int EventID, bool rollback = false)
@@ -154,18 +183,43 @@ namespace AgileTeamFour.BL
         //}
 
 
-        public static Events LoadByID(int id)
-        {
-            try
-            {
-                return null;
-            }
-            catch (Exception)
-            {
+        //public static Events LoadByID(int EventID)
+        //{
+        //    try
+        //    {
+        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+        //        {
+        //            tblEvents entity = dc.tblEvents.FirstOrDefault(e => e.EventID == EventID);
 
-                throw;
-            }
-        }
+        //            if (entity != null)
+        //            {
+        //                return new Events
+        //                {
+        //                    EventID = EventID,
+        //                    GameID = entity.GameID,
+        //                    EventName = entity.EventName,
+        //                    Server = entity.Server,
+        //                    MaxPlayers = entity.MaxPlayers,
+        //                    EventType = entity.EventType,
+        //                    Platform = entity.Platform,
+        //                    Description = entity.Description,
+        //                    time = entity.Time,
+
+        //                };
+        //            }
+        //            else
+        //            {
+        //                throw new Exception();
+        //            }
+        //        }
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
 
         //public static List<Events> Load()
         //{
@@ -173,45 +227,45 @@ namespace AgileTeamFour.BL
         //    {
         //        List<Events> list = new List<Events>();
 
-        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
-        //        {
-        //            (from e in dc.tblEvent
-        //             select new
-        //             {
-        //                 e.EventID,
-        //                 e.GameID,
-        //                 e.EventName, 
-        //                 e.EventType,
-        //                 e.MaxPlayers,
-        //                 e.Server,
-        //                 e.Platform,
-        //                 e.Description,
-        //                 e.time
-                         
-        //             })
-        //             .ToList()
-        //             .ForEach(events => list.Add(new Events
-        //             {
-        //                 EventID = events.EventID,
-        //                 GameID = events.GameID,
-        //                 EventName = events.EventName,
-        //                 EventType = events.EventType,
-        //                 MaxPlayers = events.MaxPlayers,
-        //                 Server = events.Server,
-        //                 Platform = events.Platform,
-        //                 Description = events.Description,
-        //                 time=events.time
-                         
-        //             }));
-        //        }
-        //        return list;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
+            //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+            //        {
+            //            (from e in dc.tblEvent
+            //             select new
+            //             {
+            //                 e.EventID,
+            //                 e.GameID,
+            //                 e.EventName, 
+            //                 e.EventType,
+            //                 e.MaxPlayers,
+            //                 e.Server,
+            //                 e.Platform,
+            //                 e.Description,
+            //                 e.time
 
-        //}
+            //             })
+            //             .ToList()
+            //             .ForEach(events => list.Add(new Events
+            //             {
+            //                 EventID = events.EventID,
+            //                 GameID = events.GameID,
+            //                 EventName = events.EventName,
+            //                 EventType = events.EventType,
+            //                 MaxPlayers = events.MaxPlayers,
+            //                 Server = events.Server,
+            //                 Platform = events.Platform,
+            //                 Description = events.Description,
+            //                 time=events.time
+
+            //             }));
+            //        }
+            //        return list;
+            //    }
+            //    catch (Exception)
+            //    {
+            //        throw;
+            //    }
+
+            //}
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AgileTeamFour.PL
 {
-        public partial class tblEvent
+        public partial class tblEvents
         {
             public int EventID { get; set; }
             public int GameID { get; set; }

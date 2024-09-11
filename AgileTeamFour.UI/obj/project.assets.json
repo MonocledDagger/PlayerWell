@@ -612,23 +612,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\300085063\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\fired\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectUniqueName": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "projectName": "AgileTeamFour.UI",
-      "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
-      "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
-      "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\obj\\",
+      "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "packagesPath": "C:\\Users\\fired\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\300085063\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fired\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -637,18 +639,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
+            "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+              "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
             },
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+            "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+              "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
             }
           }
         }
@@ -657,11 +658,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -686,7 +682,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

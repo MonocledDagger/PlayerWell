@@ -90,20 +90,47 @@ namespace AgileTeamFour.BL
 
         //}
 
-        public static int Update()
-        {
-            try
-            {
-                return 0;
+        //public static int Update(Game game, bool rollback= false)
+        //{
+        //    try
+        //    {
+        //        int results = 0;
+        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+        //        {
+        //            IDbContextTransaction transaction = null;
+        //            if (rollback) transaction = dc.Database.BeginTransaction();
 
-            }
-            catch (Exception)
-            {
+        //            // Get the row that we are trying to update
+        //            tblGame entity = dc.tblGame.FirstOrDefault(g => g.GameID == game.GameID);
 
-                throw;
-            }
+        //            if (entity != null)
+        //            {
+        //                entity.GameID = game.GameID;
+        //                entity.GameName = game.GameName;
+        //                entity.Picture = game.Picture;
+        //                entity.Description = game.Description;
+        //                entity.Genre = game.Genre;
+        //                entity.Platform = game.Platform;
 
-        }
+
+        //                results = dc.SaveChanges();
+        //            }
+        //            else
+        //            {
+        //                throw new Exception("Row does not exist");
+        //            }
+
+        //            if (rollback) transaction.Rollback();
+        //        }
+        //        return results;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
 
 
         //public static int Delete(int GameID, bool rollback=false)
@@ -139,18 +166,40 @@ namespace AgileTeamFour.BL
         //}
 
 
-        public static Game LoadByID(int id)
-        {
-            try
-            {
-                return null;
-            }
-            catch (Exception)
-            {
+        //public static Game LoadByID(int GameID)
+        //{
+        //    try
+        //    {
+        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+        //        {
+        //            tblGame entity = dc.tblGame.FirstOrDefault(g => g.GameID == GameID);
 
-                throw;
-            }
-        }
+        //            if (entity != null)
+        //            {
+        //                return new Game
+        //                {
+        //                    GameID = entity.GameID,
+        //                    GameName = entity.GameName,
+        //                    Platform = entity.Platform,
+        //                    Description = entity.Description,
+        //                    Picture = entity.Picture,
+        //                    Genre = entity.Genre,
+
+        //                };
+        //            }
+        //            else
+        //            {
+        //                throw new Exception();
+        //            }
+        //        }
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
 
         //public static List<Game> Load()
         //{
@@ -180,7 +229,7 @@ namespace AgileTeamFour.BL
         //                 Description = game.Description,
         //                 Picture = game.Picture,
         //                 Genre = game.Genre
-                         
+
 
         //             }));
         //        }
