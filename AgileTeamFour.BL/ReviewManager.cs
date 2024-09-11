@@ -1,0 +1,197 @@
+﻿
+using AgileTeamFour.BL.Models;
+
+namespace AgileTeamFour.BL
+{
+    public static class ReviewManager
+    {
+        /*
+        //Adding a value to any foreign key requires the foreign key value first exist as a a primary key value of the referenced table
+        //Reviews.AuthorID uses Players.PlayerID as a foreign key
+        //Reviews.RecipientID uses Players.PlayerID as a foreign key
+        public static int Insert(Review review, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    IDbContextTransaction transaction = null;
+                    if (rollback) transaction = dc.Database.BeginTransaction();
+
+                    tblReview entity = new tblReview();
+                    entity.ReviewID = dc.tblReviews.Any() ? dc.tblReviews.Max(s => s.ReviewID) + 1 : 1;
+                    entity.StarsOutOf5 = review.StarsOutOf5;
+                    entity.ReviewText = review.ReviewText;
+
+                    //Must Check that AuthorID and RecipientID are valid values in the Players Table
+                    //*********************
+
+                    int id = PlayerManager.LoadById(review.AuthorID).PlayerID;          
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                        throw new Exception();
+                    else
+                        entity.AuthorID = review.AuthorID;
+
+                    id = PlayerManager.LoadById(review.RecipientID).PlayerID;                
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                        throw new Exception();
+                    else
+                        entity.RecipientID = review.RecipientID;
+
+                    //*********************
+
+
+
+                    // IMPORTANT - BACK FILL THE ID
+                    review.ReviewID = entity.ReviewID;
+
+                    dc.tblReviews.Add(entity);
+                    results = dc.SaveChanges();
+
+                    if (rollback) transaction.Rollback();
+
+                }
+                return results;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static int Update(Review review, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    IDbContextTransaction transaction = null;
+                    if (rollback) transaction = dc.Database.BeginTransaction();
+
+                    tblReview entity = dc.tblReviews.Where(e => e.ReviewID == review.ReviewID).FirstOrDefault();
+                    entity.StarsOutOf5 = review.StarsOutOf5;
+                    entity.ReviewText = review.ReviewText;
+
+                    //Must Check that AuthorID and RecipientID are valid values in the Players Table
+                    //*********************
+
+                    int id = PlayerManager.LoadById(review.AuthorID).PlayerID;
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                        throw new Exception();
+                    else
+                        entity.AuthorID = review.AuthorID;
+
+                    id = PlayerManager.LoadById(review.RecipientID).PlayerID;
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                        throw new Exception();
+                    else
+                        entity.RecipientID = review.RecipientID;
+
+                    //*********************
+
+                    results = dc.SaveChanges();
+
+                    if (rollback) transaction.Rollback();
+
+                }
+                return results;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static int Delete(int id, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    IDbContextTransaction transaction = null;
+                    if (rollback) transaction = dc.Database.BeginTransaction();
+
+                    tblReview entity = dc.tblReviews.Where(e => e.ReviewID == id).FirstOrDefault();
+
+                    dc.tblReviews.Remove(entity);
+                    results = dc.SaveChanges();
+
+                    if (rollback) transaction.Rollback();
+
+                }
+                return results;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static Review LoadById(int id)
+        {
+            try
+            {
+                Review review = new Review();
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblReview entity = dc.tblReviews.Where(e => e.ReviewID == id).FirstOrDefault();
+                    review.ReviewID = id;
+                    review.StarsOutOf5 = entity.StarsOutOf5;
+                    review.ReviewText = entity.ReviewText;
+
+                    review.AuthorID = entity.AuthorID;
+                    review.RecipientID = entity.RecipientID;
+
+
+                    return review;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static List<Review> Load()
+        {
+            try
+            {
+                List<Review> list = new List<Review>();
+
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    (from r in dc.tblReviews
+                     select new
+                     {
+                        r.ReviewID,
+                        r.StarsOutOf5,
+                        r.ReviewText,
+                        r.AuthorID,
+                        r.RecipientID
+                })
+                     .ToList()
+                     .ForEach(review => list.Add(new Review
+                     {
+                         ReviewID = review.ReviewID,
+                         StarsOutOf5 = review.StarsOutOf5,
+                         ReviewText = review.ReviewText,
+                         AuthorID = review.AuthorID,
+                         RecipientID = review.RecipientID
+                     }));
+                }
+
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        */
+    }
+}
+

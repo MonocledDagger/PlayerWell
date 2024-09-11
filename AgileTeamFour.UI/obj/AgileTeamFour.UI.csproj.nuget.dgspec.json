@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj": {}
+    "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
+    "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj",
+        "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj",
         "projectName": "AgileTeamFour.BL.Models",
-        "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj",
-        "packagesPath": "C:\\Users\\willm\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\obj\\",
+        "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj",
+        "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
+        "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\willm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\300085063\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -65,24 +65,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+    "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj",
+        "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj",
         "projectName": "AgileTeamFour.BL",
-        "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj",
-        "packagesPath": "C:\\Users\\willm\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\obj\\",
+        "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj",
+        "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
+        "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\willm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\300085063\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -98,8 +98,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
-                "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
+              "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
+                "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
+              },
+              "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+                "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
               }
             }
           }
@@ -118,6 +121,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -134,24 +143,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+    "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj",
+        "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj",
         "projectName": "AgileTeamFour.PL",
-        "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj",
-        "packagesPath": "C:\\Users\\willm\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\obj\\",
+        "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj",
+        "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
+        "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\willm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\300085063\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -199,24 +208,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj": {
+    "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+        "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
         "projectName": "AgileTeamFour.UI",
-        "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
-        "packagesPath": "C:\\Users\\willm\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\obj\\",
+        "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+        "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
+        "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\willm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\300085063\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -232,11 +241,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
-                "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
+              "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+                "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
               },
-              "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-                "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+              "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+                "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
               }
             }
           }
@@ -274,7 +283,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
