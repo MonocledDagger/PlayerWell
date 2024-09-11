@@ -7,7 +7,7 @@ namespace AgileTeamFour.BL
     public static class PlayerManager
     {
         /*
-        //So far, none of these methods change primary keys
+        //So far, none of these methods change primary keys, other than delete, which deletes a primary key in the deleted row
         //When changing a primary key, required to update foreign keys that reference that primary key first to ensure referential integrity
         //Adding a value to any foreign key requires the foreign key value first exist as a a primary key value of the referenced table
         //Reviews.AuthorID uses Players.PlayerID as a foreign key
@@ -79,8 +79,14 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        public static int Delete(int id, bool rollback = false)
+        public static int Delete(int id, bool rollback = false) 
         {
+        //What happens when a player is deleted?
+                //Reviews.AuthorID uses Players.PlayerID as a foreign key
+                //Reviews.RecipientID uses Players.PlayerID as a foreign key
+                //Comments.AuthorID uses Players.PlayerID as a foreign key
+                //PlayerEvent.PlayerID uses Players.PlayerID as a foreign key
+        //Rows mentioned in comments above, need to be either changed or deleted before a PlayerID is deleted
             try
             {
                 int results = 0;
@@ -90,6 +96,7 @@ namespace AgileTeamFour.BL
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
                     tblPlayer entity = dc.tblPlayers.Where(e => e.PlayerID == id).FirstOrDefault();
+                    
 
                     dc.tblPlayers.Remove(entity);
                     results = dc.SaveChanges();
@@ -178,5 +185,5 @@ namespace AgileTeamFour.BL
         }
     }
         */
-}
+    }
 }
