@@ -5,17 +5,22 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.UI", "AgileTeamFour.UI\AgileTeamFour.UI.csproj", "{576627DE-1522-4C95-831C-40B660DB2CF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamFour.BL", "AgileTeamFour.BL\AgileTeamFour.BL.csproj", "{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.BL", "AgileTeamFour.BL\AgileTeamFour.BL.csproj", "{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamFour.PL", "AgileTeamFour.PL\AgileTeamFour.PL.csproj", "{8383590D-3C2B-4BA1-93F7-827D0EA61F95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.PL", "AgileTeamFour.PL\AgileTeamFour.PL.csproj", "{8383590D-3C2B-4BA1-93F7-827D0EA61F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamFour.BL.Models", "AgileTeamFour.BL.Models\AgileTeamFour.BL.Models.csproj", "{29DEF9A7-D66C-4844-A48C-22526AB669A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.BL.Models", "AgileTeamFour.BL.Models\AgileTeamFour.BL.Models.csproj", "{29DEF9A7-D66C-4844-A48C-22526AB669A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamFour.BL.Tests", "AgileTeamFour.BL.Tests\AgileTeamFour.BL.Tests.csproj", "{1B2F5A94-F92C-4619-A89B-4507D07DE214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.BL.Tests", "AgileTeamFour.BL.Tests\AgileTeamFour.BL.Tests.csproj", "{1B2F5A94-F92C-4619-A89B-4507D07DE214}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileTeamFour.PL.Tests", "AgileTeamFour.PL.Tests\AgileTeamFour.PL.Tests.csproj", "{6C158E3F-1ABB-43EC-8D5E-7212EE1DF4B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.PL.Tests", "AgileTeamFour.PL.Tests\AgileTeamFour.PL.Tests.csproj", "{6C158E3F-1ABB-43EC-8D5E-7212EE1DF4B6}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AgileTeamFour.DB", "AgileTeamFour.DB\AgileTeamFour.DB.sqlproj", "{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE92B329-5679-4352-8A43-EFC97A0A79EC}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

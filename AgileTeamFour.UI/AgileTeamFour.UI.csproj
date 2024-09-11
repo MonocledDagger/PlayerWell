@@ -6,6 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+    <ItemGroup>
+	    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+	    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+    </ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\AgileTeamFour.BL\AgileTeamFour.BL.csproj" />
     <ProjectReference Include="..\AgileTeamFour.PL\AgileTeamFour.PL.csproj" />
