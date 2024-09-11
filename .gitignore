@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/AgileTeamFour.UI/obj/Debug/net8.0/AgileTeamFour.UI.AssemblyInfo.cs
+/AgileTeamFour.UI/obj/Debug/net8.0/AgileTeamFour.UI.AssemblyInfoInputs.cache
+/.vs/AgileTeamFour/DesignTimeBuild/.dtbcache.v2
+/.vs/AgileTeamFour/v17/.futdcache.v2
