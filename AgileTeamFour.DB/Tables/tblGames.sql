@@ -1,4 +1,4 @@
-﻿CREATE TABLE Games (
+﻿CREATE TABLE [tblGames] (
     GameID INT PRIMARY KEY,
     GameName VARCHAR(100) NOT NULL,
     Platform VARCHAR(50),

@@ -1,14 +1,14 @@
 ﻿BEGIN
-    INSERT INTO tblPlayerEvent (PlayerEventID, PlayerID, EventID, Role)
+    INSERT INTO tblPlayerEvents (PlayerEventID, PlayerID, EventID, Role)
     VALUES
-    (10, 1001,'Tank'),
-    (10, 1002, 'Rouge'),
-    (10, 1003, 'Healer'),
-    (20, 1001, null),
-    (20, 1002, null),
-    (20, 1003, null),
-    (30, 1001, 'Red Team'),
-    (30, 1002, 'Red Team'),
-    (30, 1003, 'Blue Team');
+    (10,1, 1001, 'Tank'),
+    (11, 2, 1001, 'Rouge'),
+    (12, 3, 1001, 'Healer'),
+    (13, 1, 1002, null),
+    (14, 2, 1002, null),
+    (15, 3, 1002, null),
+    (16, 1, 1003, 'Red Team'),
+    (17, 2, 1003, 'Red Team'),
+    (18, 3, 1003, 'Blue Team');
 
 END

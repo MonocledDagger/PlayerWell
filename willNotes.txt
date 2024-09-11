@@ -1,0 +1,55 @@
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+!! How to create a scaffolding step by step
+Scaffolding is called creating the files that go into the PL.
+1. You need your tables built.
+2. Your solution needs to build.
+
+Tools > Nuget Package Manager > Package Manager Console
+Note: Set your Default Project in the console and Startup Project for the solution 
+as WMG.ProgDec.PL before installing the packages
+
+Install-Package {Package Name for each you need which are the 3 list above}
+
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=AgileTeamFourDB;Integrated Security="False" Microsoft.EntityFrameworkCore.SqlServer -Context AgileTeamFourEntities -UseDatabaseNames -force
+
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=WMG.ProgDec.DB;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Context ProgDecEntities -UseDatabaseNames -force
+
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=WMG.DVDCentral.DB;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Context ProgDecEntities -UseDatabaseNames -force
+
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=ScriptSearchdb;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Context ScriptSearchEntities -UseDatabaseNames -force
+
+
+! Make sure your Startup Project is set to the PL
+! Make sure the Default Project in the NuGet Package Console is set to the same as the Startup Project.
+        [DisplayName("Change Date")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+
+
+Connection String:
+"Data Source=server-21296-500160718.database.windows.net;Initial Catalog=progdecdb;User ID=500160718db;Password=Test123!;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
+
+Changing from Remote to Local database, change the connection string in the PL ProgDecEntities on lines 30 and 31.
+
+// Method to grab information out of session
+
+        //private void GetBands()
+        //{
+        //    if (HttpContext.Session.GetObject<Band[]>("bands") != null)
+        //    {
+        //        bands = HttpContext.Session.GetObject<Band[]>("bands");
+        //    }
+
+        //    else
+        //    {
+        //        LoadBands();
+        //    }
+        //}
+
+        //private User GetUser()
+        //{
+        //    // Retrieve the user object from session
+        //    return HttpContext.Session.GetObject<User>("user");
+        //}
