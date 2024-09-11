@@ -79,7 +79,7 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        public static int Delete(int id, bool rollback = false)
+        public static int Delete(int id, bool rollback = false) 
         {
         //What happens when a player is deleted?
                 //Reviews.AuthorID uses Players.PlayerID as a foreign key
