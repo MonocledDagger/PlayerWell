@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AgileTeamFour.BL.Models\AgileTeamFour.BL.Models.csproj" />
+    <ProjectReference Include="..\AgileTeamFour.PL\AgileTeamFour.PL.csproj" />
   </ItemGroup>
 
 </Project>

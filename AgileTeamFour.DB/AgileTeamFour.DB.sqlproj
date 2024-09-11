@@ -69,4 +69,10 @@
     <None Include="PostDeployment\DefaultData\tblReviews.sql" />
     <None Include="PostDeployment\DefaultData\tblGames.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\tblEvents.sql" />
+    <Build Include="Tables\tblGames.sql" />
+    <Build Include="Tables\tblPlayerEvent.sql" />
+    <Build Include="Tables\tblPlayers.sql" />
+  </ItemGroup>
 </Project>
