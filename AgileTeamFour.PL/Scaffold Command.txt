@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=AgileTeamFour.DB;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Context AgileTeamFourEntities -UseDatabaseNames -force
