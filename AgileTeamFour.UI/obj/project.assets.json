@@ -7755,23 +7755,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\willm\\.nuget\\packages\\": {},
+    "C:\\Users\\Ric's\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectUniqueName": "C:\\Users\\Ric's\\OneDrive\\Documents\\school\\Agile\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "projectName": "AgileTeamFour.UI",
-      "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
-      "packagesPath": "C:\\Users\\willm\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\obj\\",
+      "projectPath": "C:\\Users\\Ric's\\OneDrive\\Documents\\school\\Agile\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "packagesPath": "C:\\Users\\Ric's\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ric's\\OneDrive\\Documents\\school\\Agile\\AgileProject\\AgileTeamFour.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\willm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ric's\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7787,8 +7787,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-              "projectPath": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+            "C:\\Users\\Ric's\\OneDrive\\Documents\\school\\Agile\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+              "projectPath": "C:\\Users\\Ric's\\OneDrive\\Documents\\school\\Agile\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
             }
           }
         }
@@ -7852,7 +7852,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
