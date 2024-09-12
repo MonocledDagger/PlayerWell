@@ -15,15 +15,15 @@ public partial class AgileTeamFourEntities : DbContext
     {
     }
 
-    public virtual DbSet<Comment> Comments { get; set; }
+    public virtual DbSet<tblComment> tblComments { get; set; }
 
-    public virtual DbSet<Event> Events { get; set; }
+    public virtual DbSet<tblEvent> tblEvents { get; set; }
 
-    public virtual DbSet<Game> Games { get; set; }
+    public virtual DbSet<tblGame> tblGames { get; set; }
 
-    public virtual DbSet<Player> Players { get; set; }
+    public virtual DbSet<tblPlayer> tblPlayers { get; set; }
 
-    public virtual DbSet<PlayerEvent> PlayerEvents { get; set; }
+    public virtual DbSet<tblPlayerEvent> tblPlayerEvents { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -31,7 +31,7 @@ public partial class AgileTeamFourEntities : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Comment>(entity =>
+        modelBuilder.Entity<tblComment>(entity =>
         {
             entity.HasKey(e => e.CommentID).HasName("PK__Comments__C3B4DFAABFBFACEF");
 
@@ -51,7 +51,7 @@ public partial class AgileTeamFourEntities : DbContext
                 .HasConstraintName("FK__Comments__EventI__2C3393D0");
         });
 
-        modelBuilder.Entity<Event>(entity =>
+        modelBuilder.Entity<tblEvent>(entity =>
         {
             entity.HasKey(e => e.EventID).HasName("PK__Events__7944C8701E12B890");
 
@@ -76,7 +76,7 @@ public partial class AgileTeamFourEntities : DbContext
                 .HasConstraintName("FK__Events__GameID__2E1BDC42");
         });
 
-        modelBuilder.Entity<Game>(entity =>
+        modelBuilder.Entity<tblGame>(entity =>
         {
             entity.HasKey(e => e.GameID).HasName("PK__Games__2AB897DD19D6D8B7");
 
@@ -96,7 +96,7 @@ public partial class AgileTeamFourEntities : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Player>(entity =>
+        modelBuilder.Entity<tblPlayer>(entity =>
         {
             entity.HasKey(e => e.PlayerID).HasName("PK__Players__4A4E74A8D48316AB");
 
@@ -116,7 +116,7 @@ public partial class AgileTeamFourEntities : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<PlayerEvent>(entity =>
+        modelBuilder.Entity<tblPlayerEvent>(entity =>
         {
             entity.HasKey(e => e.PlayerEventID).HasName("PK__PlayerEv__B001D167F543EF19");
 
