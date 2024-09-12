@@ -5,8 +5,6 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.UI", "AgileTeamFour.UI\AgileTeamFour.UI.csproj", "{576627DE-1522-4C95-831C-40B660DB2CF5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.BL", "AgileTeamFour.BL\AgileTeamFour.BL.csproj", "{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.PL", "AgileTeamFour.PL\AgileTeamFour.PL.csproj", "{8383590D-3C2B-4BA1-93F7-827D0EA61F95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.BL.Models", "AgileTeamFour.BL.Models\AgileTeamFour.BL.Models.csproj", "{29DEF9A7-D66C-4844-A48C-22526AB669A3}"
@@ -22,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileTeamFour.BL", "AgileTeamFour.BL\AgileTeamFour.BL.csproj", "{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +32,6 @@ Global
 		{576627DE-1522-4C95-831C-40B660DB2CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{576627DE-1522-4C95-831C-40B660DB2CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{576627DE-1522-4C95-831C-40B660DB2CF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82CBEB27-EAD8-4242-8DD7-00C99EF43CDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8383590D-3C2B-4BA1-93F7-827D0EA61F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8383590D-3C2B-4BA1-93F7-827D0EA61F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8383590D-3C2B-4BA1-93F7-827D0EA61F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,6 +54,10 @@ Global
 		{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
