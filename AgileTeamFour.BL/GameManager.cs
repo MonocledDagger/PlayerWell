@@ -16,7 +16,7 @@ namespace AgileTeamFour.BL
         {
             try
             {
-                Game game = new Game
+                Models.Game game = new Models.Game
                 {
                     GameID = gameID,
                     GameName = gameName,
@@ -44,9 +44,9 @@ namespace AgileTeamFour.BL
 
         }
 
+        
 
-
-        public static int Insert(Game game, bool rollback = false)
+        public static int Insert(Models.Game game, bool rollback = false)
         {
             try
             {
@@ -90,7 +90,11 @@ namespace AgileTeamFour.BL
 
         }
 
-        public static int Update(Game game, bool rollback = false)
+       
+
+
+
+        public static int Update(Models.Game game, bool rollback = false)
         {
             try
             {
@@ -166,7 +170,7 @@ namespace AgileTeamFour.BL
         }
 
 
-        public static Game LoadByID(int GameID)
+        public static Models.Game LoadByID(int GameID)
         {
             try
             {
@@ -176,7 +180,7 @@ namespace AgileTeamFour.BL
 
                     if (entity != null)
                     {
-                        return new Game
+                        return new Models.Game
                         {
                             GameID = entity.GameID,
                             GameName = entity.GameName,
@@ -201,11 +205,11 @@ namespace AgileTeamFour.BL
             }
         }
 
-        public static List<Game> Load()
+        public static List<Models.Game> Load()
         {
             try
             {
-                List<Game> list = new List<Game>();
+                List<Models.Game> list = new List<Models.Game>();
 
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
@@ -221,7 +225,7 @@ namespace AgileTeamFour.BL
 
                      })
                      .ToList()
-                     .ForEach(game => list.Add(new Game
+                     .ForEach(game => list.Add(new Models.Game
                      {
                          GameID = game.GameID,
                          GameName = game.GameName,
@@ -241,5 +245,6 @@ namespace AgileTeamFour.BL
             }
 
         }
+
     }
 }
