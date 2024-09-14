@@ -11,11 +11,9 @@ public partial class tblGame
 
     public string? Platform { get; set; }
 
-    public string? Description { get; set; }
+    public string Description { get; set; } = null!;
 
     public string? Picture { get; set; }
 
     public string? Genre { get; set; }
-
-    public virtual ICollection<tblEvent> Events { get; set; } = new List<tblEvent>();
 }

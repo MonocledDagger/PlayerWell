@@ -25,35 +25,26 @@ public partial class AgileTeamFourEntities : DbContext
 
     public virtual DbSet<tblPlayerEvent> tblPlayerEvents { get; set; }
 
+    public virtual DbSet<tblReview> tblReviews { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AgileTeamFour.DB;Integrated Security=True");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AgileTeamFourDB;Integrated Security=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<tblComment>(entity =>
         {
-            entity.HasKey(e => e.CommentID).HasName("PK__Comments__C3B4DFAABFBFACEF");
+            entity.HasKey(e => e.CommentID).HasName("PK__tblComme__C3B4DFAA441EC56E");
 
             entity.Property(e => e.CommentID).ValueGeneratedNever();
-            entity.Property(e => e.AuthorName)
-                .HasMaxLength(50)
-                .IsUnicode(false);
             entity.Property(e => e.Text).HasColumnType("text");
             entity.Property(e => e.TimePosted).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Author).WithMany(p => p.Comments)
-                .HasForeignKey(d => d.AuthorID)
-                .HasConstraintName("FK__Comments__Author__2D27B809");
-
-            entity.HasOne(d => d.Event).WithMany(p => p.Comments)
-                .HasForeignKey(d => d.EventID)
-                .HasConstraintName("FK__Comments__EventI__2C3393D0");
         });
 
         modelBuilder.Entity<tblEvent>(entity =>
         {
-            entity.HasKey(e => e.EventID).HasName("PK__Events__7944C8701E12B890");
+            entity.HasKey(e => e.EventID).HasName("PK__tblEvent__7944C870CE6DE1AA");
 
             entity.Property(e => e.EventID).ValueGeneratedNever();
             entity.Property(e => e.DateTime).HasColumnType("datetime");
@@ -61,24 +52,20 @@ public partial class AgileTeamFourEntities : DbContext
             entity.Property(e => e.EventName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.EventType)
-                .HasMaxLength(50)
-                .IsUnicode(false);
             entity.Property(e => e.Platform)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Server)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.Game).WithMany(p => p.Events)
-                .HasForeignKey(d => d.GameID)
-                .HasConstraintName("FK__Events__GameID__2E1BDC42");
+            entity.Property(e => e.Type)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<tblGame>(entity =>
         {
-            entity.HasKey(e => e.GameID).HasName("PK__Games__2AB897DD19D6D8B7");
+            entity.HasKey(e => e.GameID).HasName("PK__tblGames__2AB897DDE5361F01");
 
             entity.Property(e => e.GameID).ValueGeneratedNever();
             entity.Property(e => e.Description).HasColumnType("text");
@@ -98,10 +85,11 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblPlayer>(entity =>
         {
-            entity.HasKey(e => e.PlayerID).HasName("PK__Players__4A4E74A8D48316AB");
+            entity.HasKey(e => e.PlayerID).HasName("PK__tblPlaye__4A4E74A83EAD16B3");
 
             entity.Property(e => e.PlayerID).ValueGeneratedNever();
             entity.Property(e => e.Bio).HasColumnType("text");
+            entity.Property(e => e.DateTime).HasColumnType("datetime");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -118,22 +106,21 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblPlayerEvent>(entity =>
         {
-            entity.HasKey(e => e.PlayerEventID).HasName("PK__PlayerEv__B001D167F543EF19");
-
-            entity.ToTable("PlayerEvent");
+            entity.HasKey(e => e.PlayerEventID).HasName("PK__tblPlaye__B001D167E05D35C6");
 
             entity.Property(e => e.PlayerEventID).ValueGeneratedNever();
             entity.Property(e => e.Role)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+        });
 
-            entity.HasOne(d => d.Event).WithMany(p => p.PlayerEvents)
-                .HasForeignKey(d => d.EventID)
-                .HasConstraintName("FK__PlayerEve__Event__300424B4");
+        modelBuilder.Entity<tblReview>(entity =>
+        {
+            entity.HasKey(e => e.ReviewID).HasName("PK__tblRevie__74BC79AE80BD3EDB");
 
-            entity.HasOne(d => d.Player).WithMany(p => p.PlayerEvents)
-                .HasForeignKey(d => d.PlayerID)
-                .HasConstraintName("FK__PlayerEve__Playe__2F10007B");
+            entity.Property(e => e.ReviewID).ValueGeneratedNever();
+            entity.Property(e => e.DateTime).HasColumnType("datetime");
+            entity.Property(e => e.ReviewText).HasColumnType("text");
         });
 
         OnModelCreatingPartial(modelBuilder);

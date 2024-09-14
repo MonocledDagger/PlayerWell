@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [tblReviews] (
-    ReviewID INT PRIMARY KEY,
-    StarsOutOf5 INT CHECK (StarsOutOf5 >= 1 AND StarsOutOf5 <= 5),
+    ReviewID INT PRIMARY KEY NOT NULL,
+    StarsOutOf5 INT CHECK (StarsOutOf5 >= 1 AND StarsOutOf5 <= 5) NOT NULL,
     ReviewText TEXT,
-    AuthorID INT,
-    RecipientID INT,
-    DateTime DATETIME
+    AuthorID INT NOT NULL,
+    RecipientID INT NOT NULL,
+    DateTime DATETIME NOT NULL
 );

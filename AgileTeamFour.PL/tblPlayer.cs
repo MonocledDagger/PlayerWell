@@ -9,7 +9,7 @@ public partial class tblPlayer
 
     public string UserName { get; set; } = null!;
 
-    public string? Email { get; set; }
+    public string Email { get; set; } = null!;
 
     public string Password { get; set; } = null!;
 
@@ -17,7 +17,5 @@ public partial class tblPlayer
 
     public string? Bio { get; set; }
 
-    public virtual ICollection<tblComment> Comments { get; set; } = new List<tblComment>();
-
-    public virtual ICollection<tblPlayerEvent> PlayerEvents { get; set; } = new List<tblPlayerEvent>();
+    public DateTime? DateTime { get; set; }
 }
