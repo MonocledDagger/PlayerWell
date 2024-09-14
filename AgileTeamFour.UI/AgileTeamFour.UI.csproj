@@ -25,6 +25,7 @@
     </ItemGroup>
 	
   <ItemGroup>
+    <ProjectReference Include="..\AgileTeamFour.BL.Models\AgileTeamFour.BL.Models.csproj" />
     <ProjectReference Include="..\AgileTeamFour.BL\AgileTeamFour.BL.csproj" />
     <ProjectReference Include="..\AgileTeamFour.PL\AgileTeamFour.PL.csproj" />
   </ItemGroup>
