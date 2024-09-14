@@ -19,7 +19,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
@@ -31,6 +31,7 @@ namespace AgileTeamFour.BL
                     entity.Password = player.Password;
                     entity.IconPic = player.IconPic;
                     entity.Bio = player.Bio;
+                    entity.DateTime = player.DateTime;
 
                     // IMPORTANT - BACK FILL THE ID
                     player.PlayerID = entity.PlayerID;
@@ -54,7 +55,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
@@ -65,6 +66,7 @@ namespace AgileTeamFour.BL
                     entity.Password = player.Password;
                     entity.IconPic = player.IconPic;
                     entity.Bio = player.Bio;
+                    entity.DateTime = player.DateTime;
 
                     results = dc.SaveChanges();
 
@@ -79,45 +81,45 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        public static int Delete(int id, bool rollback = false) 
-        {
-        //What happens when a player is deleted?
-                //Reviews.AuthorID uses Players.PlayerID as a foreign key
-                //Reviews.RecipientID uses Players.PlayerID as a foreign key
-                //Comments.AuthorID uses Players.PlayerID as a foreign key
-                //PlayerEvent.PlayerID uses Players.PlayerID as a foreign key
-        //Rows mentioned in comments above, need to be either changed or deleted before a PlayerID is deleted
-            try
-            {
-                int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
-                {
-                    IDbContextTransaction transaction = null;
-                    if (rollback) transaction = dc.Database.BeginTransaction();
+        //public static int Delete(int id, bool rollback = false) 
+        //{
+        ////What happens when a player is deleted?
+        //        //Reviews.AuthorID uses Players.PlayerID as a foreign key
+        //        //Reviews.RecipientID uses Players.PlayerID as a foreign key
+        //        //Comments.AuthorID uses Players.PlayerID as a foreign key
+        //        //PlayerEvent.PlayerID uses Players.PlayerID as a foreign key
+        ////Rows mentioned in comments above, need to be either changed or deleted before a PlayerID is deleted
+        //    try
+        //    {
+        //        int results = 0;
+        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+        //        {
+        //            IDbContextTransaction transaction = null;
+        //            if (rollback) transaction = dc.Database.BeginTransaction();
 
-                    tblPlayer entity = dc.tblPlayers.Where(e => e.PlayerID == id).FirstOrDefault();
+        //            tblPlayer entity = dc.tblPlayers.Where(e => e.PlayerID == id).FirstOrDefault();
                     
 
-                    dc.tblPlayers.Remove(entity);
-                    results = dc.SaveChanges();
+        //            dc.tblPlayers.Remove(entity);
+        //            results = dc.SaveChanges();
 
-                    if (rollback) transaction.Rollback();
+        //            if (rollback) transaction.Rollback();
 
-                }
-                return results;
-            }
-            catch (Exception)
-            {
+        //        }
+        //        return results;
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
         public static Player LoadById(int id)
         {
             try
             {
                 Player player = new Player();
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     tblPlayer entity = dc.tblPlayers.Where(e => e.PlayerID == id).FirstOrDefault();
                     if (entity != null)
@@ -128,6 +130,7 @@ namespace AgileTeamFour.BL
                         player.Password = entity.Password;
                         player.IconPic = entity.IconPic;
                         player.Bio = entity.Bio;
+                        player.DateTime = entity.DateTime;
                     }
                     else
                     {
@@ -150,17 +153,18 @@ namespace AgileTeamFour.BL
             {
                 List<Player> list = new List<Player>();
 
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     (from p in dc.tblPlayers
                      select new
                      {
                          p.PlayerID,
                          p.UserName,
-                         p.Emaill,
+                         p.Email,
                          p.Password,
                          p.IconPic,
-                         p.Bio
+                         p.Bio,
+                         p.DateTime
                 })
                      .ToList()
                      .ForEach(player => list.Add(new Player
@@ -172,6 +176,7 @@ namespace AgileTeamFour.BL
                          Password = player.Password,
                          IconPic = player.IconPic,
                          Bio = player.Bio,
+                         this.Datetime = player.DateTime
                      }));
                 }
 
@@ -182,8 +187,8 @@ namespace AgileTeamFour.BL
 
                 throw;
             }
-        }
+        }*/
     }
-        */
-    }
+        
 }
+

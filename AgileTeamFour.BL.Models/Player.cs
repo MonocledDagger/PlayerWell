@@ -19,5 +19,7 @@ namespace AgileTeamFour.BL.Models
         public string IconPic { get; set; }
 
         public string Bio { get; set; }
+
+        public DateTime DateTime { get; set; }
     }
 }

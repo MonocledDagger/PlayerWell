@@ -14,7 +14,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
@@ -23,6 +23,7 @@ namespace AgileTeamFour.BL
                     entity.ReviewID = dc.tblReviews.Any() ? dc.tblReviews.Max(s => s.ReviewID) + 1 : 1;
                     entity.StarsOutOf5 = review.StarsOutOf5;
                     entity.ReviewText = review.ReviewText;
+                    entity.DateTime = review.DateTime;
 
                     //Must Check that AuthorID and RecipientID are valid values in the Players Table
                     //*********************
@@ -65,7 +66,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
@@ -73,6 +74,7 @@ namespace AgileTeamFour.BL
                     tblReview entity = dc.tblReviews.Where(e => e.ReviewID == review.ReviewID).FirstOrDefault();
                     entity.StarsOutOf5 = review.StarsOutOf5;
                     entity.ReviewText = review.ReviewText;
+                    entity.DateTime = review.DateTime;
 
                     //Must Check that AuthorID and RecipientID are valid values in the Players Table
                     //*********************
@@ -109,7 +111,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
@@ -135,12 +137,13 @@ namespace AgileTeamFour.BL
             try
             {
                 Review review = new Review();
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     tblReview entity = dc.tblReviews.Where(e => e.ReviewID == id).FirstOrDefault();
                     review.ReviewID = id;
                     review.StarsOutOf5 = entity.StarsOutOf5;
                     review.ReviewText = entity.ReviewText;
+                    review.DateTime = entity.DateTime;
 
                     review.AuthorID = entity.AuthorID;
                     review.RecipientID = entity.RecipientID;
@@ -161,7 +164,7 @@ namespace AgileTeamFour.BL
             {
                 List<Review> list = new List<Review>();
 
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     (from r in dc.tblReviews
                      select new
@@ -170,7 +173,8 @@ namespace AgileTeamFour.BL
                         r.StarsOutOf5,
                         r.ReviewText,
                         r.AuthorID,
-                        r.RecipientID
+                        r.RecipientID,
+                        r.DateTime
                 })
                      .ToList()
                      .ForEach(review => list.Add(new Review
@@ -179,7 +183,8 @@ namespace AgileTeamFour.BL
                          StarsOutOf5 = review.StarsOutOf5,
                          ReviewText = review.ReviewText,
                          AuthorID = review.AuthorID,
-                         RecipientID = review.RecipientID
+                         RecipientID = review.RecipientID,
+                         this.DateTime = review.DateTime
                      }));
                 }
 

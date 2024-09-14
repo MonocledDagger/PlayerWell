@@ -16,7 +16,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
@@ -24,7 +24,6 @@ namespace AgileTeamFour.BL
                     tblComment entity = new tblComment();
                     entity.CommentID = dc.tblComments.Any() ? dc.tblComments.Max(s => s.CommentID) + 1 : 1;           
                     entity.TimePosted = comment.TimePosted;              
-                    entity.AuthorName = comment.AuthorName;
                     entity.Text = comment.Text;
 
                     //Must Check that EventID and AuthorID are valid values in the Events Table and Players Table
@@ -68,14 +67,13 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
                     tblComment entity = dc.tblComments.Where(e => e.CommentID == comment.CommentID).FirstOrDefault();
                     entity.TimePosted = comment.TimePosted;
-                    entity.AuthorName = comment.AuthorName;
                     entity.Text = comment.Text;
 
                     //Must Check that EventID and AuthorID are valid values in the Events Table and Players Table
@@ -113,7 +111,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
@@ -139,12 +137,11 @@ namespace AgileTeamFour.BL
             try
             {
                 Comment comment = new Comment();
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     tblComment entity = dc.tblComments.Where(e => e.CommentID == id).FirstOrDefault();
                     comment.CommentID = id;
                     comment.TimePosted = entity.TimePosted;
-                    comment.AuthorName = entity.AuthorName;
                     comment.Text = entity.Text;
 
                     comment.AuthorID = entity.AuthorID;
@@ -166,14 +163,13 @@ namespace AgileTeamFour.BL
             {
                 List<Comment> list = new List<Comment>();
 
-                using (DVDCentralEntities dc = new DVDCentralEntities())
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     (from c in dc.tblComments
                      select new
                      {
                          c.CommentID,
                          c.TimePosted,
-                         c.AuthorName,
                          c.Text,
                          c.AuthorID,
                          c.EventID
@@ -183,7 +179,6 @@ namespace AgileTeamFour.BL
                      {
                          CommentID = comment.CommentID,
                          TimePosted = comment.TimePosted,
-                         AuthorName = comment.AuthorName,
                          Text = comment.Text,
                          AuthorID = comment.AuthorID,
                          EventID = comment.EventID

@@ -1,4 +1,5 @@
 ﻿global using AgileTeamFour.BL.Models;
+global using AgileTeamFour.PL;
 global using Microsoft.EntityFrameworkCore.Storage;
 global using Microsoft.EntityFrameworkCore.Metadata.Internal;
 global using Microsoft.EntityFrameworkCore.Update;

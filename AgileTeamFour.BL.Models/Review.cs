@@ -21,13 +21,15 @@ namespace AgileTeamFour.BL.Models
                 else starsOutOf5 = value; } 
         }
 
-        public int ReviewText { get; set; }
+        public string ReviewText { get; set; }
 
         //Foreign Key references a PlayerID, the primary key in the player Table
         public int AuthorID { get; set; }
 
         //Foreign Key references a PlayerID, the primary key in the player Table
         public int RecipientID { get; set; }
+
+        public DateTime DateTime { get; set; }
         
     }
 }
