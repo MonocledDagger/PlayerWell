@@ -44,7 +44,11 @@
                 @Html.DisplayFor(modelItem => item.GameName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Picture)
+                    <img src="~/images/Games/@item.Picture"
+                         id="movieimage"
+                         alt="@item.Description"
+                         onclick="on('/images/Games/@item.Picture')"
+                         class="imagepropsmall" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Platform)

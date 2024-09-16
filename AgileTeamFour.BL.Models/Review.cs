@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,14 +22,16 @@ namespace AgileTeamFour.BL.Models
                 else starsOutOf5 = value; } 
         }
 
+        [DisplayName("Review")]
         public string ReviewText { get; set; }
 
         //Foreign Key references a PlayerID, the primary key in the player Table
+        [DisplayName("Author")]
         public int AuthorID { get; set; }
 
         //Foreign Key references a PlayerID, the primary key in the player Table
         public int RecipientID { get; set; }
-
+        [DisplayName("Review Date")]
         public DateTime DateTime { get; set; }
         
     }
