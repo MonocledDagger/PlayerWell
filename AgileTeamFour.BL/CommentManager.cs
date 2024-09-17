@@ -157,6 +157,30 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
+        public static List<Comment> LoadByEventID(int eventID)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    return dc.tblComments
+                             .Where(c => c.EventID == eventID)
+                             .Select(c => new Comment
+                             {
+                                 CommentID = c.CommentID,
+                                 TimePosted = c.TimePosted,
+                                 Text = c.Text,
+                                 AuthorID = c.AuthorID,
+                                 EventID = c.EventID
+                             }).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static List<Comment> Load()
         {
             try

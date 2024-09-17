@@ -13,7 +13,7 @@ namespace AgileTeamFour.BL.Models
         public int PlayerID { get; set; }
 
         public int EventID { get; set; }
-
+        public string UserName { get; set; }
         public string Role { get; set; }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using AgileTeamFour.BL.Models;
+using AgileTeamFour.PL;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AgileTeamFour.PL;
 
 namespace AgileTeamFour.BL
 {
@@ -15,7 +14,6 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                //Need to Scaffold
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
@@ -39,7 +37,7 @@ namespace AgileTeamFour.BL
             }
         }
 
-        public static int Delete(int Playerid, int eventid, bool rollback = false)
+        public static int Delete(int playerid, int eventid, bool rollback = false)
         {
             try
             {
@@ -50,7 +48,7 @@ namespace AgileTeamFour.BL
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
                     tblPlayerEvent? tblPlayerEvent = dc.tblPlayerEvents
-                        .FirstOrDefault(sa => sa.PlayerID == Playerid
+                        .FirstOrDefault(sa => sa.PlayerID == playerid
                         && sa.EventID == eventid);
 
                     if (tblPlayerEvent != null)
@@ -58,9 +56,39 @@ namespace AgileTeamFour.BL
                         dc.tblPlayerEvents.Remove(tblPlayerEvent);
                         results = dc.SaveChanges();
                     }
+
                     if (rollback) transaction.Rollback();
                 }
                 return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        // Added  method to load player events by EventID
+        public static List<PlayerEvent> LoadByEventID(int eventID)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    // Query the PlayerEvent table for the specified eventID
+                    var playerEvents = (from pe in dc.tblPlayerEvents
+                                        join p in dc.tblPlayers on pe.PlayerID equals p.PlayerID
+                                        where pe.EventID == eventID
+                                        select new PlayerEvent
+                                        {
+                                            PlayerEventID = pe.PlayerEventID,
+                                            EventID = pe.EventID,
+                                            PlayerID = p.PlayerID,
+                                            UserName = p.UserName, 
+                                            Role = pe.Role 
+                                        }).ToList();
+
+                    return playerEvents;
+                }
             }
             catch (Exception ex)
             {
