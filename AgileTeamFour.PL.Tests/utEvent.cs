@@ -1,7 +1,7 @@
 using AgileTeamFour.BL.Models;
 using Microsoft.CodeAnalysis;
 
-namespace AgileTeamFour.BL.Tests
+namespace AgileTeamFour.PL.Tests
 {
     [TestClass]
     public class utEvent : utBase<tblEvent>

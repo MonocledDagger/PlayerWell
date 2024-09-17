@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace AgileTeamFour.BL.Tests
+namespace AgileTeamFour.PL.Tests
 {
     [TestClass]
     public class utBase<T> where T : class

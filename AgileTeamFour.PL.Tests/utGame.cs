@@ -1,4 +1,4 @@
-namespace AgileTeamFour.BL.Tests
+namespace AgileTeamFour.PL.Tests
 {
     [TestClass]
     public class utGame : utBase<tblGame>
