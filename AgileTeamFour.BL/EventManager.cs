@@ -18,6 +18,7 @@ namespace AgileTeamFour.BL
                                 string eventName,
                                 string server,
                                 int maxPlayers,
+                                string type,
                                 string platform,
                                 string description,
                                 DateTime time,
@@ -36,6 +37,7 @@ namespace AgileTeamFour.BL
                     Platform = platform,
                     Description = description,
                     DateTime = time,
+                    Type = type
 
                 };
 
@@ -81,6 +83,7 @@ namespace AgileTeamFour.BL
                     entity.Platform = events.Platform;
                     entity.Description = events.Description;
                     entity.DateTime = events.DateTime;
+                    entity.Type = events.Type;
 
 
 
@@ -125,7 +128,7 @@ namespace AgileTeamFour.BL
                         entity.Description = events.Description;
                         entity.DateTime = events.DateTime;
                         entity.MaxPlayers = events.MaxPlayers;
-
+                        entity.Type = events.Type;
 
                         results = dc.SaveChanges();
                     }
@@ -200,7 +203,7 @@ namespace AgileTeamFour.BL
                             DateTime = entity.DateTime,
                             Platform = entity.Platform,
                             Description = entity.Description,
-                            
+                            Type = entity.Type
 
                         };
                     }
@@ -236,7 +239,8 @@ namespace AgileTeamFour.BL
                          e.Server,
                          e.Platform,
                          e.Description,
-                         e.DateTime
+                         e.DateTime,
+                         e.Type
 
                      })
                      .ToList()
@@ -249,7 +253,8 @@ namespace AgileTeamFour.BL
                          Server = events.Server,
                          Platform = events.Platform,
                          Description = events.Description,
-                         DateTime = events.DateTime
+                         DateTime = events.DateTime,
+                         Type = events.Type
 
                      }));
                 }

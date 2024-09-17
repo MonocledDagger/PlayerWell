@@ -16,6 +16,7 @@ namespace AgileTeamFour.BL.Models
             public string Server { get; set; }
             [DisplayName("Max Players")]
             public int MaxPlayers { get; set; }
+            public string Type { get; set; }
             public string Platform { get; set; }
             public string Description { get; set; }
             [DisplayName("Event Time")]

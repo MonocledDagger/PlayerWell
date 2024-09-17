@@ -81,39 +81,39 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        //public static int Delete(int id, bool rollback = false) 
-        //{
-        ////What happens when a player is deleted?
-        //        //Reviews.AuthorID uses Players.PlayerID as a foreign key
-        //        //Reviews.RecipientID uses Players.PlayerID as a foreign key
-        //        //Comments.AuthorID uses Players.PlayerID as a foreign key
-        //        //PlayerEvent.PlayerID uses Players.PlayerID as a foreign key
-        ////Rows mentioned in comments above, need to be either changed or deleted before a PlayerID is deleted
-        //    try
-        //    {
-        //        int results = 0;
-        //        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
-        //        {
-        //            IDbContextTransaction transaction = null;
-        //            if (rollback) transaction = dc.Database.BeginTransaction();
+        public static int Delete(int id, bool rollback = false)
+        {
+            //What happens when a player is deleted?
+            //Reviews.AuthorID uses Players.PlayerID as a foreign key
+            //Reviews.RecipientID uses Players.PlayerID as a foreign key
+            //Comments.AuthorID uses Players.PlayerID as a foreign key
+            //PlayerEvent.PlayerID uses Players.PlayerID as a foreign key
+            //Rows mentioned in comments above, need to be either changed or deleted before a PlayerID is deleted
+            try
+            {
+                int results = 0;
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    IDbContextTransaction transaction = null;
+                    if (rollback) transaction = dc.Database.BeginTransaction();
 
-        //            tblPlayer entity = dc.tblPlayers.Where(e => e.PlayerID == id).FirstOrDefault();
-                    
+                    tblPlayer entity = dc.tblPlayers.Where(e => e.PlayerID == id).FirstOrDefault();
 
-        //            dc.tblPlayers.Remove(entity);
-        //            results = dc.SaveChanges();
 
-        //            if (rollback) transaction.Rollback();
+                    dc.tblPlayers.Remove(entity);
+                    results = dc.SaveChanges();
 
-        //        }
-        //        return results;
-        //    }
-        //    catch (Exception)
-        //    {
+                    if (rollback) transaction.Rollback();
 
-        //        throw;
-        //    }
-        //}
+                }
+                return results;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public static Player LoadById(int id)
         {
             try
