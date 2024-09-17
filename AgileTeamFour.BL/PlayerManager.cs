@@ -6,7 +6,7 @@ namespace AgileTeamFour.BL
 {
     public static class PlayerManager
     {
-        /*
+        
         //So far, none of these methods change primary keys, other than delete, which deletes a primary key in the deleted row
         //When changing a primary key, required to update foreign keys that reference that primary key first to ensure referential integrity
         //Adding a value to any foreign key requires the foreign key value first exist as a a primary key value of the referenced table
@@ -130,7 +130,7 @@ namespace AgileTeamFour.BL
                         player.Password = entity.Password;
                         player.IconPic = entity.IconPic;
                         player.Bio = entity.Bio;
-                        player.DateTime = entity.DateTime;
+                        player.DateTime = entity.DateTime == null ? DateTime.MinValue : (DateTime)entity.DateTime;
                     }
                     else
                     {
@@ -176,7 +176,7 @@ namespace AgileTeamFour.BL
                          Password = player.Password,
                          IconPic = player.IconPic,
                          Bio = player.Bio,
-                         this.Datetime = player.DateTime
+                         DateTime = player.DateTime == null ? DateTime.MinValue : (DateTime)player.DateTime
                      }));
                 }
 
@@ -187,7 +187,7 @@ namespace AgileTeamFour.BL
 
                 throw;
             }
-        }*/
+        }
     }
         
 }

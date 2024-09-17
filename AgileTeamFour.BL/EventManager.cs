@@ -18,7 +18,6 @@ namespace AgileTeamFour.BL
                                 string eventName,
                                 string server,
                                 int maxPlayers,
-                                string eventType,
                                 string platform,
                                 string description,
                                 DateTime time,
@@ -34,7 +33,6 @@ namespace AgileTeamFour.BL
                     EventName = eventName,
                     Server = server,
                     MaxPlayers = maxPlayers,
-                    EventType = eventType,
                     Platform = platform,
                     Description = description,
                     DateTime = time,
@@ -80,7 +78,6 @@ namespace AgileTeamFour.BL
                     entity.EventName = events.EventName;
                     entity.Server = events.Server;
                     entity.MaxPlayers = events.MaxPlayers;
-                    entity.EventType = events.EventType;
                     entity.Platform = events.Platform;
                     entity.Description = events.Description;
                     entity.DateTime = events.DateTime;
@@ -124,7 +121,6 @@ namespace AgileTeamFour.BL
                         entity.GameID=events.GameID;
                         entity.EventName = events.EventName;
                         entity.Server = events.Server;
-                        entity.EventType = events.EventType;
                         entity.Platform = events.Platform;
                         entity.Description = events.Description;
                         entity.DateTime = events.DateTime;
@@ -201,7 +197,6 @@ namespace AgileTeamFour.BL
                             MaxPlayers = entity.MaxPlayers,
                             EventName = entity.EventName,
                             Server=entity.Server,
-                            EventType=entity.EventType,
                             DateTime = entity.DateTime,
                             Platform = entity.Platform,
                             Description = entity.Description,
@@ -237,7 +232,6 @@ namespace AgileTeamFour.BL
                          e.EventID,
                          e.GameID,
                          e.EventName,
-                         e.EventType,
                          e.MaxPlayers,
                          e.Server,
                          e.Platform,
@@ -251,7 +245,6 @@ namespace AgileTeamFour.BL
                          EventID = events.EventID,
                          GameID = events.GameID,
                          EventName = events.EventName,
-                         EventType = events.EventType,
                          MaxPlayers = events.MaxPlayers,
                          Server = events.Server,
                          Platform = events.Platform,

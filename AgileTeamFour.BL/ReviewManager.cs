@@ -5,7 +5,7 @@ namespace AgileTeamFour.BL
 {
     public static class ReviewManager
     {
-        /*
+        
         //Adding a value to any foreign key requires the foreign key value first exist as a a primary key value of the referenced table
         //Reviews.AuthorID uses Players.PlayerID as a foreign key
         //Reviews.RecipientID uses Players.PlayerID as a foreign key
@@ -184,7 +184,7 @@ namespace AgileTeamFour.BL
                          ReviewText = review.ReviewText,
                          AuthorID = review.AuthorID,
                          RecipientID = review.RecipientID,
-                         this.DateTime = review.DateTime
+                         DateTime = review.DateTime
                      }));
                 }
 
@@ -196,7 +196,7 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        */
+        
     }
 }
 

@@ -7,7 +7,7 @@ namespace AgileTeamFour.BL
 {
     public static class CommentManager
     {
-        /*
+        
         //Adding a value to any foreign key requires the foreign key value first exist as a a primary key value of the referenced table
         //Comments.AuthorID uses Players.PlayerID as a foreign key
         //Comments.EventID uses Event.EventID as a foreign key
@@ -22,18 +22,18 @@ namespace AgileTeamFour.BL
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
                     tblComment entity = new tblComment();
-                    entity.CommentID = dc.tblComments.Any() ? dc.tblComments.Max(s => s.CommentID) + 1 : 1;           
-                    entity.TimePosted = comment.TimePosted;              
+                    entity.CommentID = dc.tblComments.Any() ? dc.tblComments.Max(s => s.CommentID) + 1 : 1;
+                    entity.TimePosted = comment.TimePosted;
                     entity.Text = comment.Text;
 
                     //Must Check that EventID and AuthorID are valid values in the Events Table and Players Table
                     //*********************
 
-                    int id = EventManager.LoadById(comment.EventID).EventID;
-                    if (id == -99) //If -99, Must not be a primary key with the EventID (foreign key value) in Event Table
+                    int? id = EventManager.LoadByID((int)comment.EventID).EventID;
+                    if (id < 0 || id == null) //If -99, Must not be a primary key with the EventID (foreign key value) in Event Table
                         throw new Exception();
                     else
-                        entity.EventID = comment.EventID;
+                        entity.EventID = comment.EventID == null ? -1 : (int)comment.EventID;
 
                     id = PlayerManager.LoadById(comment.AuthorID).PlayerID;
                     if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
@@ -79,11 +79,11 @@ namespace AgileTeamFour.BL
                     //Must Check that EventID and AuthorID are valid values in the Events Table and Players Table
                     //*********************
 
-                    int id = EventManager.LoadById(comment.EventID).EventID;
-                    if (id == -99) //If -99, Must not be a primary key with the EventID (foreign key value) in Event Table
+                    int? id = EventManager.LoadByID((int)comment.EventID).EventID;
+                    if (id < 0 || id == null) //If -99, Must not be a primary key with the EventID (foreign key value) in Event Table
                         throw new Exception();
                     else
-                        entity.EventID = comment.EventID;
+                        entity.EventID = comment.EventID == null ? -1 : (int)comment.EventID;
 
                     id = PlayerManager.LoadById(comment.AuthorID).PlayerID;
                     if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
@@ -193,7 +193,7 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        */
+        
     }
 }
 

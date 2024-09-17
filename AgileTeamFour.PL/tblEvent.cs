@@ -11,8 +11,6 @@ public partial class tblEvent
 
     public string EventName { get; set; }
 
-    public string EventType { get; set; }
-
     public string Server { get; set; }
 
     public int MaxPlayers { get; set; }
