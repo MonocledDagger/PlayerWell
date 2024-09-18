@@ -1,114 +1,155 @@
 ﻿using AgileTeamFour.BL;
 using AgileTeamFour.BL.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-//I followed the PlayerManager code, even though it was all commented out, just to see if I could start working on the controllers and commit my changes.
-//    I will comment on my work as well,so it won’t affect anything when someone tries to rebuild the project
+
+
 namespace AgileTeamFour.Web.Controllers
 {
     public class PlayerController : Controller
     {
-        //// GET: Player
-        //public ActionResult Index()
-        //{
-        //    List<Player> players = PlayerManager.Load();
-        //    return View(players);
-        //}
+        // GET: Player
+        public ActionResult Index()
+        {
+            try
+            {
+                var players = PlayerManager.Load();
+                ViewBag.Title = "List of Players";
+                return View(players);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(new List<Player>());
+            }
+        }
 
-        //// GET: Player/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    Player player = PlayerManager.LoadById(id);
-        //    if (player.PlayerID == -99)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(player);
-        //}
+       
+        public ActionResult Details(int id)
+        {
+            try
+            {
+                var player = PlayerManager.LoadById(id);
+                if (player.PlayerID == -99)
+                {
+                    return NotFound();
+                }
 
-        //// GET: Player/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+                ViewBag.Title = $"Details for {player.UserName}";
+                return View(player);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return NotFound();
+            }
+        }
 
-        //// POST: Player/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(Player player)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            PlayerManager.Insert(player);
-        //            return RedirectToAction(nameof(Index));
-        //        }
-        //        return View(player);
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        
+        public ActionResult Create()
+        {
+            ViewBag.Title = "Create a New Player";
+            return View();
+        }
 
-        //// GET: Player/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    Player player = PlayerManager.LoadById(id);
-        //    if (player.PlayerID == -99)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(player);
-        //}
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Player player)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    PlayerManager.Insert(player);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(player);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(player);
+            }
+        }
 
-        //// POST: Player/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, Player player)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            PlayerManager.Update(player);
-        //            return RedirectToAction(nameof(Index));
-        //        }
-        //        return View(player);
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+       
+        public ActionResult Edit(int id)
+        {
+            try
+            {
+                var player = PlayerManager.LoadById(id);
+                if (player.PlayerID == -99)
+                {
+                    return NotFound();
+                }
 
-        //// GET: Player/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    Player player = PlayerManager.LoadById(id);
-        //    if (player.PlayerID == -99)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(player);
-        //}
+                ViewBag.Title = $"Edit Player {player.UserName}";
+                return View(player);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return NotFound();
+            }
+        }
 
-        //// POST: Player/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    try
-        //    {
-        //        PlayerManager.Delete(id);
-                
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, Player player)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    PlayerManager.Update(player);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(player);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(player);
+            }
+        }
+
+        
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var player = PlayerManager.LoadById(id);
+                if (player.PlayerID == -99)
+                {
+                    return NotFound();
+                }
+
+                ViewBag.Title = $"Delete Player {player.UserName}";
+                return View(player);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return NotFound();
+            }
+        }
+
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                PlayerManager.Delete(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
+        }
     }
 }
