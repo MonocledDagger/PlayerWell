@@ -1,0 +1,295 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AgileTeamFour.BL
+{
+    public class LoginFailureException : Exception
+    {
+        public LoginFailureException() : base("Login failed. Please check your login information adn try again. ")
+        {
+
+        }
+
+        public LoginFailureException(string message) : base(message)
+        {
+
+        }
+    }
+
+    public static class UserManager
+    {
+        public static string GetHash(string password)
+        {
+            using (var hasher = SHA1.Create())
+            {   
+                var hashbytes = Encoding.UTF8.GetBytes(password);
+                return Convert.ToBase64String(hasher.ComputeHash(hashbytes));
+            }
+        }
+
+        public static int DeleteAll()
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    dc.tblUsers.RemoveRange(dc.tblUsers.ToList());
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static int Insert(User user, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    IDbContextTransaction transaction = null;
+                    if (rollback) transaction = dc.Database.BeginTransaction();
+
+                    tblUser entity = new tblUser();
+
+                    entity.UserID = dc.tblUsers.Any() ? dc.tblUsers.Max(s => s.UserID) + 1 : 1;
+                    entity.FirstName = user.FirstName;
+                    entity.LastName = user.LastName;
+                    entity.UserName = user.UserName;
+                    entity.Password = GetHash(user.Password);
+                    entity.DateOfBirth = user.DateOfBirth;
+
+                    user.UserID = entity.UserID;
+
+                    dc.tblUsers.Add(entity);
+                    results = dc.SaveChanges();
+
+                    if (rollback) transaction.Rollback();
+                }
+
+                return results;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int Update(User user, bool rollback = false)
+        {
+            try
+            {
+                int result = 0;
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    IDbContextTransaction transaction = null;
+                    if (rollback) transaction = dc.Database.BeginTransaction();
+
+                    //Get the row that we are trying to update
+                    tblUser entity = dc.tblUsers.FirstOrDefault(user => user.UserID == user.UserID);
+
+                    if (entity != null)
+                    {
+                        entity.FirstName = user.FirstName;
+                        entity.LastName = user.LastName;
+                        entity.UserName = user.UserName;
+                        entity.Password = GetHash(user.Password);
+                        entity.DateOfBirth = user.DateOfBirth;
+                        result = dc.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception("Row does not exist.");
+                    }
+
+                    if (rollback) transaction.Rollback();
+                }
+                return result;
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static bool Login(User user)
+        {   // Include custom error handling before connection
+            try
+            {
+                if (!string.IsNullOrEmpty(user.UserName))
+                {
+                    if (!string.IsNullOrEmpty(user.Password))
+                    {
+                        using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                        {
+                            tblUser tblUser = dc.tblUsers.FirstOrDefault(u => u.UserName == user.UserName);
+                            if (tblUser != null)
+                            {
+                                if (tblUser.Password == GetHash(user.Password))
+                                {
+                                    // Login successful
+                                    user.UserID = tblUser.UserID;
+                                    user.FirstName = tblUser.FirstName;
+                                    user.LastName = tblUser.LastName;
+                                    return true;
+                                }
+                                else
+                                {
+                                    throw new LoginFailureException();
+                                }
+                            }
+                            else
+                            {
+                                throw new LoginFailureException("UserId was not found.");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new LoginFailureException("Password was not set.");
+                    }
+                }
+                else
+                {
+                    throw new LoginFailureException("UserId was not set.");
+                }
+            }
+            catch (LoginFailureException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static void Seed()
+        {
+            using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+            {
+                if (!dc.tblUsers.Any())
+                {
+                    User user = new User
+                    {
+                        UserName = "will",
+                        FirstName = "Will",
+                        LastName = "Garvey",
+                        Password = "harbor",
+                        DateOfBirth = new DateTime(1990, 7, 15)
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        UserName = "glenn",
+                        FirstName = "Glenn",
+                        LastName = "Lehrer",
+                        Password = "drift",
+                        DateOfBirth = new DateTime(1990, 7, 15)
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        UserName = "ricardo",
+                        FirstName = "Ricardo",
+                        LastName = "Guzman Ortiz",
+                        Password = "craft",
+                        DateOfBirth = new DateTime(1990, 7, 15)
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        UserName = "james",
+                        FirstName = "James",
+                        LastName = "Dictus",
+                        Password = "price",
+                        DateOfBirth = new DateTime(1990, 7, 15)
+                    };
+                    Insert(user);
+                }
+            }
+        }
+
+        public static List<User> Load()
+        {
+            try
+            {
+                List<User> list = new List<User>();
+
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    (from u in dc.tblUsers
+                     select new
+                     {
+                         u.UserID,
+                         u.UserName,
+                         u.FirstName,
+                         u.LastName,
+                         u.Password
+                     })
+                     .ToList()
+                     .ForEach(user => list.Add(new User
+                     {
+                         UserID = user.UserID,
+                         UserName = user.UserName,
+                         FirstName = user.FirstName,
+                         LastName = user.LastName,
+                         Password = user.Password,
+
+                     }));
+
+
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static User LoadById(int id)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    tblUser entity = dc.tblUsers.FirstOrDefault(d => d.UserID == id);
+                    if (entity != null)
+                    {
+                        return new User
+                        {
+                            UserID = entity.UserID,
+                            UserName = entity.UserName,
+                            FirstName = entity.FirstName,
+                            LastName = entity.LastName,
+                            Password = entity.Password
+                        };
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+    }
+}

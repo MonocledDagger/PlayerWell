@@ -9,17 +9,17 @@ public partial class tblEvent
 
     public int GameID { get; set; }
 
-    public string EventName { get; set; }
+    public string EventName { get; set; } = null!;
 
-    public string Server { get; set; }
+    public string? Server { get; set; }
 
-    public int MaxPlayers { get; set; }
+    public int? MaxPlayers { get; set; }
 
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
-    public string Platform { get; set; }
+    public string? Platform { get; set; }
 
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     public DateTime DateTime { get; set; }
 }

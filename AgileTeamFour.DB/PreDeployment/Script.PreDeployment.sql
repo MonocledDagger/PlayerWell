@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS tblPlayerEvents;
 DROP TABLE IF EXISTS tblEvents;
 DROP TABLE IF EXISTS tblReviews;
 DROP TABLE IF EXISTS tblPlayers;
+DROP TABLE IF EXISTS tblUsers;
 
 
 

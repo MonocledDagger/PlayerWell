@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@using AgileTeamFour.UI.Models;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -35,9 +39,28 @@
                                 <a class="nav-link text-white" asp-area="" asp-controller="Game" asp-action="Index">Games</a>
                             </li>
                            
-
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Login</a>
+                                @{
+                                    AgileTeamFour.BL.UserManager.Seed();
+                                    var username = HttpContextAccessor.HttpContext?.Session.GetString("username");
+                                    var id = HttpContextAccessor.HttpContext?.Session.GetString("id");
+                                    if (Authenticate.IsAuthenticated(HttpContextAccessor.HttpContext))
+                                    {
+                                        username = username.Replace("\"", "");
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light">@username</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-controller="User" asp-action="Logout">Logout</a>
+                                    </li>
+                                    }
+                                    else
+                                    {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-controller="User" asp-action="Login">Login</a>
+                                    </li>
+                                    }
+                                }
                             </li>
                         </ul>
                     </div>

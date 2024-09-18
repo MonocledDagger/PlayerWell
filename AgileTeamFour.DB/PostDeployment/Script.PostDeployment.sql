@@ -17,3 +17,4 @@ Post-Deployment Script Template
 :r .\DefaultData\tblPlayerEvents.sql
 :r .\DefaultData\tblPlayers.sql
 :r .\DefaultData\tblGames.sql
+/* Their is no default data for User */
