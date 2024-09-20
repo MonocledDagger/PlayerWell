@@ -3,7 +3,7 @@
     GameID INT NOT NULL,
     EventName VARCHAR(100) NOT NULL,
     Server VARCHAR(50),
-    MaxPlayers INT,
+    MaxPlayers INT NOT NULL,
     Type VARCHAR(50),
     Platform VARCHAR(50),
     Description TEXT,
