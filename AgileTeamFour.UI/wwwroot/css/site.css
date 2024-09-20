@@ -32,3 +32,12 @@ main {
 .lead{
     color:black;
 }
+
+.imagesmall{
+    width:100px;
+    height:75px;
+}
+.imagemedium{
+    width:50%;
+    height:50%;
+}

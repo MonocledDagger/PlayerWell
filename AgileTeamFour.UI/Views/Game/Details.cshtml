@@ -4,18 +4,12 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Game Details</h1>
 
 <div>
-    <h4>Game</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GameID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GameID)
-        </dd>
+         
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.GameName)
         </dt>
@@ -37,8 +31,15 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Picture)
         </dt>
-        <dd class = "col-sm-10">
+        @* <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Picture)
+        </dd> *@
+        <dd class="col-sm-10">
+            <img src="~/images/Games/@Model.Picture"
+                 id="movieimage"
+                 alt="@Model.Description"
+                 onclick="on('/images/Games/@Model.Picture')"
+                 class="imagemedium" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Genre)
