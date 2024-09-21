@@ -68,8 +68,8 @@
     <None Include="PostDeployment\DefaultData\tblComments.sql" />
     <None Include="PostDeployment\DefaultData\tblReviews.sql" />
     <None Include="PostDeployment\DefaultData\tblGames.sql" />
-    <None Include="AgileTeamFour.DB.publish.xml" />
     <None Include="remote.DB.publish.xml" />
+    <None Include="local.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblEvents.sql" />

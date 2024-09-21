@@ -2,6 +2,7 @@
 using AgileTeamFour.BL.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
 namespace AgileTeamFour.Web.Controllers
@@ -44,14 +45,14 @@ namespace AgileTeamFour.Web.Controllers
             return View(eventDetailsVM);
         }
 
-        
+
         public ActionResult Create()
         {
             ViewBag.Title = "Create an Event";
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Events events)
@@ -72,7 +73,41 @@ namespace AgileTeamFour.Web.Controllers
             }
         }
 
-       
+        //public ActionResult Create()
+        //{
+        //    var games = GameManager.Load(); // Adjust according to your actual method
+        //    var viewModel = new EventCreateVM
+        //    {
+        //        Event = new Events(),
+        //        Games = games.Select(g => new SelectListItem
+        //        {
+        //            Value = g.GameID.ToString(),
+        //            Text = g.GameName
+        //        }).ToList()
+        //    };
+        //    return View(viewModel);
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(EventCreateVM viewmodel)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            int eventID = 0;
+        //            EventManager.Insert(ref eventID, viewmodel.Event.GameID, viewmodel.Event.EventName, viewmodel.Event.Server, viewmodel.Event.MaxPlayers, viewmodel.Event.Type, viewmodel.Event.Platform, viewmodel.Event.Description, viewmodel.Event.DateTime);
+        //            return RedirectToAction(nameof(Index));
+        //        }
+        //        return View(viewmodel);
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
         public ActionResult Edit(int id)
         {
             var item = EventManager.LoadByID(id);

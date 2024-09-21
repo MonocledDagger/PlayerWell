@@ -1,6 +1,4 @@
-﻿
-
-using AgileTeamFour.BL.Models;
+﻿using AgileTeamFour.BL.Models;
 
 namespace AgileTeamFour.UI.ViewModels
 {
@@ -8,7 +6,7 @@ namespace AgileTeamFour.UI.ViewModels
     {
         public Events Event { get; set; }
         public Game Game { get; set; }
-        public List<PlayerEvent> PlayerEvents { get; set; }
+        public IEnumerable<PlayerEvent> PlayerEvents { get; set; }
         public List<Comment> Comments { get; set; }
     }
 

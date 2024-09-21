@@ -1,4 +1,5 @@
-﻿@model AgileTeamFour.BL.Models.Events
+﻿@model AgileTeamFour.UI.ViewModels.EventDetailsVM
+@* @model AgileTeamFour.BL.Models.Events *@
 
 @{
     ViewData["Title"] = "Details";
@@ -11,62 +12,82 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EventID)
+            @Html.DisplayNameFor(model => model.Event.EventID)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EventID)
+            @Html.DisplayFor(model => model.Event.EventID)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GameID)
+            @Html.DisplayNameFor(model => model.Event.GameID)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GameID)
+            @Html.DisplayFor(model => model.Event.GameID)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EventName)
+            @Html.DisplayNameFor(model => model.Event.EventName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EventName)
+            @Html.DisplayFor(model => model.Event.EventName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Server)
+            @Html.DisplayNameFor(model => model.Event.Server)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Server)
+            @Html.DisplayFor(model => model.Event.Server)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaxPlayers)
+            @Html.DisplayNameFor(model => model.Event.MaxPlayers)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaxPlayers)
+            @Html.DisplayFor(model => model.Event.MaxPlayers)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.Event.Type)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => model.Event.Type)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Platform)
+            @Html.DisplayNameFor(model => model.Event.Platform)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Platform)
+            @Html.DisplayFor(model => model.Event.Platform)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Event.Description)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.Event.Description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateTime)
+            @Html.DisplayNameFor(model => model.Event.DateTime)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateTime)
+            @Html.DisplayFor(model => model.Event.DateTime)
         </dd>
     </dl>
 </div>
+
+<div class="container">
+    <h4>Participants</h4>
+    <ul>
+        @foreach (var playerEvent in Model.PlayerEvents)
+        {
+            <li>@playerEvent.UserName</li> 
+        }
+    </ul>
+</div>
+
+<div class="container">
+    <h4>Comments</h4>
+    <ul>
+        @foreach (var comment in Model.Comments)
+        {
+            <li>@comment.Text - @comment.AuthorID</li> 
+        }
+    </ul>
+</div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Event.EventID }) |
     <a asp-action="Index">Back to List</a>
 </div>

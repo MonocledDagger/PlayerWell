@@ -34,10 +34,10 @@ main {
 }
 
 .imagesmall{
-    width:100px;
-    height:75px;
-}
-.imagemedium{
     width:50%;
     height:50%;
+}
+.imagemedium{
+    width:200px;
+    height:150px;
 }
