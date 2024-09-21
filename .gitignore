@@ -371,3 +371,6 @@ FodyWeavers.xsd
 /AgileTeamFour.UI/obj/project.nuget.cache
 /AgileTeamFour.UI/obj/AgileTeamFour.UI.csproj.nuget.dgspec.json
 /AgileTeamFour.UI/obj/AgileTeamFour.UI.csproj.nuget.g.props
+/AgileTeamFour.UI/Views/Event/Create 2.cshtml
+/AgileTeamFour.UI/Controllers/EventController 2.cs
+/AgileTeamFour.BL/EventManager 2.cs
