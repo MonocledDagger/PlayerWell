@@ -66,6 +66,9 @@ namespace AgileTeamFour.BL
                     entity.UserName = user.UserName;
                     entity.Password = GetHash(user.Password);
                     entity.DateOfBirth = user.DateOfBirth;
+                    entity.Email = user.Email;
+                    entity.IconPic = user.IconPic;
+                    entity.Bio = user.Bio;
 
                     user.UserID = entity.UserID;
 
@@ -103,6 +106,9 @@ namespace AgileTeamFour.BL
                         entity.UserName = user.UserName;
                         entity.Password = GetHash(user.Password);
                         entity.DateOfBirth = user.DateOfBirth;
+                        entity.Email = user.Email;
+                        entity.IconPic = user.IconPic;
+                        entity.Bio = user.Bio;
                         result = dc.SaveChanges();
                     }
                     else
@@ -140,6 +146,8 @@ namespace AgileTeamFour.BL
                                     user.UserID = tblUser.UserID;
                                     user.FirstName = tblUser.FirstName;
                                     user.LastName = tblUser.LastName;
+                                    user.UserName = tblUser.UserName;
+                                    user.DateOfBirth = tblUser.DateOfBirth;
                                     return true;
                                 }
                                 else
@@ -186,7 +194,10 @@ namespace AgileTeamFour.BL
                         FirstName = "Will",
                         LastName = "Garvey",
                         Password = "harbor",
-                        DateOfBirth = new DateTime(1990, 7, 15)
+                        DateOfBirth = new DateTime(1990, 7, 15),
+                        Email = "us@them.com",
+                        IconPic = "images/harbor.png",
+                        Bio = " A bio written by a real person."
                     };
                     Insert(user);
 
@@ -196,7 +207,10 @@ namespace AgileTeamFour.BL
                         FirstName = "Glenn",
                         LastName = "Lehrer",
                         Password = "drift",
-                        DateOfBirth = new DateTime(1990, 7, 15)
+                        DateOfBirth = new DateTime(1990, 7, 15),
+                        Email = "us@them.com",
+                        IconPic = "images/harbor.png",
+                        Bio = " A bio written by a real person."
                     };
                     Insert(user);
 
@@ -206,7 +220,10 @@ namespace AgileTeamFour.BL
                         FirstName = "Ricardo",
                         LastName = "Guzman Ortiz",
                         Password = "craft",
-                        DateOfBirth = new DateTime(1990, 7, 15)
+                        DateOfBirth = new DateTime(1990, 7, 15),
+                        Email = "us@them.com",
+                        IconPic = "images/harbor.png",
+                        Bio = " A bio written by a real person."
                     };
                     Insert(user);
 
@@ -216,7 +233,10 @@ namespace AgileTeamFour.BL
                         FirstName = "James",
                         LastName = "Dictus",
                         Password = "price",
-                        DateOfBirth = new DateTime(1990, 7, 15)
+                        DateOfBirth = new DateTime(1990, 7, 15),
+                        Email = "us@them.com",
+                        IconPic = "images/harbor.png",
+                        Bio = " A bio written by a real person."
                     };
                     Insert(user);
                 }
@@ -238,7 +258,11 @@ namespace AgileTeamFour.BL
                          u.UserName,
                          u.FirstName,
                          u.LastName,
-                         u.Password
+                         u.Password,
+                         u.DateOfBirth,
+                         u.Email,
+                         u.IconPic,
+                         u.Bio
                      })
                      .ToList()
                      .ForEach(user => list.Add(new User
@@ -248,6 +272,9 @@ namespace AgileTeamFour.BL
                          FirstName = user.FirstName,
                          LastName = user.LastName,
                          Password = user.Password,
+                         Email = user.Email,
+                         IconPic = user.IconPic,
+                         Bio = user.Bio
 
                      }));
 
@@ -277,7 +304,12 @@ namespace AgileTeamFour.BL
                             UserName = entity.UserName,
                             FirstName = entity.FirstName,
                             LastName = entity.LastName,
-                            Password = entity.Password
+                            Password = entity.Password,
+                            DateOfBirth = entity.DateOfBirth,
+                            Email = entity.Email,
+                            IconPic = entity.IconPic,
+                            Bio = entity.Bio
+
                         };
                     }
                     else

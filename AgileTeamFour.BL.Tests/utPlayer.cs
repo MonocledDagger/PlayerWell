@@ -1,7 +1,7 @@
 namespace AgileTeamFour.BL.Tests
 {
     [TestClass]
-    public class utPlayer
+    public class utUser
     {
         protected AgileTeamFourEntities dc;
         protected IDbContextTransaction transaction;
@@ -24,24 +24,24 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            Assert.AreEqual(3, PlayerManager.Load().Count);
+            Assert.AreEqual(3, UserManager.Load().Count);
         }
 
         [TestMethod]
         public void InsertTest()
         {
-            Player player = new Player()
+            User player = new User()
             {
-                PlayerID = PlayerManager.Load().Max(e => e.PlayerID) + 1,
+                UserID = UserManager.Load().Max(e => e.UserID) + 1,
                 UserName = "None",
                 Email = "None",
                 Password = "None",
                 IconPic = "None",
                 Bio = "None",
-                DateTime = DateTime.Now
+                DateOfBirth = DateTime.Now
             };
 
-            int results = PlayerManager.Insert(player, true);
+            int results = UserManager.Insert(player, true);
             Assert.AreEqual(1, results);
         }
 
@@ -49,43 +49,36 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadByIDTest()
         {
-            Player player = new Player();
-            player = PlayerManager.LoadById(1);
-            tblPlayer entity = dc.tblPlayers.Where(e => e.PlayerID == 1).FirstOrDefault();
+            User player = new User();
+            player = UserManager.LoadById(1);
+            tblUser entity = dc.tblUsers.Where(e => e.UserID == 1).FirstOrDefault();
 
-            Assert.AreEqual(player.PlayerID, entity.PlayerID);
+            Assert.AreEqual(player.UserID, entity.UserID);
             Assert.AreEqual(player.UserName, entity.UserName);
             Assert.AreEqual(player.Email, entity.Email);
             Assert.AreEqual(player.Password, entity.Password);
             Assert.AreEqual(player.IconPic, entity.IconPic);
             Assert.AreEqual(player.Bio, entity.Bio);
-            Assert.AreEqual(player.DateTime, entity.DateTime);
+            Assert.AreEqual(player.DateOfBirth, entity.DateOfBirth);
 
         }
 
         [TestMethod]
         public void UpdateTest()
         {
-            Player player = new Player()
+            User player = new User()
             {
-                PlayerID = 1,
+                UserID = 1,
                 UserName = "None",
                 Email = "None",
                 Password = "None",
                 IconPic = "None",
                 Bio = "None",
-                DateTime = DateTime.Now
+                DateOfBirth = DateTime.Now
             };
 
-            int result = PlayerManager.Update(player, true);
+            int result = UserManager.Update(player, true);
             Assert.IsTrue(result > 0);
-        }
-
-        [TestMethod]
-        public void DeleteTest()
-        {
-            int result = PlayerManager.Delete(1, true);
-            Assert.AreNotEqual(result, 0);
         }
     }
 }

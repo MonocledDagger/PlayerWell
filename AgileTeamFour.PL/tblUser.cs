@@ -15,5 +15,11 @@ public partial class tblUser
 
     public string Password { get; set; } = null!;
 
+    public string Email { get; set; } = null!;
+
+    public string? IconPic { get; set; }
+
+    public string? Bio { get; set; }
+
     public DateTime DateOfBirth { get; set; }
 }

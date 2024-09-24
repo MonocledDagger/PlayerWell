@@ -76,14 +76,14 @@ namespace AgileTeamFour.BL
                 {
                     // Query the PlayerEvent table for the specified eventID
                     var playerEvents = (from pe in dc.tblPlayerEvents
-                                        join p in dc.tblPlayers on pe.PlayerID equals p.PlayerID
+                                        join u in dc.tblUsers on pe.PlayerID equals u.UserID
                                         where pe.EventID == eventID
                                         select new PlayerEvent
                                         {
                                             PlayerEventID = pe.PlayerEventID,
                                             EventID = pe.EventID,
-                                            PlayerID = p.PlayerID,
-                                            UserName = p.UserName, 
+                                            PlayerID = u.UserID,
+                                            UserName = u.UserName, 
                                             Role = pe.Role 
                                         }).ToList();
 

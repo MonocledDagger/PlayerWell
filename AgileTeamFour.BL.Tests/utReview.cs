@@ -32,9 +32,9 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void InsertTest()
         {
-            int? id = PlayerManager.Load().FirstOrDefault().PlayerID;
+            int? id = UserManager.Load().FirstOrDefault().UserID;
             if (id == null)
-                Assert.Fail("No valid PlayerID in Players Table");
+                Assert.Fail("No valid UserID in Users Table");
 
             Review review = new Review()
             {
@@ -71,9 +71,9 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void UpdateTest()
         {
-            int? id = PlayerManager.Load().FirstOrDefault().PlayerID;
+            int? id = UserManager.Load().FirstOrDefault().UserID;
             if (id == null)
-                Assert.Fail("No valid PlayerID in Players Table");
+                Assert.Fail("No valid UserID in Users Table");
 
             Review review = new Review()
             {

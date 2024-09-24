@@ -1,5 +1,3 @@
-using static AgileTeamFour.BL.Tests.utPlayerEvent;
-
 namespace AgileTeamFour.BL.Tests
 {
     [TestClass]
@@ -36,9 +34,9 @@ namespace AgileTeamFour.BL.Tests
             int? id = EventManager.Load().FirstOrDefault().EventID;
             if (id == null)
                 Assert.Fail("No valid EventID in Events Table");
-            int? id2 = PlayerManager.Load().FirstOrDefault().PlayerID;
+            int? id2 = UserManager.Load().FirstOrDefault().UserID;
             if (id2 == null)
-                Assert.Fail("No valid PlayerID in Players Table");
+                Assert.Fail("No valid UserID in Users Table");
 
             Comment comment = new Comment()
             {
@@ -76,9 +74,9 @@ namespace AgileTeamFour.BL.Tests
             int? id = EventManager.Load().FirstOrDefault().EventID;
             if (id == null)
                 Assert.Fail("No valid EventID in Events Table");
-            int? id2 = PlayerManager.Load().FirstOrDefault().PlayerID;
+            int? id2 = UserManager.Load().FirstOrDefault().UserID;
             if (id2 == null)
-                Assert.Fail("No valid PlayerID in Players Table");
+                Assert.Fail("No valid UserID in Users Table");
 
             Comment comment = new Comment()
             {

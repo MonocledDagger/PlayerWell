@@ -35,7 +35,7 @@ namespace AgileTeamFour.BL
                     else
                         entity.EventID = comment.EventID == null ? -1 : (int)comment.EventID;
 
-                    id = PlayerManager.LoadById(comment.AuthorID).PlayerID;
+                    id = UserManager.LoadById(comment.AuthorID).UserID;
                     if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
                         throw new Exception();
                     else
@@ -85,7 +85,7 @@ namespace AgileTeamFour.BL
                     else
                         entity.EventID = comment.EventID == null ? -1 : (int)comment.EventID;
 
-                    id = PlayerManager.LoadById(comment.AuthorID).PlayerID;
+                    id = UserManager.LoadById(comment.AuthorID).UserID;
                     if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
                         throw new Exception();
                     else

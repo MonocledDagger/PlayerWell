@@ -13,7 +13,7 @@ public partial class tblEvent
 
     public string? Server { get; set; }
 
-    public int? MaxPlayers { get; set; }
+    public int MaxPlayers { get; set; }
 
     public string? Type { get; set; }
 

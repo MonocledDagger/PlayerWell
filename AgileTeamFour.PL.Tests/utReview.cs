@@ -25,9 +25,9 @@ namespace AgileTeamFour.PL.Tests
         [TestMethod]
         public void InsertTest()
         {
-            int? id = PlayerManager.Load().FirstOrDefault().PlayerID;
+            int? id = UserManager.Load().FirstOrDefault().UserID;
             if (id == null)
-                Assert.Fail("No valid PlayerID in Players Table");
+                Assert.Fail("No valid UserID in Users Table");
 
             int rowsAffected = InsertTest(new tblReview
             {

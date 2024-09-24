@@ -7,8 +7,8 @@ namespace AgileTeamFour.BL
     {
         
         //Adding a value to any foreign key requires the foreign key value first exist as a a primary key value of the referenced table
-        //Reviews.AuthorID uses Players.PlayerID as a foreign key
-        //Reviews.RecipientID uses Players.PlayerID as a foreign key
+        //Reviews.AuthorID uses Users.UserID as a foreign key
+        //Reviews.RecipientID uses Users.UserID as a foreign key
         public static int Insert(Review review, bool rollback = false)
         {
             try
@@ -25,17 +25,17 @@ namespace AgileTeamFour.BL
                     entity.ReviewText = review.ReviewText;
                     entity.DateTime = review.DateTime;
 
-                    //Must Check that AuthorID and RecipientID are valid values in the Players Table
+                    //Must Check that AuthorID and RecipientID are valid values in the Users Table
                     //*********************
 
-                    int id = PlayerManager.LoadById(review.AuthorID).PlayerID;          
-                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                    int id = UserManager.LoadById(review.AuthorID).UserID;          
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in User Table
                         throw new Exception();
                     else
                         entity.AuthorID = review.AuthorID;
 
-                    id = PlayerManager.LoadById(review.RecipientID).PlayerID;                
-                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                    id = UserManager.LoadById(review.RecipientID).UserID;                
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in User Table
                         throw new Exception();
                     else
                         entity.RecipientID = review.RecipientID;
@@ -76,17 +76,17 @@ namespace AgileTeamFour.BL
                     entity.ReviewText = review.ReviewText;
                     entity.DateTime = review.DateTime;
 
-                    //Must Check that AuthorID and RecipientID are valid values in the Players Table
+                    //Must Check that AuthorID and RecipientID are valid values in the Users Table
                     //*********************
 
-                    int id = PlayerManager.LoadById(review.AuthorID).PlayerID;
-                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                    int id = UserManager.LoadById(review.AuthorID).UserID;
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in User Table
                         throw new Exception();
                     else
                         entity.AuthorID = review.AuthorID;
 
-                    id = PlayerManager.LoadById(review.RecipientID).PlayerID;
-                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in Player Table
+                    id = UserManager.LoadById(review.RecipientID).UserID;
+                    if (id == -99) //If -99, Must not be a primary key with the AuthorID (foreign key value) in User Table
                         throw new Exception();
                     else
                         entity.RecipientID = review.RecipientID;
