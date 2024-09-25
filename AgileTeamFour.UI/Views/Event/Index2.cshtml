@@ -1,0 +1,82 @@
+﻿@model IEnumerable<AgileTeamFour.UI.ViewModels.EventDetailsVM>
+@{
+    ViewData["Title"] = "All Events";
+}
+
+<h1 class="text-center">All Events</h1>
+
+<p class="text-center">
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.EventID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Game.GameName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.Server)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.MaxPlayers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.Platform)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event.DateTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.EventID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game.GameName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Server)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.MaxPlayers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Platform)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.DateTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Event.EventID  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Event.EventID  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Event.EventID  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
