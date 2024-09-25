@@ -450,9 +450,9 @@ a:focus, a:hover {
 }
 
 .navigation {
-  transition: 0.3s all;
-  background: #1f2532;
-  max-height: 300px;
+    transition: 0.3s all;
+    background: #101d38;
+    max-height: 300px;
 }
 .navigation .navbar-nav > li.active a {
   color: #fff;
@@ -479,7 +479,7 @@ a:focus, a:hover {
   color: #f0326b;
 }
 .navigation .navbar-toggler {
-  color: #fff;
+  color: #fe2a77;
   font-size: 30px;
   cursor: pointer;
   outline: none;
