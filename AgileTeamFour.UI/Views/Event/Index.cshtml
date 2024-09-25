@@ -8,12 +8,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Events</h1>
+<h1 class="text-center">All Events</h1>
 
 <p class="text-center">
     <a asp-action="Create">Create New</a>
+    
 </p>
-
+<p>
+<a class="nav-link" asp-area="" asp-controller="Event" asp-action="Index2">View Tables</a>
+</p>
 <div class="row">
 
     @foreach (var item in Model)

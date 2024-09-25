@@ -11,13 +11,25 @@ namespace AgileTeamFour.Web.Controllers
     public class EventController : Controller
     {
 
-        //public ActionResult Index()
-        //{
-        //    ViewBag.Title = "List of Events";
-        //    return View(EventManager.Load());
-        //}
 
         public ActionResult Index()
+        {
+            var events = EventManager.Load(); // Load the events from the manager
+
+            // Map each Events object to EventDetailsVM
+            var eventDetailsVMs = events.Select(e => new EventDetailsVM
+            {
+                Event = e, // Assign the event object
+                Game = GameManager.LoadByID(e.GameID) // Load Game object for each event
+            }).ToList();
+
+            ViewBag.Title = "List of Events";
+
+            // Pass the list of EventDetailsVM to the view
+            return View(eventDetailsVMs);
+        }
+
+        public ActionResult Index2()
         {
             var events = EventManager.Load(); // Load the events from the manager
 
@@ -147,7 +159,7 @@ namespace AgileTeamFour.Web.Controllers
 
                 // Update the event fields
                 eventItem.EventName = model.Event.EventName;
-                eventItem.GameID = model.Event.GameID; // Assuming single selection
+                eventItem.GameID = model.Event.GameID; 
                 eventItem.Server = model.Event.Server;
                 eventItem.MaxPlayers = model.Event.MaxPlayers;
                 eventItem.Type = model.Event.Type;
@@ -166,16 +178,6 @@ namespace AgileTeamFour.Web.Controllers
             return View(model);
         }
 
-        //public ActionResult Delete(int id)
-        //{
-        //    var item = EventManager.LoadByID(id);
-        //    if (item == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewBag.Title = "Delete Event";
-        //    return View(item);
-        //}
 
         public ActionResult Delete(int id)
         {
@@ -215,6 +217,24 @@ namespace AgileTeamFour.Web.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult EventsForGame(int gameID)
+        {
+            // Load all events and filter by the provided GameID
+            var events = EventManager.Load().Where(e => e.GameID == gameID);
+
+            // Map each filtered event to the EventDetailsVM
+            var eventDetailsVMs = events.Select(e => new EventDetailsVM
+            {
+                Event = e,
+                Game = GameManager.LoadByID(e.GameID)
+            }).ToList();
+
+            ViewBag.Title = $"Events for Game ID: {gameID}";
+
+            // Pass the filtered list of EventDetailsVM to the view
+            return View(eventDetailsVMs);
         }
     }
 }

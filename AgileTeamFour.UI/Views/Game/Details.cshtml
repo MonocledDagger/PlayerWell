@@ -51,7 +51,12 @@
         </dd>
     </dl>
 </div>
+<div class="mb-3">
+    <a class="btn btn-secondary btn-lg ml-3" asp-area="" asp-controller="Event" asp-action="EventsForGame" asp-route-gameID="@Model.GameID">View Events</a>
+</div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
+    
+
 </div>

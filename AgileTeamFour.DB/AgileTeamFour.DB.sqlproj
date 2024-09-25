@@ -70,6 +70,7 @@
     <None Include="PostDeployment\DefaultData\tblGames.sql" />
     <None Include="remote.DB.publish.xml" />
     <None Include="AgileTeamFour.DB.publish.xml" />
+    <None Include="local.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblEvents.sql" />

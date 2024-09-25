@@ -15,6 +15,12 @@ namespace AgileTeamFour.Web.Controllers
             return View(GameManager.Load());
 
         }
+        public ActionResult IndexCard()
+        {
+            ViewBag.Title = "List of Games";
+            return View(GameManager.Load());
+
+        }
 
         // GET: Game/Details/5
         public ActionResult Details(int id)

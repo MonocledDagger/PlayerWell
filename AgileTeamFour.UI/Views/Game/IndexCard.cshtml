@@ -6,8 +6,11 @@
 
 <h1 class="text-center">Games</h1>
 
-<p>
+<p class="text-center">
     <a asp-action="Create">Create New</a>
+</p>
+<p>
+    <a class="nav-link" asp-area="" asp-controller="Game" asp-action="Index">View Table</a>
 </p>
 
 <div class="row">
@@ -20,7 +23,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.GameName)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-                    <a href="#" class="btn btn-primary">See Events</a>
+                    <a class="btn btn-primary btn-lg ml-3" asp-area="" asp-controller="Event" asp-action="EventsForGame" asp-route-gameID="@item.GameID">View Events</a>
                 </div>
             </div>
         </div>
