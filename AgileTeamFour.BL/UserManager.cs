@@ -85,7 +85,7 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-
+        //RGO fixed the update issue because it was creating a new user each time the update was called. 
         public static int Update(User user, bool rollback = false)
         {
             try
@@ -96,8 +96,8 @@ namespace AgileTeamFour.BL
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
-                    //Get the row that we are trying to update
-                    tblUser entity = dc.tblUsers.FirstOrDefault(user => user.UserID == user.UserID);
+                    // RGO Get the row that we are trying to update by using the correct lambda expression
+                    tblUser entity = dc.tblUsers.FirstOrDefault(e => e.UserID == user.UserID);
 
                     if (entity != null)
                     {
@@ -120,7 +120,6 @@ namespace AgileTeamFour.BL
                 }
                 return result;
             }
-
             catch (Exception)
             {
                 throw;

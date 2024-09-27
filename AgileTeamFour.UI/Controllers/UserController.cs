@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore;
+
 namespace AgileTeamFour.UI.Controllers
 {
     public class UserController : Controller
@@ -106,6 +108,9 @@ namespace AgileTeamFour.UI.Controllers
                 return View(user);
             }
         }
+
+
+        
 
         // Notes for other types of session implimentation
 
