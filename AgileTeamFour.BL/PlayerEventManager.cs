@@ -22,6 +22,7 @@ namespace AgileTeamFour.BL
                     tblPlayerEvent tblPlayerEvent = new tblPlayerEvent();
                     tblPlayerEvent.PlayerID = playerid;
                     tblPlayerEvent.EventID = eventid;
+                    tblPlayerEvent.Role = Role;
                     tblPlayerEvent.PlayerEventID = dc.tblPlayerEvents.Any() ? dc.tblPlayerEvents.Max(sa => sa.PlayerEventID) + 1 : 1;
 
                     dc.tblPlayerEvents.Add(tblPlayerEvent);

@@ -9,6 +9,8 @@ namespace AgileTeamFour.UI.ViewModels
         public List<Game> Games { get; set; } = new List<Game>();
         public IEnumerable<PlayerEvent> PlayerEvents { get; set; }
         public List<Comment> Comments { get; set; }
+
+        public int PlayerID { get; set; }
     }
 
 }

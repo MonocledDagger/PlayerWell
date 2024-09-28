@@ -57,7 +57,10 @@ namespace AgileTeamFour.Web.Controllers
                 return NotFound();
             }
 
-           
+            //Get PlayerID from session for sign up
+            var user = HttpContext.Session.GetObject<User>("user");
+            var playerID = user?.UserID ?? 0;
+
             var game = GameManager.LoadByID(eventItem.GameID);
             var playerEvents = PlayerEventManager.LoadByEventID(id); 
             var comments = CommentManager.LoadByEventID(id); 
@@ -68,10 +71,13 @@ namespace AgileTeamFour.Web.Controllers
                 Event = eventItem,
                 Game = game,
                 PlayerEvents = playerEvents ?? new List<PlayerEvent>(), 
-                Comments = comments ?? new List<Comment>()
+                Comments = comments ?? new List<Comment>(),
+                PlayerID = playerID
             };
 
             ViewBag.Title = "Details for " + eventItem.EventName;
+
+            
 
             // Pass the ViewModel to the view
             return View(eventDetailsVM);
@@ -258,6 +264,38 @@ namespace AgileTeamFour.Web.Controllers
 
             // Pass the filtered list of EventDetailsVM to the view
             return View(eventDetailsVMs);
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(int EventID, int PlayerID, string Role)
+        {
+            try
+            {
+                //If User isn't signed in
+                if (PlayerID == 0)
+                {
+                    TempData["error"] = "Please Sign In Before Joining an Event";
+                    // Redirect back to the details page
+                    return RedirectToAction("Details", new { id = EventID });
+
+
+                }
+                else
+                {
+                    // Insert the new player event
+                    PlayerEventManager.Insert(PlayerID, EventID, Role);
+
+                    // Redirect back to the details page
+                    return RedirectToAction("Details", new { id = EventID });
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                // Show error message in case of failure
+                ViewBag.ErrorMessage = "Error while signing up: " + ex.Message;
+                return RedirectToAction("Details", new { id = EventID });
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            Assert.AreEqual(3, UserManager.Load().Count);
+            Assert.AreEqual(4, UserManager.Load().Count);
         }
 
         [TestMethod]
@@ -33,6 +33,8 @@ namespace AgileTeamFour.BL.Tests
             User player = new User()
             {
                 UserID = UserManager.Load().Max(e => e.UserID) + 1,
+                FirstName="None",
+                LastName="None",
                 UserName = "None",
                 Email = "None",
                 Password = "None",
@@ -69,6 +71,8 @@ namespace AgileTeamFour.BL.Tests
             User player = new User()
             {
                 UserID = 1,
+                FirstName ="None",
+                LastName ="None",
                 UserName = "None",
                 Email = "None",
                 Password = "None",

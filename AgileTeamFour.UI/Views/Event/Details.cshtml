@@ -83,7 +83,7 @@
     </dl>
 </div>
 
-<div class="container py-3">
+@* <div class="container py-3">
     <h4>Participants</h4>
     <hr />
     <br />
@@ -93,6 +93,38 @@
             <li>@playerEvent.UserName</li> 
         }
     </ul>
+</div> *@
+
+<hr />
+<div class="container">
+    <h3> Participants</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerEvents.First().UserName)
+                </th>
+            
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerEvents.First().Role)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var playerEvent in Model.PlayerEvents)
+            {
+                <tr>
+                    <td>
+                        @playerEvent.UserName
+                    </td>
+
+                    <td>
+                        @playerEvent.Role
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
 <div class="container py-3">
@@ -106,7 +138,24 @@
         }
     </ul>
     <hr />
+
+    <div class="container py-3">
+        <h4>Sign up for this Event</h4>
+        <form asp-action="SignUp" method="post">
+            <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+            <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+
+            <div class="form-group">
+                <label for="Role">Role</label>
+                <input type="text" class="form-control" id="Role" name="Role" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
+    <hr />
 </div>
+<br />
 <div>
     <a class="btn btn-secondary btn-sm ml-3" asp-area="" asp-controller="Event" asp-action="Edit" asp-route-id="@Model.Event.EventID">Edit</a>
     

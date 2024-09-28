@@ -195,6 +195,7 @@ namespace AgileTeamFour.BL
                 {
                     User user = new User
                     {
+                        UserID=1,
                         UserName = "will",
                         FirstName = "Will",
                         LastName = "Garvey",
@@ -209,6 +210,7 @@ namespace AgileTeamFour.BL
 
                     user = new User
                     {
+                        UserID = 2,
                         UserName = "glenn",
                         FirstName = "Glenn",
                         LastName = "Lehrer",
@@ -223,6 +225,7 @@ namespace AgileTeamFour.BL
 
                     user = new User
                     {
+                        UserID = 3,
                         UserName = "ricardo",
                         FirstName = "Ricardo",
                         LastName = "Guzman Ortiz",
@@ -237,6 +240,7 @@ namespace AgileTeamFour.BL
 
                     user = new User
                     {
+                        UserID = 4,
                         UserName = "james",
                         FirstName = "James",
                         LastName = "Dictus",
