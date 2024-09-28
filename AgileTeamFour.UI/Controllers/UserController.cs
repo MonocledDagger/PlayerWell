@@ -1,11 +1,20 @@
-﻿
+﻿using AgileTeamFour.UI.ViewModels;
+using Microsoft.AspNetCore.Http.Extensions;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGeneration.Design;
 
 namespace AgileTeamFour.UI.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IWebHostEnvironment _host;
+
+        public UserController(IWebHostEnvironment host)
+        {
+            _host = host;
+        }
+
         public IActionResult Index()
         {
             ViewBag.Title = "List of All Users";
@@ -67,26 +76,38 @@ namespace AgileTeamFour.UI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            
             return View();
         }
+
         [HttpPost]
-        public IActionResult Create(User user)
+        public IActionResult Create(UserVM userVM)
         {
             try
             {
                 ViewBag.Title = "Create a User";
-                int result = UserManager.Insert(user);
+
+                if (userVM.File != null)
+                {
+                    userVM.User.IconPic = userVM.File.FileName;
+                    string path = _host.WebRootPath + "\\images\\";
+                    using (var stream = System.IO.File.Create(path + userVM.File.FileName))
+                    {
+                        userVM.File.CopyTo(stream);
+                        ViewBag.Message = "File uploaded successfully.";
+                    }
+                }
+                int result = UserManager.Insert(userVM.User);
                 return RedirectToAction(nameof(Index));
             }
-
             catch (Exception ex)
             {
                 ViewBag.Title = "Create";
                 ViewBag.Error = ex.Message;
-                return View();
-
+                return View(userVM);
             }
         }
+
 
         public IActionResult Edit(int id)
         {
@@ -109,28 +130,5 @@ namespace AgileTeamFour.UI.Controllers
             }
         }
 
-
-        
-
-        // Notes for other types of session implimentation
-
-        //private void GetBands()
-        //{
-        //    if (HttpContext.Session.GetObject<Band[]>("bands") != null)
-        //    {
-        //        bands = HttpContext.Session.GetObject<Band[]>("bands");
-        //    }
-
-        //    else
-        //    {
-        //        LoadBands();
-        //    }
-        //}
-
-        //private User GetUser()
-        //{
-        //    // Retrieve the user object from session
-        //    return HttpContext.Session.GetObject<User>("user");
-        //}
     }
 }

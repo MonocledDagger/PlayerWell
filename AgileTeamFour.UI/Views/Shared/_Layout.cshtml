@@ -2,6 +2,8 @@
 @using AgileTeamFour.UI.Models;
 @inject IHttpContextAccessor HttpContextAccessor
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,6 +87,11 @@
 
             @RenderBody()
         </main>
+        <div id="overlay" onclick="off()">
+            <div id="imageproplarge">
+                <img class="imageproplarge" id="output" />
+            </div>
+        </div>
     </div>
 
     <footer class="navigation mt-5 border-top footer text-white">
@@ -98,3 +105,16 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script type="text/javascript">
+    function off() {
+        console.log('Off');
+        document.getElementById("overlay").style.display = "none";
+
+    }
+
+    function on(picture) {
+        console.log('On');
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("output").src = picture;
+    }
+</script>
