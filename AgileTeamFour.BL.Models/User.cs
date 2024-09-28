@@ -24,5 +24,7 @@ namespace AgileTeamFour.BL.Models
         [DisplayName("Icon Pic")]
         public string IconPic { get; set; }
         public string Bio { get; set; }
+
+        public string AccessLevel { get; set; }
     }
 }

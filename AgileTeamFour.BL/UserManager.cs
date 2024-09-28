@@ -9,7 +9,7 @@ namespace AgileTeamFour.BL
 {
     public class LoginFailureException : Exception
     {
-        public LoginFailureException() : base("Login failed. Please check your login information adn try again. ")
+        public LoginFailureException() : base("Login failed. Please check your login information and try again. ")
         {
 
         }
@@ -69,6 +69,7 @@ namespace AgileTeamFour.BL
                     entity.Email = user.Email;
                     entity.IconPic = user.IconPic;
                     entity.Bio = user.Bio;
+                    entity.AccessLevel = user.AccessLevel;
 
                     user.UserID = entity.UserID;
 
@@ -112,6 +113,7 @@ namespace AgileTeamFour.BL
                         entity.Email = user.Email;
                         entity.IconPic = user.IconPic;
                         entity.Bio = user.Bio;
+                        entity.AccessLevel = user.AccessLevel;
                         result = dc.SaveChanges();
                     }
                     else
@@ -150,6 +152,7 @@ namespace AgileTeamFour.BL
                                     user.LastName = tblUser.LastName;
                                     user.UserName = tblUser.UserName;
                                     user.DateOfBirth = tblUser.DateOfBirth;
+                                    user.AccessLevel = tblUser.AccessLevel;
                                     return true;
                                 }
                                 else
@@ -197,9 +200,10 @@ namespace AgileTeamFour.BL
                         LastName = "Garvey",
                         Password = "harbor",
                         DateOfBirth = new DateTime(1990, 7, 15),
-                        Email = "us@them.com",
+                        Email = "will@them.com",
                         IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person."
+                        Bio = " A bio written by a real person.",
+                        AccessLevel = "admin"
                     };
                     Insert(user);
 
@@ -210,9 +214,10 @@ namespace AgileTeamFour.BL
                         LastName = "Lehrer",
                         Password = "drift",
                         DateOfBirth = new DateTime(1990, 7, 15),
-                        Email = "us@them.com",
+                        Email = "glenn@them.com",
                         IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person."
+                        Bio = " A bio written by a real person.",
+                        AccessLevel = "user"
                     };
                     Insert(user);
 
@@ -223,9 +228,10 @@ namespace AgileTeamFour.BL
                         LastName = "Guzman Ortiz",
                         Password = "craft",
                         DateOfBirth = new DateTime(1990, 7, 15),
-                        Email = "us@them.com",
+                        Email = "ricardo@them.com",
                         IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person."
+                        Bio = " A bio written by a real person.",
+                        AccessLevel = "admin"
                     };
                     Insert(user);
 
@@ -236,9 +242,10 @@ namespace AgileTeamFour.BL
                         LastName = "Dictus",
                         Password = "price",
                         DateOfBirth = new DateTime(1990, 7, 15),
-                        Email = "us@them.com",
+                        Email = "james@them.com",
                         IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person."
+                        Bio = " A bio written by a real person.",
+                        AccessLevel = "admin"
                     };
                     Insert(user);
                 }
@@ -264,7 +271,8 @@ namespace AgileTeamFour.BL
                          u.DateOfBirth,
                          u.Email,
                          u.IconPic,
-                         u.Bio
+                         u.Bio,
+                         u.AccessLevel
                      })
                      .ToList()
                      .ForEach(user => list.Add(new User
@@ -276,7 +284,8 @@ namespace AgileTeamFour.BL
                          Password = user.Password,
                          Email = user.Email,
                          IconPic = user.IconPic,
-                         Bio = user.Bio
+                         Bio = user.Bio,
+                         AccessLevel = user.AccessLevel
 
                      }));
 
@@ -310,7 +319,8 @@ namespace AgileTeamFour.BL
                             DateOfBirth = entity.DateOfBirth,
                             Email = entity.Email,
                             IconPic = entity.IconPic,
-                            Bio = entity.Bio
+                            Bio = entity.Bio,
+                            AccessLevel = entity.AccessLevel
 
                         };
                     }

@@ -1,5 +1,6 @@
 ﻿using AgileTeamFour.BL;
 using AgileTeamFour.BL.Models;
+using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -81,11 +82,17 @@ namespace AgileTeamFour.Web.Controllers
         {
             EventVM vm = new EventVM();
             ViewBag.Title = "Create an Event";
-            return View(vm);
+            if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                return View(vm);
+            }
+            else
+            {
+                TempData["error"] = "Need to be logged in to Create an Event.";
+                return RedirectToAction("Index", "Event");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
+            
         }
-
-
-        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -104,7 +111,8 @@ namespace AgileTeamFour.Web.Controllers
                         eventCreateVM.Event.Type,
                         eventCreateVM.Event.Platform, 
                         eventCreateVM.Event.Description, 
-                        eventCreateVM.Event.DateTime);
+                        eventCreateVM.Event.DateTime,
+                        eventCreateVM.Event.AuthorId);
                     return RedirectToAction(nameof(Index));
                 }
                 return View(eventCreateVM);
@@ -137,10 +145,17 @@ namespace AgileTeamFour.Web.Controllers
 
             ViewBag.Title = "Edit " + eventItem.EventName;
 
-            // Pass the ViewModel to the view
-            return View(eventDetailsVM);
-            
-           
+            if (Authenticate.IsAuthenticated(HttpContext, eventItem.AuthorId) || Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                // Pass the ViewModel to the view
+                return View(eventDetailsVM);
+            }
+            else
+            {
+                TempData["error"] = "Need admin or author rights to view page";
+                return RedirectToAction("Index", "Event");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
+                    
         }
 
 
@@ -200,8 +215,16 @@ namespace AgileTeamFour.Web.Controllers
 
             ViewBag.Title = "Delete " + eventItem.EventName;
 
-            // Pass the ViewModel to the view
-            return View(eventDetailsVM);
+            if (Authenticate.IsAuthenticated(HttpContext, eventItem.AuthorId) || Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                // Pass the ViewModel to the view
+                return View(eventDetailsVM);
+            }
+            else
+            {
+                TempData["error"] = "Need admin or author rights to view page";
+                return RedirectToAction("Index", "Event");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
         }
 
     [HttpPost, ActionName("Delete")]

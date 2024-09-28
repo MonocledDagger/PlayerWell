@@ -7,5 +7,6 @@
     Email VARCHAR(100) NOT NULL,
     IconPic VARCHAR(255) NOT NULL,
     Bio TEXT NOT NULL,
-    DateOfBirth DATETIME NOT NULL
+    DateOfBirth DATETIME NOT NULL,
+    AccessLevel VARCHAR(50)
     );

@@ -7,5 +7,6 @@
     Type VARCHAR(50),
     Platform VARCHAR(50),
     Description TEXT,
-    DateTime DATETIME NOT NULL
+    DateTime DATETIME NOT NULL,
+    AuthorId INT NOT NULL
 );

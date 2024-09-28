@@ -1,5 +1,7 @@
 ﻿using AgileTeamFour.BL;
 using AgileTeamFour.BL.Models;
+using AgileTeamFour.UI.Models;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -37,7 +39,16 @@ namespace AgileTeamFour.Web.Controllers
         public ActionResult Create()
         {
             ViewBag.Title = "Create a Game";
-            return View();
+            if (Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                return View();
+            }
+            else
+            {
+                TempData["error"] = "Need admin rights to view page";
+                return RedirectToAction("Index", "Game");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }      
+
         }
 
         // POST: Game/Create
@@ -67,7 +78,16 @@ namespace AgileTeamFour.Web.Controllers
             var items = GameManager.LoadByID(id);
 
             ViewBag.Title = "Edit ";
-            return View(items);
+            if (Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                return View(items);
+            }
+            else
+            {
+                TempData["error"] = "Need admin rights to view page";
+                return RedirectToAction("Index", "Game");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
+            
 
         }
     
@@ -99,7 +119,16 @@ namespace AgileTeamFour.Web.Controllers
             {
                 return NotFound();
             }
-            return View(game);
+            if (Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                return View(game);
+            }
+            else
+            {
+                TempData["error"] = "Need admin rights to view page";
+                return RedirectToAction("Index", "Game");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
+            
         }
 
         // POST: Game/Delete/5

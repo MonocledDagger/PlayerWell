@@ -24,6 +24,7 @@ namespace AgileTeamFour.BL.Models
             [DisplayName("Event Time")]
             public DateTime DateTime { get; set; }
 
+            public int AuthorId { get; set; }
             public List<Game> Games { get; set; } = new List<Game>();
     }
 }

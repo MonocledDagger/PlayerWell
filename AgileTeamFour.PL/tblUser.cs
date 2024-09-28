@@ -17,9 +17,11 @@ public partial class tblUser
 
     public string Email { get; set; } = null!;
 
-    public string? IconPic { get; set; }
+    public string IconPic { get; set; } = null!;
 
-    public string? Bio { get; set; }
+    public string Bio { get; set; } = null!;
 
     public DateTime DateOfBirth { get; set; }
+
+    public string? AccessLevel { get; set; }
 }

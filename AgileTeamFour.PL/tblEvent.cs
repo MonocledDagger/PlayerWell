@@ -22,4 +22,6 @@ public partial class tblEvent
     public string? Description { get; set; }
 
     public DateTime DateTime { get; set; }
+
+    public int AuthorId { get; set; }
 }

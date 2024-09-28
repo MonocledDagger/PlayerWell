@@ -22,6 +22,7 @@ namespace AgileTeamFour.BL
                                 string platform,
                                 string description,
                                 DateTime time,
+                                int AuthorId,
                                 bool rollback = false)
         {
             try
@@ -37,7 +38,8 @@ namespace AgileTeamFour.BL
                     Platform = platform,
                     Description = description,
                     DateTime = time,
-                    Type = type
+                    Type = type,
+                    AuthorId = AuthorId
 
                 };
 
@@ -84,6 +86,7 @@ namespace AgileTeamFour.BL
                     entity.Description = events.Description;
                     entity.DateTime = events.DateTime;
                     entity.Type = events.Type;
+                    entity.AuthorId = events.AuthorId;
 
 
 
@@ -129,6 +132,7 @@ namespace AgileTeamFour.BL
                         entity.DateTime = events.DateTime;
                         entity.MaxPlayers = events.MaxPlayers;
                         entity.Type = events.Type;
+                        entity.AuthorId = events.AuthorId;
 
                         results = dc.SaveChanges();
                     }
@@ -203,7 +207,8 @@ namespace AgileTeamFour.BL
                             DateTime = entity.DateTime,
                             Platform = entity.Platform,
                             Description = entity.Description,
-                            Type = entity.Type
+                            Type = entity.Type,
+                            AuthorId = entity.AuthorId
 
                         };
                     }
@@ -240,7 +245,8 @@ namespace AgileTeamFour.BL
                          e.Platform,
                          e.Description,
                          e.DateTime,
-                         e.Type
+                         e.Type,
+                         e.AuthorId
 
                      })
                      .ToList()
@@ -254,7 +260,8 @@ namespace AgileTeamFour.BL
                          Platform = events.Platform,
                          Description = events.Description,
                          DateTime = events.DateTime,
-                         Type = events.Type
+                         Type = events.Type,
+                         AuthorId = events.AuthorId
 
                      }));
                 }
