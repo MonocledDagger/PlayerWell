@@ -11,11 +11,11 @@
 <h1 class="text-center">All Events</h1>
 
 <p class="text-center">
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary btn-lg ml-3" asp-action="Create">Create New</a>
     
 </p>
 <p>
-<a class="nav-link" asp-area="" asp-controller="Event" asp-action="Index2">View Tables</a>
+<a class="btn btn-secondary" asp-area="" asp-controller="Event" asp-action="Index2">View Tables</a>
 </p>
 <div class="row">
 
@@ -27,9 +27,10 @@
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Event.EventName)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Event.Description)</p>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Event.EventID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Event.EventID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Event.EventID })
+                    <a asp-action="Edit" asp-route-id="@item.Event.EventID" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Event.EventID" class="btn btn-primary btn-sm">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Event.EventID" class="btn btn-primary btn-sm">Delete</a>
+                    
                 </div>
             </div>
         </div>
