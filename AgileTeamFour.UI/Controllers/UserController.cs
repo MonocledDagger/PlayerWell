@@ -76,38 +76,9 @@ namespace AgileTeamFour.UI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //UserVM userVM = new UserVM();
-            //userVM.User=new BL.Models.User();
             
             return View();
         }
-
-
-        //[HttpGet]
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public IActionResult Create(User user)
-        //{
-        //    try
-        //    {
-        //        ViewBag.Title = "Create a User";
-        //        int result = UserManager.Insert(user);
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        ViewBag.Title = "Create";
-        //        ViewBag.Error = ex.Message;
-        //        return View();
-
-        //    }
-        //}
-
-
 
         [HttpPost]
         public IActionResult Create(UserVM userVM)
@@ -116,24 +87,16 @@ namespace AgileTeamFour.UI.Controllers
             {
                 ViewBag.Title = "Create a User";
 
-                // Process the image if uploaded
                 if (userVM.File != null)
                 {
-                    // Set the IconPic field to the file's name
                     userVM.User.IconPic = userVM.File.FileName;
-
-                    // Define the path where the image will be saved
                     string path = _host.WebRootPath + "\\images\\";
-
-                    // Save the file to the specified path
                     using (var stream = System.IO.File.Create(path + userVM.File.FileName))
                     {
                         userVM.File.CopyTo(stream);
                         ViewBag.Message = "File uploaded successfully.";
                     }
                 }
-
-                // Insert the user data into the database
                 int result = UserManager.Insert(userVM.User);
                 return RedirectToAction(nameof(Index));
             }
