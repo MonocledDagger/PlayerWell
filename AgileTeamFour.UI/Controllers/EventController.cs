@@ -4,6 +4,7 @@ using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -63,7 +64,11 @@ namespace AgileTeamFour.Web.Controllers
 
             var game = GameManager.LoadByID(eventItem.GameID);
             var playerEvents = PlayerEventManager.LoadByEventID(id); 
-            var comments = CommentManager.LoadByEventID(id); 
+            var comments = CommentManager.LoadByEventID(id);
+
+
+            // Count the number of players signed up
+            int currentPlayers = playerEvents != null ? playerEvents.Count() : 0;
 
             // Create the ViewModel
             var eventDetailsVM = new EventDetailsVM
@@ -72,7 +77,8 @@ namespace AgileTeamFour.Web.Controllers
                 Game = game,
                 PlayerEvents = playerEvents ?? new List<PlayerEvent>(), 
                 Comments = comments ?? new List<Comment>(),
-                PlayerID = playerID
+                PlayerID = playerID,
+                currentPlayers= currentPlayers,
             };
 
             ViewBag.Title = "Details for " + eventItem.EventName;
@@ -271,20 +277,34 @@ namespace AgileTeamFour.Web.Controllers
         {
             try
             {
-                //If User isn't signed in
+                // Check if the player is already signed up for this event
+                var playerList = PlayerEventManager.LoadByEventID(EventID);
+                var existingPlayer = playerList.FirstOrDefault(pe => pe.PlayerID == PlayerID);
+
+
+                //PlayerID is gotten from session when the page loads. See ActionResult Details.
                 if (PlayerID == 0)
                 {
+                    //If User isn't signed in
                     TempData["error"] = "Please Sign In Before Joining an Event";
                     // Redirect back to the details page
                     return RedirectToAction("Details", new { id = EventID });
 
 
                 }
+                else if(existingPlayer != null)
+                { 
+                        // Player is already signed up for the event
+                        TempData["error"] = "You are already signed up for this event.";
+                        return RedirectToAction("Details", new { id = EventID });
+                    
+                }
                 else
                 {
                     // Insert the new player event
                     PlayerEventManager.Insert(PlayerID, EventID, Role);
 
+                    
                     // Redirect back to the details page
                     return RedirectToAction("Details", new { id = EventID });
                 }
@@ -292,10 +312,24 @@ namespace AgileTeamFour.Web.Controllers
             }
             catch(Exception ex)
             {
-                // Show error message in case of failure
+                // Show error message 
                 ViewBag.ErrorMessage = "Error while signing up: " + ex.Message;
                 return RedirectToAction("Details", new { id = EventID });
             }
+        }
+
+      
+        public ActionResult LeaveEvent(int eventID, int playerID) 
+        {
+            
+
+            // Perform the deletion only if the player is signed in
+            if (playerID != 0)
+            {
+                PlayerEventManager.Delete(playerID, eventID); // Delete by EventID and PlayerID
+            }
+            //return RedirectToAction("Details", new { id = id }); // Redirect back to event details
+            return RedirectToAction("Details", new { id = eventID });
         }
     }
 }

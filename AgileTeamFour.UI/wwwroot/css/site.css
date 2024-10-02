@@ -41,3 +41,14 @@ main {
     width:200px;
     height:150px;
 }
+
+.btn-playerwell {
+    color: #fff;
+    background-color: #355baa;
+    border-color: #0d6efd;
+}
+
+.nav-item .nav-link:hover {
+    font-size: 130%;
+    transition: font-size 0.3s ease; 
+}

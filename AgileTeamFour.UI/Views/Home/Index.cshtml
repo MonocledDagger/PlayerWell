@@ -1,11 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="container-fluid p-0 py-4">
-    <img src="~/images/PHBanner.png" alt="Banner" class="img-fluid w-75 mb-2 d-block mx-auto">
+<div class="jumbotron jumbotron-fluid p-0">
+    <div class="container-fluid p-0">
+        <img src="~/images/Home/NewBanner.png" alt="Banner" class="img-fluid w-100 mb-2">
+    </div>
 </div>
 <hr />
-<div class="container text-center m-2 bg-gray">
+<div class="container text-center m-2 bg-white p-5 rounded">
     <div class="row">
         <div class=" col-md-8 offset-md-2">
     
@@ -13,12 +15,39 @@
 
             <p class="lead">PlayerWell is an online platform designed to help you connect with others who share your love for gaming. Whether you're looking for teammates or just want to find people to play with, PlayerWell makes it easy. To get started, simply sign up for an account, which only takes a few moments. Once registered, you can browse through a list of popular games. By clicking on your favorite game, you'll be able to see what other players are up to, explore ongoing activities, and seamlessly join in on the fun. It's the perfect way to meet fellow gamers and dive into exciting gameplay.</p>
 
+            <button type="button" class="btn btn-playerwell btn-lg w-50" onclick="location.href='@Url.Action("Index", "Game")'">Start Here</button>
         </div>
     </div>
 </div>
 
-<div class="container text-center my-5">
-    <button type="button" class="btn btn-primary btn-lg w-50" onclick="location.href='@Url.Action("Index", "Game")'">Start Here</button>
-</div>
 
+
+<hr />
+<div class="container mb-5">
+    <h2> How it Works</h2>
+    <div class="row">
+        <div class="card mt-3 shadow-sm" style="width: 18rem;">
+            @* <img src="~/images/Exclamation.png" class="" alt="Step 1"> *@
+          <div class="card-body">
+            <p class="lead">Step 1: Choose a game and see events people are planning for it!</p>
+                <button type="button" class="btn btn-playerwell" onclick="location.href='@Url.Action("Index", "Game")'">See Games!</button>
+          </div>
+        </div>
+
+            <div class="card offset-md-2 mt-3 shadow-sm" style="width: 18rem;">
+            @* <img src="~/images/Question.png" class="" alt="Step 2"> *@
+                <div class="card-body">
+                    <p class="lead">Step 2: Sign up for an event!</p>
+                <button type="button" class="btn btn-playerwell" onclick="location.href='@Url.Action("Index", "Event")'">See All Events!</button>
+                </div>
+            </div>
+
+                <div class="card offset-md-2 mt-3 shadow-sm" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="Step 3">
+                    <div class="card-body">
+                        <p class="lead">Step 3: Game!</p>
+                    </div>
+                </div>
+     </div>
+</div>
 

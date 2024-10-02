@@ -35,6 +35,7 @@ namespace AgileTeamFour.BL
                     EventName = eventName,
                     Server = server,
                     MaxPlayers = maxPlayers,
+                    
                     Platform = platform,
                     Description = description,
                     DateTime = time,
@@ -65,7 +66,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                //Need to Scaffold
+                
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
@@ -82,6 +83,7 @@ namespace AgileTeamFour.BL
                     entity.EventName = events.EventName;
                     entity.Server = events.Server;
                     entity.MaxPlayers = events.MaxPlayers;
+                    
                     entity.Platform = events.Platform;
                     entity.Description = events.Description;
                     entity.DateTime = events.DateTime;
@@ -131,6 +133,7 @@ namespace AgileTeamFour.BL
                         entity.Description = events.Description;
                         entity.DateTime = events.DateTime;
                         entity.MaxPlayers = events.MaxPlayers;
+                        
                         entity.Type = events.Type;
                         entity.AuthorId = events.AuthorId;
 
@@ -152,6 +155,7 @@ namespace AgileTeamFour.BL
             }
 
         }
+
 
 
         public static int Delete(int EventID, bool rollback = false)
