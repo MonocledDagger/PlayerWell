@@ -1,4 +1,6 @@
-﻿using AgileTeamFour.UI.ViewModels;
+﻿using AgileTeamFour.BL.Models;
+using AgileTeamFour.UI.Models;
+using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
 
 using Microsoft.EntityFrameworkCore;
@@ -109,24 +111,91 @@ namespace AgileTeamFour.UI.Controllers
         }
 
 
+        //public IActionResult Edit(int id)
+        //{
+        //    ViewBag.Title = "Edit a User";
+        //    return View(UserManager.LoadById(id));
+        //}
+        //[HttpPost]
+        //public IActionResult Edit(int id, User user, bool rollback = false)
+        //{
+        //    UserVM userVM=new UserVM();
+        //    try
+        //    {
+
+        //        int result = UserManager.Update(user, rollback);
+        //        return RedirectToAction(nameof(Index));
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        ViewBag.Error = ex.Message;
+        //        return View(userVM);
+        //    }
+
+        //    //if (Authenticate.IsAuthenticated(HttpContext))
+        //    //{
+        //    //    ProgramVM programVM = new ProgramVM();
+
+        //    //    programVM.Program = ProgramManager.LoadById(id);
+        //    //    programVM.DegreeTypes = DegreeTypeManager.Load();
+
+        //    //    ViewBag.Title = "Edit " + programVM.Program.Description;
+
+        //    //    return View(programVM);
+        //    //}
+        //    //else
+        //    //    return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+
+
+
+
+        //}
         public IActionResult Edit(int id)
         {
-            ViewBag.Title = "Edit a User";
-            return View(UserManager.LoadById(id));
+            if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                UserVM userVM = new UserVM();
+
+                userVM.User = UserManager.LoadById(id);
+               // userVM.DegreeTypes = DegreeTypeManager.Load();
+
+                //ViewBag.Title = "Edit " + programVM.Program.Description;
+
+                return View(userVM);
+            }
+            else
+                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
         }
+
         [HttpPost]
-        public IActionResult Edit(int id, User user, bool rollback = false)
+        public IActionResult Edit(int id, UserVM userVM, bool rollback = false)
         {
             try
             {
-                int result = UserManager.Update(user, rollback);
+                // Process the image
+
+                if (userVM.File != null)
+                {
+                    userVM.User.IconPic = userVM.File.FileName;
+
+                    string path = _host.WebRootPath + "\\images\\";
+
+                    using (var stream = System.IO.File.Create(path + userVM.File.FileName))
+                    {
+                        userVM.File.CopyTo(stream);
+                        ViewBag.Message = "File Uploaded Successfully...";
+                    }
+                }
+
+
+                int result = UserManager.Update(userVM.User, rollback);
                 return RedirectToAction(nameof(Index));
             }
-
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return View(user);
+                return View(userVM);
             }
         }
 

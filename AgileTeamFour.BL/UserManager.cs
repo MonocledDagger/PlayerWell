@@ -286,6 +286,8 @@ namespace AgileTeamFour.BL
                          FirstName = user.FirstName,
                          LastName = user.LastName,
                          Password = user.Password,
+                         //RGO was not adding date of birth to deh list
+                         DateOfBirth=user.DateOfBirth,
                          Email = user.Email,
                          IconPic = user.IconPic,
                          Bio = user.Bio,
