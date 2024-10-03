@@ -3,6 +3,7 @@ using AgileTeamFour.BL.Models;
 using AgileTeamFour.UI.Models;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -14,7 +15,17 @@ namespace AgileTeamFour.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "List of Reviews";
-            return View(ReviewManager.Load());
+            List<Review> items = ReviewManager.Load();
+
+            if (Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                return View(items);
+            }
+            else
+            {
+                TempData["error"] = "Need admin rights to view page";
+                return RedirectToAction("Index", "Review");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
 
         }
         public ActionResult Details(int id)
@@ -120,6 +131,32 @@ namespace AgileTeamFour.Web.Controllers
             try
             {
                 ReviewManager.Delete(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Generate(int id)
+        {
+            try
+            {
+                ReviewManager.CreatePlayerReviewsAfterEvent(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Remove(int id)
+        {
+            try
+            {
+                ReviewManager.DeleteIncompletedReviews(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
