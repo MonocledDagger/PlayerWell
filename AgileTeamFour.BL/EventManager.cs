@@ -22,7 +22,7 @@ namespace AgileTeamFour.BL
                                 string platform,
                                 string description,
                                 DateTime time,
-                                int AuthorId,
+                                int authorId,
                                 bool rollback = false)
         {
             try
@@ -39,7 +39,7 @@ namespace AgileTeamFour.BL
                     Description = description,
                     DateTime = time,
                     Type = type,
-                    AuthorId = AuthorId
+                    AuthorId = authorId
 
                 };
 
@@ -71,9 +71,6 @@ namespace AgileTeamFour.BL
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
-
-
-
                     tblEvent entity = new tblEvent();
 
                     //Generate EventID
@@ -82,10 +79,10 @@ namespace AgileTeamFour.BL
                     entity.EventName = events.EventName;
                     entity.Server = events.Server;
                     entity.MaxPlayers = events.MaxPlayers;
+                    entity.Type = events.Type;
                     entity.Platform = events.Platform;
                     entity.Description = events.Description;
                     entity.DateTime = events.DateTime;
-                    entity.Type = events.Type;
                     entity.AuthorId = events.AuthorId;
 
 
@@ -124,14 +121,14 @@ namespace AgileTeamFour.BL
                     if (entity != null)
                     {
                         entity.EventID = events.EventID;
-                        entity.GameID=events.GameID;
+                        entity.GameID = events.GameID;
                         entity.EventName = events.EventName;
                         entity.Server = events.Server;
+                        entity.MaxPlayers = events.MaxPlayers;
+                        entity.Type = events.Type;
                         entity.Platform = events.Platform;
                         entity.Description = events.Description;
                         entity.DateTime = events.DateTime;
-                        entity.MaxPlayers = events.MaxPlayers;
-                        entity.Type = events.Type;
                         entity.AuthorId = events.AuthorId;
 
                         results = dc.SaveChanges();
@@ -240,14 +237,13 @@ namespace AgileTeamFour.BL
                          e.EventID,
                          e.GameID,
                          e.EventName,
-                         e.MaxPlayers,
                          e.Server,
+                         e.MaxPlayers,
+                         e.Type,
                          e.Platform,
                          e.Description,
                          e.DateTime,
-                         e.Type,
                          e.AuthorId
-
                      })
                      .ToList()
                      .ForEach(events => list.Add(new Events
@@ -255,12 +251,12 @@ namespace AgileTeamFour.BL
                          EventID = events.EventID,
                          GameID = events.GameID,
                          EventName = events.EventName,
-                         MaxPlayers = (int)events.MaxPlayers,
                          Server = events.Server,
+                         MaxPlayers = (int)events.MaxPlayers,
+                         Type = events.Type,
                          Platform = events.Platform,
                          Description = events.Description,
                          DateTime = events.DateTime,
-                         Type = events.Type,
                          AuthorId = events.AuthorId
 
                      }));
