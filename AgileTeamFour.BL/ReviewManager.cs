@@ -198,7 +198,93 @@ namespace AgileTeamFour.BL
             }
         }
 
-        public static int InsertEmptyReview(int authorId, int recipientId, bool rollback = false)
+        public static int DeleteIncompletedReviews(int id, bool rollback = false)
+        {
+            int rowsAffected = 0;
+
+            // Get all the events that have completed in the past 30 to 60 days
+            List<Events> lastMonthsEvents = EventManager.Load()
+                .Where(e => e.DateTime >= DateTime.Now.AddDays(-30)  // Move than 30 days ago
+                         && e.DateTime <= DateTime.Now.AddDays(-60)) // Less than 60 days ago
+                .OrderByDescending(e => e.DateTime)
+                .ToList();
+
+            // Find reviews that were incomplete that are over 30 days old
+            List<Review> incompleteReviews = ReviewManager.Load()
+                .Where(r => r.ReviewText == "87|6#x4A|tkg"
+                && r.DateTime <= DateTime.Now.AddDays(-30)).ToList();
+
+            // Delete them all 
+            foreach (Review review in incompleteReviews)
+            {
+                Delete(review.ReviewID);
+                rowsAffected++;
+            }
+            return rowsAffected;
+        }
+        public static int CreatePlayerReviewsAfterEvent(int id, bool rollback = false)
+        {
+            int rowsAffected = 0;
+            // Get all the events that have completed in the past week
+            List<Events> events = EventManager.Load()
+                .Where(e => e.DateTime >= DateTime.Now.AddDays(-7)
+                && e.DateTime <= DateTime.Now)
+                .OrderByDescending(e => e.DateTime).ToList();
+
+            //Check if their is an Entry in the Reviews table for every
+            //Entry in the playerEvents table that matches the events
+            //In the events list
+            // If not create one with InsertEmptyReview method
+
+            // Iterate through each event
+            foreach (var evt in events)
+            {
+                // Get all participants for the event
+                List<PlayerEvent> playerEvents = PlayerEventManager.LoadByEventID(evt.EventID); // Assuming you have a method to get participant IDs
+
+                // Create a list of PlayerId attributes from the playerEvents
+                List<int> playerIds = playerEvents.Select(pe => pe.PlayerID).ToList();
+
+                // Iterate through each participant
+                foreach (var authorId in playerIds)
+                {
+                    foreach (var recipientId in playerIds)
+                    {
+                        if (authorId != recipientId)
+                        {
+                            // Check if a review exists for this participant for the current event
+                            bool reviewExists = ReviewManager.ReviewExists(authorId, recipientId); // Assuming you have a method to check for reviews
+
+                            // If no review exists, create an empty review
+                            if (!reviewExists)
+                            {
+                                int result = InsertEmptyReview(authorId, recipientId); // Assuming author and recipient are the same
+                                rowsAffected += result; // Increment the total rows affected by the number of reviews created
+                            }
+                        }
+                    }                   
+                }
+            }
+            return rowsAffected;
+        }
+        private static bool ReviewExists(int authorId, int recipientId)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    // Check if a review exists for the given event and participant
+                    return dc.tblReviews.Any(r => r.AuthorID == authorId && r.RecipientID == recipientId);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (if you have a logging mechanism)
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw; // Consider whether to throw or handle it in a different way based on your needs
+            }
+        }
+        private static int InsertEmptyReview(int authorId, int recipientId, bool rollback = false)
         {
             int rowsAffected = 0;
             Review emptyReview = new Review
@@ -210,37 +296,6 @@ namespace AgileTeamFour.BL
             };
 
             rowsAffected = Insert(emptyReview);
-
-            return rowsAffected;
-        }
-
-        public static int DeleteIncompletedReviews(int id, bool rollback = false)
-        {
-            int rowsAffected = 0;
-
-            // Get all the events that have completed in the past 30 to 60 days
-            List<Events> lastMonthsEvents = EventManager.Load()
-                .Where(e => e.DateTime.AddDays(-30) >= DateTime.Now.AddDays(-60)
-                && e.DateTime <= DateTime.Now)
-                .OrderByDescending(e => e.DateTime).ToList();
-
-            // if review is password and DateTime set is 30 days behind
-            // and body is still password then delete pending review
-
-            return rowsAffected;
-        }
-
-        public static int CreateEventReviews(int id, bool rollback = false)
-        {
-            int rowsAffected = 0;
-            // Get all the events that have completed in the past week
-            List<Events> events = EventManager.Load()
-                .Where(e => e.DateTime >= DateTime.Now.AddDays(-7)
-                && e.DateTime <= DateTime.Now)
-                .OrderByDescending(e => e.DateTime).ToList();
-
-            //Check if reviews were created for these event players if not create
-
 
             return rowsAffected;
         }

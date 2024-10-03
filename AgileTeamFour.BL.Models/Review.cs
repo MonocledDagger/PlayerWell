@@ -31,6 +31,7 @@ namespace AgileTeamFour.BL.Models
 
         //Foreign Key references a PlayerID, the primary key in the player Table
         public int RecipientID { get; set; }
+
         [DisplayName("Review Date")]
         public DateTime DateTime { get; set; }
         

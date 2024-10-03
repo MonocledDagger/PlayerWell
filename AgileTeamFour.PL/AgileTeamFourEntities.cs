@@ -35,7 +35,7 @@ public partial class AgileTeamFourEntities : DbContext
     {
         modelBuilder.Entity<tblComment>(entity =>
         {
-            entity.HasKey(e => e.CommentID).HasName("PK__tblComme__C3B4DFAA61DC5C7C");
+            entity.HasKey(e => e.CommentID).HasName("PK__tblComme__C3B4DFAA549BE008");
 
             entity.Property(e => e.CommentID).ValueGeneratedNever();
             entity.Property(e => e.Text).HasColumnType("text");
@@ -44,7 +44,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblEvent>(entity =>
         {
-            entity.HasKey(e => e.EventID).HasName("PK__tblEvent__7944C87025835A08");
+            entity.HasKey(e => e.EventID).HasName("PK__tblEvent__7944C870DA40B783");
 
             entity.Property(e => e.EventID).ValueGeneratedNever();
             entity.Property(e => e.DateTime).HasColumnType("datetime");
@@ -65,7 +65,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblGame>(entity =>
         {
-            entity.HasKey(e => e.GameID).HasName("PK__tblGames__2AB897DDC7A768A0");
+            entity.HasKey(e => e.GameID).HasName("PK__tblGames__2AB897DDABF0E620");
 
             entity.Property(e => e.GameID).ValueGeneratedNever();
             entity.Property(e => e.Description).HasColumnType("text");
@@ -85,7 +85,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblPlayerEvent>(entity =>
         {
-            entity.HasKey(e => e.PlayerEventID).HasName("PK__tblPlaye__B001D167C258BFCD");
+            entity.HasKey(e => e.PlayerEventID).HasName("PK__tblPlaye__B001D167FA863A24");
 
             entity.Property(e => e.PlayerEventID).ValueGeneratedNever();
             entity.Property(e => e.Role)
@@ -95,7 +95,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblReview>(entity =>
         {
-            entity.HasKey(e => e.ReviewID).HasName("PK__tblRevie__74BC79AE09EFD0DC");
+            entity.HasKey(e => e.ReviewID).HasName("PK__tblRevie__74BC79AEAB2E624E");
 
             entity.Property(e => e.ReviewID).ValueGeneratedNever();
             entity.Property(e => e.DateTime).HasColumnType("datetime");
@@ -104,7 +104,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblUser>(entity =>
         {
-            entity.HasKey(e => e.UserID).HasName("PK__tblUsers__1788CCACAEA158DE");
+            entity.HasKey(e => e.UserID).HasName("PK__tblUsers__1788CCAC2BCD6FA1");
 
             entity.Property(e => e.UserID).ValueGeneratedNever();
             entity.Property(e => e.AccessLevel)
