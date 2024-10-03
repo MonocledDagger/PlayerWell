@@ -1,4 +1,4 @@
-﻿@model AgileTeamFour.UI.ViewModels.Review
+﻿@model AgileTeamFour.BL.Models.Review
 
 @{
     ViewData["Title"] = "Edit";
@@ -13,65 +13,35 @@
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Review.ReviewID" class="control-label" style="display:none;"></label>
-                <input asp-for="Review.ReviewID" type="hidden" class="form-control" />
-                <span asp-validation-for="Review.ReviewID" class="text-danger" style="display:none;"></span>
+                <label asp-for="ReviewID" class="control-label" style="display:none;"></label>
+                <input asp-for="ReviewID" type="hidden" class="form-control" />
+                <span asp-validation-for="ReviewID" class="text-danger" style="display:none;"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Review.StarsOutOf5" class="control-label"></label>
-                <input asp-for="Review.StarsOutOf5" class="form-control" />
-                <span asp-validation-for="Review.StarsOutOf5" class="text-danger"></span>
+                <label asp-for="StarsOutOf5" class="control-label"></label>
+                <input asp-for="StarsOutOf5" class="form-control" />
+                <span asp-validation-for="StarsOutOf5" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Review.ReviewText" class="control-label"></label>
-                <input asp-for="Review.ReviewText" class="form-control" />
-                <span asp-validation-for="Review.ReviewText" class="text-danger"></span>
+                <label asp-for="ReviewText" class="control-label"></label>
+                <input asp-for="ReviewText" class="form-control" />
+                <span asp-validation-for="ReviewText" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Review.ReviewName" class="control-label"></label>
-                <input asp-for="Review.ReviewName" class="form-control" />
-                <span asp-validation-for="Review.ReviewName" class="text-danger"></span>
+                <label asp-for="AuthorID" class="control-label"></label>
+                <input asp-for="AuthorID" type="hidden" class="form-control" />
+                <span asp-validation-for="AuthorID" class="text-danger" style="display:none;"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Review.AuthorID" class="control-label"></label>
-                <input asp-for="Review.AuthorID" type="hidden" class="form-control" />
-                <span asp-validation-for="Review.AuthorID" class="text-danger" style="display:none;"></span>
+                <label asp-for="RecipientID" class="control-label"></label>
+                <input asp-for="RecipientID" type="hidden" class="form-control" />
+                <span asp-validation-for="RecipientID" class="text-danger" style="display:none;"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Review.RecipientID" class="control-label"></label>
-                <input asp-for="Review.RecipientID" type="hidden" class="form-control" />
-                <span asp-validation-for="Review.RecipientID" class="text-danger" style="display:none;"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Review.DateTime" class="control-label"></label>
-                <input asp-for="Review.DateTime" type="hidden" class="form-control" />
-                <span asp-validation-for="Review.DateTime" class="text-danger" style="display:none;"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Review.IconPic" class="control-label"></label><br />
-                <img class="imagepropmedium m-2"
-                     alt="@Model.Review.IconPic"
-                     id="programimage"
-                     onclick="on('/images/@Model.Review.IconPic')"
-                     src="~/images/@Model.Review.IconPic" />
-                <input asp-for="Review.IconPic" class="form-control" />
-                <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
-                <span asp-validation-for="Review.IconPic" class="text-danger"></span>
-            </div>
-
-
-
-            <div class="form-group">
-                <label asp-for="Review.Bio" class="control-label"></label>
-                <input asp-for="Review.Bio" class="form-control" />
-                <span asp-validation-for="Review.Bio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Review.AccessLevel" class="control-label"></label>
-                <input asp-for="Review.AccessLevel" class="form-control" />
-                <span asp-validation-for="Review.Bio" class="text-danger"></span>
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" type="hidden" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger" style="display:none;"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
