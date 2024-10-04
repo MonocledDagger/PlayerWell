@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AgileTeamFour.BL.Models.Review>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>My Pending Reviews</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.ReviewID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipientName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td hidden>
+                    @Html.DisplayFor(modelItem => item.ReviewID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecipientID)
+                </td>
+                <td>
+                    @Html.ActionLink("Complete Review", "Complete", new { id = item.ReviewID }) |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

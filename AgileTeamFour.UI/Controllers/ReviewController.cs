@@ -1,6 +1,7 @@
 ﻿using AgileTeamFour.BL;
 using AgileTeamFour.BL.Models;
 using AgileTeamFour.UI.Models;
+using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -18,12 +19,18 @@ namespace AgileTeamFour.Web.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Title = "List of Reviews";
-            List<Review> items = ReviewManager.Load();
-
             if (Authenticate.IsAuthenticated(HttpContext, "admin"))
-            {
+            {   // Case for admin gong to Reviews Index
+                ViewBag.Title = "List of Reviews";
+                List<Review> items = ReviewManager.Load();
                 return View(items);
+            }  
+            else if (Authenticate.IsAuthenticated(HttpContext))
+            {  // Case for 
+                ViewBag.Title = "Your Reviews";
+                User user = GetLoggedInUser();
+                List<Review> reviews = ReviewManager.LoadPlayerReviews(user.UserID);
+                return RedirectToAction("Players", "Review", reviews);
             }
             else
             {
@@ -177,6 +184,23 @@ namespace AgileTeamFour.Web.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public ActionResult Complete(int id)
+        {
+            Review review = ReviewManager.LoadById(id);
+            review.ReviewText = "";
+
+            ViewBag.Title = "Complete Review";
+            if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                return View(review);
+            }
+            else
+            {
+                TempData["error"] = "Login to complete reviews.";
+                return RedirectToAction("Index", "Review");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
         }
     }

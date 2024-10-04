@@ -252,6 +252,36 @@ namespace AgileTeamFour.BL
                         AccessLevel = "admin"
                     };
                     Insert(user);
+
+                    user = new User
+                    {
+                        UserID = 5,
+                        UserName = "bill",
+                        FirstName = "Bill",
+                        LastName = "Wild",
+                        Password = "bill",
+                        DateOfBirth = new DateTime(1990, 7, 15),
+                        Email = "bill@them.com",
+                        IconPic = "images/bill.png",
+                        Bio = " A bio written by a real person.",
+                        AccessLevel = "player"
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        UserID = 5,
+                        UserName = "test",
+                        FirstName = "Helpful",
+                        LastName = "Debugger",
+                        Password = "test",
+                        DateOfBirth = new DateTime(1990, 7, 15),
+                        Email = "debug@them.com",
+                        IconPic = "images/bill.png",
+                        Bio = " A bio written by a real person.",
+                        AccessLevel = "player"
+                    };
+                    Insert(user);
                 }
             }
         }

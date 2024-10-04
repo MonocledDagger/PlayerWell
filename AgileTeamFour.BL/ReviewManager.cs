@@ -168,25 +168,31 @@ namespace AgileTeamFour.BL
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     (from r in dc.tblReviews
+                     join author in dc.tblUsers on r.AuthorID equals author.UserID
+                     join recipient in dc.tblUsers on r.RecipientID equals recipient.UserID
                      select new
                      {
-                        r.ReviewID,
-                        r.StarsOutOf5,
-                        r.ReviewText,
-                        r.AuthorID,
-                        r.RecipientID,
-                        r.DateTime
-                })
-                     .ToList()
-                     .ForEach(review => list.Add(new Review
-                     {
-                         ReviewID = review.ReviewID,
-                         StarsOutOf5 = review.StarsOutOf5,
-                         ReviewText = review.ReviewText,
-                         AuthorID = review.AuthorID,
-                         RecipientID = review.RecipientID,
-                         DateTime = review.DateTime
-                     }));
+                         r.ReviewID,
+                         r.StarsOutOf5,
+                         r.ReviewText,
+                         r.AuthorID,
+                         AuthorName = author.UserName,
+                         r.RecipientID,
+                         RecipientName = recipient.UserName,
+                         r.DateTime
+                     })
+             .ToList()
+             .ForEach(review => list.Add(new Review
+             {
+                 ReviewID = review.ReviewID,
+                 StarsOutOf5 = review.StarsOutOf5,
+                 ReviewText = review.ReviewText,
+                 AuthorID = review.AuthorID,
+                 AuthorName = review.AuthorName,
+                 RecipientID = review.RecipientID,
+                 RecipientName = review.RecipientName,
+                 DateTime = review.DateTime
+             }));
                 }
 
                 return list;
@@ -197,6 +203,8 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
+
+
 
         public static int DeleteIncompleteReviews(int id, bool rollback = false)
         {
@@ -261,6 +269,13 @@ namespace AgileTeamFour.BL
                 }
             }
             return rowsAffected;
+        }
+        public static List<Review> LoadPlayerReviews(int id)
+        {
+            List<Review> reviews = ReviewManager.Load()
+                .Where(r => r.AuthorID == id)
+                .OrderByDescending(e => e.DateTime).ToList();
+            return reviews;
         }
         private static bool ReviewExists(int authorId, int recipientId)
         {
