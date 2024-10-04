@@ -863,7 +863,7 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Analyzers/3.3.4": {
+      "Microsoft.CodeAnalysis.Analyzers/3.11.0": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.CodeAnalysis.Analyzers.props": {},
@@ -4035,10 +4035,10 @@
         "ref/netstandard2.0/Microsoft.Build.Framework.xml"
       ]
     },
-    "Microsoft.CodeAnalysis.Analyzers/3.3.4": {
-      "sha512": "AxkxcPR+rheX0SmvpLVIGLhOUXAKG56a64kV9VQZ4y9gR9ZmPXnqZvHJnmwLSwzrEP6junUF11vuc+aqo5r68g==",
+    "Microsoft.CodeAnalysis.Analyzers/3.11.0": {
+      "sha512": "v/EW3UE8/lbEYHoC2Qq7AR/DnmvpgdtAMndfQNmpuIMx/Mto8L5JnuCfdBYtgvalQOtfNCnxFejxuRrryvUTsg==",
       "type": "package",
-      "path": "microsoft.codeanalysis.analyzers/3.3.4",
+      "path": "microsoft.codeanalysis.analyzers/3.11.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -4097,6 +4097,16 @@
         "buildTransitive/config/analysislevel_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevel_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevel_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevel_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevel_3_3_all.globalconfig",
         "buildTransitive/config/analysislevel_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevel_3_3_default.globalconfig",
@@ -4147,6 +4157,16 @@
         "buildTransitive/config/analysislevelcorrectness_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelcorrectness_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelcorrectness_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelcorrectness_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelcorrectness_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelcorrectness_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelcorrectness_3_3_default.globalconfig",
@@ -4197,6 +4217,16 @@
         "buildTransitive/config/analysislevellibrary_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevellibrary_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevellibrary_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevellibrary_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevellibrary_3_3_all.globalconfig",
         "buildTransitive/config/analysislevellibrary_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevellibrary_3_3_default.globalconfig",
@@ -4247,6 +4277,16 @@
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscompatibility_3_3_default.globalconfig",
@@ -4297,6 +4337,16 @@
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysiscorrectness_3_3_default.globalconfig",
@@ -4347,6 +4397,16 @@
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdesign_3_3_default.globalconfig",
@@ -4397,6 +4457,16 @@
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisdocumentation_3_3_default.globalconfig",
@@ -4447,6 +4517,16 @@
         "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysislocalization_3_3_default.globalconfig",
@@ -4497,6 +4577,16 @@
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisperformance_3_3_default.globalconfig",
@@ -4547,6 +4637,16 @@
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_3_none_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_3_recommended.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_3_recommended_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_all.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_all_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_default.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_default_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_minimum.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_minimum_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_none.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_none_warnaserror.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_recommended.globalconfig",
+        "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_4_recommended_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_all.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_all_warnaserror.globalconfig",
         "buildTransitive/config/analysislevelmicrosoftcodeanalysisreleasetracking_3_3_default.globalconfig",
@@ -4580,6 +4680,7 @@
         "documentation/Analyzer Configuration.md",
         "documentation/Microsoft.CodeAnalysis.Analyzers.md",
         "documentation/Microsoft.CodeAnalysis.Analyzers.sarif",
+        "documentation/readme.md",
         "editorconfig/AllRulesDefault/.editorconfig",
         "editorconfig/AllRulesDisabled/.editorconfig",
         "editorconfig/AllRulesEnabled/.editorconfig",
@@ -4605,7 +4706,7 @@
         "editorconfig/MicrosoftCodeAnalysisReleaseTrackingRulesEnabled/.editorconfig",
         "editorconfig/PortedFromFxCopRulesDefault/.editorconfig",
         "editorconfig/PortedFromFxCopRulesEnabled/.editorconfig",
-        "microsoft.codeanalysis.analyzers.3.3.4.nupkg.sha512",
+        "microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512",
         "microsoft.codeanalysis.analyzers.nuspec",
         "rulesets/AllRulesDefault.ruleset",
         "rulesets/AllRulesDisabled.ruleset",
@@ -8176,7 +8277,7 @@
       "Microsoft.AspNetCore.Components.Analyzers >= 8.0.8",
       "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter >= 8.0.8",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.8",
-      "Microsoft.CodeAnalysis.Analyzers >= 3.3.4",
+      "Microsoft.CodeAnalysis.Analyzers >= 3.11.0",
       "Microsoft.EntityFrameworkCore >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8",
@@ -8185,23 +8286,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\300085063\\.nuget\\packages\\": {},
+    "C:\\Users\\INTEL4400\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectUniqueName": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "projectName": "AgileTeamFour.UI",
-      "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
-      "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
-      "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\obj\\",
+      "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "packagesPath": "C:\\Users\\INTEL4400\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\300085063\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\INTEL4400\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8217,14 +8318,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
+            "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
+              "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
             },
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
+            "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+              "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
             },
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+            "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+              "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
             }
           }
         }
@@ -8260,7 +8361,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[3.3.4, )"
+            "version": "[3.11.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
