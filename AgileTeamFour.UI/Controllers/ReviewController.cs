@@ -35,7 +35,7 @@ namespace AgileTeamFour.Web.Controllers
             else
             {
                 TempData["error"] = "Need admin rights to view page";
-                return RedirectToAction("Index", "Review");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
 
         }
