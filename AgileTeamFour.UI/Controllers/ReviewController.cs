@@ -11,6 +11,10 @@ namespace AgileTeamFour.Web.Controllers
 {
     public class ReviewController : Controller
     {
+        private User GetLoggedInUser()
+        {
+            return HttpContext.Session.GetObject<User>("user");
+        }
 
         public ActionResult Index()
         {
@@ -28,22 +32,36 @@ namespace AgileTeamFour.Web.Controllers
             }
 
         }
+
         public ActionResult Details(int id)
         {
             return View(ReviewManager.LoadById(id));
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int authorId, int recipientId)
         {
-            ViewBag.Title = "Create a Review";
-            if (Authenticate.IsAuthenticated(HttpContext, "admin"))
-                return View();
-            else
+            // Retrieve the logged-in user from session
+            var loggedInUser = GetLoggedInUser();
+
+            // Check if the logged-in user's ID matches the AuthorID
+            if (loggedInUser == null || loggedInUser.UserID != authorId)
             {
-                TempData["error"] = "Need admin rights to view page";
-                return RedirectToAction("Index", "Review");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                // If not authorized, redirect to an unauthorized or another page
+                return RedirectToAction("Index", "Home");
             }
 
+            else
+            {
+                // Create a new Review model with the provided AuthorID and RecipientID
+                var model = new Review
+                {
+                    AuthorID = authorId,
+                    RecipientID = recipientId
+                };
+
+                ViewBag.Title = "Create a Review";
+                return View(model);
+            }
         }
 
         [HttpPost]
@@ -65,7 +83,6 @@ namespace AgileTeamFour.Web.Controllers
             }
         }
 
-
         public ActionResult Edit(int id)
         {
             var items = ReviewManager.LoadById(id);
@@ -83,7 +100,6 @@ namespace AgileTeamFour.Web.Controllers
 
 
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -103,7 +119,6 @@ namespace AgileTeamFour.Web.Controllers
                 return View(review);
             }
         }
-
 
         public ActionResult Delete(int id)
         {
@@ -156,7 +171,7 @@ namespace AgileTeamFour.Web.Controllers
         {
             try
             {
-                ReviewManager.DeleteIncompletedReviews(id);
+                ReviewManager.DeleteIncompleteReviews(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

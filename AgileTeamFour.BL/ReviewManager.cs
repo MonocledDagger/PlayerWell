@@ -198,7 +198,7 @@ namespace AgileTeamFour.BL
             }
         }
 
-        public static int DeleteIncompletedReviews(int id, bool rollback = false)
+        public static int DeleteIncompleteReviews(int id, bool rollback = false)
         {
             int rowsAffected = 0;
 
@@ -225,22 +225,18 @@ namespace AgileTeamFour.BL
         public static int CreatePlayerReviewsAfterEvent(int id, bool rollback = false)
         {
             int rowsAffected = 0;
+
             // Get all the events that have completed in the past week
             List<Events> events = EventManager.Load()
                 .Where(e => e.DateTime >= DateTime.Now.AddDays(-7)
                 && e.DateTime <= DateTime.Now)
                 .OrderByDescending(e => e.DateTime).ToList();
 
-            //Check if their is an Entry in the Reviews table for every
-            //Entry in the playerEvents table that matches the events
-            //In the events list
-            // If not create one with InsertEmptyReview method
-
             // Iterate through each event
             foreach (var evt in events)
             {
                 // Get all participants for the event
-                List<PlayerEvent> playerEvents = PlayerEventManager.LoadByEventID(evt.EventID); // Assuming you have a method to get participant IDs
+                List<PlayerEvent> playerEvents = PlayerEventManager.LoadByEventID(evt.EventID);
 
                 // Create a list of PlayerId attributes from the playerEvents
                 List<int> playerIds = playerEvents.Select(pe => pe.PlayerID).ToList();
@@ -250,16 +246,15 @@ namespace AgileTeamFour.BL
                 {
                     foreach (var recipientId in playerIds)
                     {
-                        if (authorId != recipientId)
+                        if (recipientId != authorId)
                         {
-                            // Check if a review exists for this participant for the current event
-                            bool reviewExists = ReviewManager.ReviewExists(authorId, recipientId); // Assuming you have a method to check for reviews
+                            bool reviewExists = ReviewManager.ReviewExists(authorId, recipientId);
 
                             // If no review exists, create an empty review
                             if (!reviewExists)
                             {
-                                int result = InsertEmptyReview(authorId, recipientId); // Assuming author and recipient are the same
-                                rowsAffected += result; // Increment the total rows affected by the number of reviews created
+                                int result = InsertEmptyReview(authorId, recipientId); // Assuming author and recipient are not the same
+                                rowsAffected++; 
                             }
                         }
                     }                   
