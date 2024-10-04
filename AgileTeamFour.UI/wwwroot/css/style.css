@@ -7,9 +7,10 @@
 
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700");
 body {
-  line-height: 1.4;
-  font-family: "Titillium Web", sans-serif;
-  -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+    font-family: "Titillium Web", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /*background: #00265aff;*/
 }
 
 p {
@@ -451,7 +452,8 @@ a:focus, a:hover {
 
 .navigation {
     transition: 0.3s all;
-    background: #101d38;
+    /*background: #101d38;*/
+    background: #00265aff;
     max-height: 300px;
 }
 .navigation .navbar-nav > li.active a {

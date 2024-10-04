@@ -35,6 +35,7 @@ namespace AgileTeamFour.BL
                     EventName = eventName,
                     Server = server,
                     MaxPlayers = maxPlayers,
+                    
                     Platform = platform,
                     Description = description,
                     DateTime = time,
@@ -65,7 +66,7 @@ namespace AgileTeamFour.BL
             try
             {
                 int results = 0;
-                //Need to Scaffold
+                
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
@@ -149,6 +150,7 @@ namespace AgileTeamFour.BL
             }
 
         }
+
 
 
         public static int Delete(int EventID, bool rollback = false)
@@ -267,9 +269,26 @@ namespace AgileTeamFour.BL
             {
                 throw;
             }
+        }
+        // Added  method to get Author Name of Event
+        public static string GetAuthorName(int eventID)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    // Query the PlayerEvent table for the specified eventID
+                    int authorId = EventManager.LoadByID(eventID)?.AuthorId ?? UserManager.Load().FirstOrDefault().UserID;
 
+                    string? authorName = UserManager.Load().FirstOrDefault(u => u.UserID == authorId)?.UserName;
 
-
+                    return authorName ?? "";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
