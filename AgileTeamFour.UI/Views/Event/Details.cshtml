@@ -20,13 +20,6 @@
                 @Html.DisplayFor(model => model.Event.EventID)
             </dd>
 
-           @*  <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Event.GameID)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Event.GameID)
-            </dd>
-     *@
             <dt class="">
                 @Html.DisplayNameFor(model => model.Game.GameName)
             </dt>
@@ -54,6 +47,12 @@
             </dd>
         </div>
         <div class="col-sm-6">
+            <dt class="">
+                @Html.DisplayNameFor(model => model.currentPlayers)
+            </dt>
+            <dd class="">
+                @Html.DisplayFor(model => model.currentPlayers)
+            </dd>
             <dt class = "">
                 @Html.DisplayNameFor(model => model.Event.MaxPlayers)
             </dt>
@@ -89,17 +88,6 @@
     </dl>
 </div>
 
-@* <div class="container py-3">
-    <h4>Participants</h4>
-    <hr />
-    <br />
-    <ul>
-        @foreach (var playerEvent in Model.PlayerEvents)
-        {
-            <li>@playerEvent.UserName</li> 
-        }
-    </ul>
-</div> *@
 
 <hr />
 <div class="container">
@@ -114,6 +102,8 @@
                 <th>
                     @Html.DisplayNameFor(model => model.PlayerEvents.First().Role)
                 </th>
+
+                
             </tr>
         </thead>
         <tbody>
@@ -127,6 +117,8 @@
                     <td>
                         @playerEvent.Role
                     </td>
+
+                    
                 </tr>
             }
         </tbody>
@@ -144,21 +136,42 @@
         }
     </ul>
     <hr />
-
     <div class="container py-3">
-        <h4>Sign up for this Event</h4>
-        <form asp-action="SignUp" method="post">
-            <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-            <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+        @{
+            var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
+            bool isSignedUp = currentPlayer != null;
+        }
 
-            <div class="form-group">
-                <label for="Role">Role</label>
-                <input type="text" class="form-control" id="Role" name="Role" />
-            </div>
+        @if (Model.currentPlayers >= Model.Event.MaxPlayers && !isSignedUp)
+        {
+            <p class="text-danger">This event is full. No more players can sign up.</p>
+        }
+        else if (isSignedUp)
+        {
+            <p>You are signed up for this event as a @currentPlayer.Role.</p>
+            <form asp-action="LeaveEvent" asp-controller="Event">
+                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                <button type="submit" class="btn btn-danger">Leave Event</button>
+            </form>
+        }
+        else
+        {
+            <h4>Sign up for this Event</h4>
+            <form asp-action="SignUp" method="post">
+                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
 
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+                <div class="form-group">
+                    <label for="Role">Role</label>
+                    <input type="text" class="form-control" id="Role" name="Role" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        }
     </div>
+    
     <hr />
 </div>
 <br />

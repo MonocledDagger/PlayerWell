@@ -12,6 +12,8 @@ namespace AgileTeamFour.UI.ViewModels
         public List<Comment> Comments { get; set; }
 
         public int PlayerID { get; set; }
+        [DisplayName("Event Name")]
+        public int currentPlayers {  get; set; }
 
         [DisplayName("Event Creator")]
         public string AuthorName { get; set; }

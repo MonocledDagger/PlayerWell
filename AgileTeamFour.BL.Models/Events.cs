@@ -18,6 +18,7 @@ namespace AgileTeamFour.BL.Models
             [DisplayName("Max Players")]
             [Range(1, int.MaxValue, ErrorMessage = "Max Players must be a positive number")]
             public int MaxPlayers { get; set; }
+            
             public string Type { get; set; }
             public string Platform { get; set; }
             public string Description { get; set; }
