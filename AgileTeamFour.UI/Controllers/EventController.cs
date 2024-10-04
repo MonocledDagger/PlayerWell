@@ -5,6 +5,7 @@ using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Xml.Linq;
 
 namespace AgileTeamFour.Web.Controllers
@@ -63,8 +64,7 @@ namespace AgileTeamFour.Web.Controllers
 
             var game = GameManager.LoadByID(eventItem.GameID);
             var playerEvents = PlayerEventManager.LoadByEventID(id); 
-            var comments = CommentManager.LoadByEventID(id); 
-
+            var comments = CommentManager.LoadByEventID(id);
             // Create the ViewModel
             var eventDetailsVM = new EventDetailsVM
             {
@@ -72,8 +72,10 @@ namespace AgileTeamFour.Web.Controllers
                 Game = game,
                 PlayerEvents = playerEvents ?? new List<PlayerEvent>(), 
                 Comments = comments ?? new List<Comment>(),
-                PlayerID = playerID
+                PlayerID = playerID,
+                AuthorName = EventManager.GetAuthorName(id)
             };
+
 
             ViewBag.Title = "Details for " + eventItem.EventName;
 
@@ -83,13 +85,15 @@ namespace AgileTeamFour.Web.Controllers
             return View(eventDetailsVM);
         }
 
-
         public ActionResult Create()
         {
             EventVM vm = new EventVM();
             ViewBag.Title = "Create an Event";
             if (Authenticate.IsAuthenticated(HttpContext))
             {
+                var user = HttpContext.Session.GetObject<User>("user");
+                int playerID = user.UserID;
+                TempData["authorID"] = user.UserID;
                 return View(vm);
             }
             else
@@ -97,7 +101,7 @@ namespace AgileTeamFour.Web.Controllers
                 TempData["error"] = "Need to be logged in to Create an Event.";
                 return RedirectToAction("Index", "Event");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
-            
+
         }
 
         [HttpPost]
@@ -109,27 +113,31 @@ namespace AgileTeamFour.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     int eventID = 0;
+                    int authorID = 1;
+                    eventCreateVM.Event.AuthorId = (int)TempData["authorID"];
                     EventManager.Insert(ref eventID,
                         eventCreateVM.Event.GameID,
                         eventCreateVM.Event.EventName,
-                        eventCreateVM.Event.Server, 
+                        eventCreateVM.Event.Server,
                         eventCreateVM.Event.MaxPlayers,
                         eventCreateVM.Event.Type,
-                        eventCreateVM.Event.Platform, 
-                        eventCreateVM.Event.Description, 
+                        eventCreateVM.Event.Platform,
+                        eventCreateVM.Event.Description,
                         eventCreateVM.Event.DateTime,
                         eventCreateVM.Event.AuthorId);
                     return RedirectToAction(nameof(Index));
                 }
                 return View(eventCreateVM);
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                TempData["error"] = ex.InnerException.Message;
+                return RedirectToAction("Index", "Event");
+                //return View();
             }
         }
 
-        
+
         public ActionResult Edit(int id)
         {
             var eventItem = EventManager.LoadByID(id);
@@ -215,7 +223,7 @@ namespace AgileTeamFour.Web.Controllers
             {
                 Event = eventItem,
                 Game = game,
-                
+                AuthorName = EventManager.GetAuthorName(id)
                 
             };
 
