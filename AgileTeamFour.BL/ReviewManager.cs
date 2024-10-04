@@ -133,26 +133,47 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        public static Review LoadById(int id)
+        public static Review LoadById(int reviewId)
         {
             try
             {
-                Review review = new Review();
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
-                    tblReview entity = dc.tblReviews.Where(e => e.ReviewID == id).FirstOrDefault();
-                    review.ReviewID = id;
-                    review.StarsOutOf5 = entity.StarsOutOf5;
-                    review.ReviewText = entity.ReviewText;
-                    review.DateTime = entity.DateTime;
+                    var reviewData = (from r in dc.tblReviews
+                                      join author in dc.tblUsers on r.AuthorID equals author.UserID
+                                      join recipient in dc.tblUsers on r.RecipientID equals recipient.UserID
+                                      where r.ReviewID == reviewId
+                                      select new
+                                      {
+                                          r.ReviewID,
+                                          r.StarsOutOf5,
+                                          r.ReviewText,
+                                          r.AuthorID,
+                                          AuthorName = author.UserName,
+                                          r.RecipientID,
+                                          RecipientName = recipient.UserName,
+                                          r.DateTime
+                                      }).FirstOrDefault();
 
-                    review.AuthorID = entity.AuthorID;
-                    review.RecipientID = entity.RecipientID;
-
-
-                    return review;
+                    if (reviewData != null)
+                    {
+                        return new Review
+                        {
+                            ReviewID = reviewData.ReviewID,
+                            StarsOutOf5 = reviewData.StarsOutOf5,
+                            ReviewText = reviewData.ReviewText,
+                            AuthorID = reviewData.AuthorID,
+                            AuthorName = reviewData.AuthorName,
+                            RecipientID = reviewData.RecipientID,
+                            RecipientName = reviewData.RecipientName,
+                            DateTime = reviewData.DateTime
+                        };
+                    }
+                    else
+                    {
+                        return null; // Handle case where review isn't found
+                    }
                 }
-
             }
             catch (Exception)
             {
@@ -203,9 +224,6 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-
-
-
         public static int DeleteIncompleteReviews(int id, bool rollback = false)
         {
             int rowsAffected = 0;

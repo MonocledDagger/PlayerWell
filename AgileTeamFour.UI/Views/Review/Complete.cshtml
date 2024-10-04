@@ -1,56 +1,67 @@
 ﻿@model AgileTeamFour.BL.Models.Review
 
 @{
-    ViewData["Title"] = "Complete a New Player Review";
+    ViewData["Title"] = "Edit Review";
 }
 
-<h1>Create</h1>
-@*  Create a View Model to show the game you played with them's name and Image plus the Event Name and Date to remind them *@
-<h4>Events</h4>
+<h1>Edit Review</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Event" method="post">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @* Hidden fields for other properties *@
+            <input type="hidden" asp-for="ReviewID" />
+            <input type="hidden" asp-for="AuthorID" />
+            <input type="hidden" asp-for="RecipientID" />
+
             <div class="form-group">
-                <label asp-for="StarsOutOf5" class="control-label">Rate out of 5 Stars</label>
-                <select asp-for="StarsOutOf5" class="form-control" multiple>
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <option value="@i">@i</option>
-                    }
-                </select>
-                <span asp-validation-for="StarsOutOf5" class="text-danger"></span>
+                <label asp-for="AuthorName" class="control-label"></label>
+                <input asp-for="AuthorName" class="form-control" readonly />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="RecipientName" class="control-label"></label>
                 <input asp-for="RecipientName" class="form-control" readonly />
                 <span asp-validation-for="RecipientName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ReviewText" class="control-label"></label>
-                <input asp-for="ReviewText" class="form-control" />
+                <textarea asp-for="ReviewText" class="form-control"></textarea>
                 <span asp-validation-for="ReviewText" class="text-danger"></span>
             </div>
-            <div class="form-group" hidden>
-                <label asp-for="RecipientID" class="control-label"></label>
-                <input asp-for="RecipientID" class="form-control" readonly />
-                <span asp-validation-for="RecipientID" class="text-danger"></span>
-            </div>
-            <div class="form-group" hidden>
-                <label asp-for="AuthorID" class="control-label"></label>
-                <input asp-for="AuthorID" class="form-control" type="number" readonly />
-                <span asp-validation-for="AuthorID" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" readonly />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StarsOutOf5" class="control-label">Rating (Out of 5 Stars)</label>
+                <select asp-for="StarsOutOf5" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <span asp-validation-for="StarsOutOf5" class="text-danger"></span>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Complete" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-secondary btn-sm" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

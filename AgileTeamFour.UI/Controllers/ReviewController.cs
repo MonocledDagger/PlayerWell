@@ -29,8 +29,8 @@ namespace AgileTeamFour.Web.Controllers
             {  // Case for 
                 ViewBag.Title = "Your Reviews";
                 User user = GetLoggedInUser();
-                List<Review> reviews = ReviewManager.LoadPlayerReviews(user.UserID);
-                return RedirectToAction("Players", "Review", reviews);
+                List<Review> reviews = ReviewManager.LoadPlayerReviews(user.UserID).Where(r => r.ReviewText == "87|6#x4A|tkg").ToList();
+                return View("Players", reviews);
             }
             else
             {
@@ -80,9 +80,9 @@ namespace AgileTeamFour.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     ReviewManager.Insert(review);
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Index", "Home");
                 }
-                return View(review);
+                return View();
             }
             catch
             {
@@ -110,7 +110,6 @@ namespace AgileTeamFour.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Edit(int id, Review review, bool rollback = false)
         {
 
