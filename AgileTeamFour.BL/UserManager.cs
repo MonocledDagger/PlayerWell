@@ -153,7 +153,14 @@ namespace AgileTeamFour.BL
                                     user.UserName = tblUser.UserName;
                                     user.DateOfBirth = tblUser.DateOfBirth;
                                     user.AccessLevel = tblUser.AccessLevel;
-                                    return true;
+                                    if (user.AccessLevel != "deactivated")
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        throw new LoginFailureException("Account is deactivated.");
+                                    }
                                 }
                                 else
                                 {

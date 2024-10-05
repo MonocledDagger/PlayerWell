@@ -3,7 +3,8 @@
     public class UserVM
     {
         public User User { get; set; }
-        public IFormFile File { get; set; }  
+        public IFormFile File { get; set; } 
+        
     }
 
 }

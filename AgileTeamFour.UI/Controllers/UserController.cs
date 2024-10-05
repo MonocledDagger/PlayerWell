@@ -2,7 +2,6 @@
 using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualStudio.Web.CodeGeneration.Design;
@@ -31,13 +30,17 @@ namespace AgileTeamFour.UI.Controllers
             else
             {
                 //Show a view with some fields missing              
-                return RedirectToAction("Index2", "User"); 
+                return RedirectToAction("Index2", "User");
             }
-             
+
         }
         public IActionResult Index2()
         {
             ViewBag.Title = "List of All Users";
+
+            //Helps to determine which Edit, Details, and Delete links to display in view for those that are not admins
+            TempData["UserID"] = Authenticate.GetUserID(HttpContext);
+
             return View(UserManager.Load());
         }
 
@@ -58,7 +61,7 @@ namespace AgileTeamFour.UI.Controllers
         public IActionResult Logout()
         {
             SetUser(null);
-            return RedirectToAction("Index", "Home"); 
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Login(string returnUrl)
@@ -91,7 +94,7 @@ namespace AgileTeamFour.UI.Controllers
         public IActionResult Details(int id)
         {
             ViewBag.Title = "Details for User";
-            
+
             if (Authenticate.IsAuthenticated(HttpContext, id) || Authenticate.IsAuthenticated(HttpContext, "admin"))
             {
                 // Show the view with all of its details
@@ -99,9 +102,9 @@ namespace AgileTeamFour.UI.Controllers
             }
             else
             {
-               //Show a view with some fields missing              
-               return RedirectToAction("Details2", "User", new {Id = id});
-            }         
+                //Show a view with some fields missing              
+                return RedirectToAction("Details2", "User", new { Id = id });
+            }
         }
         public IActionResult Details2(int Id)
         {
@@ -111,7 +114,7 @@ namespace AgileTeamFour.UI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            
+
             return View();
         }
 
@@ -186,13 +189,13 @@ namespace AgileTeamFour.UI.Controllers
 
         //}
         public IActionResult Edit(int id)
-        {            
+        {
             if (Authenticate.IsAuthenticated(HttpContext, "admin"))
             {
                 UserVM userVM = new UserVM();
 
                 userVM.User = UserManager.LoadById(id);
-               // userVM.DegreeTypes = DegreeTypeManager.Load();
+                // userVM.DegreeTypes = DegreeTypeManager.Load();
                 //ViewBag.Title = "Edit " + programVM.Program.Description;
 
                 return View(userVM);
@@ -250,8 +253,9 @@ namespace AgileTeamFour.UI.Controllers
             }
         }
         public IActionResult Edit2(int Id)
-        { 
-            if (Authenticate.IsAuthenticated(HttpContext))
+        {
+
+            if (Authenticate.IsAuthenticated(HttpContext, Id))
             {
                 UserVM userVM = new UserVM();
 
@@ -261,13 +265,18 @@ namespace AgileTeamFour.UI.Controllers
                 //ViewBag.Title = "Edit " + programVM.Program.Description;
 
                 return View(userVM);
-            } 
+            }
+            else if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                TempData["error"] = "Cannot Edit data of other Users.";
+                return RedirectToAction("Index2", "User");
+            }
             else
             {
                 TempData["error"] = "Need to be logged in to Edit User data.";
                 return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
-                
+
         }
 
         [HttpPost]
@@ -298,6 +307,35 @@ namespace AgileTeamFour.UI.Controllers
             {
                 ViewBag.Error = ex.Message;
                 return View(userVM);
+            }
+        }
+        
+        public IActionResult Deactivate(int Id)
+        {
+            if (Authenticate.IsAuthenticated(HttpContext, Id) || Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                return View("Deactivate", UserManager.LoadById(Id));
+            }
+            else
+            {                            
+                return RedirectToAction("Index2", "User");
+            }          
+        }
+
+
+        [HttpPost, ActionName("Deactivate")]
+        public IActionResult DeactivatePost(int Id)
+        {
+            try
+            {
+                User user = UserManager.LoadById(Id);
+                user.AccessLevel = "deactivated";
+                UserManager.Update(user);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return RedirectToAction(nameof(Index));
             }
         }
     }

@@ -8292,11 +8292,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "projectName": "AgileTeamFour.UI",
-      "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
-      "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.UI\\obj\\",
+      "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8318,14 +8318,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
+            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
+              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
             },
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
+            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
             },
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\new\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
             }
           }
         }
