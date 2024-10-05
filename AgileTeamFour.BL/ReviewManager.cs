@@ -294,7 +294,7 @@ namespace AgileTeamFour.BL
                 .Where(r => r.AuthorID == id)
                 .OrderByDescending(e => e.DateTime).ToList();
             return reviews;
-        }
+        } 
         private static bool ReviewExists(int authorId, int recipientId)
         {
             try
