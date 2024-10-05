@@ -53,5 +53,17 @@ namespace AgileTeamFour.UI.Models
                 return 0;
             }
         }
+        public static bool IsAdmin(HttpContext context)
+        {
+            User user = context.Session.GetObject<User>("user");
+            if (user != null && user.AccessLevel.ToLower() == "admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
