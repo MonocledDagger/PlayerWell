@@ -4,7 +4,9 @@ using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualStudio.Web.CodeGeneration.Design;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -18,6 +20,22 @@ namespace AgileTeamFour.UI.Controllers
         }
 
         public IActionResult Index()
+        {
+            ViewBag.Title = "List of All Users";
+
+            if (Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                // Show the full view
+                return View(UserManager.Load());
+            }
+            else
+            {
+                //Show a view with some fields missing              
+                return RedirectToAction("Index2", "User"); 
+            }
+             
+        }
+        public IActionResult Index2()
         {
             ViewBag.Title = "List of All Users";
             return View(UserManager.Load());
@@ -73,7 +91,22 @@ namespace AgileTeamFour.UI.Controllers
         public IActionResult Details(int id)
         {
             ViewBag.Title = "Details for User";
-            return View(UserManager.LoadById(id));
+            
+            if (Authenticate.IsAuthenticated(HttpContext, id) || Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                // Show the view with all of its details
+                return View(UserManager.LoadById(id));
+            }
+            else
+            {
+               //Show a view with some fields missing              
+               return RedirectToAction("Details2", "User", new {Id = id});
+            }         
+        }
+        public IActionResult Details2(int Id)
+        {
+            ViewBag.Title = "Details for User";
+            return View(UserManager.LoadById(Id));
         }
         [HttpGet]
         public IActionResult Create()
@@ -99,6 +132,7 @@ namespace AgileTeamFour.UI.Controllers
                         ViewBag.Message = "File uploaded successfully.";
                     }
                 }
+                userVM.User.AccessLevel = "user";  //default creating of a user should start them the lowest account access level
                 int result = UserManager.Insert(userVM.User);
                 return RedirectToAction(nameof(Index));
             }
@@ -152,20 +186,37 @@ namespace AgileTeamFour.UI.Controllers
 
         //}
         public IActionResult Edit(int id)
-        {
-            if (Authenticate.IsAuthenticated(HttpContext))
+        {            
+            if (Authenticate.IsAuthenticated(HttpContext, "admin"))
             {
                 UserVM userVM = new UserVM();
 
                 userVM.User = UserManager.LoadById(id);
                // userVM.DegreeTypes = DegreeTypeManager.Load();
-
                 //ViewBag.Title = "Edit " + programVM.Program.Description;
 
                 return View(userVM);
             }
+            if (Authenticate.IsAuthenticated(HttpContext, id))
+            {
+                UserVM userVM = new UserVM();
+
+                userVM.User = UserManager.LoadById(id);
+                // userVM.DegreeTypes = DegreeTypeManager.Load();
+                //ViewBag.Title = "Edit " + programVM.Program.Description;
+
+                return RedirectToAction("Edit2", "User", new { Id = id });
+            }
+            else if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                TempData["error"] = "Cannot Edit data of other Users.";
+                return RedirectToAction("Index2", "User");
+            }
             else
+            {
+                TempData["error"] = "Need to be logged in to Edit User data.";
                 return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
         }
 
         [HttpPost]
@@ -198,6 +249,56 @@ namespace AgileTeamFour.UI.Controllers
                 return View(userVM);
             }
         }
+        public IActionResult Edit2(int Id)
+        { 
+            if (Authenticate.IsAuthenticated(HttpContext))
+            {
+                UserVM userVM = new UserVM();
 
+                userVM.User = UserManager.LoadById(Id);
+                // userVM.DegreeTypes = DegreeTypeManager.Load();
+
+                //ViewBag.Title = "Edit " + programVM.Program.Description;
+
+                return View(userVM);
+            } 
+            else
+            {
+                TempData["error"] = "Need to be logged in to Edit User data.";
+                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
+                
+        }
+
+        [HttpPost]
+        public IActionResult Edit2(int id, UserVM userVM, bool rollback = false)
+        {
+            try
+            {
+                // Process the image
+
+                if (userVM.File != null)
+                {
+                    userVM.User.IconPic = userVM.File.FileName;
+
+                    string path = _host.WebRootPath + "\\images\\";
+
+                    using (var stream = System.IO.File.Create(path + userVM.File.FileName))
+                    {
+                        userVM.File.CopyTo(stream);
+                        ViewBag.Message = "File Uploaded Successfully...";
+                    }
+                }
+
+
+                int result = UserManager.Update(userVM.User, rollback);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(userVM);
+            }
+        }
     }
 }
