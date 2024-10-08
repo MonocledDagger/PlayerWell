@@ -691,7 +691,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.8": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -3832,10 +3832,10 @@
         "microsoft.aspnetcore.components.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components.Analyzers/8.0.8": {
-      "sha512": "PKujmeqEO8fY/U5bWoww63yMF4XqjSnrq0cP4fXUyz4JVYTkh+MZEFktfLaoVaGU4JbtUNjJFvEYA96H8lbb8Q==",
+    "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "sha512": "czb81hXe2a+w1py/U2MrO3aSb0Ht0r1/I+4vJucjTZwbhHtGubneifS3h05DB6CakT8dgKyS0eypQaLuDKkWtQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.components.analyzers/8.0.8",
+      "path": "microsoft.aspnetcore.components.analyzers/8.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3844,7 +3844,7 @@
         "analyzers/dotnet/cs/Microsoft.AspNetCore.Components.Analyzers.dll",
         "build/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
         "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
-        "microsoft.aspnetcore.components.analyzers.8.0.8.nupkg.sha512",
+        "microsoft.aspnetcore.components.analyzers.8.0.10.nupkg.sha512",
         "microsoft.aspnetcore.components.analyzers.nuspec"
       ]
     },
@@ -8274,7 +8274,7 @@
       "AgileTeamFour.BL >= 1.0.0",
       "AgileTeamFour.BL.Models >= 1.0.0",
       "AgileTeamFour.PL >= 1.0.0",
-      "Microsoft.AspNetCore.Components.Analyzers >= 8.0.8",
+      "Microsoft.AspNetCore.Components.Analyzers >= 8.0.10",
       "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter >= 8.0.8",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.8",
       "Microsoft.CodeAnalysis.Analyzers >= 3.11.0",
@@ -8286,23 +8286,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\300085063\\.nuget\\packages\\": {},
+    "C:\\Users\\INTEL4400\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectUniqueName": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "projectName": "AgileTeamFour.UI",
-      "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
-      "packagesPath": "C:\\Users\\300085063\\.nuget\\packages\\",
-      "outputPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\obj\\",
+      "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "packagesPath": "C:\\Users\\INTEL4400\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\300085063\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\INTEL4400\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8318,14 +8318,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
+            "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
+              "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
             },
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
+            "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+              "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
             },
-            "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-              "projectPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+            "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+              "projectPath": "C:\\Users\\INTEL4400\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
             }
           }
         }
@@ -8347,7 +8347,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Components.Analyzers": {
             "target": "Package",
-            "version": "[8.0.8, )"
+            "version": "[8.0.10, )"
           },
           "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
             "target": "Package",
