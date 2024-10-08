@@ -2,6 +2,7 @@
 using AgileTeamFour.BL.Models;
 using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
@@ -114,7 +115,24 @@ namespace AgileTeamFour.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EventVM eventCreateVM)
-        {
+        {   // Check if game already exists in database if not add it
+            Game existingGame = GameManager.LoadByID(eventCreateVM.Event.GameID, true);
+
+            if (existingGame == null)
+            {
+                Game newGame = new Game
+                {
+                    GameID = eventCreateVM.Event.GameID,
+                    GameName = eventCreateVM.Game.GameName,
+                    Description = eventCreateVM.Game.Description,
+                    Genre = eventCreateVM.Game.Genre,
+                    Picture = eventCreateVM.Game.Picture,
+                    Platform = eventCreateVM.Event.Platform,
+                };
+
+                GameManager.Insert(newGame);
+            }
+
             try
             {
                 if (ModelState.IsValid)
@@ -152,16 +170,12 @@ namespace AgileTeamFour.Web.Controllers
             {
                 return NotFound();
             }
-            var allGames = GameManager.Load();
-
 
             // Create the ViewModel
             var eventDetailsVM = new EventVM
             {
                 Event = eventItem,
-                Games = allGames,
-
-
+                Game = GameManager.LoadByID(eventItem.GameID),
             };
 
             ViewBag.Title = "Edit " + eventItem.EventName;
@@ -209,9 +223,11 @@ namespace AgileTeamFour.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Reload the games if the model is invalid to re-populate the form
-            model.Games = GameManager.Load();
-            return View(model);
+            else
+            {
+                return View(model);
+            }
+
         }
 
 

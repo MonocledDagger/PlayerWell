@@ -62,7 +62,7 @@ namespace AgileTeamFour.BL
                     tblGame entity = new tblGame();
 
                     //Assign GameID
-                    entity.GameID = dc.tblGames.Any() ? dc.tblGames.Max(s => s.GameID) + 1 : 1;
+                    entity.GameID = game.GameID;
                     entity.GameName = game.GameName;
                     entity.Platform = game.Platform;
                     entity.Description = game.Description;
@@ -169,7 +169,7 @@ namespace AgileTeamFour.BL
         }
 
 
-        public static Models.Game LoadByID(int GameID)
+        public static Models.Game LoadByID(int GameID, bool gameSearch = false)
         {
             try
             {
@@ -189,6 +189,9 @@ namespace AgileTeamFour.BL
                             Genre = entity.Genre,
 
                         };
+                    }
+                    else if (gameSearch){
+                        return null;
                     }
                     else
                     {
