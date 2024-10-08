@@ -224,7 +224,7 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-        public static int DeleteIncompleteReviews(int id, bool rollback = false)
+        public static int DeleteIncompleteReviews(bool rollback = false)
         {
             int rowsAffected = 0;
 
@@ -248,7 +248,7 @@ namespace AgileTeamFour.BL
             }
             return rowsAffected;
         }
-        public static int CreatePlayerReviewsAfterEvent(int id, bool rollback = false)
+        public static int CreatePlayerReviewsAfterEvent(bool rollback = false)
         {
             int rowsAffected = 0;
 
