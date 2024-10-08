@@ -53,6 +53,18 @@ namespace AgileTeamFour.UI.Models
                 return 0;
             }
         }
+        public static string GetUserName(HttpContext context)
+        {
+            User user = context.Session.GetObject<User>("user");
+            if (user != null)
+            {
+                return user.UserName;
+            }
+            else
+            {
+                return "";
+            }
+        }
         public static bool IsAdmin(HttpContext context)
         {
             User user = context.Session.GetObject<User>("user");
