@@ -328,6 +328,42 @@ namespace AgileTeamFour.BL
             return rowsAffected;
         }
 
+        public static int CalculateReviewLevel(int playerID)
+        {
+            int score = 0;
+
+            List<Review> reviews = ReviewManager.LoadPlayerReviews(playerID).OrderBy(r => r.DateTime).ToList();
+
+            // Process reviews to calculate points
+            foreach (var review in reviews)
+            {
+                int pointsToAdd = CalculatePoints(review.StarsOutOf5);
+                score += pointsToAdd;
+            }
+            return score;
+        }
+        public static int CalculatePoints(int stars)
+        {
+            switch (stars)
+            {
+                case 1: return -15;
+                case 2: return -10;
+                case 3: return 5;
+                case 4: return 15;
+                case 5: return 25;
+                default: return 0;
+            }
+        }
+        public static int CalculateLevel(int points)
+        {
+            if (points >= 0 && points <= 50) return 1;
+            else if (points >= 51 && points <= 150) return 2;
+            else if (points >= 151 && points <= 300) return 3;
+            else if (points >= 301 && points <= 500) return 4;
+            else if (points >= 501 && points <= 750) return 5;
+            else return 5; // Cap level at 5 if points exceed 750
+        }
+
 
 
 
