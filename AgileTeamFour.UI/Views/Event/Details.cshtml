@@ -127,6 +127,10 @@
 
 <div class="container py-3">
     <h4>Comments</h4>
+    @{
+        var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
+        bool isSignedUp = currentPlayer != null;
+    }
     <hr />
     <br />
     <ul>
@@ -135,12 +139,22 @@
             <li>@comment.Text - @comment.AuthorID</li> 
         }
     </ul>
+    @if(isSignedUp)
+    {
+        <hr />
+        <br />
+        <form asp-action="AddComment" method="post" asp-controller="Event">
+            <label for="comment">Add Comment</label>
+            <br />
+            <textarea name="CommentText" id="comment" rows="8" cols="75"></textarea>
+            <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+            <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+            <input type="submit" value="Submit"/>
+        </form>
+    }
     <hr />
     <div class="container py-3">
-        @{
-            var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
-            bool isSignedUp = currentPlayer != null;
-        }
+
 
         @if (Model.currentPlayers >= Model.Event.MaxPlayers && !isSignedUp)
         {

@@ -64,7 +64,7 @@ namespace AgileTeamFour.Web.Controllers
             var playerID = user?.UserID ?? 0;
 
             var game = GameManager.LoadByID(eventItem.GameID);
-            var playerEvents = PlayerEventManager.LoadByEventID(id); 
+            var playerEvents = PlayerEventManager.LoadByEventID(id);
             var comments = CommentManager.LoadByEventID(id);
 
 
@@ -76,17 +76,17 @@ namespace AgileTeamFour.Web.Controllers
             {
                 Event = eventItem,
                 Game = game,
-                PlayerEvents = playerEvents ?? new List<PlayerEvent>(), 
+                PlayerEvents = playerEvents ?? new List<PlayerEvent>(),
                 Comments = comments ?? new List<Comment>(),
                 PlayerID = playerID,
-                currentPlayers= currentPlayers,
+                currentPlayers = currentPlayers,
                 AuthorName = EventManager.GetAuthorName(id)
             };
 
 
             ViewBag.Title = "Details for " + eventItem.EventName;
 
-            
+
 
             // Pass the ViewModel to the view
             return View(eventDetailsVM);
@@ -136,7 +136,7 @@ namespace AgileTeamFour.Web.Controllers
                 }
                 return View(eventCreateVM);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 TempData["error"] = ex.InnerException.Message;
                 return RedirectToAction("Index", "Event");
@@ -176,7 +176,7 @@ namespace AgileTeamFour.Web.Controllers
                 TempData["error"] = "Need admin or author rights to view page";
                 return RedirectToAction("Index", "Event");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
-                    
+
         }
 
 
@@ -195,7 +195,7 @@ namespace AgileTeamFour.Web.Controllers
 
                 // Update the event fields
                 eventItem.EventName = model.Event.EventName;
-                eventItem.GameID = model.Event.GameID; 
+                eventItem.GameID = model.Event.GameID;
                 eventItem.Server = model.Event.Server;
                 eventItem.MaxPlayers = model.Event.MaxPlayers;
                 eventItem.Type = model.Event.Type;
@@ -223,7 +223,7 @@ namespace AgileTeamFour.Web.Controllers
                 return NotFound();
             }
             var game = GameManager.LoadByID(eventItem.GameID);
-            
+
 
             // Create the ViewModel
             var eventDetailsVM = new EventDetailsVM
@@ -231,7 +231,7 @@ namespace AgileTeamFour.Web.Controllers
                 Event = eventItem,
                 Game = game,
                 AuthorName = EventManager.GetAuthorName(id)
-                
+
             };
 
             ViewBag.Title = "Delete " + eventItem.EventName;
@@ -248,7 +248,7 @@ namespace AgileTeamFour.Web.Controllers
             }
         }
 
-    [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -301,25 +301,25 @@ namespace AgileTeamFour.Web.Controllers
 
 
                 }
-                else if(existingPlayer != null)
-                { 
-                        // Player is already signed up for the event
-                        TempData["error"] = "You are already signed up for this event.";
-                        return RedirectToAction("Details", new { id = EventID });
-                    
+                else if (existingPlayer != null)
+                {
+                    // Player is already signed up for the event
+                    TempData["error"] = "You are already signed up for this event.";
+                    return RedirectToAction("Details", new { id = EventID });
+
                 }
                 else
                 {
                     // Insert the new player event
                     PlayerEventManager.Insert(PlayerID, EventID, Role);
 
-                    
+
                     // Redirect back to the details page
                     return RedirectToAction("Details", new { id = EventID });
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Show error message 
                 ViewBag.ErrorMessage = "Error while signing up: " + ex.Message;
@@ -327,10 +327,10 @@ namespace AgileTeamFour.Web.Controllers
             }
         }
 
-      
-        public ActionResult LeaveEvent(int eventID, int playerID) 
+
+        public ActionResult LeaveEvent(int eventID, int playerID)
         {
-            
+
 
             // Perform the deletion only if the player is signed in
             if (playerID != 0)
@@ -340,5 +340,24 @@ namespace AgileTeamFour.Web.Controllers
             //return RedirectToAction("Details", new { id = id }); // Redirect back to event details
             return RedirectToAction("Details", new { id = eventID });
         }
+    
+    [HttpPost]
+    public ActionResult AddComment(string CommentText, int eventID, int playerID)
+    {
+        Comment comment = new Comment();
+        comment.TimePosted = DateTime.Now;
+        comment.AuthorID = playerID;
+        comment.EventID = eventID;
+        comment.Text = CommentText;
+
+        if(CommentText != null && CommentText.Trim() != "")
+        {
+            CommentManager.Insert(comment);
+        }
+          
+            
+        return RedirectToAction("Details", new { id = eventID });
     }
+  }
 }
+
