@@ -62,7 +62,7 @@ namespace AgileTeamFour.Web.Controllers
             //Get PlayerID from session for sign up
             var user = HttpContext.Session.GetObject<User>("user");
             var playerID = user?.UserID ?? 0;
-
+ 
             var game = GameManager.LoadByID(eventItem.GameID);
             var playerEvents = PlayerEventManager.LoadByEventID(id);
             var comments = CommentManager.LoadByEventID(id);
@@ -80,7 +80,8 @@ namespace AgileTeamFour.Web.Controllers
                 Comments = comments ?? new List<Comment>(),
                 PlayerID = playerID,
                 currentPlayers = currentPlayers,
-                AuthorName = EventManager.GetAuthorName(id)
+                AuthorName = EventManager.GetAuthorName(id),
+                Users = UserManager.Load() ?? new List<User>()
             };
 
 

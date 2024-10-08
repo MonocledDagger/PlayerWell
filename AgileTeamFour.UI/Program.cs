@@ -1,8 +1,9 @@
+using AgileTeamFour.UI.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSignalR();
 // Add the ability to access HttpContext (session in laymens terms)
 builder.Services.AddHttpContextAccessor();
 
@@ -12,6 +13,7 @@ builder.Services.AddSession(options => // Add this so session variables will per
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
 
 
 
@@ -37,5 +39,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapHub<ChatHub>("/chatHub");
 app.Run();

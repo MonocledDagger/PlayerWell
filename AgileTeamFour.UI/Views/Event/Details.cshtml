@@ -133,25 +133,57 @@
     }
     <hr />
     <br />
-    <ul>
+    <ul id="messagesList">
         @foreach (var comment in Model.Comments)
         {
-            <li>@comment.Text - @comment.AuthorID</li> 
+            <li>@comment.Text - @{@Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID).UserName}</li> 
         }
     </ul>
-    @if(isSignedUp)
-    {
-        <hr />
-        <br />
-        <form asp-action="AddComment" method="post" asp-controller="Event">
-            <label for="comment">Add Comment</label>
+    <!-- Commented out.  Old comment section, does not update real-time like SignalR.  Requires page refresh to see updates.
+        @if(isSignedUp)
+        {
+            <hr />
             <br />
-            <textarea name="CommentText" id="comment" rows="8" cols="75"></textarea>
+            <form asp-action="AddComment" method="post" asp-controller="Event">
+                <label for="comment">Add Comment</label>
+                <br />
+                <textarea name="CommentText" id="comment" rows="8" cols="75"></textarea>
+                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                <input type="submit" value="Submit"/>
+            </form>
+        }
+    -->   
+    <!--**********************************************************************************************************************************-->
+    <!--**********************************************************************************************************************************-->
+    <!--Signal R Comment Functions-->
+    @if (isSignedUp)
+    {
+        <div class="container">
+            <div class="row p-1">
+                <div class="col-5">User</div>
+                <input type="text" id="userName" value="@{@Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName}" readonly maxlength="55"/>
+            </div>
+            <div class="row p-1">
+                <div>Message</div>
+                <textarea class="col-5" id="messageName" rows="8" cols="75"></textarea>
+            </div>
+            <div class="row p-1">
+                <div class="col-6 text-end">
+                    <input type="button" id="sendButton" value="Send Message" />
+                </div>
+            </div>
+
             <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-            <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
-            <input type="submit" value="Submit"/>
-        </form>
+            <input type="hidden" name="AuthorID" value="@Model.PlayerID" />
+        </div>
+        <!--Scripts needed for SignalR chat function!-->
+        <script src="~/js/signalr/dist/browser/signalr.js"></script>
+        <script src="~/js/chat.js"></script>
     }
+    <!--Signal R Comment Functions-->
+    <!--**********************************************************************************************************************************-->
+    <!--**********************************************************************************************************************************-->   
     <hr />
     <div class="container py-3">
 
@@ -194,3 +226,4 @@
     
     <a class="btn btn-secondary btn-sm" asp-action="Index">Back to List</a>
 </div>
+
