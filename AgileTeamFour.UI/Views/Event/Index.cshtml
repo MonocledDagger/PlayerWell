@@ -23,7 +23,7 @@
     {
         <div class="col-md-4 hover-shadow">
             <div class="card mb-4" style="width: 100%;">
-                <img src="~/images/Games/@item.Game.Picture" class="card-img-top" alt="@item.Event.Description">
+                <img src="@item.Game.Picture" class="card-img-top" alt="@item.Event.Description">
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Event.EventName)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Event.Description)</p>
