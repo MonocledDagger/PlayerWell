@@ -11,6 +11,7 @@ namespace AgileTeamFour.BL.Models
         public class Events
         {
             public int EventID { get; set; }
+            [DisplayName("Game Name")]
             public int GameID { get; set; }
             [DisplayName("Event Name")]
             public string EventName { get; set; }

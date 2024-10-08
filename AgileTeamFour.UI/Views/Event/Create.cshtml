@@ -12,26 +12,42 @@
     <div class="col-md-4">
         <form asp-action="Create" asp-controller="Event" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*  <div class="form-group">
-            <label asp-for="Event.EventID" class="control-label"></label>
-            <input asp-for="Event.EventID" class="form-control" />
-            <span asp-validation-for="Event.EventID" class="text-danger"></span>
-            </div> *@
 
+            <!-- Dynamic GameID Input -->
             <div class="form-group">
                 <label asp-for="Event.GameID" class="control-label"></label>
-                <select asp-for="Event.GameID"
-                        class="form-control"
-                        multiple
-                        asp-items="@(new MultiSelectList(Model.Games, "GameID", "GameName"))">
-                </select>
+                <input type="text" id="gameSearch" class="form-control" placeholder="Search for a game..." />
+                <!-- Hidden input to store selected GameID -->
+                <input type="hidden" id="selectedGameId" name="Event.GameID" />
+                <!-- Hidden input to store selected GameName -->
+                <input type="hidden" id="selectedGameName" name="Game.GameName" />
+                <!-- Hidden input to store selected Game Genre -->
+                <input type="hidden" id="selectedGameGenre" name="Game.Genre" />
+                <!-- Hidden input to store selected Game Description -->
+                <input type="hidden" id="selectedGameDescription" name="Game.Description" />
+                <!-- Hidden input to store selected Game Image -->
+                <input type="hidden" id="selectedGameImage" name="Game.Picture" />
+                <!-- Hidden input to store selected Game Platform -->
+                <div id="gameDropdown" class="dropdown-menu" style="display:none;"></div>
                 <span asp-validation-for="Event.GameID" class="text-danger"></span>
             </div>
-
+            <!-- Additional Game Information Section -->
+            <div class="form-group" id="gameInfoSection" style="display:none;">
+                <h4>Selected Game Details</h4>
+                <div id="gameImageContainer"></div>
+                <p><strong>Genres:</strong> <span id="gameGenres"></span></p>
+                <p><strong>Description:</strong></p>
+                <p id="gameDescription"></p>
+            </div>
             <div class="form-group">
                 <label asp-for="Event.EventName" class="control-label"></label>
                 <input asp-for="Event.EventName" class="form-control" />
                 <span asp-validation-for="Event.EventName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Event.Description" class="control-label"></label>
+                <input asp-for="Event.Description" class="form-control" />
+                <span asp-validation-for="Event.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Event.Server" class="control-label"></label>
@@ -54,11 +70,6 @@
                 <span asp-validation-for="Event.Platform" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Event.Description" class="control-label"></label>
-                <input asp-for="Event.Description" class="form-control" />
-                <span asp-validation-for="Event.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Event.DateTime" class="control-label"></label>
                 <input asp-for="Event.DateTime" class="form-control" />
                 <span asp-validation-for="Event.DateTime" class="text-danger"></span>
@@ -75,7 +86,123 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $(document).ready(function () {
+            var $input = $('#gameSearch');
+            var $dropdown = $('#gameDropdown');
+            var $hiddenIdInput = $('#selectedGameId');
+            var $hiddenNameInput = $('#selectedGameName');
+            var $hiddenGenreInput = $('#selectedGameGenre');
+            var $hiddenDescriptionInput = $('#selectedGameDescription');
+            var $hiddenGameImage = $('#selectedGameImage');
+            var $gameInfoSection = $('#gameInfoSection');
+            var $gameImageContainer = $('#gameImageContainer');
+            var $gameGenres = $('#gameGenres');
+            var $gameDescription = $('#gameDescription');
+
+            // RAWG API key
+            var apiKey = '478858b62b2042d8a325a06eb9067767';
+
+            // Event handler for when the user types in the input field
+            $input.on('input', function () {
+                var query = $input.val();
+
+                // Only trigger search if the input has 3 or more characters
+                if (query.length >= 3) {
+                    $.ajax({
+                        url: `https://api.rawg.io/api/games?key=${apiKey}&search=${encodeURIComponent(query)}`,
+                        type: 'GET',
+                        success: function (data) {
+                            $dropdown.empty(); // Clear previous results
+                            if (data.results.length > 0) {
+                                $dropdown.show();
+                                data.results.forEach(function (game) {
+                                    var gameOption = $('<a/>', {
+                                        'class': 'dropdown-item',
+                                        'text': game.name, // Display game name
+                                        'href': '#',
+                                        'click': function () {
+                                            $input.val(game.name); // Fill the input with the selected game name
+                                            $hiddenIdInput.val(game.id); // Set the hidden input with the selected game ID
+                                            $hiddenNameInput.val(game.name); // Set the hidden input with the selected game name
+                                            $hiddenGameImage.val(game.background_image)
+                                            $dropdown.hide(); // Hide the dropdown
+
+                                            // Call another function to get the game details (image, genre, description)
+                                            fetchGameDetails(game.id);
+
+                                            return false;
+                                        }
+                                    });
+                                    $dropdown.append(gameOption);
+                                });
+                            } else {
+                                $dropdown.hide();
+                            }
+                        },
+                        error: function () {
+                            $dropdown.hide();
+                        }
+                    });
+                } else {
+                    $dropdown.hide(); // Hide dropdown if less than 3 characters
+                }
+            });
+
+            // Function to fetch game details using the GameID
+            function fetchGameDetails(gameId) {
+                $.ajax({
+                    url: `https://api.rawg.io/api/games/${gameId}?key=${apiKey}`,
+                    type: 'GET',
+                    success: function (gameData) {
+                        if (gameData) {
+                            // Show game information section
+                            $gameInfoSection.show();
+
+                            // Display game image
+                            if (gameData.background_image) {
+                                $gameImageContainer.html(`<img src="${gameData.background_image}" alt="Game Image" style="max-width: 100%; height: auto;" />`);
+                            }
+
+                            // Display game genres
+                            if (gameData.genres && gameData.genres.length > 0) {
+                                // Get the first genre
+                                var firstGenre = gameData.genres[0].name;
+
+                                // Truncate to 15 characters
+                                var truncatedGenre = firstGenre.length > 15 ? firstGenre.substring(0, 15) + '...' : firstGenre;
+
+                                $gameGenres.text(truncatedGenre); // Display truncated genre
+                                $hiddenGenreInput.val(firstGenre); // Set the hidden input for the full genre
+                            }
+
+                            // Display game description (limit to 250 characters)
+                            if (gameData.description_raw) {
+                                var fullDescription = gameData.description_raw;
+                                var truncatedDescription = fullDescription.length > 250
+                                    ? fullDescription.substring(0, 250) + '...'
+                                    : fullDescription;
+                                $gameDescription.text(truncatedDescription);
+                                $hiddenDescriptionInput.val(truncatedDescription); // Set the hidden input for description
+                            } else {
+                                $gameDescription.text('No description available.');
+                                $hiddenDescriptionInput.val('No description available.'); // Set the hidden input for description
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to load game details.');
+                    }
+                });
+            }
+
+            // Hide the dropdown if the user clicks outside
+            $(document).on('click', function (e) {
+                if (!$(e.target).closest('#gameSearch, #gameDropdown').length) {
+                    $dropdown.hide();
+                }
+            });
+        });
+    </script>
 }

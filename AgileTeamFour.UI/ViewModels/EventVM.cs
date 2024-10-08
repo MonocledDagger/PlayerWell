@@ -9,12 +9,13 @@ namespace AgileTeamFour.UI.ViewModels
         //public IEnumerable<PlayerEvent> PlayerEvents { get; set; } = new List<PlayerEvent>();
         //public List<Comment> Comments { get; set; } = new List<Comment>();
 
-        public List<Game> Games { get; set; } = new List<Game>();
+        public Game Game { get; set; }
         //public IEnumerable<int> GameIDs { get; set; } = new List<int>();
 
         public EventVM()
         {
-            Games = GameManager.Load();
+            Game = new Game();
+            Game.Platform = "None";
         }
 
         //public EventVM(int id)

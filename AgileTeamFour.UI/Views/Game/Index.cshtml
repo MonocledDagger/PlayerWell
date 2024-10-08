@@ -49,10 +49,11 @@
                 @Html.DisplayFor(modelItem => item.GameName)
             </td>
             <td>
-                    <img src="~/images/Games/@item.Picture"
+                    <img src="@item.Picture"
                          id="movieimage"
+                         class="card-img-top"
                          alt="@item.Description"
-                         onclick="on('/images/Games/@item.Picture')"
+                         onclick="on('@item.Picture')"
                          class="img-fluid" />
             </td>
             <td>
