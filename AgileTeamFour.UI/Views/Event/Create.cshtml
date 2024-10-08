@@ -21,8 +21,14 @@
                 <div id="gameDropdown" class="dropdown-menu" style="display:none;"></div>
                 <span asp-validation-for="Event.GameID" class="text-danger"></span>
             </div>
-            <!-- End Dynamic GameID Input -->
-
+            <!-- Additional Game Information Section -->
+            <div class="form-group" id="gameInfoSection" style="display:none;">
+                <h4>Selected Game Details</h4>
+                <div id="gameImageContainer"></div>
+                <p><strong>Genres:</strong> <span id="gameGenres"></span></p>
+                <p><strong>Description:</strong></p>
+                <p id="gameDescription"></p>
+            </div>
             <div class="form-group">
                 <label asp-for="Event.EventName" class="control-label"></label>
                 <input asp-for="Event.EventName" class="form-control" />
@@ -76,6 +82,10 @@
             var $input = $('#gameSearch');
             var $dropdown = $('#gameDropdown');
             var $hiddenInput = $('#selectedGameId');
+            var $gameInfoSection = $('#gameInfoSection');
+            var $gameImageContainer = $('#gameImageContainer');
+            var $gameGenres = $('#gameGenres');
+            var $gameDescription = $('#gameDescription');
 
             // RAWG API key
             var apiKey = '478858b62b2042d8a325a06eb9067767';
@@ -102,6 +112,10 @@
                                             $input.val(game.name); // Fill the input with the selected game name
                                             $hiddenInput.val(game.id); // Set the hidden input with the selected game ID
                                             $dropdown.hide(); // Hide the dropdown
+
+                                            // Call another function to get the game details (image, genre, description)
+                                            fetchGameDetails(game.id);
+
                                             return false;
                                         }
                                     });
@@ -119,6 +133,48 @@
                     $dropdown.hide(); // Hide dropdown if less than 3 characters
                 }
             });
+
+            // Function to fetch game details using the GameID
+            function fetchGameDetails(gameId) {
+                $.ajax({
+                    url: `https://api.rawg.io/api/games/${gameId}?key=${apiKey}`,
+                    type: 'GET',
+                    success: function (gameData) {
+                        if (gameData) {
+                            // Show game information section
+                            $gameInfoSection.show();
+
+                            // Display game image
+                            if (gameData.background_image) {
+                                $gameImageContainer.html(`<img src="${gameData.background_image}" alt="Game Image" style="max-width: 100%; height: auto;" />`);
+                            }
+
+                            // Display game genres
+                            if (gameData.genres && gameData.genres.length > 0) {
+                                var genreNames = gameData.genres.map(function (genre) {
+                                    return genre.name;
+                                });
+                                $gameGenres.text(genreNames.join(', '));
+                            }
+
+                            // Display game description (limit to 250 characters)
+                            if (gameData.description_raw) {
+                                var fullDescription = gameData.description_raw;
+                                var truncatedDescription = fullDescription.length > 250
+                                    ? fullDescription.substring(0, 250) + '...'
+                                    : fullDescription;
+                                $gameDescription.text(truncatedDescription);
+                            } else {
+                                $gameDescription.text('No description available.');
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to load game details.');
+                    }
+                });
+            }
+
 
             // Hide the dropdown if the user clicks outside
             $(document).on('click', function (e) {
