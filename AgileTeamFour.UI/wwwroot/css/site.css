@@ -34,8 +34,8 @@ main {
 }
 
 .imagesmall{
-    width:50%;
-    height:50%;
+    max-width: 500px;
+    height:auto;
 }
 .imagemedium{
     width:200px;
@@ -51,4 +51,9 @@ main {
 .nav-item .nav-link:hover {
     font-size: 130%;
     transition: font-size 0.3s ease; 
+}
+
+.gamename{
+    width:200px;
+
 }
