@@ -57,3 +57,47 @@ main {
     width:200px;
 
 }
+/* RGO  style for reviews */
+.review-list {
+    margin-top: 20px;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.review-stars .fa {
+    font-size: 1.2em;
+    color: #ddd; /* Default color for empty stars */
+}
+
+    .review-stars .fa.checked {
+        color: #ffd700; /* Gold color for full stars */
+    }
+
+.review-body {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.review-footer {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.review-actions {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
