@@ -11,6 +11,7 @@ namespace AgileTeamFour.UI.ViewModels
         public IEnumerable<PlayerEvent> PlayerEvents { get; set; }
         public List<Comment> Comments { get; set; }
         public List<User> Users { get; set; }
+        // Current User Logged in viewing the Event Detail's ID
         public int PlayerID { get; set; }
         [DisplayName("Event Name")]
         public int currentPlayers {  get; set; }

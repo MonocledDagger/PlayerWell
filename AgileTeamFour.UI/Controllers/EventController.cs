@@ -14,8 +14,6 @@ namespace AgileTeamFour.Web.Controllers
 {
     public class EventController : Controller
     {
-
-
         public ActionResult Index()
         {
             var events = EventManager.Load(); // Load the events from the manager
@@ -344,7 +342,6 @@ namespace AgileTeamFour.Web.Controllers
             }
         }
 
-
         public ActionResult LeaveEvent(int eventID, int playerID)
         {
 
@@ -358,23 +355,38 @@ namespace AgileTeamFour.Web.Controllers
             return RedirectToAction("Details", new { id = eventID });
         }
     
-    [HttpPost]
-    public ActionResult AddComment(string CommentText, int eventID, int playerID)
-    {
-        Comment comment = new Comment();
-        comment.TimePosted = DateTime.Now;
-        comment.AuthorID = playerID;
-        comment.EventID = eventID;
-        comment.Text = CommentText;
-
-        if(CommentText != null && CommentText.Trim() != "")
+        [HttpPost]
+        public ActionResult AddComment(string commentText, int eventID, int playerID)
         {
-            CommentManager.Insert(comment);
-        }
+            Comment comment = new Comment();
+            comment.TimePosted = DateTime.Now;
+            comment.AuthorID = playerID;
+            comment.EventID = eventID;
+            comment.Text = commentText;
+
+            if(commentText != null && commentText.Trim() != "")
+            {
+                CommentManager.Insert(comment);
+            }
           
             
-        return RedirectToAction("Details", new { id = eventID });
+            return RedirectToAction("Details", new { id = eventID });
+        }
+
+        [HttpPost]
+        public ActionResult InviteEvent(int eventID, string playerName)
+        {   // Try adding the player and return a message with reault of attempt
+            TempData["SuccessMessage"] = null;
+            TempData["ErrorMessage"] = null;
+            string resultMessage = PlayerEventManager.InviteEvent(playerName, eventID);
+
+            if (resultMessage == "Player invited successfully")
+                TempData["SuccessMessage"] = resultMessage; // Have to use temp data as viewbag
+            else
+                TempData["ErrorMessage"] = resultMessage;   // Does not persist across requests
+                                                            // Whicih occirs with the RedirectAction
+            return RedirectToAction("Details", new { id = eventID });
+        }
     }
-  }
 }
 

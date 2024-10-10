@@ -127,7 +127,7 @@
 
 <div class="container py-3">
     <h4>Comments</h4>
-    @{
+    @{  // Model.PlayerID is the ID of the User viewing the page if they are logged in
         var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
         bool isSignedUp = currentPlayer != null;
     }
@@ -195,6 +195,21 @@
         else if (isSignedUp)
         {
             <p>You are signed up for this event as a @currentPlayer.Role.</p>
+            <form asp-action="InviteEvent" asp-controller="Event">
+                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                <button type="submit" class="btn btn-danger">Invite Player</button>
+                <input type="text" name="PlayerName" value="" placeholder="Enter a Player's Name" />
+            </form>
+            @* Check if there is an error message to display *@
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+            }
+            @* Success message section (optional) *@
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success mt-2">@TempData["SuccessMessage"]</div>
+            }
             <form asp-action="LeaveEvent" asp-controller="Event">
                 <input type="hidden" name="EventID" value="@Model.Event.EventID" />
                 <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
