@@ -125,39 +125,81 @@
     </table>
 </div>
 
-<div class="container py-3">
+<!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
+
+
+<div class="container py-3 chat-container">
     <h4>Comments</h4>
     @{
         var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
         bool isSignedUp = currentPlayer != null;
+        var currentUserId = Model.PlayerID;
     }
     <hr />
-    <br />
-    <ul id="messagesList">
-        @foreach (var comment in Model.Comments)
-        {
-            <li>@comment.Text - @{@Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID).UserName}</li> 
-        }
-    </ul>
-    <!-- Commented out.  Old comment section, does not update real-time like SignalR.  Requires page refresh to see updates.
-        @if(isSignedUp)
-        {
-            <hr />
-            <br />
-            <form asp-action="AddComment" method="post" asp-controller="Event">
-                <label for="comment">Add Comment</label>
-                <br />
-                <textarea name="CommentText" id="comment" rows="8" cols="75"></textarea>
+
+    <div class="chat-box">
+        <!-- Chat Messages Section -->
+        <ul id="messagesList" class="chat-messages">
+            @foreach (var comment in Model.Comments)
+            {
+                var author = @Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID);
+                var isCurrentUser = comment.AuthorID == currentUserId;
+                <li class="chat-message @(isCurrentUser ? "sent" : "received")">
+                        @if (!isCurrentUser)
+                        {
+                        <img class="avatar"
+                             alt="@author.UserName's Avatar"
+                             id="programimage"
+                             src="@Url.Content("~/images/" + author.IconPic)"
+                             onclick="on('@Url.Content("~/images/" + author.IconPic)')" />
+                        }
+                    <div class="message-content">
+                        <span class="message-author">@author.UserName</span>
+                        <p>@comment.Text</p>
+                        <small class="message-timestamp">@comment.TimePosted.ToString("hh:mm tt")</small>
+                    </div>
+                </li>
+
+                
+            }
+        </ul>
+    </div>
+
+
+
+
+    @if (isSignedUp)
+    {
+        <!-- Chat Input Section -->
+        <div class="chat-input">
+            <form id="chatForm" asp-action="AddComment" method="post" asp-controller="Event">
+                <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
                 <input type="hidden" name="EventID" value="@Model.Event.EventID" />
                 <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
-                <input type="submit" value="Submit"/>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-paper-plane"></i> Send
+                </button>
             </form>
-        }
-    -->   
+        </div>
+    }
+
+    <script>
+        document.getElementById("comment").addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                document.getElementById("chatForm").submit();
+            }
+        });
+    </script>
+
+
+
+
+
     <!--**********************************************************************************************************************************-->
     <!--**********************************************************************************************************************************-->
     <!--Signal R Comment Functions-->
-    @if (isSignedUp)
+@*     @if (isSignedUp)
     {
         <div class="container">
             <div class="row p-1">
@@ -180,7 +222,7 @@
         <!--Scripts needed for SignalR chat function!-->
         <script src="~/js/signalr/dist/browser/signalr.js"></script>
         <script src="~/js/chat.js"></script>
-    }
+    } *@
     <!--Signal R Comment Functions-->
     <!--**********************************************************************************************************************************-->
     <!--**********************************************************************************************************************************-->   
