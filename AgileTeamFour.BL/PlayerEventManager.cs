@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace AgileTeamFour.BL
 {
@@ -97,5 +98,41 @@ namespace AgileTeamFour.BL
             }
         }
 
+        public static string InviteEvent(string playerName, int eventID)
+        {
+            string message;
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    // Find the UserID that matches the given playerName in the PlayerTable
+                    var player = (from u in dc.tblUsers
+                                  where u.UserName == playerName
+                                  select new { u.UserID }).FirstOrDefault();
+
+                    // Check if the player exists
+                    if (player == null)
+                        return message = "Player not found.";
+
+                    // Create a new entry in tblPlayerEvents
+                    tblPlayerEvent newEvent = new tblPlayerEvent
+                    {
+                        EventID = eventID,
+                        PlayerID = player.UserID,
+                        Role = "Guest" // Represents a pending invite without needing a new table
+                    };
+
+                    dc.tblPlayerEvents.Add(newEvent);
+                    dc.SaveChanges();  // Save changes to the database
+
+                    return message = "Player invited successfully"; // Success
+                }
+            }
+            catch (Exception ex)
+            {
+                // Set error message if an exception occurs
+                return message = ex.Message;
+            }
+        }
     }
 }
