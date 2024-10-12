@@ -1,12 +1,5 @@
-﻿using AgileTeamFour.BL;
-using AgileTeamFour.BL.Models;
-using AgileTeamFour.UI.Models;
-using AgileTeamFour.UI.ViewModels;
+﻿using AgileTeamFour.UI.Models;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using System.Collections.Generic;
-using System.Xml.Linq;
 
 namespace AgileTeamFour.Web.Controllers
 {
