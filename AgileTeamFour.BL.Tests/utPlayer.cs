@@ -24,7 +24,7 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            Assert.AreEqual(4, UserManager.Load().Count);
+            Assert.AreEqual(6, UserManager.Load().Count);
         }
 
         [TestMethod]
