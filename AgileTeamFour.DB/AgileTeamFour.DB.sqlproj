@@ -78,11 +78,20 @@
     <Build Include="Tables\tblComments.sql" />
     <Build Include="Tables\tblReviews.sql" />
     <Build Include="Tables\tblUsers.sql" />
+    <Build Include="Tables\tblFriend.sql" />
+    <Build Include="Tables\tblGuild.sql" />
+    <Build Include="Tables\tblPlayerGuild.sql" />
+    <None Include="PostDeployment\DefaultData\tblGuilds.sql" />
+    <None Include="PostDeployment\DefaultData\tblPlayerGuilds.sql" />
+    <None Include="PostDeployment\DefaultData\tblFriends.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="PreDeployment\Script.PreDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="AgileTeamFour.DB.refactorlog" />
   </ItemGroup>
 </Project>

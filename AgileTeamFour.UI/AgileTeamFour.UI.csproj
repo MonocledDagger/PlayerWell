@@ -8,23 +8,23 @@
 
     <ItemGroup>
 	    <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="8.0.10" />
-	    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.8" />
-	    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.8" />
+	    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.10" />
+	    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.10" />
 	    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
 	      <PrivateAssets>all</PrivateAssets>
 	      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	    </PackageReference>
-	    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
-	    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+	    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+	    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
 	      <PrivateAssets>all</PrivateAssets>
 	      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	    </PackageReference>
-	    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
-	    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+	    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+	    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
 	      <PrivateAssets>all</PrivateAssets>
 	      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	    </PackageReference>
-	    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
+	    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
     </ItemGroup>
 	
   <ItemGroup>
@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Friend\" />
     <Folder Include="wwwroot\images\User\" />
     <Folder Include="wwwroot\plugins\" />
   </ItemGroup>
