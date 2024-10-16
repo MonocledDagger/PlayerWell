@@ -110,19 +110,19 @@ namespace AgileTeamFour.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(GuildVM guildCreateVM)
         {   // Check if user already exists in database if not add it
-            User existingUser = UserManager.LoadById(guildCreateVM.Guild.GuildId);
+            //User existingUser = UserManager.LoadById(guildCreateVM.Guild.GuildId);
 
-            if (existingUser == null)
-            {
-                User newUser = new User
-                {
-                    UserID = guildCreateVM.Guild.GuildId,
-                    UserName = guildCreateVM.User.UserName,
+            //if (existingUser == null)
+            //{
+            //    User newUser = new User
+            //    {
+            //        UserID = guildCreateVM.Guild.GuildId,
+            //        UserName = guildCreateVM.User.UserName,
                     
-                };
+            //    };
 
-                UserManager.Insert(newUser);
-            }
+            //    UserManager.Insert(newUser);
+            //}
 
             try
             {
@@ -132,16 +132,12 @@ namespace AgileTeamFour.UI.Controllers
                     int authorID = 1;
                     guildCreateVM.Guild.LeaderId = (int)TempData["authorID"];
                     GuildManager.Insert(ref guildID,
-                        //guildCreateVM.Guild.UserID,
+                        
                         guildCreateVM.Guild.GuildName,
-                        //guildCreateVM.Guild.Server,
-                        //guildCreateVM.Guild.MaxPlayers,
-                        //guildCreateVM.Guild.Type,
-                        //guildCreateVM.Guild.Platform,
+                        
                         guildCreateVM.Guild.Description,
                         guildCreateVM.Guild.LeaderId
-                        //guildCreateVM.Guild.DateTime,
-                        //guildCreateVM.Guild.LeaderId
+                        
                         );
                     return RedirectToAction(nameof(Index));
                 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AgileTeamFour.PL.tblGuild>
+﻿@model IEnumerable<AgileTeamFour.UI.ViewModels.GuildDetailsVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GuildName)
+                @Html.DisplayNameFor(model => model.Guild.GuildName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.Guild.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LeaderId)
+                @Html.DisplayNameFor(model => model.Guild.LeaderId)
             </th>
             <th></th>
         </tr>
@@ -28,18 +28,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.GuildName)
+                @Html.DisplayFor(modelItem => item.Guild.GuildName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Guild.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LeaderId)
+                @Html.DisplayFor(modelItem => item.Guild.LeaderId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.GuildId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GuildId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GuildId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Guild.GuildId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Guild.GuildId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Guild.GuildId">Delete</a>
             </td>
         </tr>
 }

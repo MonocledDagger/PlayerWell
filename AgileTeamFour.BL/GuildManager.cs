@@ -233,14 +233,14 @@ namespace AgileTeamFour.BL
             }
         }
 
-        public static string GetLeaderName(int eventID)
+        public static string GetLeaderName(int guildID)
         {
             try
             {
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     // Query the PlayerEvent table for the specified eventID
-                    int authorId = EventManager.LoadByID(eventID)?.AuthorId ?? UserManager.Load().FirstOrDefault().UserID;
+                    int authorId = GuildManager.LoadByID(guildID)?.LeaderId ?? UserManager.Load().FirstOrDefault().UserID;
 
                     string? authorName = UserManager.Load().FirstOrDefault(u => u.UserID == authorId)?.UserName;
 
