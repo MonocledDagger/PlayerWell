@@ -13,10 +13,10 @@ namespace AgileTeamFour.UI.ViewModels
         //public List<Comment> Comments { get; set; }
         //public List<User> Users { get; set; }
         public int PlayerID { get; set; }
-        [DisplayName("Event Name")]
+        [DisplayName("Current Members")]
         public int currentPlayers { get; set; }
 
-        [DisplayName("Guild Name")]
+        [DisplayName("Leader Name")]
         public string LeaderName { get; set; }
     }
 }

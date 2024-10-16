@@ -12,12 +12,14 @@ namespace AgileTeamFour.UI.Controllers
         public ActionResult Index()
         {
             var guilds = GuildManager.Load(); // Load the guilds from the manager
+            
 
             // Map each Guilds object to GuildDetailsVM
             var guildDetailsVMs = guilds.Select(e => new GuildDetailsVM
             {
                 Guild = e, // Assign the guild object
-                User = UserManager.LoadById(e.GuildId) // Load User object for each guild
+                User = UserManager.LoadById(e.LeaderId), // Load User object for each guild
+                
             }).ToList();
 
             ViewBag.Title = "List of Guilds";
@@ -34,7 +36,8 @@ namespace AgileTeamFour.UI.Controllers
             var guildDetailsVMs = guilds.Select(e => new GuildDetailsVM
             {
                 Guild = e, // Assign the guild object
-                User = UserManager.LoadById(e.GuildId) // Load the corresponding User object for each guild
+                User = UserManager.LoadById(e.GuildId), // Load the corresponding User object for each guild
+                
             }).ToList();
 
             ViewBag.Title = "List of Guilds";

@@ -84,7 +84,8 @@ namespace AgileTeamFour.BL
                                             GuildID = pe.GuildID,
                                             PlayerID = u.UserID,
                                             JoinDate= (DateTime)pe.JoinDate,
-                                            Role = pe.Role
+                                            Role = pe.Role,
+                                            UserName = u.UserName
                                         }).ToList();
 
                     return playerGuilds;
