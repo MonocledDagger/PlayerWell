@@ -1,83 +1,91 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AgileTeamFour.UI.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgileTeamFour.UI.Controllers
 {
     public class FriendController : Controller
     {
-        // GET: FriendController
         public ActionResult Index()
         {
-            return View();
-        }
+            var guilds = FriendManager.Load(); // Load the guilds from the manager
 
-        // GET: FriendController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: FriendController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: FriendController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            // Map each Guilds object 
+            var FriendVM = guilds.Select(e => new FriendVM
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+                Friend = e, 
+                //User = UserManager.LoadById(e.LeaderId), 
+
+            }).ToList();
+
+            ViewBag.Title = "List of Guilds";
+
+            // Pass the list of GuildDetailsVM to the view
+            return View(FriendVM);
         }
 
-        // GET: FriendController/Edit/5
-        public ActionResult Edit(int id)
+        //public IActionResult Index()
+        //{
+        //    // Get userID from session
+        //    var user = HttpContext.Session.GetObject<User>("user");
+        //    var userId = user?.UserID ?? 0;
+
+        //    // Get friends and pending requests
+        //    var friends = FriendManager.GetFriendsForUser(userId);
+        //    var friendRequests = FriendManager.GetPendingRequestsForUser(userId);
+
+        //    // Create the ViewModel
+        //    var viewModel = new FriendVM
+        //    {
+        //        Friends = friends.Select(f => new FriendVM
+        //        {
+        //            Friend = f,
+        //            User = f.ReceiverID == userId ? f.Sender : f.Receiver
+        //        }),
+        //        PendingRequests = friendRequests.Select(f => new FriendVM
+        //        {
+        //            Friend = f,
+        //            User = f.Sender
+        //        })
+        //    };
+
+        //    return View(viewModel);
+        //}
+
+
+        public IActionResult SendRequest(int receiverId)
         {
-            return View();
+            // Get the user from session
+            var user = HttpContext.Session.GetObject<User>("user");
+
+            // Ensure the user is logged in
+            if (user == null)
+            {
+               
+                return RedirectToAction("Login");
+            }
+
+            // Sender ID is the current user's ID
+            var senderId = user.UserID;
+
+            
+            FriendManager.Insert(senderId, receiverId);
+
+            return RedirectToAction("Index");
         }
 
-        // POST: FriendController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult AcceptRequest(int friendId)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            FriendManager.AcceptFriendRequest(friendId);
+            return RedirectToAction("Index");
         }
 
-        // GET: FriendController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult BlockFriend(int friendId)
         {
-            return View();
-        }
-
-        // POST: FriendController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            FriendManager.BlockPlayer(friendId);
+            return RedirectToAction("Index");
         }
     }
 }
+

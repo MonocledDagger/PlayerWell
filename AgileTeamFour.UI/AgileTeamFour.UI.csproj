@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Friend\" />
     <Folder Include="wwwroot\images\User\" />
     <Folder Include="wwwroot\plugins\" />
   </ItemGroup>

@@ -7,52 +7,25 @@ using System.Threading.Tasks;
 namespace AgileTeamFour.BL
 {
     public class FriendManager
-    {   //I don't think this is gonna work.
-        //public static void SendFriendRequest(int senderId, int receiverId)
-        //{
-        //    using (var context = new AgileTeamFourEntities())
-        //    {
-        //        var request = new Friend
-        //        {
-        //            SenderID = senderId,
-        //            ReceiverID = receiverId,
-        //            Status = "Pending"
-        //        };
-        //        context.tblFriends.Add(request);
-        //        context.SaveChanges();
-        //    }
-        //}
+    {   
 
-        public static int Insert(ref int ID,
-                                string status,
-                                int senderID,
-                                int receiverID,
-                                bool rollback = false)
+        public static int Insert(int senderID, int receiverID, bool rollback = false)
         {
             try
             {
-                
                 Friend friend = new Friend
                 {
-                    ID = ID,
-                    Status = status,
+                    Status = "Pending",
                     SenderID = senderID,
-                    ReceiverID = receiverID,
-
-
+                    ReceiverID = receiverID
                 };
 
-                int results = Insert(friend, rollback);
-
-
-
-                ID = friend.ID;
-
-                return results;
+                
+                return Insert(friend, rollback);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                
                 throw;
             }
         }
@@ -63,31 +36,67 @@ namespace AgileTeamFour.BL
             {
                 int results = 0;
 
-                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                using (var dc = new AgileTeamFourEntities())
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
-                    tblFriend entity = new tblFriend();
+                    // Create new tblFriend entity
+                    var entity = new tblFriend
+                    {
+                        // Generate new ID based on max current ID in the table
+                        ID = dc.tblFriends.Any() ? dc.tblFriends.Max(s => s.ID) + 1 : 1,
+                        Status = friend.Status,
+                        SenderID = friend.SenderID,
+                        ReceiverID = friend.ReceiverID
+                    };
 
-                    //Generate ID
-                    entity.ID = dc.tblFriends.Any() ? dc.tblFriends.Max(s => s.ID) + 1 : 1;
-                    entity.ID = friend.ID;
-                    entity.Status = friend.Status;
-                    entity.SenderID = friend.SenderID;
-                    entity.ReceiverID = friend.ReceiverID;
-                    
-
-
-
-                   
-
+                    // Add the new entity to the context
                     dc.tblFriends.Add(entity);
                     results = dc.SaveChanges();
 
                     if (rollback) transaction.Rollback();
                 }
 
+                return results;
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
+        public static int Update(Friend friends, bool rollback = false)
+        {
+            try
+            {
+                int results = 0;
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    IDbContextTransaction transaction = null;
+                    if (rollback) transaction = dc.Database.BeginTransaction();
+
+                    // Get the row that we are trying to update
+                    tblFriend entity = dc.tblFriends.FirstOrDefault(e => e.ID == friends.ID);
+
+                    if (entity != null)
+                    {
+                        entity.ID = friends.ID;
+                        entity.Status = friends.Status;
+                        entity.SenderID = friends.SenderID;
+                        entity.ReceiverID = friends.ReceiverID;
+                        
+
+                        results = dc.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new Exception("Row does not exist");
+                    }
+
+                    if (rollback) transaction.Rollback();
+                }
                 return results;
             }
             catch (Exception)
@@ -97,6 +106,121 @@ namespace AgileTeamFour.BL
             }
 
         }
+
+
+        public static int Delete(int FriendID, bool rollback = false)
+        {
+
+            try
+            {
+                int results = 0;
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    IDbContextTransaction dbContextTransaction = null;
+                    if (rollback) dbContextTransaction = dc.Database.BeginTransaction();
+
+                    tblFriend row = dc.tblFriends.FirstOrDefault(d => d.ID == FriendID);
+
+
+                    dc.tblFriends.Remove(row);
+
+                    results = dc.SaveChanges();
+
+                    if (rollback) dbContextTransaction.Rollback();
+
+                }
+                return results;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
+        public static Friend LoadByID(int id)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    tblFriend entity = dc.tblFriends.FirstOrDefault(e => e.ID == id);
+
+                    if (entity != null)
+                    {
+                        return new Friend
+                        {
+                            ID = entity.ID,
+                            Status = entity.Status,
+                            SenderID = entity.SenderID,
+                            ReceiverID = entity.ReceiverID,
+                            
+
+                        };
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static List<Friend> Load()
+        {
+            try
+            {
+                List<Friend> list = new List<Friend>();
+
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    (from e in dc.tblFriends
+                     select new
+                     {
+                         e.ID,
+                         e.Status,
+                         e.SenderID,
+                         e.ReceiverID,
+
+                     })
+                     .ToList()
+                     .ForEach(friends => list.Add(new Friend
+                     {
+                         ID = friends.ID,
+                         Status = friends.Status,
+                         SenderID = friends.SenderID,
+                         ReceiverID = friends.ReceiverID,
+
+                     }));
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,5 +279,51 @@ namespace AgileTeamFour.BL
                      f.Status == "Accepted");
             }
         }
+
+        public static List<Friend> GetFriendsForUser(int userId)
+        {
+            //Get Friends for User
+            using (var context = new AgileTeamFourEntities())
+            {
+                var tblFriends = context.tblFriends
+                    .Where(f => (f.SenderID == userId || f.ReceiverID == userId)
+                                && f.Status == "Accepted")
+                    .ToList();
+
+                // Map each tblFriend to Friend
+                return tblFriends.Select(f => new Friend
+                {
+                    ID = f.ID,
+                    Status = f.Status,
+                    SenderID = f.SenderID,
+                    ReceiverID = f.ReceiverID
+                }).ToList();
+            }
+        }
+
+
+
+
+        public static List<Friend> GetPendingRequestsForUser(int userId)
+        {
+            //Get Pending Requests
+            using (var context = new AgileTeamFourEntities())
+            {
+                var tblPendingFriends = context.tblFriends
+                    .Where(f => (f.ReceiverID == userId || f.SenderID == userId)
+                                && f.Status == "Pending")
+                    .ToList();
+
+                // Map to Friend
+                return tblPendingFriends.Select(f => new Friend
+                {
+                    ID = f.ID,
+                    Status = f.Status,
+                    SenderID = f.SenderID,
+                    ReceiverID = f.ReceiverID
+                }).ToList();
+            }
+        }
+
     }
 }
