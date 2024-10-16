@@ -18,7 +18,7 @@
             @* <th>
                 @Html.DisplayNameFor(model => model.GameID)
             </th> *@
-            <th>
+            <th class="gamename">
                 @Html.DisplayNameFor(model => model.GameName)
             </th>
             <th>
@@ -45,16 +45,14 @@
             @* <td>
                 @Html.DisplayFor(modelItem => item.GameID)
             </td> *@
-            <td>
+            <td class="gamename">
                 @Html.DisplayFor(modelItem => item.GameName)
             </td>
             <td>
                     <img src="@item.Picture"
-                         id="movieimage"
-                         class="card-img-top"
+                         class="imagesmall"
                          alt="@item.Description"
-                         onclick="on('@item.Picture')"
-                         class="img-fluid" />
+                         onclick="on('@item.Picture')" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Platform)

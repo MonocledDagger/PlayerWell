@@ -35,7 +35,7 @@ main {
 
 .imagesmall{
     width:50%;
-    height:50%;
+    height:auto;
 }
 .imagemedium{
     width:200px;
@@ -52,3 +52,136 @@ main {
     font-size: 130%;
     transition: font-size 0.3s ease; 
 }
+
+
+.gamename {
+    width: 200px;
+}
+/* RGO  style for reviews */
+.review-list {
+    margin-top: 20px;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.review-stars .fa {
+    font-size: 1.2em;
+    color: #ddd; /* Default color for empty stars */
+}
+
+    .review-stars .fa.checked {
+        color: #ffd700; /* Gold color for full stars */
+    }
+
+.review-body {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.review-footer {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.review-actions {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+
+/*RGO chat style*/
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full-height container */
+}
+
+.chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 15px;
+}
+
+.chat-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+    .chat-message.sent {
+        justify-content: flex-end;
+    }
+
+    .chat-message.received {
+        justify-content: flex-start;
+    }
+
+.message-content {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+}
+
+.message-author {
+    font-weight: bold;
+}
+
+.sent .message-content {
+    background-color: #d1e7dd; /* A light green for sent messages */
+}
+
+.received .message-content {
+    background-color: #f8d7da; /* A light red for received messages */
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+    .chat-input textarea {
+        flex: 1;
+        resize: none;
+        border-radius: 20px;
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .chat-input button {
+        background-color: #0d6efd;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 20px;
+        color: white;
+    }
