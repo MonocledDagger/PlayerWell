@@ -95,7 +95,7 @@ namespace AgileTeamFour.UI.Controllers
             {
                 var Currentuser = HttpContext.Session.GetObject<User>("user");
                 int playerID = Currentuser.UserID;
-                TempData["authorID"] = Currentuser.UserID;
+                TempData["LeaderId"] = Currentuser.UserID;
                 return View(vm);
             }
             else
@@ -129,8 +129,8 @@ namespace AgileTeamFour.UI.Controllers
                 if (ModelState.IsValid)
                 {
                     int guildID = 0;
-                    int authorID = 1;
-                    guildCreateVM.Guild.LeaderId = (int)TempData["authorID"];
+                    int LeaderId = 1;
+                    guildCreateVM.Guild.LeaderId = (int)TempData["LeaderId"];
                     GuildManager.Insert(ref guildID,
                         
                         guildCreateVM.Guild.GuildName,
@@ -164,7 +164,8 @@ namespace AgileTeamFour.UI.Controllers
             var guildDetailsVM = new GuildVM
             {
                 Guild = guildItem,
-                User = UserManager.LoadById(guildItem.GuildId),
+                Users= UserManager.Load()
+                
             };
 
             ViewBag.Title = "Edit " + guildItem.GuildName;

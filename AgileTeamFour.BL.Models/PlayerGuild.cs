@@ -13,5 +13,7 @@ namespace AgileTeamFour.BL.Models
         public int PlayerID { get; set; }
         public string Role { get; set; }  // Leader, SubLeader, Member, etc.
         public DateTime JoinDate { get; set; }
+
+        public string UserName {  get; set; }
     }
 }

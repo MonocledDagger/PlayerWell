@@ -5,12 +5,12 @@
         public Guild Guild { get; set; }
 
         //Game = user
-        public User User { get; set; }
+        public List<User> Users { get; set; } = new List<User>();
 
 
         public GuildVM()
         {
-            User = new User();
+            Users = UserManager.Load();
             //Game.Platform = "None";
         }
     }
