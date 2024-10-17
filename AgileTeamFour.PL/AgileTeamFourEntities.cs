@@ -19,9 +19,15 @@ public partial class AgileTeamFourEntities : DbContext
 
     public virtual DbSet<tblEvent> tblEvents { get; set; }
 
+    public virtual DbSet<tblFriend> tblFriends { get; set; }
+
     public virtual DbSet<tblGame> tblGames { get; set; }
 
+    public virtual DbSet<tblGuild> tblGuilds { get; set; }
+
     public virtual DbSet<tblPlayerEvent> tblPlayerEvents { get; set; }
+
+    public virtual DbSet<tblPlayerGuild> tblPlayerGuilds { get; set; }
 
     public virtual DbSet<tblReview> tblReviews { get; set; }
 
@@ -30,13 +36,12 @@ public partial class AgileTeamFourEntities : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AgileTeamFour.DB;Integrated Security=True");
-           //optionsBuilder.UseSqlServer("Server=server-101521081-300085063.database.windows.net;Database=bigprojectdb;User Id=300085063db;Password=Test123!");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<tblComment>(entity =>
         {
-            entity.HasKey(e => e.CommentID).HasName("PK__tblComme__C3B4DFAA549BE008");
+            entity.HasKey(e => e.CommentID).HasName("PK__tblComme__C3B4DFAA45883104");
 
             entity.Property(e => e.CommentID).ValueGeneratedNever();
             entity.Property(e => e.Text).HasColumnType("text");
@@ -45,7 +50,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblEvent>(entity =>
         {
-            entity.HasKey(e => e.EventID).HasName("PK__tblEvent__7944C870DA40B783");
+            entity.HasKey(e => e.EventID).HasName("PK__tblEvent__7944C870FC42D232");
 
             entity.Property(e => e.EventID).ValueGeneratedNever();
             entity.Property(e => e.DateTime).HasColumnType("datetime");
@@ -64,9 +69,21 @@ public partial class AgileTeamFourEntities : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<tblFriend>(entity =>
+        {
+            entity.HasKey(e => e.ID).HasName("PK__tblFrien__3214EC27A789D74F");
+
+            entity.ToTable("tblFriend");
+
+            entity.Property(e => e.ID).ValueGeneratedNever();
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<tblGame>(entity =>
         {
-            entity.HasKey(e => e.GameID).HasName("PK__tblGames__2AB897DDABF0E620");
+            entity.HasKey(e => e.GameID).HasName("PK__tblGames__2AB897DD8B0EEFC5");
 
             entity.Property(e => e.GameID).ValueGeneratedNever();
             entity.Property(e => e.Description).HasColumnType("text");
@@ -84,9 +101,24 @@ public partial class AgileTeamFourEntities : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<tblGuild>(entity =>
+        {
+            entity.HasKey(e => e.GuildId).HasName("PK__tblGuild__3A3F896F0EE0162E");
+
+            entity.ToTable("tblGuild");
+
+            entity.Property(e => e.GuildId).ValueGeneratedNever();
+            entity.Property(e => e.Description)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.GuildName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<tblPlayerEvent>(entity =>
         {
-            entity.HasKey(e => e.PlayerEventID).HasName("PK__tblPlaye__B001D167FA863A24");
+            entity.HasKey(e => e.PlayerEventID).HasName("PK__tblPlaye__B001D1679B9B7D92");
 
             entity.Property(e => e.PlayerEventID).ValueGeneratedNever();
             entity.Property(e => e.Role)
@@ -94,9 +126,22 @@ public partial class AgileTeamFourEntities : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<tblPlayerGuild>(entity =>
+        {
+            entity.HasKey(e => e.PlayerGuildID).HasName("PK__tblPlaye__7A1E3006131A02D5");
+
+            entity.ToTable("tblPlayerGuild");
+
+            entity.Property(e => e.PlayerGuildID).ValueGeneratedNever();
+            entity.Property(e => e.JoinDate).HasColumnType("datetime");
+            entity.Property(e => e.Role)
+                .HasMaxLength(10)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<tblReview>(entity =>
         {
-            entity.HasKey(e => e.ReviewID).HasName("PK__tblRevie__74BC79AEAB2E624E");
+            entity.HasKey(e => e.ReviewID).HasName("PK__tblRevie__74BC79AE16E98197");
 
             entity.Property(e => e.ReviewID).ValueGeneratedNever();
             entity.Property(e => e.DateTime).HasColumnType("datetime");
@@ -105,7 +150,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblUser>(entity =>
         {
-            entity.HasKey(e => e.UserID).HasName("PK__tblUsers__1788CCAC2BCD6FA1");
+            entity.HasKey(e => e.UserID).HasName("PK__tblUsers__1788CCAC426A7793");
 
             entity.Property(e => e.UserID).ValueGeneratedNever();
             entity.Property(e => e.AccessLevel)

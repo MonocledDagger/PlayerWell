@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AgileTeamFour.UI.ViewModels.FriendVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Friend.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Friend.SenderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Friend.ReceiverID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Friend.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Friend.SenderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Friend.ReceiverID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Friend.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Friend.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Friend.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
