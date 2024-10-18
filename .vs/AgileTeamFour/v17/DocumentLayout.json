@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team4new\\agileteamfour.bl\\postmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|solutionrelative:agileteamfour.bl\\postmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team4new\\agileteamfour.bl\\commentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|solutionrelative:agileteamfour.bl\\commentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8383590D-3C2B-4BA1-93F7-827D0EA61F95}|AgileTeamFour.PL\\AgileTeamFour.PL.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team4new\\agileteamfour.pl\\tblpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8383590D-3C2B-4BA1-93F7-827D0EA61F95}|AgileTeamFour.PL\\AgileTeamFour.PL.csproj|solutionrelative:agileteamfour.pl\\tblpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8383590D-3C2B-4BA1-93F7-827D0EA61F95}|AgileTeamFour.PL\\AgileTeamFour.PL.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team4new\\agileteamfour.pl\\tblcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8383590D-3C2B-4BA1-93F7-827D0EA61F95}|AgileTeamFour.PL\\AgileTeamFour.PL.csproj|solutionrelative:agileteamfour.pl\\tblcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +26,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CommentManager.cs",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.BL\\CommentManager.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL\\CommentManager.cs",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.BL\\CommentManager.cs",
+              "RelativeToolTip": "AgileTeamFour.BL\\CommentManager.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T19:41:54.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "tblComment.cs",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.PL\\tblComment.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.PL\\tblComment.cs",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.PL\\tblComment.cs",
+              "RelativeToolTip": "AgileTeamFour.PL\\tblComment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T19:23:34.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "tblPost.cs",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.PL\\tblPost.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.PL\\tblPost.cs",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.PL\\tblPost.cs",
+              "RelativeToolTip": "AgileTeamFour.PL\\tblPost.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAYwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T19:22:55.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PostManager.cs",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.BL\\PostManager.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL\\PostManager.cs",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.BL\\PostManager.cs",
+              "RelativeToolTip": "AgileTeamFour.BL\\PostManager.cs",
+              "ViewState": "AgIAAKkAAAAAAAAAAADwv7kAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T18:55:20.761Z",
+              "EditorCaption": ""
             }
           ]
         }

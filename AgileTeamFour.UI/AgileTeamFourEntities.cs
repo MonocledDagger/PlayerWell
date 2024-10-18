@@ -43,7 +43,7 @@ public partial class AgileTeamFourEntities : DbContext
     {
         modelBuilder.Entity<tblComment>(entity =>
         {
-            entity.HasKey(e => e.CommentID).HasName("PK__tblComme__C3B4DFAA8156FDAA");
+            entity.HasKey(e => e.CommentID).HasName("PK__tblComme__C3B4DFAACE722713");
 
             entity.Property(e => e.CommentID).ValueGeneratedNever();
             entity.Property(e => e.Text).HasColumnType("text");
@@ -52,7 +52,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblEvent>(entity =>
         {
-            entity.HasKey(e => e.EventID).HasName("PK__tblEvent__7944C870A5C2E28F");
+            entity.HasKey(e => e.EventID).HasName("PK__tblEvent__7944C870497BB377");
 
             entity.Property(e => e.EventID).ValueGeneratedNever();
             entity.Property(e => e.DateTime).HasColumnType("datetime");
@@ -73,7 +73,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblFriend>(entity =>
         {
-            entity.HasKey(e => e.ID).HasName("PK__tblFrien__3214EC27CC0FEF64");
+            entity.HasKey(e => e.ID).HasName("PK__tblFrien__3214EC2796CAA965");
 
             entity.ToTable("tblFriend");
 
@@ -85,7 +85,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblGame>(entity =>
         {
-            entity.HasKey(e => e.GameID).HasName("PK__tblGames__2AB897DD4A90C5DB");
+            entity.HasKey(e => e.GameID).HasName("PK__tblGames__2AB897DDC21F0A62");
 
             entity.Property(e => e.GameID).ValueGeneratedNever();
             entity.Property(e => e.Description).HasColumnType("text");
@@ -105,7 +105,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblGuild>(entity =>
         {
-            entity.HasKey(e => e.GuildId).HasName("PK__tblGuild__3A3F896F070865E9");
+            entity.HasKey(e => e.GuildId).HasName("PK__tblGuild__3A3F896F73E4C72B");
 
             entity.ToTable("tblGuild");
 
@@ -120,7 +120,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblPlayerEvent>(entity =>
         {
-            entity.HasKey(e => e.PlayerEventID).HasName("PK__tblPlaye__B001D1674B3D8A83");
+            entity.HasKey(e => e.PlayerEventID).HasName("PK__tblPlaye__B001D16764C8A305");
 
             entity.Property(e => e.PlayerEventID).ValueGeneratedNever();
             entity.Property(e => e.Role)
@@ -130,7 +130,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblPlayerGuild>(entity =>
         {
-            entity.HasKey(e => e.PlayerGuildID).HasName("PK__tblPlaye__7A1E3006B9006739");
+            entity.HasKey(e => e.PlayerGuildID).HasName("PK__tblPlaye__7A1E3006BBECBE91");
 
             entity.ToTable("tblPlayerGuild");
 
@@ -143,7 +143,9 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblPost>(entity =>
         {
-            entity.HasKey(e => e.PostID).HasName("PK__tblPosts__AA126038612463C4");
+            entity.HasKey(e => e.PostID).HasName("PK__tblPost__AA126038CF03794D");
+
+            entity.ToTable("tblPost");
 
             entity.Property(e => e.PostID).ValueGeneratedNever();
             entity.Property(e => e.Image)
@@ -155,7 +157,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblReview>(entity =>
         {
-            entity.HasKey(e => e.ReviewID).HasName("PK__tblRevie__74BC79AEB7DAFDE2");
+            entity.HasKey(e => e.ReviewID).HasName("PK__tblRevie__74BC79AE742B4DEC");
 
             entity.Property(e => e.ReviewID).ValueGeneratedNever();
             entity.Property(e => e.DateTime).HasColumnType("datetime");
@@ -164,7 +166,7 @@ public partial class AgileTeamFourEntities : DbContext
 
         modelBuilder.Entity<tblUser>(entity =>
         {
-            entity.HasKey(e => e.UserID).HasName("PK__tblUsers__1788CCAC2DFCDB6F");
+            entity.HasKey(e => e.UserID).HasName("PK__tblUsers__1788CCAC37B1633B");
 
             entity.Property(e => e.UserID).ValueGeneratedNever();
             entity.Property(e => e.AccessLevel)
