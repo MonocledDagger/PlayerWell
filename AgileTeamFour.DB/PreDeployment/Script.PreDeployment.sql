@@ -9,7 +9,7 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-
+DROP TABLE IF EXISTS tblPost;
 DROP TABLE IF EXISTS tblGames;
 DROP TABLE IF EXISTS tblComments;
 DROP TABLE IF EXISTS tblPlayerEvents;
@@ -19,6 +19,7 @@ DROP TABLE IF EXISTS tblUsers;
 DROP TABLE IF EXISTS tblFriend;
 DROP TABLE IF EXISTS tblGuild;
 DROP TABLE IF EXISTS tblPlayerGuild;
+
 
 
 

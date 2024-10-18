@@ -10,7 +10,7 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-
+:r .\DefaultData\tblPosts.sql
 :r .\DefaultData\tblEvents.sql
 :r .\DefaultData\tblComments.sql
 :r .\DefaultData\tblReviews.sql

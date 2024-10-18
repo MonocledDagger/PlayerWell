@@ -69,8 +69,9 @@
     <None Include="PostDeployment\DefaultData\tblReviews.sql" />
     <None Include="PostDeployment\DefaultData\tblGames.sql" />
     <None Include="remote.DB.publish.xml" />
-    <None Include="AgileTeamFour.DB.publish.xml" />
     <None Include="local.publish.xml" />
+    <None Include="PostDeployment\DefaultData\tblPosts.sql" />
+    <None Include="AgileTeamFour.DB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblEvents.sql" />
@@ -85,6 +86,7 @@
     <None Include="PostDeployment\DefaultData\tblGuilds.sql" />
     <None Include="PostDeployment\DefaultData\tblPlayerGuilds.sql" />
     <None Include="PostDeployment\DefaultData\tblFriends.sql" />
+    <Build Include="Tables\tblPost.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="PreDeployment\Script.PreDeployment.sql" />

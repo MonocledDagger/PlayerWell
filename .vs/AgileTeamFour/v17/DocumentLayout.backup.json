@@ -1,12 +1,118 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ric\u0027s\\OneDrive\\Documents\\school\\Agile\\Team4New\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/AgileTeamFour.DB/True/SqlTable/dbo.tblPost.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8383590D-3C2B-4BA1-93F7-827D0EA61F95}|AgileTeamFour.PL\\AgileTeamFour.PL.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team4new\\agileteamfour.pl\\scaffold command.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{8383590D-3C2B-4BA1-93F7-827D0EA61F95}|AgileTeamFour.PL\\AgileTeamFour.PL.csproj|solutionrelative:agileteamfour.pl\\scaffold command.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dbo.tblPost [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/AgileTeamFour.DB/True/SqlTable/dbo.tblPost.sql",
+              "ToolTip": "dbo.tblPost [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-18T01:44:46.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "tblPosts.sql ",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql",
+              "RelativeDocumentMoniker": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql",
+              "RelativeToolTip": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblPosts.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-18T01:40:37.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Script.PreDeployment.sql ",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql",
+              "RelativeDocumentMoniker": "AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql",
+              "RelativeToolTip": "AgileTeamFour.DB\\PreDeployment\\Script.PreDeployment.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-18T01:39:43.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Script.PostDeployment.sql ",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql",
+              "RelativeDocumentMoniker": "AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql",
+              "RelativeToolTip": "AgileTeamFour.DB\\PostDeployment\\Script.PostDeployment.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-10-18T00:01:43.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Scaffold Command.txt",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.PL\\Scaffold Command.txt",
+              "RelativeDocumentMoniker": "AgileTeamFour.PL\\Scaffold Command.txt",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4New\\AgileTeamFour.PL\\Scaffold Command.txt",
+              "RelativeToolTip": "AgileTeamFour.PL\\Scaffold Command.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-17T23:53:22.825Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
