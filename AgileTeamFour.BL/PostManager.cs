@@ -6,7 +6,7 @@ namespace AgileTeamFour.BL
 {
     public static class PostManager
     {
-        
+
         public static int Insert(Post post, bool rollback = false)
         {
             try
