@@ -185,3 +185,83 @@ main {
         border-radius: 20px;
         color: white;
     }
+
+
+    /*RGO Post */
+.activity-feed {
+    margin-top: 20px;
+}
+
+.post-card {
+    background-color: #355baa; /* #2b2b2b;*/
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 22px;
+    color:white;
+    font-weight: bold;
+}
+
+.post-content {
+    font-size: 22px;
+    color:white;
+    margin: 10px 0;
+}
+
+.rank-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.post-card {
+    position: relative; /* Enable positioning context for absolute children */
+    padding: 20px; /* Add some padding for better layout */
+    margin: 10px; /* Add some margin between post cards */
+    border: 1px solid #ddd; /* Optional: Add a border to post cards */
+    border-radius: 5px; /* Optional: Round the corners */
+    /*background-color: #fff;*/ /* Optional: Background color for better visibility */
+}
+
+.friend-request-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute; /* Position the button absolutely within the .post-card */
+    bottom: 10px; /* 10px from the bottom */
+    right: 10px; /* 10px from the right */
+}
+
+
+.Summary {
+    font-size: 20px;
+    color: yellow;
+    /*font-weight: bold;*/
+}
+
+.review-stars{
+font-size:14px;
+color:white;
+}

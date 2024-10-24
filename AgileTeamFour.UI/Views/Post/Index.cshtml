@@ -1,53 +1,72 @@
 ﻿@model IEnumerable<AgileTeamFour.BL.Models.Post>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Posts";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TimePosted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AuthorID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Text)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimePosted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PostID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PostID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PostID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="activity-feed">
+    @foreach (var item in Model)
+    {
+        <div class="post-card">
+            <div class="user-info">
+                <img class="avatar"
+                     alt="UserName's Avatar"
+                     id="programimage"
+                     src="@Url.Content("~/images/" +item.IconPic)"
+                     onclick="on('@Url.Content("~/images/" + item.IconPic)')" />
+                <a asp-controller="User" 
+                asp-action="Details" 
+                asp-route-id="@item.AuthorID" 
+                class="username">@item.UserName</a> &nbsp;
+                <span class="time-posted">@item.TimePosted</span>
+            </div>
+            <p class="post-content">@item.Text</p>
+            <br />
+            <br />
+            <div class="rank-info">
+
+                <div class="rating">
+                    <div class="Summary">
+                        What do others think? Here’s a summary of reviews about this user. &nbsp;<br />
+                    
+                    Rating &nbsp; <span class="review-stars">
+                        @for (var i = 1; i <= 5; i++)
+                        {
+                            var averageStars = item.AverageStarsOutOf5.GetValueOrDefault(); // Get the value or 0 if it's null
+
+                            if (i <= Math.Floor(averageStars))
+                            {
+                                // Full star
+                                <span class="fa fa-star checked"></span>
+                            }
+                            else if (i == Math.Ceiling(averageStars) && averageStars % 1 != 0)
+                            {
+                                // Half star
+                                <span class="fa fa-star-half-alt checked"></span>
+                            }
+                            else
+                            {
+                                // Empty star
+                                <span class="fa fa-star unchecked"></span>
+                            }
+                        }
+                    </span>
+                    <br />
+                        
+                        <span class="review-stars">@item.ReviewSummary</span></div>
+                </div>
+                
+      
+
+
+
+            </div>
+            <button class="friend-request-button">Send a friend Request</button>
+           
+        </div>
+    }
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />

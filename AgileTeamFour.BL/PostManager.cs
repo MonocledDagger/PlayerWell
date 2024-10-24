@@ -1,7 +1,4 @@
-﻿//using AgileTeamFour.UI; // Namespace for AgileTeamFourEntities and tblPost
-using AgileTeamFour.PL; // Any additional namespaces if needed
-
-
+﻿
 namespace AgileTeamFour.BL
 {
     public static class PostManager
@@ -145,6 +142,29 @@ namespace AgileTeamFour.BL
             }
         }
 
+
+
+        //    // Fetch the list of posts from your data source
+        //    var posts = _postService.GetAllPosts();
+
+        //    // Map to the ViewModel
+        //    var postVMs = posts.Select(post => new AgileTeamFour.UI.ViewModels.PostVM
+        //    {
+        //        PostID = post.PostID,
+        //        AuthorID = post.AuthorID,
+        //        TimePosted = post.TimePosted,
+        //        Image = post.Image,
+        //        Text = post.Text
+        //        // Add more properties as needed
+        //    }).ToList();
+
+        //// Pass the ViewModel list to the view
+        //return View(postVMs);
+        //}
+
+
+
+
         public static List<Post> Load()
         {
             try
@@ -153,32 +173,119 @@ namespace AgileTeamFour.BL
 
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
-                    (from c in dc.tblPosts
-                     select new
-                     {
-                         c.PostID,
-                         c.TimePosted,
-                         c.Text,
-                         c.Image,
-                         c.AuthorID,
-                     })
-                    .ToList()
-                    .ForEach(post => list.Add(new Post
+                    var postsWithAverage = (from c in dc.tblPosts
+                                            join u in dc.tblUsers on c.AuthorID equals u.UserID
+                                            select new
+                                            {
+                                                c.PostID,
+                                                c.TimePosted,
+                                                c.Text,
+                                                c.Image,
+                                                c.AuthorID,
+                                                u.UserName,
+                                                u.IconPic,
+                                                u.Bio,
+                                                AverageStars = GetAverageStarsForUser(u.UserID),
+                                                ReviewSummary= GetReviewSummaryForUser(u.UserID)
+                })
+                                           .ToList();
+
+                    postsWithAverage.ForEach(post => list.Add(new Post
                     {
                         PostID = post.PostID,
                         TimePosted = post.TimePosted,
                         Text = post.Text,
                         Image = post.Image,
                         AuthorID = post.AuthorID,
+                        UserName = post.UserName,
+                        IconPic = post.IconPic,
+                        Bio = post.Bio,
+                        AverageStarsOutOf5 = post.AverageStars,
+                        ReviewSummary= post.ReviewSummary
                     }));
-                }
 
-                return list;
+                    return list;
+                }
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
+        public static string GetReviewSummaryForUser(int userId)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    // Get all reviews for the specified user
+                    var reviews = dc.tblReviews
+                                    .Where(r => r.RecipientID == userId)
+                                    .Select(r => r.ReviewText)
+                                    .ToList();
+
+                    // Generate a summary from the review texts
+                    if (reviews.Count == 0)
+                    {
+                        return "No reviews available.";
+                    }
+
+                    // Option 1: Concatenate all reviews to create a simple summary
+                    var summary = string.Join(" ", reviews);
+
+                    // Option 2: Limit to the first few reviews or a certain number of characters
+                    // Example: Show the first 100 characters or first 3 reviews
+                    var limitedSummary = string.Join(" ", reviews.Take(3));
+                    if (limitedSummary.Length > 100)
+                    {
+                        limitedSummary = limitedSummary.Substring(0, 100) + "...";
+                    }
+
+                    return limitedSummary; // Return the summarized reviews
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
+        public static double GetAverageStarsForUser(int userId)
+        {
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    // Get all reviews for the specified user
+                    var reviews = dc.tblReviews.Where(r => r.RecipientID == userId).ToList();
+                    var reviewCount = reviews.Count();
+
+                   
+                    double totalStars = 0;
+
+                    for (int i = 0; i < reviewCount; i++)
+                    {
+                        double stars = reviews[i].StarsOutOf5;
+                        totalStars += stars; 
+
+                    }
+
+                    // Calculate the average stars
+                    double averageStars = reviewCount > 0 ? totalStars / reviewCount : 0;
+
+
+                    return averageStars; 
+                }
+            
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
     }
-}
+    }
