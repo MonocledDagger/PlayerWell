@@ -1,0 +1,25 @@
+﻿@model AgileTeamFour.BL.Models.Post
+
+<!-- Transparent overlay background -->
+<div class="overlay">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Create">
+                    <div class="form-group">
+                       
+                        <input asp-for="Text" class="form-control" placeholder="What's in your mind?" />
+                        <span asp-validation-for="Text" class="text-danger"></span>
+                    </div>
+                     <br />
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\views\\post\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\post\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\views\\post\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\post\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.bl\\postmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|solutionrelative:agileteamfour.bl\\postmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\viewmodels\\eventvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\viewmodels\\eventvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\rguzm\\documents\\school\\agile\\team41.2\\agileteamfour.ui\\views\\post\\_createpostform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\post\\_createpostform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,60 +30,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "style.css",
-              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\wwwroot\\css\\style.css",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\wwwroot\\css\\style.css",
-              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\wwwroot\\css\\style.css",
-              "RelativeToolTip": "AgileTeamFour.UI\\wwwroot\\css\\style.css",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAAAJwAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-20T04:39:31.96Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAANAAAAAAAAAAAAAAANkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-20T04:03:10.875Z",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\Create.cshtml",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Post\\Create.cshtml",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\Create.cshtml",
+              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Post\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-27T00:15:07.66Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EventVM.cs",
-              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\ViewModels\\EventVM.cs",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\ViewModels\\EventVM.cs",
-              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\ViewModels\\EventVM.cs",
-              "RelativeToolTip": "AgileTeamFour.UI\\ViewModels\\EventVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T03:27:55.12Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\Index.cshtml",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Post\\Index.cshtml",
-              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\Index.cshtml",
-              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Post\\Index.cshtml",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBsAAAAxAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "_CreatePostForm.cshtml",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\_CreatePostForm.cshtml",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Post\\_CreatePostForm.cshtml",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\_CreatePostForm.cshtml",
+              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Post\\_CreatePostForm.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-20T00:55:21.074Z"
+              "WhenOpened": "2024-10-26T20:35:20.635Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -97,25 +74,36 @@
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Controllers\\PostController.cs",
               "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Controllers\\PostController.cs",
               "RelativeToolTip": "AgileTeamFour.UI\\Controllers\\PostController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAwDMAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T00:12:46.592Z"
+              "WhenOpened": "2024-10-26T19:58:34.045Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PostManager.cs",
-              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.BL\\PostManager.cs",
-              "RelativeDocumentMoniker": "AgileTeamFour.BL\\PostManager.cs",
-              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.BL\\PostManager.cs",
-              "RelativeToolTip": "AgileTeamFour.BL\\PostManager.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAAAM4AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T00:04:29.986Z"
+              "DocumentIndex": 2,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "AgileTeamFour.UI\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAEUBAAAAAAAAAAAwwGQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-20T04:03:10.875Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\Index.cshtml",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Post\\Index.cshtml",
+              "ToolTip": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team41.2\\AgileTeamFour.UI\\Views\\Post\\Index.cshtml*",
+              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Post\\Index.cshtml*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-20T00:55:21.074Z",
+              "EditorCaption": ""
             }
           ]
         }
