@@ -1,113 +1,114 @@
-﻿@model IEnumerable<AgileTeamFour.BL.Models.Post>
+﻿
+@model IEnumerable<AgileTeamFour.BL.Models.Post>
 
 
-@{
-    ViewData["Title"] = "Posts";
-}
+    @{
+        ViewData["Title"] = "Posts";
+    }
 
 
-<h1>@ViewData["Title"]</h1>
+    <h1>@ViewData["Title"]</h1>
 
-<div class="activity-feed">
-    <p>
-        <a asp-action="Create" class="create-post-link">Create a New Post</a>
+    <div class="activity-feed">
+        <p>
+            <a asp-action="Create" class="create-post-link">Create a New Post</a>
 
-</p> 
-    @foreach (var item in Model)
-    {
-        <div class="post-card">
-            <div class="user-info">
-                <img class="avatar"
-                     alt="UserName's Avatar"
-                     src="@Url.Content("~/images/" + item.IconPic)"
-                     onclick="on('@Url.Content("~/images/" + item.IconPic)')" />
-                <a asp-controller="User"
-                   asp-action="Details"
-                   asp-route-id="@item.AuthorID"
-                   class="username">@item.UserName &nbsp</a>
-                <span class="time-posted">@item.TimePosted</span>
-            </div>
-            <p class="post-content">@item.Text</p>
+        </p>
+        @foreach (var item in Model)
+        {
+            <div class="post-card">
+                <div class="user-info">
+                    <img class="avatar"
+                         alt="UserName's Avatar"
+                         src="@Url.Content("~/images/" + item.IconPic)"
+                         onclick="on('@Url.Content("~/images/" + item.IconPic)')" />
+                    <a asp-controller="User"
+                       asp-action="Details"
+                       asp-route-id="@item.AuthorID"
+                       class="username">@item.UserName &nbsp</a>
+                    <span class="time-posted">@item.TimePosted</span>
+                </div>
+                <p class="post-content">@item.Text</p>
 
-            <div class="rank-info">
-                <div class="rating">
-                    <div class="summary">
-                        <span>What do others think about this user? </span>
-                        <br />
-                        Rating:
-                        <span class="review-stars">
-                            @for (var i = 1; i <= 5; i++)
-                            {
-                                var averageStars = item.AverageStarsOutOf5.GetValueOrDefault(); // Get value or 0 if null
-
-                                if (i <= Math.Floor(averageStars))
+                <div class="rank-info">
+                    <div class="rating">
+                        <div class="summary">
+                            <span>What do others think about this user? </span>
+                            <br />
+                            Rating:
+                            <span class="review-stars">
+                                @for (var i = 1; i <= 5; i++)
                                 {
-                                    <span class="fa fa-star checked"></span>
+                                    var averageStars = item.AverageStarsOutOf5.GetValueOrDefault(); // Get value or 0 if null
+
+                                    if (i <= Math.Floor(averageStars))
+                                    {
+                                        <span class="fa fa-star checked"></span>
+                                    }
+                                    else if (i == Math.Ceiling(averageStars) && averageStars % 1 != 0)
+                                    {
+                                        <span class="fa fa-star-half-alt checked"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fa fa-star unchecked"></span>
+                                    }
                                 }
-                                else if (i == Math.Ceiling(averageStars) && averageStars % 1 != 0)
-                                {
-                                    <span class="fa fa-star-half-alt checked"></span>
-                                }
-                                else
-                                {
-                                    <span class="fa fa-star unchecked"></span>
-                                }
-                            }
-                        </span>
-                        <br />
-                        <span class="review-summary">@item.ReviewSummary</span>
+                            </span>
+                            <br />
+                            <span class="review-summary">@item.ReviewSummary</span>
+                        </div>
                     </div>
                 </div>
+
+                <div class="post-actions">
+                    <button class="like-button" onclick="likePost(@item.PostID)">Like</button>
+                    @* <span class="like-count">@item.LikeCount Likes</span> *@
+
+                    <button class="comment-button" onclick="toggleCommentSection(@item.PostID)">Comment</button>
+                    @*  <span class="comment-count">@item.CommentCount Comments</span> *@
+
+                    <button class="respond-button">Send a Friend Request</button>
+                </div>
+
+                <div class="comment-section" id="comment-section-@item.PostID" style="display:none;">
+                    <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                    <button class="submit-comment" onclick="submitComment(@item.PostID)">Post</button>
+
+                    <!-- I will Display existing comments here -->
+                    @*  <div class="comments-list">
+                            @foreach (var comment in item.Comments)
+                            {
+                                <div class="comment-item">
+                                    <span class="comment-author">@comment.AuthorName:</span>
+                                    <span class="comment-text">@comment.Text</span>
+                                </div>
+                            }
+                        </div> *@
+                </div>
             </div>
-
-            <div class="post-actions">
-                <button class="like-button" onclick="likePost(@item.PostID)">Like</button>
-                @* <span class="like-count">@item.LikeCount Likes</span> *@
-
-                <button class="comment-button" onclick="toggleCommentSection(@item.PostID)">Comment</button>
-               @*  <span class="comment-count">@item.CommentCount Comments</span> *@
-
-                <button class="respond-button">Send a Friend Request</button>
-            </div>
-
-            <div class="comment-section" id="comment-section-@item.PostID" style="display:none;">
-                <textarea class="comment-input" placeholder="Write a comment..."></textarea>
-                <button class="submit-comment" onclick="submitComment(@item.PostID)">Post</button>
-
-                <!-- I will Display existing comments here -->
-               @*  <div class="comments-list">
-                    @foreach (var comment in item.Comments)
-                    {
-                        <div class="comment-item">
-                            <span class="comment-author">@comment.AuthorName:</span>
-                            <span class="comment-text">@comment.Text</span>
-                        </div>
-                    }
-                </div> *@
-            </div>
-        </div>
-    }
-</div>
-
-<script>
-    function likePost(postId) {
-        // I will do the like here
-    }
-
-    function toggleCommentSection(postId) {
-        var commentSection = document.getElementById('comment-section-' + postId);
-        if (commentSection.style.display === 'none') {
-            commentSection.style.display = 'block';
-        } else {
-            commentSection.style.display = 'none';
         }
-    }
+    </div>
 
-    function submitComment(postId) {
-        // save the comments here
-    }
-</script>
+    <script>
+        function likePost(postId) {
+            // I will do the like here
+        }
+
+        function toggleCommentSection(postId) {
+            var commentSection = document.getElementById('comment-section-' + postId);
+            if (commentSection.style.display === 'none') {
+                commentSection.style.display = 'block';
+            } else {
+                commentSection.style.display = 'none';
+            }
+        }
+
+        function submitComment(postId) {
+            // save the comments here
+        }
+    </script>
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
