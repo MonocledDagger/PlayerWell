@@ -5,10 +5,46 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (user, message) {
+connection.on("ReceiveMessage", function (username, message, dateString) {
+
+    console.log("Receive method Javascript");
+    console.error("Signal R in recieve method");
+    
+    const fragment = document.createDocumentFragment();
     var li = document.createElement("li");
-    document.getElementById("messagesList").appendChild(li);
-    li.textContent = message + " - " + user;
+    var AuthorID = document.getElementsByName("PlayerID")[0].value + "";
+    var CurrentUser = document.getElementById("CurrentUser").value + "";
+    if (CurrentUser == AuthorID)
+        CurrentUser = "sent";
+    else
+        CurrentUser = "received";
+    li.classList.add("chat-message");
+    li.classList.add(CurrentUser);
+
+    var div = document.createElement("div")
+    div.classList.add("message-content");
+    fragment.appendChild(li).appendChild(div);
+
+    var span = document.createElement("span");
+    span.classList.add("message-author");
+    span.innerText = username;
+
+    var p = document.createElement("p");
+    span.innerText = message;
+
+    var small = document.createElement("small")
+    small.classList.add("message-timestamp");
+    small.innerText = dateString;
+
+    //var length = fragment.getElementsByTagName("li").length;
+    //var li = fragment.getElementsByTagName("li")[length];
+    //var div = li.getElementsByTagName("div")[0];
+
+    div.appendChild(span);
+    div.appendChild(p);
+    div.appendChild(small);
+
+    document.getElementById("messagesList").appendChild(fragment);  
 });
 
 connection.start().then(function () {
@@ -19,11 +55,12 @@ connection.start().then(function () {
 
 document.getElementById("sendButton").addEventListener("click", function (event) {
 
-    var message = document.getElementById("messageName").value;
-    var AuthorID = document.getElementsByName("AuthorID")[0].value + "";
+    var message = document.getElementById("comment").value + "";
+    var AuthorID = document.getElementsByName("PlayerID")[0].value + "";
     var EventID = document.getElementsByName("EventID")[0].value + "";
     var UserName = document.getElementById("userName").value + "";
-
+    
+    console.log(message + " : " + AuthorID + " : " + EventID + " : " + UserName);
     connection.invoke("SendMessage", message, EventID, AuthorID, UserName).catch(function (err) {
         return console.error(err.toString());
     });
