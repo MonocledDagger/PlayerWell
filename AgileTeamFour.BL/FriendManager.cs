@@ -46,7 +46,7 @@ namespace AgileTeamFour.BL
                     {
                         // Generate new ID based on max current ID in the table
                         ID = dc.tblFriends.Any() ? dc.tblFriends.Max(s => s.ID) + 1 : 1,
-                        Status = friend.Status,
+                        Status = "Pending",
                         SenderID = friend.SenderID,
                         ReceiverID = friend.ReceiverID
                     };
@@ -231,7 +231,7 @@ namespace AgileTeamFour.BL
                 var request = context.tblFriends.FirstOrDefault(f => f.ID == friendId);
                 if (request != null)
                 {
-                    request.Status = "Accepted";
+                    request.Status = "Approved";
                     context.SaveChanges();
                 }
             }
