@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGeneration.Design;
+using System.Linq;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -11,6 +12,7 @@ namespace AgileTeamFour.UI.Controllers
     {
         public ActionResult Index()
         {
+            /*
             var guilds = FriendManager.Load(); // Load the guilds from the manager
 
 
@@ -26,6 +28,51 @@ namespace AgileTeamFour.UI.Controllers
 
             // Pass the list of GuildDetailsVM to the view
             return View(FriendVM);
+            */
+            // Get userID from session
+            var user = HttpContext.Session.GetObject<User>("user");
+            var userId = user?.UserID ?? 0;
+
+            // Load Friends and filter by UserId
+            var friends = FriendManager.Load().Where(e => e.SenderID == userId & e.Status == "Approved" || e.ReceiverID == userId & e.Status == "Approved");
+
+            List<User> friendsList = new List<User>();
+            foreach(Friend vm in friends)
+            {
+                User friendUser = UserManager.Load().Where(e => e.UserID == vm.ID).FirstOrDefault();
+                User Sender = UserManager.Load().Where(e => e.UserID == vm.SenderID).FirstOrDefault();
+                User Receiver = UserManager.Load().Where(e => e.UserID == vm.ReceiverID).FirstOrDefault();
+
+                if (!friendsList.Contains(friendUser) && vm.ID != userId)
+                {
+                    friendsList.Add(friendUser);
+;               }
+                if (!friendsList.Contains(Sender) && vm.SenderID != userId)
+                {
+                    friendsList.Add(Sender);
+                    
+                }
+                if (!friendsList.Contains(Receiver) && vm.ReceiverID != userId)
+                {
+                    friendsList.Add(Receiver);
+                    
+                }
+            }
+
+            // Map each filtered event to the EventDetailsVM
+            var friendVMs = friends.Select(e => new FriendVM
+            {
+                Friend = e,
+                UserReceiver = UserManager.LoadById(e.SenderID),
+                UserSender = UserManager.LoadById(e.ReceiverID),
+                FriendsList = friendsList
+
+            }).ToList();
+
+            ViewBag.Title = "Friends";
+
+            // Pass the filtered list of EventDetailsVM to the view
+            return View(friendVMs);
         }
 
         public ActionResult MyIndex()
