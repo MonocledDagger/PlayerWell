@@ -87,6 +87,8 @@
     <None Include="PostDeployment\DefaultData\tblPlayerGuilds.sql" />
     <None Include="PostDeployment\DefaultData\tblFriends.sql" />
     <Build Include="Tables\tblPost.sql" />
+    <Build Include="Tables\tblFriendComments.sql" />
+    <None Include="PostDeployment\DefaultData\tblFriendComments.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="PreDeployment\Script.PreDeployment.sql" />
