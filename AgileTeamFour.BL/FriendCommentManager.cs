@@ -3,7 +3,7 @@ namespace AgileTeamFour.BL
 {
     public static class FriendCommentManager
     {
-        /*
+        
         public static int Insert(FriendComment friendComment, bool rollback = false)
         {
             try
@@ -15,7 +15,7 @@ namespace AgileTeamFour.BL
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
                     tblFriendComment entity = new tblFriendComment();
-                    entity.ID = dc.tblFriendComments.Any() ? dc.tblFriendComments.Max(s => s.FriendCommentID) + 1 : 1;
+                    entity.ID = dc.tblFriendComments.Any() ? dc.tblFriendComments.Max(s => s.ID) + 1 : 1;
                     entity.FriendSentToID = friendComment.FriendSentToID;
                     entity.TimePosted = friendComment.TimePosted;
                     entity.AuthorID = friendComment.AuthorID;
@@ -45,7 +45,7 @@ namespace AgileTeamFour.BL
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
-                    tblFriendComment entity = dc.tblFriendComments.SingleOrDefault(e => e.FriendCommentID == friendComment.ID);
+                    tblFriendComment entity = dc.tblFriendComments.SingleOrDefault(e => e.ID == friendComment.ID);
                     if (entity == null)
                         throw new Exception("FriendComment not found");
 
@@ -140,7 +140,7 @@ namespace AgileTeamFour.BL
                 {
                     var friendCommentsWithAverage = (from c in dc.tblFriendComments
                                                      join u in dc.tblUsers on c.AuthorID equals u.UserID
-                                                     orderby c.FriendCommentID descending
+                                                     orderby c.ID descending
                                                      select new
                                                      {
                                                          c.ID,
@@ -168,7 +168,7 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
-         */
+         
     }
 
 }

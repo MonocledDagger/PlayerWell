@@ -15,7 +15,7 @@ namespace AgileTeamFour.UI.Hubs
 
             if (comment.Text != null && comment.Text.Trim() != "")
             {
-                await Clients.All.SendAsync("ReceiveMessage", UserName.ToString(), message, comment.TimePosted.ToString("hh:mm tt"));
+                await Clients.All.SendAsync("ReceiveMessage", UserName.ToString(), comment.AuthorID, message, comment.TimePosted.ToString("hh:mm tt"));
                 CommentManager.Insert(comment);
             }
         }

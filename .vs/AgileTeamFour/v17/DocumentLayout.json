@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\",
+  "WorkspaceRootPath": "C:\\Users\\300085063\\source\\repos\\AgileProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|s:\\classdata\\advanced software development\\10152108_1_2024_fall\\300085063\\agileproject\\agileteamfour.ui\\views\\game\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\game\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\300085063\\source\\repos\\agileproject\\agileteamfour.ui\\wwwroot\\js\\chat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\wwwroot\\js\\chat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|s:\\classdata\\advanced software development\\10152108_1_2024_fall\\300085063\\agileproject\\agileteamfour.ui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\300085063\\source\\repos\\agileproject\\agileteamfour.ui\\views\\event\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\event\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\300085063\\source\\repos\\agileproject\\agileteamfour.ui\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\users\\300085063\\source\\repos\\agileproject\\agileteamfour.ui\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,21 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 20,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\Views\\Game\\Index.cshtml",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Game\\Index.cshtml",
-              "ToolTip": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\Views\\Game\\Index.cshtml",
-              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Game\\Index.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEUAAABxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T03:14:14.352Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -103,15 +98,54 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "AgileTeamFour.UI\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T00:23:37.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EventController.cs",
+              "DocumentMoniker": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\Controllers\\EventController.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Controllers\\EventController.cs",
+              "ToolTip": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\Controllers\\EventController.cs",
+              "RelativeToolTip": "AgileTeamFour.UI\\Controllers\\EventController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T00:21:45.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "site.css",
-              "DocumentMoniker": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "ToolTip": "S:\\ClassData\\Advanced Software Development\\10152108_1_2024_Fall\\300085063\\AgileProject\\AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "AgileTeamFour.UI\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAGsBAAAAAAAAAAAAwIEBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-01T02:06:34.004Z",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\Views\\Event\\Details.cshtml",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Event\\Details.cshtml",
+              "ToolTip": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\Views\\Event\\Details.cshtml",
+              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Event\\Details.cshtml",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAAwK8AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-02T00:19:40.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "chat.js",
+              "DocumentMoniker": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\wwwroot\\js\\chat.js",
+              "RelativeDocumentMoniker": "AgileTeamFour.UI\\wwwroot\\js\\chat.js",
+              "ToolTip": "C:\\Users\\300085063\\source\\repos\\AgileProject\\AgileTeamFour.UI\\wwwroot\\js\\chat.js",
+              "RelativeToolTip": "AgileTeamFour.UI\\wwwroot\\js\\chat.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-02T00:18:38.311Z",
               "EditorCaption": ""
             }
           ]

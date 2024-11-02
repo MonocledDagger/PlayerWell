@@ -68,11 +68,18 @@
     <None Include="PostDeployment\DefaultData\tblComments.sql" />
     <None Include="PostDeployment\DefaultData\tblReviews.sql" />
     <None Include="PostDeployment\DefaultData\tblGames.sql" />
+	<None Include="PostDeployment\DefaultData\tblPosts.sql" />
+	<None Include="PostDeployment\DefaultData\tblGuilds.sql" />
+	<None Include="PostDeployment\DefaultData\tblPlayerGuilds.sql" />
+	<None Include="PostDeployment\DefaultData\tblFriends.sql" />
+	<None Include="PostDeployment\DefaultData\tblFriendComments.sql" />
     <None Include="remote.DB.publish.xml" />
     <None Include="local.publish.xml" />
-    <None Include="PostDeployment\DefaultData\tblPosts.sql" />
-    <None Include="AgileTeamFour.DB.publish.xml" />
+
   </ItemGroup>
+  <ItemGroup>
+	<PreDeploy Include="PreDeployment\Script.PreDeployment.sql" />
+</ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblEvents.sql" />
     <Build Include="Tables\tblGames.sql" />
@@ -83,20 +90,10 @@
     <Build Include="Tables\tblFriend.sql" />
     <Build Include="Tables\tblGuild.sql" />
     <Build Include="Tables\tblPlayerGuild.sql" />
-    <None Include="PostDeployment\DefaultData\tblGuilds.sql" />
-    <None Include="PostDeployment\DefaultData\tblPlayerGuilds.sql" />
-    <None Include="PostDeployment\DefaultData\tblFriends.sql" />
-    <Build Include="Tables\tblPost.sql" />
+	<Build Include="Tables\tblPost.sql" />
     <Build Include="Tables\tblFriendComments.sql" />
-    <None Include="PostDeployment\DefaultData\tblFriendComments.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PreDeploy Include="PreDeployment\Script.PreDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment\Script.PostDeployment.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="AgileTeamFour.DB.refactorlog" />
   </ItemGroup>
 </Project>

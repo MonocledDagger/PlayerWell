@@ -5,15 +5,15 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (username, message, dateString) {
+connection.on("ReceiveMessage", function (username, AuthorID, message, dateString) {
 
     console.log("Receive method Javascript");
-    console.error("Signal R in recieve method");
     
     const fragment = document.createDocumentFragment();
     var li = document.createElement("li");
-    var AuthorID = document.getElementsByName("PlayerID")[0].value + "";
-    var CurrentUser = document.getElementById("CurrentUser").value + "";
+    var CurrentUser = document.getElementsByName("PlayerID")[0].value + "";
+
+    console.log("UsernameSender: " + username + "| AuthorIDSender: " + AuthorID + "| CurrentUser: " + CurrentUser);
     if (CurrentUser == AuthorID)
         CurrentUser = "sent";
     else
@@ -30,7 +30,7 @@ connection.on("ReceiveMessage", function (username, message, dateString) {
     span.innerText = username;
 
     var p = document.createElement("p");
-    span.innerText = message;
+    p.innerText = message;
 
     var small = document.createElement("small")
     small.classList.add("message-timestamp");
@@ -60,7 +60,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var EventID = document.getElementsByName("EventID")[0].value + "";
     var UserName = document.getElementById("userName").value + "";
     
-    console.log(message + " : " + AuthorID + " : " + EventID + " : " + UserName);
+    //console.log(message + " : " + AuthorID + " : " + EventID + " : " + UserName);
     connection.invoke("SendMessage", message, EventID, AuthorID, UserName).catch(function (err) {
         return console.error(err.toString());
     });
