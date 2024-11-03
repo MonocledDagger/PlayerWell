@@ -355,6 +355,7 @@ namespace AgileTeamFour.Web.Controllers
             return RedirectToAction("Details", new { id = eventID });
         }
     
+        /* SignalR UI Hubs Folders, ChatHub.cs class takes over this function
         [HttpPost]
         public ActionResult AddComment(string commentText, int eventID, int playerID)
         {
@@ -372,7 +373,7 @@ namespace AgileTeamFour.Web.Controllers
             
             return RedirectToAction("Details", new { id = eventID });
         }
-
+        */
         [HttpPost]
         public ActionResult InviteEvent(int eventID, string playerName)
         {   // Try adding the player and return a message with reault of attempt

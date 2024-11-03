@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AgileTeamFour.UI.ViewModels.FriendVM>
+
+@{
+    ViewData["Title"] = "MyIndex";
+}
+
+<h1>Pending Invites</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Friend.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Friend.SenderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Friend.ReceiverID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Friend.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserSender.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
+            </td>
+
+               
+                <td>
+                    @if (ViewData["userId"] != null && (int)ViewData["userId"] == item.UserReceiver.UserID)
+                    {
+                        <form asp-action="AcceptRequest" method="post" style="display:inline;">
+                            <input type="hidden" name="friendId" value="@item.Friend.ID" />
+                            <button type="submit">Accept</button>
+                        </form>
+                        <form asp-action="RejectRequest" method="post" style="display:inline;">
+                            <input type="hidden" name="friendId" value="@item.Friend.ID" />
+                            <button type="submit">Deny</button>
+                        </form>
+                        <form asp-action="BlockFriend" method="post" style="display:inline;">
+                            <input type="hidden" name="friendId" value="@item.Friend.ID" />
+                            <button type="submit">Block</button>
+                        </form>
+                    }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

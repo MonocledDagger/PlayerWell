@@ -3,45 +3,78 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div id="float">
+    <div id="friendsList">
+        <h4>My Friends</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Friend.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Friend.SenderID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Friend.ReceiverID)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Friend.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserSender.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
+                        </td>
+                        @* <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div id="friendsChat">
+        <h4>Chat</h4>
+        <select name="friends" id="friends">
+            @{
+                var Friend = Model.FirstOrDefault();
+                if(Friend != null)
+                {
+                    int count = 0;
+                    foreach (var User in Friend.FriendsList)
+                    {
+                        <option value="@User.UserID">@User.UserName</option>
+                    }
+                }
+                else
+                {
+                    <option>Empty</option>
+                }
+            }
+        </select>       
+    </div>
+</div>
+<script>
+    var friends = document.getElementById("friendsList");
+    friends.style.width = "35%";
+    friends.style.marginLeft = Math.round(window.screen.width / -10) + "px";
+    friends.style.marginRight = "0px";
+    friends.style.float = "left"
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Friend.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Friend.SenderID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Friend.ReceiverID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Friend.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Friend.SenderID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Friend.ReceiverID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Friend.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Friend.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Friend.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    var friendsChat = document.getElementById("friendsChat");
+    friendsChat.style.width = "60%";
+    friendsChat.style.marginLeft = "0px";
+    friendsChat.style.marginRight = "0px";
+    friendsChat.style.float = "right"
+</script>

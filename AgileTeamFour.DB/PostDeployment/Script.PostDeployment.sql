@@ -20,3 +20,4 @@ Post-Deployment Script Template
 :r .\DefaultData\tblGuilds.sql
 :r .\DefaultData\tblPlayerGuilds.sql
 :r .\DefaultData\tblFriends.sql
+:r .\DefaultData\tblFriendComments.sql

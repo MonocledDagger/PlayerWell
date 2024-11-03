@@ -353,6 +353,44 @@ color:white;
 .create-post-link:hover {
     text-decoration: underline; 
 }
+/*Glen Table Styling*/
+table{
+    overflow-x: auto;
+    overflow-y: auto;
+    border-spacing: 3px;
+    border-style: solid;
+}
+thead {
+    background-color: seagreen;
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+    color: black;
+}
+
+tbody tr:nth-child(even) {
+    background-color: lightgray;
+    color: black;
+}
+tbody tr:hover {
+    background-color: slategray;
+    color: white;   
+}
+tbody tr:hover a{
+    color: white;
+}
+/*Event Index Table Page, Game Index Page*/
+.btn-touching 
+{
+   padding: 5px;
+   margin: 5px;
+}
+
+
+
+
 
 
 /*=================================================================
