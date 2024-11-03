@@ -17,7 +17,6 @@
                 <input asp-for="User.UserID" type="hidden" class="form-control" />
                 <span asp-validation-for="User.UserID" class="text-danger" style="display:none;"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="User.FirstName" class="control-label"></label>
                 <input asp-for="User.FirstName" class="form-control" />
@@ -34,11 +33,6 @@
                 <span asp-validation-for="User.UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User.Password" class="control-label"></label>
-                <input asp-for="User.Password" class="form-control" />
-                <span asp-validation-for="User.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="User.DateOfBirth" class="control-label"></label>
                 <input asp-for="User.DateOfBirth" class="form-control" />
                 <span asp-validation-for="User.DateOfBirth" class="text-danger"></span>
@@ -48,7 +42,6 @@
                 <input asp-for="User.Email" class="form-control" />
                 <span asp-validation-for="User.Email" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="User.IconPic" class="control-label"></label><br />
                 <img class="imagepropmedium m-2"
@@ -60,9 +53,6 @@
                 <input type="file" name="File" id="File" accept="image/" onchange="loadFile(event)" />
                 <span asp-validation-for="User.IconPic" class="text-danger"></span>
             </div>
-
-
-
             <div class="form-group">
                 <label asp-for="User.Bio" class="control-label"></label>
                 <input asp-for="User.Bio" class="form-control" />
@@ -71,6 +61,7 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+           <div class="form-group"> <a asp-action="EditPassword" asp-route-id="@Model.User.UserID" class="btn btn-secondary">Edit Password</a> </div>
         </form>
     </div>
 </div>

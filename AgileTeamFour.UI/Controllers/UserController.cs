@@ -308,7 +308,63 @@ namespace AgileTeamFour.UI.Controllers
                 return View(userVM);
             }
         }
-        
+
+        // Pass in the UserId without passing through the Entire UserProfileVM
+        public IActionResult EditPassword(int id)
+        {
+            if (Authenticate.IsAuthenticated(HttpContext, id) || Authenticate.IsAuthenticated(HttpContext, "admin"))
+            {
+                User user = UserManager.LoadById(id);
+                EditPasswordVM viewModel = new EditPasswordVM { CurrentUser = user };
+                return View(viewModel);
+            }
+            else
+            {
+                TempData["error"] = "You must be logged in to edit your password.";
+                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult EditPassword(EditPasswordVM viewModel)
+        { 
+            //Load the User from the id in the viewModel
+            viewModel.CurrentUser = UserManager.LoadById(viewModel.CurrentUser.UserID);
+
+            // Validate the passwords again just in case
+            if (string.IsNullOrEmpty(viewModel.NewPassword) || string.IsNullOrEmpty(viewModel.ConfirmPassword))
+            {
+                ViewBag.Error = "Password fields cannot be empty.";
+                return View("EditPassword", viewModel);
+            }
+            if (viewModel.NewPassword != viewModel.ConfirmPassword)
+            {
+                ViewBag.Error = "Passwords do not match.";
+                return View("EditPassword", viewModel);
+            }
+            try
+            { // Hash the new password using the UserManager's GetHash method
+                string hashedPassword = UserManager.GetHash(viewModel.NewPassword);
+                viewModel.CurrentUser.Password = hashedPassword;
+                // Update the user in the database
+                int isUpdated = UserManager.Update(viewModel.CurrentUser);
+                if (isUpdated > 0)
+                {
+                    ViewBag.Message = "Password updated successfully.";
+                    return RedirectToAction("Details2", new { id = viewModel.CurrentUser.UserID });
+                }
+                else
+                {
+                    ViewBag.Error = "Failed to update the password.";
+                    return View("EditPassword", viewModel);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message; return View("EditPassword", viewModel);
+            }
+        }
+
         public IActionResult Deactivate(int Id)
         {
             if (Authenticate.IsAuthenticated(HttpContext, Id) || Authenticate.IsAuthenticated(HttpContext, "admin"))
@@ -316,9 +372,9 @@ namespace AgileTeamFour.UI.Controllers
                 return View("Deactivate", UserManager.LoadById(Id));
             }
             else
-            {                            
+            {
                 return RedirectToAction("Index2", "User");
-            }          
+            }
         }
 
 
