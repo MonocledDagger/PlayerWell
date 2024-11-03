@@ -1,11 +1,6 @@
-﻿using AgileTeamFour.BL.Models;
-using AgileTeamFour.UI.Models;
+﻿using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.VisualStudio.Web.CodeGeneration.Design;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -108,9 +103,13 @@ namespace AgileTeamFour.UI.Controllers
         }
         public IActionResult Details2(int Id)
         {
+            TempData["UserID"] = Authenticate.GetUserID(HttpContext);
+            UserProfileVM userProfileVM = new UserProfileVM(Id);
             ViewBag.Title = "Details for User";
-            return View(UserManager.LoadById(Id));
+            return View(userProfileVM);
         }
+
+
         [HttpGet]
         public IActionResult Create()
         {

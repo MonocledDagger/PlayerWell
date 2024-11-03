@@ -49,15 +49,15 @@
                 @if (TempData["UserID"] == null || item.UserID == (int)TempData["UserID"])
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                        @Html.ActionLink("Edit", "Edit2", new { id = item.UserID }) |
+                        @Html.ActionLink("Details", "Details2", new { id = item.UserID }) |
                         @Html.ActionLink("Deactivate", "Deactivate", new { id = item.UserID })
                     </td>
                 }
                 @if (TempData["UserID"] != null && item.UserID != (int)TempData["UserID"])
                 {
                     <td>
-                        | @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UserID })
                     </td>
                 }
                               

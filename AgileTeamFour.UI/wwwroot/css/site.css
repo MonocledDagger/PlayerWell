@@ -355,3 +355,74 @@ color:white;
 }
 
 
+/*=================================================================
+  User Profile Customization
+==================================================================*/
+
+.profile-section {
+    padding: 20px;
+    max-width: 650px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    border-radius: 50%; /* Circular profile photo */
+    width: 150px;
+    height:150px;
+    margin-right: 20px; /* Spacing between the photo and text */
+}
+
+.profile-info {
+    flex: 1; /* Occupy remaining space */
+}
+
+.username {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.bio {
+    font-size: 16px;
+    color: #555;
+}
+
+.review-container {
+    border: 1px solid #ddd;
+    max-width: 650px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+}
+
+.username-link {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.review-content {
+    margin-top: 10px;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.review-stats {
+    font-size: 14px;
+}
+
+.review-actions {
+    font-size: 14px;
+}

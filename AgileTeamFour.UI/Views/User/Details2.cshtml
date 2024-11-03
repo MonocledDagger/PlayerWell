@@ -1,55 +1,61 @@
-﻿@model AgileTeamFour.BL.Models.User
+﻿@model AgileTeamFour.UI.ViewModels.UserProfileVM;
 
-@{
-    ViewData["Title"] = "Details";
+<h1>@Model.CurrentUser.UserName's Profile</h1>
+
+<div class="profile-section">
+    <img class="profile-photo" src="~/images/@Model.CurrentUser.IconPic" alt="Profile Photo">
+    <div class="profile-info">
+        <div>@Model.CurrentUser.Bio.</div>
+        <div><strong>Friends: </strong> @Model.Friends.Count()</div>
+        <div><strong>Reviews: </strong> @Model.Reviews.Count()</div>
+        <button id="follow-button" style="display: none;">Add Friend</button>
+        <button id="unfollow-button" style="display: none;">Unfriend</button>
+    </div>
+</div>
+
+<div class="user-reviews">
+    <h2>Reviews</h2>
+    @if (Model.Reviews.Any())
+    {
+        <ul class="review-list">
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="review-container">
+                    <!-- Total Stars -->
+                    <p>
+                        @for (int i = 0; i < review.StarsOutOf5; i++)
+                        {
+                            <img src="~/images/star.png" alt="star" class="star-icon" />
+                        }
+                    </p>
+                    <!-- Review Text Section -->
+                    <div class="review-content">
+                        <p>
+                            @Html.DisplayFor(modelItem => review.ReviewText)
+                        </p>
+                    </div>
+
+                    <!-- How Long ago the Review Was -->
+                    <div class="review-footer">
+                        <p>@((DateTime.Now - review.DateTime).Days) days ago </p>
+                    </div>
+                </div>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No reviews available</p>
+    }
+</div>
+@if (TempData["UserID"] == null || Model.CurrentUser.UserID == (int)TempData["UserID"])
+{
+    <div class="user-actions">
+        @Html.ActionLink("Edit", "Edit2", new { id = Model.CurrentUser.UserID }) |
+        <a asp-action="Index">View All Players</a>
+    </div>
 }
-
-<h1>Details</h1>
-
-<div>
-
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IconPic)
-        </dt>
-        <dd class="col-sm-10">
-
-            <img class="imagepropmedium"
-                 alt="@Model.IconPic"
-                 id="programimage"
-                 onclick="on('/images/@Model.IconPic')"
-                 src="~/images/@Model.IconPic" />
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bio)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bio)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessLevel)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccessLevel)
-        </dd>
-    </dl>
+<div class="user-actions">
+    <a asp-action="Index">View All Players</a>
 </div>
-<div>
-    <!--This details page is for seeing someone else's profile when you are not an admin-->
-    <!--No edit link is necessary-->
-    <a asp-action="Index">Back to List</a>
-</div>
+
