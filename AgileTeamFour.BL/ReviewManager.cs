@@ -356,7 +356,9 @@ namespace AgileTeamFour.BL
         }
         public static int CalculateLevel(int points)
         {
-            if (points >= 0 && points <= 50) return 1;
+            if (points < -25) return -2;
+            else if (points >= -25 && points <= 0) return -1;
+            else if (points >= 1 && points <= 50) return 1;
             else if (points >= 51 && points <= 150) return 2;
             else if (points >= 151 && points <= 300) return 3;
             else if (points >= 301 && points <= 500) return 4;

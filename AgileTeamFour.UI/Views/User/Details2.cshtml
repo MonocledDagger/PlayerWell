@@ -6,8 +6,9 @@
     <img class="profile-photo" src="~/images/@Model.CurrentUser.IconPic" alt="Profile Photo">
     <div class="profile-info">
         <div>@Model.CurrentUser.Bio.</div>
-        <div><strong>Friends: </strong> @Model.Friends.Count()</div>
-        <div><strong>Reviews: </strong> @Model.Reviews.Count()</div>
+        <div><strong>Friends: </strong> @Model.Friends.Count()</div> <!-- Total Friends -->
+        <div><strong>Reviews: </strong> @Model.Reviews.Count()</div> <!-- Total Reviews -->
+        <div><strong>Review Level: </strong> @Model.ReviewLevel</div> <!-- Review Level Based on Score -->
         <button id="follow-button" style="display: none;">Add Friend</button>
         <button id="unfollow-button" style="display: none;">Unfriend</button>
     </div>
