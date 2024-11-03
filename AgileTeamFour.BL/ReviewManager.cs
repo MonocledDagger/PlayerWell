@@ -1,8 +1,4 @@
-﻿
-using AgileTeamFour.BL.Models;
-using AgileTeamFour.BL;
-
-namespace AgileTeamFour.BL
+﻿namespace AgileTeamFour.BL
 {
     public static class ReviewManager
     {

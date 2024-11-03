@@ -464,3 +464,19 @@ tbody tr:hover a{
 .review-actions {
     font-size: 14px;
 }
+
+.bubble {
+    display: none;
+    position: absolute;
+    width: 150px;
+    background: white;
+    border: 1px solid black;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.question-mark {
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+}

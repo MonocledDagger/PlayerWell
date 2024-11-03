@@ -9,6 +9,13 @@
         <div><strong>Friends: </strong> @Model.Friends.Count()</div> <!-- Total Friends -->
         <div><strong>Reviews: </strong> @Model.Reviews.Count()</div> <!-- Total Reviews -->
         <div><strong>Review Level: </strong> @Model.ReviewLevel</div> <!-- Review Level Based on Score -->
+        <div class="question-mark" onclick="showBubble(event)"> What is a Review Level ?</div>
+        <div id="bubble" class="bubble">
+            The review level system evaluates players based on peer reviews,
+            assigning points for each star rating. These points are summed to calculate a total score,
+            which determines the player's level.
+            Levels range from negative to positive, reflecting overall performance and feedback.
+        </div>
         <button id="follow-button" style="display: none;">Add Friend</button>
         <button id="unfollow-button" style="display: none;">Unfriend</button>
     </div>
@@ -59,4 +66,19 @@
 <div class="user-actions">
     <a asp-action="Index">View All Players</a>
 </div>
+
+<script>
+    document.addEventListener('click', function (event) {
+        var bubble = document.getElementById('bubble');
+        var questionMark = document.querySelector('.question-mark');
+
+        if (questionMark.contains(event.target)) {
+            bubble.style.display = 'block';
+            bubble.style.top = event.clientY + 'px';
+            bubble.style.left = (event.clientX + 100) + 'px';
+        } else {
+            bubble.style.display = 'none';
+        }
+    });
+</script>
 
