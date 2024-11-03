@@ -428,6 +428,12 @@ tbody tr:hover a{
     color: #555;
 }
 
+.user-reviews {
+    max-height: 500px; /* Adjust height as needed to fit 5 reviews */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 15px; /* Adjust if necessary to avoid scrollbar overlay */
+}
+
 .review-container {
     border: 1px solid #ddd;
     max-width: 650px;

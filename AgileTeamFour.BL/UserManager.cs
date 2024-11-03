@@ -277,7 +277,7 @@ namespace AgileTeamFour.BL
 
                     user = new User
                     {
-                        UserID = 5,
+                        UserID = 6,
                         UserName = "test",
                         FirstName = "Helpful",
                         LastName = "Debugger",
