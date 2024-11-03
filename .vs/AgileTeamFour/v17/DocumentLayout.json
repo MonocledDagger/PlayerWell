@@ -13,10 +13,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\projects\\agileteamfour\\agileteamfour.ui\\views\\user\\edit2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\user\\edit2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\projects\\agileteamfour\\agileteamfour.ui\\views\\user\\editpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\user\\editpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 23,
+          "SelectedChildIndex": 22,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,26 +106,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EditPassword.cshtml",
-              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\User\\EditPassword.cshtml",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\User\\EditPassword.cshtml",
-              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\User\\EditPassword.cshtml",
-              "RelativeToolTip": "AgileTeamFour.UI\\Views\\User\\EditPassword.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAB4AAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-03T20:23:23.184Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Edit2.cshtml",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\User\\Edit2.cshtml",
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\User\\Edit2.cshtml",
               "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\User\\Edit2.cshtml",
               "RelativeToolTip": "AgileTeamFour.UI\\Views\\User\\Edit2.cshtml",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAD8AAACVAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-03T20:08:14.726Z",
               "EditorCaption": ""
@@ -155,7 +138,7 @@
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Controllers\\UserController.cs",
               "RelativeToolTip": "AgileTeamFour.UI\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAEABAAAAAAAAAAAAAEwBAAAAAAAA",
+              "ViewState": "AQIAAD8BAAAAAAAAAAAlwG8BAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-03T16:40:01.505Z",
               "EditorCaption": ""
