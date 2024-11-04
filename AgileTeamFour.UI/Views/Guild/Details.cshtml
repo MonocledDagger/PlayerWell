@@ -37,6 +37,152 @@
         </dd>
     </dl>
 </div>
+
+<hr />
+<div class="container">
+    <h3> Members</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerGuilds.First().UserName)
+                </th>
+
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var playerGuild in Model.PlayerGuilds)
+            {
+                <tr>
+                    <td>
+                        @playerGuild.UserName
+                    </td>
+
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
+
+
+    <div class="container py-3 chat-container">
+        <h4>Comments</h4>
+        @{
+            var currentPlayer = Model.PlayerGuilds.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
+            bool isSignedUp = currentPlayer != null;
+            var currentUserId = Model.PlayerID;
+        }
+        <hr />
+
+        <div class="chat-box">
+            <!-- Chat Messages Section -->
+            <ul id="messagesList" class="chat-messages">
+                @foreach (var comment in Model.GuildComments)
+                {
+                    var author = @Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID);
+                    var isCurrentUser = comment.AuthorID == currentUserId;
+                    <li class="chat-message @(isCurrentUser ? "sent" : "received")">
+                        @if (!isCurrentUser)
+                        {
+                            <img class="avatar"
+                                 alt="@author.UserName's Avatar"
+                                 id="programimage"
+                                 src="@Url.Content("~/images/" + author.IconPic)"
+                                 onclick="on('@Url.Content("~/images/" + author.IconPic)')" />
+                        }
+                        <div class="message-content">
+                            <span class="message-author">@author.UserName</span>
+                            <p>@comment.Text</p>
+                            <small class="message-timestamp">@comment.TimePosted.ToString("hh:mm tt")</small>
+                        </div>
+                    </li>
+
+
+                }
+            </ul>
+        </div>
+
+
+
+
+        @if (isSignedUp)
+        {
+            <!-- Chat Input Section -->
+            <div class="chat-input">
+                @*<form id="chatForm" asp-action="AddComment" method="post" asp-controller="Event" >*@
+                <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
+                <input type="hidden" name="EventID" value="@Model.Guild.GuildId" />
+                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                @{
+                    string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
+                    if (name == null) name = "1";
+                }
+                <input type="hidden" id="userName" value="@name" />
+                @{
+                    int currentUser = @Model.PlayerID;
+                }
+                <input type="hidden" id="CurrentUser" value="@currentUser" />
+                <button type="submit" id="sendButton" class="btn btn-primary">
+                    <i class="fa fa-paper-plane"></i> Send
+                </button>
+                @*</form>*@
+            </div>
+            <!--Scripts needed for SignalR chat function!-->
+            <script src="~/js/signalr/dist/browser/signalr.js"></script>
+            <script src="~/js/chat.js"></script>
+        }
+
+    <hr />
+    <div class="container py-3">
+
+
+        
+        @if (isSignedUp)
+        {
+            <p>You are a Member of this Guild</p> <br />
+            <form asp-action="InviteGuild" asp-controller="Guild">
+                <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
+                <button type="submit" class="btn btn-primary">Invite Player</button>
+                <input type="text" name="PlayerName" value="" placeholder="Enter a Player's Name" />
+            </form>
+            @* Check if there is an error message to display *@
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+            }
+            @* Success message section (optional) *@
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success mt-2">@TempData["SuccessMessage"]</div>
+            }
+            <br />
+            <form asp-action="LeaveGuild" asp-controller="Guild">
+                <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
+                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                <button type="submit" class="btn btn-danger">Leave Guild</button>
+            </form>
+        }
+        else
+        {
+            <h4>Sign up for this Event</h4>
+            <form asp-action="SignUp" method="post">
+                <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
+                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+
+
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        }
+    </div>
+
+    <hr />
+</div>
+<br />
+</div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Guild.GuildId">Edit</a> |
     <a asp-action="Index">Back to List</a>
