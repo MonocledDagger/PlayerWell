@@ -224,7 +224,7 @@ namespace AgileTeamFour.BL
                         Password = "drift",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "glenn@them.com",
-                        IconPic = "images/harbor.png",
+                        IconPic = "cat.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "user"
                     };
@@ -254,7 +254,7 @@ namespace AgileTeamFour.BL
                         Password = "price",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "james@them.com",
-                        IconPic = "cat.jpg",
+                        IconPic = "dragon.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "admin"
                     };
@@ -269,7 +269,7 @@ namespace AgileTeamFour.BL
                         Password = "bill",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "bill@them.com",
-                        IconPic = "truck.jpg",
+                        IconPic = "default.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "player"
                     };
