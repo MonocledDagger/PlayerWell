@@ -209,7 +209,7 @@ namespace AgileTeamFour.BL
                         Password = "harbor",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "will@them.com",
-                        IconPic = "images/harbor.png",
+                        IconPic = "wheel.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "admin"
                     };
@@ -239,7 +239,7 @@ namespace AgileTeamFour.BL
                         Password = "craft",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "ricardo@them.com",
-                        IconPic = "images/harbor.png",
+                        IconPic = "tiger.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "admin"
                     };
@@ -254,7 +254,7 @@ namespace AgileTeamFour.BL
                         Password = "price",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "james@them.com",
-                        IconPic = "images/harbor.png",
+                        IconPic = "cat.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "admin"
                     };
@@ -269,7 +269,7 @@ namespace AgileTeamFour.BL
                         Password = "bill",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "bill@them.com",
-                        IconPic = "images/bill.png",
+                        IconPic = "truck.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "player"
                     };
@@ -284,7 +284,7 @@ namespace AgileTeamFour.BL
                         Password = "test",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "debug@them.com",
-                        IconPic = "images/bill.png",
+                        IconPic = "dragon.jpg",
                         Bio = " A bio written by a real person.",
                         AccessLevel = "player"
                     };

@@ -429,9 +429,9 @@ tbody tr:hover a{
 }
 
 .user-reviews {
-    max-height: 500px; /* Adjust height as needed to fit 5 reviews */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding-right: 15px; /* Adjust if necessary to avoid scrollbar overlay */
+    max-height: 500px; 
+    overflow-y: auto; 
+    padding-right: 15px;
 }
 
 .review-container {
