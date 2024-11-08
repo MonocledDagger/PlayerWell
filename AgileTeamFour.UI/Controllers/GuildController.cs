@@ -2,6 +2,7 @@
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -360,6 +361,6 @@ namespace AgileTeamFour.UI.Controllers
             return RedirectToAction("Details", new { id = guildID });
         }
 
-
+        
     }
 }

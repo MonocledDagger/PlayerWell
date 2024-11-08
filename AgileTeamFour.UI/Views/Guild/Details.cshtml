@@ -6,184 +6,211 @@
 
 <h1>Details</h1>
 
-<div>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#menu1">Information</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#menu2">Chat</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#menu3">Join/Leave</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane container active">
     
-    <hr />
-    <dl class="row">
+        <hr />
+        <dl class="row">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Guild.GuildId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Guild.GuildId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Guild.GuildName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Guild.GuildName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Guild.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Guild.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LeaderName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LeaderName)
-        </dd>
-    </dl>
-</div>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Guild.GuildId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Guild.GuildId)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Guild.GuildName)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Guild.GuildName)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Guild.Description)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Guild.Description)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.LeaderName)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.LeaderName)
+            </dd>
+        </dl>
+    </div>
 
-<hr />
-<div class="container">
-    <h3> Members</h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PlayerGuilds.First().UserName)
-                </th>
+    <div id="menu1" class="tab-pane fade">
+        <hr />
+        <div class="container">
+            <h3> Members</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlayerGuilds.First().UserName)
+                        </th>
 
                 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var playerGuild in Model.PlayerGuilds)
-            {
-                <tr>
-                    <td>
-                        @playerGuild.UserName
-                    </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var playerGuild in Model.PlayerGuilds)
+                    {
+                        <tr>
+                            <td>
+                                @playerGuild.UserName
+                            </td>
 
                     
-                </tr>
-            }
-        </tbody>
-    </table>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
 
+    <div id="menu2" class="tab-pane fade">
+        <div class="container py-3 chat-container">
+            <h4>Comments</h4>
+            @{
+                var currentPlayer = Model.PlayerGuilds.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
+                bool isSignedUp = currentPlayer != null;
+                var currentUserId = Model.PlayerID;
+            }
+            <hr />
 
-    <div class="container py-3 chat-container">
-        <h4>Comments</h4>
-        @{
-            var currentPlayer = Model.PlayerGuilds.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
-            bool isSignedUp = currentPlayer != null;
-            var currentUserId = Model.PlayerID;
-        }
-        <hr />
-
-        <div class="chat-box">
-            <!-- Chat Messages Section -->
-            <ul id="messagesList" class="chat-messages">
-                @foreach (var comment in Model.GuildComments)
-                {
-                    var author = @Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID);
-                    var isCurrentUser = comment.AuthorID == currentUserId;
-                    <li class="chat-message @(isCurrentUser ? "sent" : "received")">
-                        @if (!isCurrentUser)
-                        {
-                            <img class="avatar"
-                                 alt="@author.UserName's Avatar"
-                                 id="programimage"
-                                 src="@Url.Content("~/images/" + author.IconPic)"
-                                 onclick="on('@Url.Content("~/images/" + author.IconPic)')" />
-                        }
-                        <div class="message-content">
-                            <span class="message-author">@author.UserName</span>
-                            <p>@comment.Text</p>
-                            <small class="message-timestamp">@comment.TimePosted.ToString("hh:mm tt")</small>
-                        </div>
-                    </li>
-
-
-                }
-            </ul>
-        </div>
+            <div class="chat-box">
+                <!-- Chat Messages Section -->
+                <ul id="messagesList" class="chat-messages">
+                    @foreach (var comment in Model.GuildComments)
+                    {
+                        var author = @Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID);
+                        var isCurrentUser = comment.AuthorID == currentUserId;
+                        <li class="chat-message @(isCurrentUser ? "sent" : "received")">
+                            @if (!isCurrentUser)
+                            {
+                                <img class="avatar"
+                                     alt="@author.UserName's Avatar"
+                                     id="programimage"
+                                     src="@Url.Content("~/images/" + author.IconPic)"
+                                     onclick="on('@Url.Content("~/images/" + author.IconPic)')" />
+                            }
+                            <div class="message-content">
+                                <span class="message-author">@author.UserName</span>
+                                <p>@comment.Text</p>
+                                <small class="message-timestamp">@comment.TimePosted.ToString("hh:mm tt")</small>
+                            </div>
+                        </li>
 
 
-
-
-        @if (isSignedUp)
-        {
-            <!-- Chat Input Section -->
-            <div class="chat-input">
-                @*<form id="chatForm" asp-action="AddComment" method="post" asp-controller="Event" >*@
-                <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
-                <input type="hidden" name="EventID" value="@Model.Guild.GuildId" />
-                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
-                @{
-                    string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
-                    if (name == null) name = "1";
-                }
-                <input type="hidden" id="userName" value="@name" />
-                @{
-                    int currentUser = @Model.PlayerID;
-                }
-                <input type="hidden" id="CurrentUser" value="@currentUser" />
-                <button type="submit" id="sendButton" class="btn btn-primary">
-                    <i class="fa fa-paper-plane"></i> Send
-                </button>
-                @*</form>*@
+                    }
+                </ul>
             </div>
-            <!--Scripts needed for SignalR chat function!-->
-            <script src="~/js/signalr/dist/browser/signalr.js"></script>
-            <script src="~/js/chat.js"></script>
-        }
 
-    <hr />
-    <div class="container py-3">
+
+
+
+            @if (isSignedUp)
+            {
+                <!-- Chat Input Section -->
+                <div class="chat-input">
+                    @*<form id="chatForm" asp-action="AddComment" method="post" asp-controller="Guild" >*@
+                    <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
+                    <input type="hidden" name="EventID" value="@Model.Guild.GuildId" />
+                    <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                    @{
+                        string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
+                        if (name == null) name = "1";
+                    }
+                    <input type="hidden" id="userName" value="@name" />
+                    @{
+                        int currentUser = @Model.PlayerID;
+                    }
+                    <input type="hidden" id="CurrentUser" value="@currentUser" />
+                    <button type="submit" id="sendButton" class="btn btn-primary">
+                        <i class="fa fa-paper-plane"></i> Send
+                    </button>
+                    @*</form>*@
+                </div>
+                <!--Scripts needed for SignalR chat function!-->
+                <script src="~/js/signalr/dist/browser/signalr.js"></script>
+                <script src="~/js/chat2.js"></script>
+            }
+
+
+        </div>
+    </div>
+
+    <div id="menu3" class="tab-pane fade">
+        <hr />
+        <div class="container py-3">
 
 
         
-        @if (isSignedUp)
-        {
-            <p>You are a Member of this Guild</p> <br />
-            <form asp-action="InviteGuild" asp-controller="Guild">
-                <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
-                <button type="submit" class="btn btn-primary">Invite Player</button>
-                <input type="text" name="PlayerName" value="" placeholder="Enter a Player's Name" />
-            </form>
-            @* Check if there is an error message to display *@
-            @if (TempData["ErrorMessage"] != null)
+            @if (isSignedUp)
             {
-                <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                <p>You are a Member of this Guild</p> <br />
+                <form asp-action="InviteGuild" asp-controller="Guild">
+                    <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
+                    <button type="submit" class="btn btn-primary">Invite Player</button>
+                    <input type="text" name="PlayerName" value="" placeholder="Enter a Player's Name" />
+                </form>
+                @* Check if there is an error message to display *@
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                }
+                @* Success message section (optional) *@
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success mt-2">@TempData["SuccessMessage"]</div>
+                }
+                <br />
+                <form asp-action="LeaveGuild" asp-controller="Guild">
+                    <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
+                    <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                    <button type="submit" class="btn btn-danger">Leave Guild</button>
+                </form>
             }
-            @* Success message section (optional) *@
-            @if (TempData["SuccessMessage"] != null)
+            else
             {
-                <div class="alert alert-success mt-2">@TempData["SuccessMessage"]</div>
-            }
-            <br />
-            <form asp-action="LeaveGuild" asp-controller="Guild">
-                <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
-                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
-                <button type="submit" class="btn btn-danger">Leave Guild</button>
-            </form>
-        }
-        else
-        {
-            <h4>Sign up for this Event</h4>
-            <form asp-action="SignUp" method="post">
-                <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
-                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                <h4>Sign up for this Event</h4>
+                <form asp-action="SignUp" method="post">
+                    <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
+                    <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
 
 
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-            </form>
-        }
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            }
+        </div>
+
+        <hr />
+        <br />
+    </div>
+    
+    
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Guild.GuildId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
     </div>
 
-    <hr />
-</div>
-<br />
-</div>
-
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Guild.GuildId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>
