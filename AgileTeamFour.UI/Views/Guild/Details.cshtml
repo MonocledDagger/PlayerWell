@@ -1,10 +1,11 @@
 ﻿@model AgileTeamFour.UI.ViewModels.GuildDetailsVM
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Guild Details";
 }
 
-<h1>Details</h1>
+<h1 class="cinzel-header">@Model.Guild.GuildName</h1>
+<br />
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -133,7 +134,7 @@
                 <div class="chat-input">
                     @*<form id="chatForm" asp-action="AddComment" method="post" asp-controller="Guild" >*@
                     <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
-                    <input type="hidden" name="EventID" value="@Model.Guild.GuildId" />
+                    <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
                     <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
                     @{
                         string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
@@ -191,7 +192,7 @@
             }
             else
             {
-                <h4>Sign up for this Event</h4>
+                <h4>Sign up for this Guild</h4>
                 <form asp-action="SignUp" method="post">
                     <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
                     <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
