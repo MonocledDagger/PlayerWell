@@ -4,23 +4,23 @@ using Microsoft.CodeAnalysis;
 namespace AgileTeamFour.PL.Tests
 {
     [TestClass]
-    public class utGuild : utBase<tblGuild>
+    public class utFriend : utBase<tblFriend>
     {
 
         [TestMethod]
         public void LoadTest()
         {
-            //Assert.AreEqual(3, dc.tblEvents.Count());
+            
             int expected = 3;
-            var Events = base.LoadTest();
-            Assert.AreEqual(expected, Events.Count());
+            var Friends = base.LoadTest();
+            Assert.AreEqual(expected, Friends.Count());
 
         }
 
         [TestMethod]
         public void LoadByIDTest()
         {
-            tblGuild row = base.LoadTest().FirstOrDefault();
+            tblFriend row = base.LoadTest().FirstOrDefault();
             Assert.IsNotNull(row);
         }
 
@@ -29,17 +29,13 @@ namespace AgileTeamFour.PL.Tests
         public void InsertTest()
         {
 
-           
-            int? id = GameManager.Load().FirstOrDefault().GameID;
-            if (id == null)
-                Assert.Fail("No valid GameID in Events Table");
-            int rowsAffected = InsertTest(new tblGuild
+            
+            int rowsAffected = InsertTest(new tblFriend
             {
-                GuildId = GuildManager.Load().Max(e => e.GuildId) + 1,
-                GuildName = "None",
-                LeaderId = 1,
-                Description = "None",
-                
+                ID = FriendManager.Load().Max(e => e.ID) + 1,
+                Status = "Pending",
+                ReceiverID = 3,
+                SenderID = 4,
             });
 
             Assert.AreEqual(1, rowsAffected);
@@ -48,10 +44,10 @@ namespace AgileTeamFour.PL.Tests
         [TestMethod]
         public void UpdateTest()
         {
-            tblGuild row = base.LoadTest().FirstOrDefault();
+            tblFriend row = base.LoadTest().FirstOrDefault();
             if (row != null)
             {
-                row.Description = row.Description + "None";
+                row.Status = row.Status + "Test";
                 int rowsAffected = UpdateTest(row);
                 Assert.AreEqual(1, rowsAffected);
             }
@@ -60,7 +56,7 @@ namespace AgileTeamFour.PL.Tests
         [TestMethod]
         public void DeleteTest()
         {
-            tblGuild row = base.LoadTest().FirstOrDefault();
+            tblFriend row = base.LoadTest().FirstOrDefault();
             if (row != null)
             {
                 int rowsAffected = DeleteTest(row);

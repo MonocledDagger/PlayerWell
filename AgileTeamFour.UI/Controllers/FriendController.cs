@@ -221,27 +221,7 @@ namespace AgileTeamFour.UI.Controllers
                 throw;
             }
         }
-        //[HttpPost]
-        //public IActionResult SendRequest(int receiverId)
-        //{
-        //    // Get the user from session
-        //    var user = HttpContext.Session.GetObject<User>("user");
-
-        //    // Ensure the user is logged in
-        //    if (user == null)
-        //    {
-
-        //        return RedirectToAction("Login");
-        //    }
-
-        //    // Sender ID is the current user's ID
-        //    var senderId = user.UserID;
-
-
-        //    FriendManager.Insert(senderId, receiverId);
-
-        //    return RedirectToAction("Index");
-        //}
+        
         [HttpPost]
         public IActionResult AcceptRequest(int friendId)
         {
@@ -251,7 +231,7 @@ namespace AgileTeamFour.UI.Controllers
         [HttpPost]
         public IActionResult RejectRequest(int friendId)
         {
-            FriendManager.RejectFriendRequest(friendId);
+            FriendManager.Delete(friendId);
             return RedirectToAction("MyIndex");
         }
         [HttpPost]

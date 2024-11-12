@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NuGet.Protocol.Plugins;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,21 @@ namespace AgileTeamFour.BL
 
                 using (var dc = new AgileTeamFourEntities())
                 {
+
+                    // Check if there is an existing friendship
+                    var existingRelationship = dc.tblFriends
+                    .FirstOrDefault(f =>
+                    (f.SenderID == friend.SenderID && f.ReceiverID == friend.ReceiverID) ||
+                    (f.SenderID == friend.ReceiverID && f.ReceiverID == friend.SenderID)
+                        );
+
+                    // If a relationship exists, return 0 to indicate no new insert
+                    if (existingRelationship != null)
+                    {
+                        return 0;
+                    }
+                
+                    //Otherwise, insert continues
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();
 
@@ -51,7 +67,7 @@ namespace AgileTeamFour.BL
                         ReceiverID = friend.ReceiverID
                     };
 
-                    // Add the new entity to the context
+                    // Add the new entity
                     dc.tblFriends.Add(entity);
                     results = dc.SaveChanges();
 
@@ -251,6 +267,8 @@ namespace AgileTeamFour.BL
                 }
             }
         }
+
+
 
         public static void BlockPlayer(int friendId)
         {
