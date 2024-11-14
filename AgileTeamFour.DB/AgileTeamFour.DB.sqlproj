@@ -74,7 +74,7 @@
     <None Include="PostDeployment\DefaultData\tblFriends.sql" />
     <None Include="PostDeployment\DefaultData\tblFriendComments.sql" />
     <None Include="remote.DB.publish.xml" />
-    <None Include="local.publish.xml" />
+    <None Include="AgileTeamFour.DB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="PreDeployment\Script.PreDeployment.sql" />

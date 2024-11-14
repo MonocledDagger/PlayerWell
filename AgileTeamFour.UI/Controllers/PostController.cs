@@ -43,6 +43,8 @@ namespace AgileTeamFour.Web.Controllers
 
                 post.AuthorID = user.UserID;
                 post.TimePosted = DateTime.Now;
+                // Set image to an empty string if it is null
+                post.Image = post.Image ?? "";
                 int result = PostManager.Insert(post);
                 return RedirectToAction(nameof(Index));
             }

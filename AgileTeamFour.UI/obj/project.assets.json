@@ -5207,7 +5207,7 @@
       ]
     },
     "Microsoft.CSharp/4.5.0": {
-      "sha512": "EGoBmf3Na2ppbhPePDE9PlX81r1HuOZH5twBrq7couJZiPTjUnD3648balerQJO6EJ8Sj+43+XuRwQ7r+3tE3w==",
+      "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
       "path": "microsoft.csharp/4.5.0",
       "files": [
@@ -7383,7 +7383,7 @@
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
-      "sha512": "MNcaYxUJvUcoXOa+jgKl/GDw/Mh+wMrxDjW4dre7qrp35LUGTjUBNtZsNjxsWX592ocdyqt1X5hMJB+5OStoYw==",
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
       "type": "package",
       "path": "system.numerics.vectors/4.5.0",
       "files": [
@@ -8283,25 +8283,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fired\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\rguzm\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "projectUniqueName": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
       "projectName": "AgileTeamFour.UI",
-      "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
-      "packagesPath": "C:\\Users\\fired\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.UI\\obj\\",
+      "projectPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.UI\\AgileTeamFour.UI.csproj",
+      "packagesPath": "C:\\Users\\rguzm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\fired\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rguzm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8310,20 +8308,21 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
-              "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
+            "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj": {
+              "projectPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj"
             },
-            "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
-              "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
+            "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj": {
+              "projectPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.BL\\AgileTeamFour.BL.csproj"
             },
-            "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
-              "projectPath": "C:\\Users\\fired\\source\\repos\\AgileTeamFour\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
+            "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj": {
+              "projectPath": "C:\\Users\\rguzm\\Documents\\School\\Agile\\Team4.2\\AgileTeamFour.PL\\AgileTeamFour.PL.csproj"
             }
           }
         }
@@ -8332,6 +8331,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -8400,7 +8404,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
