@@ -1,0 +1,55 @@
+﻿@model AgileTeamFour.BL.Models.PostComment
+
+<div class="comment-item">
+    <span class="comment-author">@Model.AuthorID:</span>
+    <span class="comment-text">@Model.Text</span>
+    <span class="time-posted">@Model.TimePosted</span>
+    <button class="reply-button" onclick="showReplyForm(@Model.CommentID)">Reply</button>
+
+    <div id="reply-form-@Model.CommentID" class="reply-form" style="display: none;">
+        <textarea class="reply-input" placeholder="Write a reply..."></textarea>
+        <button class="submit-reply" onclick="submitReply(@Model.PostID, @Model.CommentID)">Post Reply</button>
+    </div>
+
+    <!-- Recursively render replies if they exist -->
+    @if (Model.Replies != null && Model.Replies.Any())
+    {
+        <div class="replies-list" style="margin-left: 20px;">
+            @foreach (var reply in Model.Replies)
+            {
+                @await Html.PartialAsync("_PostCommentPartial", reply)
+            }
+        </div>
+    }
+</div>
+
+
+
+
+
+
+@* @model AgileTeamFour.BL.Models.PostComment
+@using System.Collections.Generic
+
+<div class="comment-item">
+    <span class="comment-author">@Model.AuthorID</span>: @Model.Text
+    <button onclick="showReplyForm(@Model.CommentID)">Reply</button>
+
+    <!-- Reply Form -->
+    <div id="reply-form-@Model.CommentID" class="reply-form" style="display:none;">
+        <textarea class="reply-input" placeholder="Write a reply..."></textarea>
+        <button onclick="submitReply(@Model.PostID, @Model.CommentID)">Submit Reply</button>
+    </div>
+
+    <!-- Display nested replies -->
+    <div class="replies">
+        @if (Model.Replies != null && Model.Replies.Any())
+        {
+            foreach (var reply in Model.Replies)
+            {
+                @await Html.PartialAsync("_PostCommentPartial", reply)
+            }
+        }
+    </div>
+</div>
+ *@

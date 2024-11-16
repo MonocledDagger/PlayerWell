@@ -1,17 +1,14 @@
 ﻿@model IEnumerable<AgileTeamFour.BL.Models.Post>
 
-
 @{
     ViewData["Title"] = "Posts";
 }
-
 
 <h1>@ViewData["Title"]</h1>
 
 <div class="activity-feed">
     <p>
         <a asp-action="Create" class="create-post-link">Create a New Post</a>
-
     </p>
     @foreach (var item in Model)
     {
@@ -38,7 +35,7 @@
                         <span class="review-stars">
                             @for (var i = 1; i <= 5; i++)
                             {
-                                var averageStars = item.AverageStarsOutOf5.GetValueOrDefault(); // Get value or 0 if null
+                                var averageStars = item.AverageStarsOutOf5.GetValueOrDefault(); 
 
                                 if (i <= Math.Floor(averageStars))
                                 {
@@ -60,13 +57,16 @@
                 </div>
             </div>
 
+
+
+
+
+
+
+
             <div class="post-actions">
                 <button class="like-button" onclick="likePost(@item.PostID)">Like</button>
-                @* <span class="like-count">@item.LikeCount Likes</span> *@
-
                 <button class="comment-button" onclick="toggleCommentSection(@item.PostID)">Comment</button>
-                @*  <span class="comment-count">@item.CommentCount Comments</span> *@
-
                 <button class="respond-button">Send a Friend Request</button>
             </div>
 
@@ -74,16 +74,22 @@
                 <textarea class="comment-input" placeholder="Write a comment..."></textarea>
                 <button class="submit-comment" onclick="submitComment(@item.PostID)">Post</button>
 
-                <!-- I will Display existing comments here -->
-                @*  <div class="comments-list">
-            @foreach (var comment in item.Comments)
-            {
-            <div class="comment-item">
-            <span class="comment-author">@comment.AuthorName:</span>
-            <span class="comment-text">@comment.Text</span>
-            </div>
-            }
-            </div> *@
+                <!-- Displaying nested comments using partial view -->
+                <div class="comments-list">
+                    @if (item.Comments != null && item.Comments.Any())
+                    {
+                        @foreach (var postcomment in item.Comments)
+                        {
+
+                            <span class="time-posted">@postcomment.TimePosted</span>
+                            <!-- @await Html.PartialAsync("_PostCommentPartial", postcomment) -->
+                        }
+                    }
+                    else
+                    {
+                        <span>No comments to display</span> <!-- This will show if Comments is null or empty -->
+                    }
+                </div>
             </div>
         </div>
     }
@@ -91,23 +97,28 @@
 
 <script>
     function likePost(postId) {
-        // I will do the like here
+        // Perform like functionality here
     }
 
     function toggleCommentSection(postId) {
         var commentSection = document.getElementById('comment-section-' + postId);
-        if (commentSection.style.display === 'none') {
-            commentSection.style.display = 'block';
-        } else {
-            commentSection.style.display = 'none';
-        }
+        commentSection.style.display = (commentSection.style.display === 'none') ? 'block' : 'none';
     }
 
     function submitComment(postId) {
-        // save the comments here
+        var commentText = document.querySelector('#comment-section-' + postId + ' .comment-input').value;
+        // AJAX request to submit the comment (postId, commentText)
+    }
+
+    function showReplyForm(commentId) {
+        var replyForm = document.getElementById('reply-form-' + commentId);
+        replyForm.style.display = 'block';
+    }
+
+    function submitReply(postId, parentCommentId) {
+        var replyText = document.querySelector('#reply-form-' + parentCommentId + ' .reply-input').value;
+        // AJAX request to submit the reply (postId, replyText, parentCommentId)
     }
 </script>
-
-
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
