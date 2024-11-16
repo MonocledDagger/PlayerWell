@@ -39,7 +39,7 @@ namespace AgileTeamFour.Web.Controllers
             try
             {
                 User user = GetLoggedInUser();
-                ViewBag.Title = "Create a User";
+                ViewBag.Title = "Create a replay";
 
                 post.AuthorID = user.UserID;
                 post.TimePosted = DateTime.Now;

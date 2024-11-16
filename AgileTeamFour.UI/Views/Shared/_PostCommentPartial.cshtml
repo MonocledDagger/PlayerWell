@@ -1,34 +1,56 @@
-﻿@model AgileTeamFour.BL.Models.PostComment
+﻿
+@* 
 
-<div class="comment-item">
-    <span class="comment-author">@Model.AuthorID:</span>
-    <span class="comment-text">@Model.Text</span>
-    <span class="time-posted">@Model.TimePosted</span>
-    <button class="reply-button" onclick="showReplyForm(@Model.CommentID)">Reply</button>
 
-    <div id="reply-form-@Model.CommentID" class="reply-form" style="display: none;">
-        <textarea class="reply-input" placeholder="Write a reply..."></textarea>
-        <button class="submit-reply" onclick="submitReply(@Model.PostID, @Model.CommentID)">Post Reply</button>
-    </div>
 
-    <!-- Recursively render replies if they exist -->
-    @if (Model.Replies != null && Model.Replies.Any())
+ @model AgileTeamFour.BL.Models.PostComment
+
+ @model IEnumerable<AgileTeamFour.BL.Models.Post> 
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="activity-feed">
+    @foreach (var item in Model)
     {
-        <div class="replies-list" style="margin-left: 20px;">
-            @foreach (var reply in Model.Replies)
-            {
-                @await Html.PartialAsync("_PostCommentPartial", reply)
-            }
+        <div class="post-card">
+            <div class="user-info">
+                <img class="avatar" alt="UserName's Avatar"
+                     src="@Url.Content("~/images/" + item.IconPic)"
+                     onclick="on('@Url.Content("~/images/" + item.IconPic)')" />
+                <a asp-controller="User" asp-action="Details" asp-route-id="@item.AuthorID" class="username">
+                    @item.UserName &nbsp
+                </a>
+                <span class="time-posted">@item.TimePosted</span>
+            </div>
+            <p class="post-content">@item.Text</p>
+
+            <div class="comment-section">
+                <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                <button class="submit-comment" onclick="submitComment(@item.PostID)">Post</button>
+
+                <!-- Render comments using the partial view -->
+                <div class="comments-list">
+                    @if (item.Comments != null && item.Comments.Any())
+                    {
+                        @foreach (var comment in item.Comments)
+                        {
+                            @await Html.PartialAsync("_PostCommentPartial", comment)
+                        }
+                    }
+                </div>
+            </div>
         </div>
     }
-</div>
+</div> *@
 
 
+ 
 
-
-
-
-@* @model AgileTeamFour.BL.Models.PostComment
+@model AgileTeamFour.BL.Models.PostComment
 @using System.Collections.Generic
 
 <div class="comment-item">
@@ -52,4 +74,4 @@
         }
     </div>
 </div>
- *@
+ 

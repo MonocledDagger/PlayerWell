@@ -1,4 +1,7 @@
-﻿@model IEnumerable<AgileTeamFour.BL.Models.Post>
+﻿
+
+
+@model IEnumerable<AgileTeamFour.BL.Models.Post>
 
 @{
     ViewData["Title"] = "Posts";
@@ -35,7 +38,7 @@
                         <span class="review-stars">
                             @for (var i = 1; i <= 5; i++)
                             {
-                                var averageStars = item.AverageStarsOutOf5.GetValueOrDefault(); 
+                                var averageStars = item.AverageStarsOutOf5.GetValueOrDefault(); // Get value or 0 if null
 
                                 if (i <= Math.Floor(averageStars))
                                 {
@@ -70,27 +73,22 @@
                 <button class="respond-button">Send a Friend Request</button>
             </div>
 
-            <div class="comment-section" id="comment-section-@item.PostID" style="display:none;">
+            <div class="comment-section">
                 <textarea class="comment-input" placeholder="Write a comment..."></textarea>
                 <button class="submit-comment" onclick="submitComment(@item.PostID)">Post</button>
 
-                <!-- Displaying nested comments using partial view -->
+                <!-- Render comments using the partial view -->
                 <div class="comments-list">
                     @if (item.Comments != null && item.Comments.Any())
                     {
-                        @foreach (var postcomment in item.Comments)
+                        @foreach (var comment in item.Comments)
                         {
-
-                            <span class="time-posted">@postcomment.TimePosted</span>
-                            <!-- @await Html.PartialAsync("_PostCommentPartial", postcomment) -->
+                            @await Html.PartialAsync("_PostCommentPartial", comment)
                         }
-                    }
-                    else
-                    {
-                        <span>No comments to display</span> <!-- This will show if Comments is null or empty -->
                     }
                 </div>
             </div>
+            
         </div>
     }
 </div>
@@ -122,3 +120,4 @@
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
