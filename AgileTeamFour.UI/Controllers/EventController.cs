@@ -106,7 +106,7 @@ namespace AgileTeamFour.Web.Controllers
             else
             {
                 TempData["error"] = "Need to be logged in to Create an Event.";
-                return RedirectToAction("Index", "Event");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                return RedirectToAction("Index", "Event");
             }
 
         }
@@ -355,25 +355,7 @@ namespace AgileTeamFour.Web.Controllers
             return RedirectToAction("Details", new { id = eventID });
         }
     
-        /* SignalR UI Hubs Folders, ChatHub.cs class takes over this function
-        [HttpPost]
-        public ActionResult AddComment(string commentText, int eventID, int playerID)
-        {
-            Comment comment = new Comment();
-            comment.TimePosted = DateTime.Now;
-            comment.AuthorID = playerID;
-            comment.EventID = eventID;
-            comment.Text = commentText;
-
-            if(commentText != null && commentText.Trim() != "")
-            {
-                CommentManager.Insert(comment);
-            }
-          
-            
-            return RedirectToAction("Details", new { id = eventID });
-        }
-        */
+        
         [HttpPost]
         public ActionResult InviteEvent(int eventID, string playerName)
         {   // Try adding the player and return a message with reault of attempt

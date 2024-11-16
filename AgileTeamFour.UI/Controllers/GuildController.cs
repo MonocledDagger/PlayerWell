@@ -2,6 +2,7 @@
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -36,7 +37,7 @@ namespace AgileTeamFour.UI.Controllers
             var guildDetailsVMs = guilds.Select(e => new GuildDetailsVM
             {
                 Guild = e, // Assign the guild object
-                User = UserManager.LoadById(e.GuildId), // Load the corresponding User object for each guild
+                User = UserManager.LoadById(e.GuildId), 
                 
             }).ToList();
 
@@ -62,7 +63,7 @@ namespace AgileTeamFour.UI.Controllers
 
             var user = UserManager.LoadById(guildItem.GuildId);
             var playerGuilds = PlayerGuildManager.LoadByGuildID(id);
-            //var comments = CommentManager.LoadByGuildID(id);
+            var Guildcomments = GuildCommentManager.LoadByGuildID(id);
 
 
             // Count the number of players signed up
@@ -74,7 +75,7 @@ namespace AgileTeamFour.UI.Controllers
                 Guild = guildItem,
                 User = user,
                 PlayerGuilds = playerGuilds ?? new List<PlayerGuild>(),
-                //Comments = comments ?? new List<Comment>(),
+                GuildComments = Guildcomments ?? new List<GuildComment>(),
                 PlayerID = playerID,
                 currentPlayers = currentPlayers,
                 LeaderName = GuildManager.GetLeaderName(id),
@@ -345,22 +346,21 @@ namespace AgileTeamFour.UI.Controllers
             return RedirectToAction("Details", new { id = guildID });
         }
 
-        //[HttpPost]
-        //public ActionResult AddComment(string CommentText, int guildID, int playerID)
-        //{
-        //    Comment comment = new Comment();
-        //    comment.TimePosted = DateTime.Now;
-        //    comment.LeaderID = playerID;
-        //    comment.GameID = guildID;
-        //    comment.Text = CommentText;
+        [HttpPost]
+        public ActionResult InviteGuild(int guildID, string playerName)
+        {   // Try adding the player and return a message with result of attempt
+            TempData["SuccessMessage"] = null;
+            TempData["ErrorMessage"] = null;
+            string resultMessage = PlayerGuildManager.InviteGuild(playerName, guildID);
 
-        //    if (CommentText != null && CommentText.Trim() != "")
-        //    {
-        //        CommentManager.Insert(comment);
-        //    }
+            if (resultMessage == "Player invited successfully")
+                TempData["SuccessMessage"] = resultMessage; // Have to use temp data as viewbag
+            else
+                TempData["ErrorMessage"] = resultMessage;   // Does not persist across requests
+                                                            // Whicih occirs with the RedirectAction
+            return RedirectToAction("Details", new { id = guildID });
+        }
 
-
-        //    return RedirectToAction("Details", new { id = guildID });
-        //}
+        
     }
 }

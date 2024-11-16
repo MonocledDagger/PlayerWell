@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Projects\\AgileTeamFour\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -34,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 20,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -115,42 +90,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "tblGames.sql ",
-              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql",
-              "RelativeDocumentMoniker": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql",
-              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql",
-              "RelativeToolTip": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblGames.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-11-16T16:35:11.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "tblFriends.sql ",
-              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql",
-              "RelativeDocumentMoniker": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql",
-              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql",
-              "RelativeToolTip": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblFriends.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-11-16T16:35:08.877Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "tblEvents.sql ",
-              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
-              "RelativeDocumentMoniker": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
-              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
-              "RelativeToolTip": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-11-16T16:35:01.735Z",
-              "EditorCaption": ""
             }
           ]
         }
