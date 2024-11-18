@@ -1,4 +1,6 @@
-﻿using AgileTeamFour.UI.Models;
+﻿using AgileTeamFour.BL.Models;
+using AgileTeamFour.PL;
+using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -12,36 +14,21 @@ namespace AgileTeamFour.UI.Controllers
     {
         public ActionResult Index()
         {
-            /*
-            var guilds = FriendManager.Load(); // Load the guilds from the manager
-
-
-            // Map each Guilds object 
-            var FriendVM = guilds.Select(e => new FriendVM
-            {
-                Friend = e, 
-                //User = UserManager.LoadById(e.LeaderId), 
-
-            }).ToList();
-
-            ViewBag.Title = "List of Guilds";
-
-            // Pass the list of GuildDetailsVM to the view
-            return View(FriendVM);
-            */
+            
             // Get userID from session
             var user = HttpContext.Session.GetObject<User>("user");
             var userId = user?.UserID ?? 0;
 
-            // Load Friends and filter by UserId
+            // Load Friends and filter by UserId and status
             var friends = FriendManager.Load().Where(e => e.SenderID == userId & e.Status == "Approved" || e.ReceiverID == userId & e.Status == "Approved");
 
-            List<User> friendsList = new List<User>();
+            List<User> friendsList = new List<User>(); //Creates List of Friends
+
             foreach(Friend vm in friends)
             {
                 User friendUser = UserManager.Load().Where(e => e.UserID == vm.ID).FirstOrDefault();
-                User Sender = UserManager.Load().Where(e => e.UserID == vm.SenderID).FirstOrDefault();
-                User Receiver = UserManager.Load().Where(e => e.UserID == vm.ReceiverID).FirstOrDefault();
+                User Sender = UserManager.Load().Where(e => e.UserID == vm.SenderID).FirstOrDefault(); //Loads Friendships where Current User is the Sender
+                User Receiver = UserManager.Load().Where(e => e.UserID == vm.ReceiverID).FirstOrDefault(); //Loads Friendships where Current User is the Receiver
 
                 if (!friendsList.Contains(friendUser) && vm.ID != userId)
                 {
@@ -212,6 +199,28 @@ namespace AgileTeamFour.UI.Controllers
                 friendVM.Friend.ReceiverID = friendVM.Friend.ReceiverID; // Set from form input
                 friendVM.Friend.Status = "Pending";
 
+                using (var dc = new AgileTeamFourEntities())
+                {
+
+                    // Check if there is an existing friendship
+                    var existingRelationship = dc.tblFriends
+                    .FirstOrDefault(f =>
+                    (f.SenderID == friendVM.Friend.SenderID && f.ReceiverID == friendVM.Friend.ReceiverID) ||
+                    (f.SenderID == friendVM.Friend.ReceiverID && f.ReceiverID == friendVM.Friend.SenderID)
+                        );
+
+                    // If a relationship exists, return 0 to indicate no new insert
+                    if (existingRelationship != null)
+                    {
+                        TempData["error"] = "Relationship Already Exists";
+                        return RedirectToAction("MyIndex", "Friend");
+                    }
+                    else if (friendVM.Friend.SenderID == friendVM.Friend.ReceiverID) //Check if Friending self
+                    {
+                        TempData["error"] = "You Cannot Friend Yourself";
+                        return RedirectToAction("MyIndex", "Friend");
+                    }
+                }
                 // Insert the Friend request into the database
                 int result = FriendManager.Insert(friendVM.Friend);
                 return RedirectToAction(nameof(Index));

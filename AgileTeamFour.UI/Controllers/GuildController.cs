@@ -182,7 +182,7 @@ namespace AgileTeamFour.UI.Controllers
             else
             {
                 TempData["error"] = "Need admin or author rights to view page";
-                return RedirectToAction("Index", "Guild");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                return RedirectToAction("Index", "Guild");
             }
 
         }
@@ -205,6 +205,7 @@ namespace AgileTeamFour.UI.Controllers
                 guildItem.GuildName = model.Guild.GuildName;
                 guildItem.GuildId = model.Guild.GuildId;
                 guildItem.Description = model.Guild.Description;
+                guildItem.LeaderId = model.Guild.LeaderId;
 
                 // Save changes
                 GuildManager.Update(guildItem);
