@@ -2,11 +2,7 @@
 using AgileTeamFour.PL;
 using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGeneration.Design;
-using System.Linq;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -14,54 +10,50 @@ namespace AgileTeamFour.UI.Controllers
     {
         public ActionResult Index()
         {
-            
             // Get userID from session
             var user = HttpContext.Session.GetObject<User>("user");
             var userId = user?.UserID ?? 0;
 
-            // Load Friends and filter by UserId and status
-            var friends = FriendManager.Load().Where(e => e.SenderID == userId & e.Status == "Approved" || e.ReceiverID == userId & e.Status == "Approved");
+            // Load Friends and filter by UserId
+            var friends = FriendManager.Load().Where(e => e.SenderID == userId && e.Status == "Approved" || e.ReceiverID == userId && e.Status == "Approved").OrderBy(e => e.ID);
 
-            List<User> friendsList = new List<User>(); //Creates List of Friends
+            List<User> friendsList = new List<User>();
+            List<int> friendsIds = new List<int>();
+            foreach (Friend vm in friends)
+            { 
+                User Sender = UserManager.Load().Where(e => e.UserID == vm.SenderID).FirstOrDefault();
+                User Receiver = UserManager.Load().Where(e => e.UserID == vm.ReceiverID).FirstOrDefault();
 
-            foreach(Friend vm in friends)
-            {
-                User friendUser = UserManager.Load().Where(e => e.UserID == vm.ID).FirstOrDefault();
-                User Sender = UserManager.Load().Where(e => e.UserID == vm.SenderID).FirstOrDefault(); //Loads Friendships where Current User is the Sender
-                User Receiver = UserManager.Load().Where(e => e.UserID == vm.ReceiverID).FirstOrDefault(); //Loads Friendships where Current User is the Receiver
-
-                if (!friendsList.Contains(friendUser) && vm.ID != userId)
-                {
-                    friendsList.Add(friendUser);
-;               }
-                if (!friendsList.Contains(Sender) && vm.SenderID != userId)
+                if (!friendsIds.Contains(Sender.UserID) && Sender.UserID != userId)
                 {
                     friendsList.Add(Sender);
-                    
+                    friendsIds.Add(Sender.UserID);
+
                 }
-                if (!friendsList.Contains(Receiver) && vm.ReceiverID != userId)
+                if (!friendsIds.Contains(Receiver.UserID) && Receiver.UserID != userId)
                 {
                     friendsList.Add(Receiver);
-                    
+                    friendsIds.Add(Receiver.UserID);
                 }
             }
 
-            // Map each filtered event to the EventDetailsVM
-            var friendVMs = friends.Select(e => new FriendVM
+            var friendVMs = new List<FriendVM>();
+
+            friendVMs = friends.Select(e => new FriendVM
             {
+                User = user,
                 Friend = e,
                 UserReceiver = UserManager.LoadById(e.SenderID),
                 UserSender = UserManager.LoadById(e.ReceiverID),
-                FriendsList = friendsList
-
+                FriendsList = friendsList,
             }).ToList();
-
+            
             ViewBag.Title = "Friends";
 
             // Pass the filtered list of EventDetailsVM to the view
             return View(friendVMs);
         }
-
+     
         public ActionResult MyIndex()
         {
             // Get userID from session

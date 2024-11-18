@@ -22,3 +22,4 @@ Post-Deployment Script Template
 :r .\DefaultData\tblFriends.sql
 :r .\DefaultData\tblFriendComments.sql
 :r .\DefaultData\tblGuildComments.sql
+:r .\DefaultData\tblPostComments.sql

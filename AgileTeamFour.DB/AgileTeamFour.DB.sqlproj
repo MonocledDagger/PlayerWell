@@ -75,6 +75,7 @@
     <None Include="PostDeployment\DefaultData\tblFriendComments.sql" />
     <None Include="remote.DB.publish.xml" />
     <None Include="AgileTeamFour.DB.publish.xml" />
+    <None Include="PostDeployment\DefaultData\tblPostComments.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="PreDeployment\Script.PreDeployment.sql" />
@@ -93,6 +94,7 @@
     <Build Include="Tables\tblFriendComments.sql" />
     <None Include="PostDeployment\DefaultData\tblGuildComments.sql" />
     <Build Include="Tables\tblGuildComments.sql" />
+    <Build Include="Tables\tblPostComments.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment\Script.PostDeployment.sql" />
