@@ -24,4 +24,6 @@ public partial class tblEvent
     public DateTime DateTime { get; set; }
 
     public int AuthorId { get; set; }
+
+    public int? GuildId { get; set; }
 }

@@ -8,7 +8,8 @@ namespace AgileTeamFour.UI.ViewModels
         
 
         public Game Game { get; set; }
-        
+
+        public List<Guild> Guilds { get; set; } = new List<Guild>();
 
         public EventVM()
         {

@@ -18,5 +18,8 @@ namespace AgileTeamFour.UI.ViewModels
 
         [DisplayName("Leader Name")]
         public string LeaderName { get; set; }
+
+        //Load Events with GuildId
+        public IEnumerable<Events> Events { get; set; }
     }
 }

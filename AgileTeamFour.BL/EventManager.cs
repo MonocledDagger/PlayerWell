@@ -23,6 +23,7 @@ namespace AgileTeamFour.BL
                                 string description,
                                 DateTime time,
                                 int authorId,
+                                int? guildId,
                                 bool rollback = false)
         {
             try
@@ -40,7 +41,8 @@ namespace AgileTeamFour.BL
                     Description = description,
                     DateTime = time,
                     Type = type,
-                    AuthorId = authorId
+                    AuthorId = authorId,
+                    GuildId = guildId,
 
                 };
 
@@ -85,6 +87,7 @@ namespace AgileTeamFour.BL
                     entity.Description = events.Description;
                     entity.DateTime = events.DateTime;
                     entity.AuthorId = events.AuthorId;
+                    entity.GuildId = events.GuildId;
 
 
 
@@ -131,6 +134,7 @@ namespace AgileTeamFour.BL
                         entity.Description = events.Description;
                         entity.DateTime = events.DateTime;
                         entity.AuthorId = events.AuthorId;
+                        entity.GuildId = events.GuildId;
 
                         results = dc.SaveChanges();
                     }
@@ -207,7 +211,8 @@ namespace AgileTeamFour.BL
                             Platform = entity.Platform,
                             Description = entity.Description,
                             Type = entity.Type,
-                            AuthorId = entity.AuthorId
+                            AuthorId = entity.AuthorId,
+                            GuildId = entity.GuildId,
 
                         };
                     }
@@ -245,7 +250,8 @@ namespace AgileTeamFour.BL
                          e.Platform,
                          e.Description,
                          e.DateTime,
-                         e.AuthorId
+                         e.AuthorId,
+                         e.GuildId
                      })
                      .ToList()
                      .ForEach(events => list.Add(new Events
@@ -259,7 +265,8 @@ namespace AgileTeamFour.BL
                          Platform = events.Platform,
                          Description = events.Description,
                          DateTime = events.DateTime,
-                         AuthorId = events.AuthorId
+                         AuthorId = events.AuthorId,
+                         GuildId = events.GuildId
 
                      }));
                 }
