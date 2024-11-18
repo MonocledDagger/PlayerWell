@@ -18,16 +18,10 @@ namespace AgileTeamFour.UI.Controllers
             List<User> friendsList = new List<User>();
             List<int> friendsIds = new List<int>();
             foreach (Friend vm in friends)
-            {
-                User friendUser = UserManager.Load().Where(e => e.UserID == vm.ID).FirstOrDefault();
+            { 
                 User Sender = UserManager.Load().Where(e => e.UserID == vm.SenderID).FirstOrDefault();
                 User Receiver = UserManager.Load().Where(e => e.UserID == vm.ReceiverID).FirstOrDefault();
 
-                if (!friendsIds.Contains(friendUser.UserID) && friendUser.UserID != userId)
-                {
-                    friendsList.Add(friendUser);
-                    friendsIds.Add(friendUser.UserID);
-;               }
                 if (!friendsIds.Contains(Sender.UserID) && Sender.UserID != userId)
                 {
                     friendsList.Add(Sender);

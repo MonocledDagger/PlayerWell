@@ -62,18 +62,18 @@
     </div>
 </div>
 
-
-<div class="container py-3 chat-container">
-    <h4>Comments</h4> 
-    @{
-        var currentPlayer = @Model.FirstOrDefault().User;
-        var currentUserId = currentPlayer.UserID;
-    }
-    <hr />
+@if(Friend != null)
+{
+    <div class="container py-3 chat-container">
+        <h4>Comments</h4>
+        @{
+            var currentPlayer = @Model.FirstOrDefault().User;
+            var currentUserId = currentPlayer.UserID;
+        }
+        <hr />
         <div class="chat-box">
             <!-- Chat Messages Section -->
             <ul id="messagesList" class="chat-messages">
-
             </ul>
         </div>
         <!-- Chat Input Section -->
@@ -89,12 +89,14 @@
             <button type="submit" id="sendButton" class="btn btn-primary">
                 <i class="fa fa-paper-plane"></i> Send
             </button>
-        </div>   
+        </div>
         <!--Scripts needed for SignalR chat function!-->
         <script src="~/js/signalr/dist/browser/signalr.js"></script>
         <script src="~/js/chat3.js"></script>
-    
-</div>
+
+    </div>
+}
+
 <script>
     var friends = document.getElementById("friendsList");
     friends.style.width = "35%";
