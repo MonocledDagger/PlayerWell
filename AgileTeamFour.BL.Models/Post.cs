@@ -14,11 +14,10 @@ namespace AgileTeamFour.BL.Models
         public string Image { get; set; }
         public int AuthorID { get; set; }
         public string UserName { get; set; }
-        
         public string IconPic { get; set; }
         public string Bio { get; set; }
         public double? AverageStarsOutOf5 { get; set; }
         public string ReviewSummary { get; set; }
+        public List<PostComment> Comments { get; set; } // Ensure this is List<PostComment>
     }
-
 }
