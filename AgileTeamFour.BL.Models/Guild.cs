@@ -15,7 +15,7 @@ namespace AgileTeamFour.BL.Models
         public string GuildName { get; set;}
 
         public string Description { get; set; }
-
+        [DisplayName("Leader Name")]
         public int LeaderId {  get; set; }
 
         //public List<User> Members { get; set; }

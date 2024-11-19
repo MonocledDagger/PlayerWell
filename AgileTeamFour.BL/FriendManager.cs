@@ -2,13 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AgileTeamFour.BL
 {
     public class FriendManager
-    {   
+    {
+        public class FriendInsertResult
+        {
+            public bool Success { get; set; }
+            public string ErrorMessage { get; set; }
+        }
 
         public static int Insert(int senderID, int receiverID, bool rollback = false)
         {
@@ -52,7 +58,11 @@ namespace AgileTeamFour.BL
                     {
                         return 0;
                     }
-                
+                    else if (friend.SenderID == friend.ReceiverID) //Check if Friending self
+                    {
+                        return 0;
+                    }
+
                     //Otherwise, insert continues
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = dc.Database.BeginTransaction();

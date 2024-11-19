@@ -82,7 +82,32 @@
                     }
                 </tbody>
             </table>
+            <br />
+
+            <h3>Events</h3>
+
+            <div class="row">
+
+                @foreach (var item in Model.Events)
+                {
+                    <div class="col-md-4 hover-shadow">
+                        <div class="card mb-4" style="width: 100%;">
+                            <img src="@* @item.Game.Picture *@" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.EventName)</h5>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                                
+                                <a asp-action="Details" asp-controller="Event" asp-route-id="@item.EventID" class="btn btn-primary btn-sm">Details</a>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
+
+
     </div>
 
     <!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
