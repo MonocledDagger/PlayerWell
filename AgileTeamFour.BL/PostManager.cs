@@ -159,7 +159,7 @@ namespace AgileTeamFour.BL
                                                 u.Bio,
                                                 AverageStars = GetAverageStarsForUser(u.UserID),
                                                 ReviewSummary = GetReviewSummaryForUser(u.UserID),
-                                                Comments = PostCommentManager.LoadByPostId(c.AuthorID) // Use LoadByPostId
+                                                Comments = PostCommentManager.LoadByPostId(c.PostID) 
                                             })
                                .ToList();
 
@@ -177,7 +177,7 @@ namespace AgileTeamFour.BL
                         Bio = post.Bio,
                         AverageStarsOutOf5 = post.AverageStars,
                         ReviewSummary = post.ReviewSummary,
-                        Comments = post.Comments // Ensure compatibility here
+                        Comments = post.Comments 
                     }));
                 }
 
