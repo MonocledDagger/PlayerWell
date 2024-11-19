@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
+let groups = new Array();
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
@@ -61,8 +61,14 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var AuthorID = document.getElementById("PlayerID").value + "";
     var FriendID = document.getElementById("friends").value + "";
     var UserName = document.getElementById("userName").value + "";
-    
-    connection.invoke("SendMessageFriend", message, FriendID, AuthorID, UserName).catch(function (err) {
+    var GroupName;
+    if (AuthorID > FriendID) {
+        var GroupName = "f" + AuthorID + FriendID;
+    }
+    else {
+        var GroupName = "f" + FriendID + AuthorID;
+    }
+    connection.invoke("SendMessageFriend", GroupName, message, FriendID, AuthorID, UserName).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();
@@ -81,7 +87,27 @@ document.getElementById("friends").addEventListener("change", function (event) {
                 messageList.removeChild(messageList.firstChild);
             }
         }
-          
+
+        var length = groups.length;
+        for (let i = 0; i < length; i++)
+        {
+            connection.invoke("LeaveGroup", groups.pop()).catch(function (err) {
+                return console.error(err.toString());
+            });            
+        }
+
+        if (AuthorID > FriendID) {
+            var GroupName = "f" + AuthorID + FriendID;
+            groups.push(GroupName);
+        }
+        else {
+            var GroupName = "f" + FriendID + AuthorID;
+            groups.push(GroupName);
+        }
+
+        connection.invoke("JoinGroup", GroupName).catch(function (err) {
+            return console.error(err.toString());
+        });  
         connection.invoke("GetAllFriendMessages", FriendID, AuthorID).catch(function (err) {
             return console.error(err.toString());
         });

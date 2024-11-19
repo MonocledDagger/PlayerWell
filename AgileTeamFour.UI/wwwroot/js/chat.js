@@ -53,6 +53,11 @@ connection.on("ReceiveMessage", function (username, AuthorID, EventID, message, 
 
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
+    var EventID = document.getElementsByName("EventID")[0].value + "";
+    var GroupName = "e" + EventID;
+    connection.invoke("JoinGroup", GroupName).catch(function (err) {
+        return console.error(err.toString());
+    });
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -63,9 +68,10 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var AuthorID = document.getElementById("PlayerID").value + "";
     var EventID = document.getElementsByName("EventID")[0].value + "";
     var UserName = document.getElementById("userName").value + "";
-    
+    var GroupName = "e" + EventID;
+
     //console.log(message + " : " + AuthorID + " : " + EventID + " : " + UserName);
-    connection.invoke("SendMessage", message, EventID, AuthorID, UserName).catch(function (err) {
+    connection.invoke("SendMessage", GroupName, message, EventID, AuthorID, UserName).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();

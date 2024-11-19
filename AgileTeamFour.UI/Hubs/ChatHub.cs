@@ -7,7 +7,7 @@ namespace AgileTeamFour.UI.Hubs
 {
     public class ChatHub : Hub
     {       
-        public async Task SendMessage(string message, string EventID, string AuthorID, string UserName)
+        public async Task SendMessage(string GroupName, string message, string EventID, string AuthorID, string UserName)
         {
             Comment comment = new Comment();
             comment.TimePosted = DateTime.Now;
@@ -17,12 +17,12 @@ namespace AgileTeamFour.UI.Hubs
 
             if (comment.Text != null && comment.Text.Trim() != "")
             {
-                await Clients.All.SendAsync("ReceiveMessage", UserName.ToString(), comment.AuthorID, EventID.ToString(), message, comment.TimePosted.ToString("hh:mm tt"));
+                await Clients.Group(GroupName).SendAsync("ReceiveMessage", UserName.ToString(), comment.AuthorID, EventID.ToString(), message, comment.TimePosted.ToString("hh:mm tt"));
                 CommentManager.Insert(comment);
             }
         }
 
-        public async Task SendMessageFriend(string message, string RecieverID, string AuthorID, string UserName)
+        public async Task SendMessageFriend(string GroupName, string message, string RecieverID, string AuthorID, string UserName)
         {
             FriendComment comment = new FriendComment();
             comment.TimePosted = DateTime.Now;
@@ -32,7 +32,7 @@ namespace AgileTeamFour.UI.Hubs
 
             if (comment.Text != null && comment.Text.Trim() != "")
             {
-                await Clients.All.SendAsync("ReceiveMessageFriend", UserName.ToString(), comment.AuthorID, comment.FriendSentToID, message, comment.TimePosted.ToString("hh:mm tt"));
+                await Clients.Group(GroupName).SendAsync("ReceiveMessageFriend", UserName.ToString(), comment.AuthorID, comment.FriendSentToID, message, comment.TimePosted.ToString("hh:mm tt"));
                 FriendCommentManager.Insert(comment);
             }
         }
