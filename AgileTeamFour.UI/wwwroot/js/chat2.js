@@ -5,44 +5,47 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub2").build()
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (username, AuthorID, message, dateString) {
+connection.on("ReceiveMessage2", function (username, AuthorID, guildID, message, dateString) {
 
-    console.log("Receive method Javascript");
-    
-    const fragment = document.createDocumentFragment();
-    var li = document.createElement("li");
-    var CurrentUser = document.getElementsByName("PlayerID")[0].value + "";
+    var GuildId = document.getElementsByName("GuildId")[0].value + "";
+    if (GuildId == guildID)
+    {
+        //console.log("Receive method Javascript");
 
-    console.log("UsernameSender: " + username + "| AuthorIDSender: " + AuthorID + "| CurrentUser: " + CurrentUser);
-    if (CurrentUser == AuthorID)
-        CurrentUser = "sent";
-    else
-        CurrentUser = "received";
-    li.classList.add("chat-message");
-    li.classList.add(CurrentUser);
+        const fragment = document.createDocumentFragment();
+        var li = document.createElement("li");
+        var CurrentUser = document.getElementsByName("PlayerID")[0].value + "";
 
-    var div = document.createElement("div")
-    div.classList.add("message-content");
-    fragment.appendChild(li).appendChild(div);
+        //console.log("UsernameSender: " + username + "| AuthorIDSender: " + AuthorID + "| CurrentUser: " + CurrentUser);
+        if (CurrentUser == AuthorID)
+            CurrentUser = "sent";
+        else
+            CurrentUser = "received";
+        li.classList.add("chat-message");
+        li.classList.add(CurrentUser);
 
-    var span = document.createElement("span");
-    span.classList.add("message-author");
-    span.innerText = username;
+        var div = document.createElement("div")
+        div.classList.add("message-content");
+        fragment.appendChild(li).appendChild(div);
 
-    var p = document.createElement("p");
-    p.innerText = message;
+        var span = document.createElement("span");
+        span.classList.add("message-author");
+        span.innerText = username;
 
-    var small = document.createElement("small")
-    small.classList.add("message-timestamp");
-    small.innerText = dateString;
+        var p = document.createElement("p");
+        p.innerText = message;
 
+        var small = document.createElement("small")
+        small.classList.add("message-timestamp");
+        small.innerText = dateString;
 
+        div.appendChild(span);
+        div.appendChild(p);
+        div.appendChild(small);
 
-    div.appendChild(span);
-    div.appendChild(p);
-    div.appendChild(small);
+        document.getElementById("messagesList").appendChild(fragment);  
+    }
 
-    document.getElementById("messagesList").appendChild(fragment);  
 });
 
 connection.start().then(function () {
@@ -59,7 +62,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var UserName = document.getElementById("userName").value + "";
     
     
-    connection.invoke("SendMessage", message, GuildId, AuthorID, UserName).catch(function (err) {
+    connection.invoke("SendMessage2", message, GuildId, AuthorID, UserName).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();

@@ -11,13 +11,13 @@ connection.on("ReceiveMessageFriend", function (username, AuthorID, FriendSentTo
 
     if ((authorID == AuthorID && friendID == FriendSentToID) || (authorID == FriendSentToID && friendID == AuthorID))
     {
-        console.log("Receive method Javascript");
+        //console.log("Receive method Javascript");
 
         const fragment = document.createDocumentFragment();
         var li = document.createElement("li");
         var CurrentUser = document.getElementById("PlayerID").value + "";
 
-        console.log("UsernameSender: " + username + "| AuthorIDSender: " + AuthorID + "| CurrentUser: " + CurrentUser);
+        //console.log("UsernameSender: " + username + "| AuthorIDSender: " + AuthorID + "| CurrentUser: " + CurrentUser);
         if (CurrentUser == AuthorID)
             CurrentUser = "sent";
         else

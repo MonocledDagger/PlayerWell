@@ -1,11 +1,12 @@
 ﻿using AgileTeamFour.BL.Models;
 using AgileTeamFour.UI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AgileTeamFour.UI.Hubs
 {
     public class ChatHub : Hub
-    {
+    {       
         public async Task SendMessage(string message, string EventID, string AuthorID, string UserName)
         {
             Comment comment = new Comment();
@@ -16,7 +17,7 @@ namespace AgileTeamFour.UI.Hubs
 
             if (comment.Text != null && comment.Text.Trim() != "")
             {
-                await Clients.All.SendAsync("ReceiveMessage", UserName.ToString(), comment.AuthorID, message, comment.TimePosted.ToString("hh:mm tt"));
+                await Clients.All.SendAsync("ReceiveMessage", UserName.ToString(), comment.AuthorID, EventID.ToString(), message, comment.TimePosted.ToString("hh:mm tt"));
                 CommentManager.Insert(comment);
             }
         }

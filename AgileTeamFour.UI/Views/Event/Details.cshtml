@@ -183,7 +183,7 @@
             @*<form id="chatForm" asp-action="AddComment" method="post" asp-controller="Event" >*@
                 <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
                 <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                <input type="hidden" id="PlayerID" name="PlayerID" value="@Model.PlayerID" />
                 @{
                     string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
                     if (name == null) name = "1";
