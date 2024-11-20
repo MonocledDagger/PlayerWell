@@ -1,7 +1,9 @@
-﻿using AgileTeamFour.UI.Models;
+﻿using AgileTeamFour.BL.Models;
+using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -36,7 +38,7 @@ namespace AgileTeamFour.UI.Controllers
             var guildDetailsVMs = guilds.Select(e => new GuildDetailsVM
             {
                 Guild = e, // Assign the guild object
-                User = UserManager.LoadById(e.GuildId), // Load the corresponding User object for each guild
+                User = UserManager.LoadById(e.GuildId), 
                 
             }).ToList();
 
@@ -62,8 +64,10 @@ namespace AgileTeamFour.UI.Controllers
 
             var user = UserManager.LoadById(guildItem.GuildId);
             var playerGuilds = PlayerGuildManager.LoadByGuildID(id);
-            //var comments = CommentManager.LoadByGuildID(id);
+            var Guildcomments = GuildCommentManager.LoadByGuildID(id);
 
+            //Load Events that have this GuildID
+            var events = EventManager.Load().Where(e => e.GuildId == guildItem.GuildId);
 
             // Count the number of players signed up
             int currentPlayers = playerGuilds != null ? playerGuilds.Count() : 0;
@@ -74,11 +78,12 @@ namespace AgileTeamFour.UI.Controllers
                 Guild = guildItem,
                 User = user,
                 PlayerGuilds = playerGuilds ?? new List<PlayerGuild>(),
-                //Comments = comments ?? new List<Comment>(),
+                GuildComments = Guildcomments ?? new List<GuildComment>(),
                 PlayerID = playerID,
                 currentPlayers = currentPlayers,
                 LeaderName = GuildManager.GetLeaderName(id),
-                Users = UserManager.Load() ?? new List<User>()
+                Users = UserManager.Load() ?? new List<User>(),
+                Events=events,
             };
 
 
@@ -103,7 +108,7 @@ namespace AgileTeamFour.UI.Controllers
             }
             else
             {
-                TempData["error"] = "Need to be logged in to Create an Guild.";
+                TempData["error"] = "Need to be logged in to Create a Guild.";
                 return RedirectToAction("Index", "Guild");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
 
@@ -112,20 +117,7 @@ namespace AgileTeamFour.UI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(GuildVM guildCreateVM)
-        {   // Check if user already exists in database if not add it
-            //User existingUser = UserManager.LoadById(guildCreateVM.Guild.GuildId);
-
-            //if (existingUser == null)
-            //{
-            //    User newUser = new User
-            //    {
-            //        UserID = guildCreateVM.Guild.GuildId,
-            //        UserName = guildCreateVM.User.UserName,
-                    
-            //    };
-
-            //    UserManager.Insert(newUser);
-            //}
+        {   
 
             try
             {
@@ -181,7 +173,7 @@ namespace AgileTeamFour.UI.Controllers
             else
             {
                 TempData["error"] = "Need admin or author rights to view page";
-                return RedirectToAction("Index", "Guild");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                return RedirectToAction("Index", "Guild");
             }
 
         }
@@ -204,6 +196,7 @@ namespace AgileTeamFour.UI.Controllers
                 guildItem.GuildName = model.Guild.GuildName;
                 guildItem.GuildId = model.Guild.GuildId;
                 guildItem.Description = model.Guild.Description;
+                guildItem.LeaderId = model.Guild.LeaderId;
 
                 // Save changes
                 GuildManager.Update(guildItem);
@@ -345,22 +338,39 @@ namespace AgileTeamFour.UI.Controllers
             return RedirectToAction("Details", new { id = guildID });
         }
 
-        //[HttpPost]
-        //public ActionResult AddComment(string CommentText, int guildID, int playerID)
+        [HttpPost]
+        public ActionResult InviteGuild(int guildID, string playerName)
+        {   // Try adding the player and return a message with result of attempt
+            TempData["SuccessMessage"] = null;
+            TempData["ErrorMessage"] = null;
+            string resultMessage = PlayerGuildManager.InviteGuild(playerName, guildID);
+
+            if (resultMessage == "Player invited successfully")
+                TempData["SuccessMessage"] = resultMessage; // Have to use temp data as viewbag
+            else
+                TempData["ErrorMessage"] = resultMessage;   // Does not persist across requests
+                                                            // Whicih occirs with the RedirectAction
+            return RedirectToAction("Details", new { id = guildID });
+        }
+
+        //public ActionResult GuildEvents(int guildID)
         //{
-        //    Comment comment = new Comment();
-        //    comment.TimePosted = DateTime.Now;
-        //    comment.LeaderID = playerID;
-        //    comment.GameID = guildID;
-        //    comment.Text = CommentText;
+        //    // Load all events and filter by the provided GameID
+        //    var guilds = GuildManager.Load().Where(e => e.GuildId == guildID);
+        //    var events = EventManager.Load().Where(e => e.GuildId == guildID);
 
-        //    if (CommentText != null && CommentText.Trim() != "")
+        //    // Map each filtered event to the EventDetailsVM
+        //    var guildDetailsVMs = guilds.Select(e => new GuildDetailsVM
         //    {
-        //        CommentManager.Insert(comment);
-        //    }
+        //        Event = e,
+        //        Game = GameManager.LoadByID(e.GameID)
+        //    }).ToList();
 
+        //    ViewBag.Title = $"Events for Game ID: {guildID}";
 
-        //    return RedirectToAction("Details", new { id = guildID });
+        //    // Pass the filtered list of EventDetailsVM to the view
+        //    return View(guildDetailsVMs);
         //}
+
     }
 }

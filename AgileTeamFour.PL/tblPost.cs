@@ -11,7 +11,7 @@ public partial class tblPost
 
     public int AuthorID { get; set; }
 
-    public string? Image { get; set; }
+    public string Image { get; set; } = null!;
 
     public string Text { get; set; } = null!;
 }

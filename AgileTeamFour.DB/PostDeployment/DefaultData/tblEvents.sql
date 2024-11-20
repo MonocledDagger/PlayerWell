@@ -1,5 +1,5 @@
 ﻿BEGIN
-	INSERT INTO tblEvents (EventID, GameID, EventName, Server, MaxPlayers, Type, Platform, Description, DateTime, AuthorId)
+	INSERT INTO tblEvents (EventID, GameID, EventName, Server, MaxPlayers, Type, Platform, Description, DateTime, AuthorId, GuildId)
 	VALUES
 	(1001, 23599, 'WoW Expansion Party', 'US East', 32, 'Raid', 'PC', 'Raid for the first day of the new Wow Expansion', '2024-08-12 19:00:00', 2),
 	(1002, 779, 'Weekly Social Meetup', 'Central', 25, 'Social', 'All', 'Meetup for the Current Game Members', '2024-11-11 04:30:00', 3),

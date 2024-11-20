@@ -1,10 +1,8 @@
-﻿using AgileTeamFour.UI.Models;
+﻿using AgileTeamFour.BL.Models;
+using AgileTeamFour.PL;
+using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGeneration.Design;
-using System.Linq;
 
 namespace AgileTeamFour.UI.Controllers
 {
@@ -12,69 +10,50 @@ namespace AgileTeamFour.UI.Controllers
     {
         public ActionResult Index()
         {
-            /*
-            var guilds = FriendManager.Load(); // Load the guilds from the manager
-
-
-            // Map each Guilds object 
-            var FriendVM = guilds.Select(e => new FriendVM
-            {
-                Friend = e, 
-                //User = UserManager.LoadById(e.LeaderId), 
-
-            }).ToList();
-
-            ViewBag.Title = "List of Guilds";
-
-            // Pass the list of GuildDetailsVM to the view
-            return View(FriendVM);
-            */
             // Get userID from session
             var user = HttpContext.Session.GetObject<User>("user");
             var userId = user?.UserID ?? 0;
 
             // Load Friends and filter by UserId
-            var friends = FriendManager.Load().Where(e => e.SenderID == userId & e.Status == "Approved" || e.ReceiverID == userId & e.Status == "Approved");
+            var friends = FriendManager.Load().Where(e => e.SenderID == userId && e.Status == "Approved" || e.ReceiverID == userId && e.Status == "Approved").OrderBy(e => e.ID);
 
             List<User> friendsList = new List<User>();
-            foreach(Friend vm in friends)
-            {
-                User friendUser = UserManager.Load().Where(e => e.UserID == vm.ID).FirstOrDefault();
+            List<int> friendsIds = new List<int>();
+            foreach (Friend vm in friends)
+            { 
                 User Sender = UserManager.Load().Where(e => e.UserID == vm.SenderID).FirstOrDefault();
                 User Receiver = UserManager.Load().Where(e => e.UserID == vm.ReceiverID).FirstOrDefault();
 
-                if (!friendsList.Contains(friendUser) && vm.ID != userId)
-                {
-                    friendsList.Add(friendUser);
-;               }
-                if (!friendsList.Contains(Sender) && vm.SenderID != userId)
+                if (!friendsIds.Contains(Sender.UserID) && Sender.UserID != userId)
                 {
                     friendsList.Add(Sender);
-                    
+                    friendsIds.Add(Sender.UserID);
+
                 }
-                if (!friendsList.Contains(Receiver) && vm.ReceiverID != userId)
+                if (!friendsIds.Contains(Receiver.UserID) && Receiver.UserID != userId)
                 {
                     friendsList.Add(Receiver);
-                    
+                    friendsIds.Add(Receiver.UserID);
                 }
             }
 
-            // Map each filtered event to the EventDetailsVM
-            var friendVMs = friends.Select(e => new FriendVM
+            var friendVMs = new List<FriendVM>();
+
+            friendVMs = friends.Select(e => new FriendVM
             {
+                User = user,
                 Friend = e,
                 UserReceiver = UserManager.LoadById(e.SenderID),
                 UserSender = UserManager.LoadById(e.ReceiverID),
-                FriendsList = friendsList
-
+                FriendsList = friendsList,
             }).ToList();
-
+            
             ViewBag.Title = "Friends";
 
             // Pass the filtered list of EventDetailsVM to the view
             return View(friendVMs);
         }
-
+     
         public ActionResult MyIndex()
         {
             // Get userID from session
@@ -212,6 +191,28 @@ namespace AgileTeamFour.UI.Controllers
                 friendVM.Friend.ReceiverID = friendVM.Friend.ReceiverID; // Set from form input
                 friendVM.Friend.Status = "Pending";
 
+                using (var dc = new AgileTeamFourEntities())
+                {
+
+                    // Check if there is an existing friendship
+                    var existingRelationship = dc.tblFriends
+                    .FirstOrDefault(f =>
+                    (f.SenderID == friendVM.Friend.SenderID && f.ReceiverID == friendVM.Friend.ReceiverID) ||
+                    (f.SenderID == friendVM.Friend.ReceiverID && f.ReceiverID == friendVM.Friend.SenderID)
+                        );
+
+                    // If a relationship exists, return 0 to indicate no new insert
+                    if (existingRelationship != null)
+                    {
+                        TempData["error"] = "Relationship Already Exists";
+                        return RedirectToAction("MyIndex", "Friend");
+                    }
+                    else if (friendVM.Friend.SenderID == friendVM.Friend.ReceiverID) //Check if Friending self
+                    {
+                        TempData["error"] = "You Cannot Friend Yourself";
+                        return RedirectToAction("MyIndex", "Friend");
+                    }
+                }
                 // Insert the Friend request into the database
                 int result = FriendManager.Insert(friendVM.Friend);
                 return RedirectToAction(nameof(Index));
@@ -221,27 +222,7 @@ namespace AgileTeamFour.UI.Controllers
                 throw;
             }
         }
-        //[HttpPost]
-        //public IActionResult SendRequest(int receiverId)
-        //{
-        //    // Get the user from session
-        //    var user = HttpContext.Session.GetObject<User>("user");
-
-        //    // Ensure the user is logged in
-        //    if (user == null)
-        //    {
-
-        //        return RedirectToAction("Login");
-        //    }
-
-        //    // Sender ID is the current user's ID
-        //    var senderId = user.UserID;
-
-
-        //    FriendManager.Insert(senderId, receiverId);
-
-        //    return RedirectToAction("Index");
-        //}
+        
         [HttpPost]
         public IActionResult AcceptRequest(int friendId)
         {
@@ -251,7 +232,7 @@ namespace AgileTeamFour.UI.Controllers
         [HttpPost]
         public IActionResult RejectRequest(int friendId)
         {
-            FriendManager.RejectFriendRequest(friendId);
+            FriendManager.Delete(friendId);
             return RedirectToAction("MyIndex");
         }
         [HttpPost]

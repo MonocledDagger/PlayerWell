@@ -24,7 +24,8 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            Assert.AreEqual(4, UserManager.Load().Count);
+            //Seed only runs when making website. If you rebuild database and run test without running website, this returns false
+            Assert.AreEqual(6, UserManager.Load().Count);
         }
 
         [TestMethod]

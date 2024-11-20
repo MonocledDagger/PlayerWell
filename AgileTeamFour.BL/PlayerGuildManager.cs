@@ -22,6 +22,8 @@ namespace AgileTeamFour.BL
                     tblPlayerGuild.PlayerID = playerid;
                     tblPlayerGuild.GuildID = guildid;
                     tblPlayerGuild.Role = Role;
+                    tblPlayerGuild.JoinDate = DateTime.Now;
+
                     tblPlayerGuild.PlayerGuildID = dc.tblPlayerGuilds.Any() ? dc.tblPlayerGuilds.Max(sa => sa.PlayerGuildID) + 1 : 1;
 
                     dc.tblPlayerGuilds.Add(tblPlayerGuild);
@@ -94,6 +96,44 @@ namespace AgileTeamFour.BL
             catch (Exception ex)
             {
                 throw;
+            }
+        }
+
+        public static string InviteGuild(string playerName, int guildID)
+        {
+            string message;
+            try
+            {
+                using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
+                {
+                    // Find the UserID that matches the given playerName in the PlayerTable
+                    var player = (from u in dc.tblUsers
+                                  where u.UserName == playerName
+                                  select new { u.UserID }).FirstOrDefault();
+
+                    // Check if the player exists
+                    if (player == null)
+                        return message = "Player not found.";
+
+                    // Create a new entry in tblPlayerEvents
+                    tblPlayerGuild newGuild = new tblPlayerGuild
+                    {
+                        GuildID = guildID,
+                        PlayerID = player.UserID,
+                        Role = "Guest", // Represents a pending invite without needing a new table
+                        JoinDate= DateTime.Now,
+                    };
+
+                    dc.tblPlayerGuilds.Add(newGuild);
+                    dc.SaveChanges();  // Save changes to the database
+
+                    return message = "Player invited successfully"; // Success
+                }
+            }
+            catch (Exception ex)
+            {
+                // Set error message if an exception occurs
+                return message = ex.Message;
             }
         }
 

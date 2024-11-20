@@ -22,11 +22,17 @@ body {
 }
 
 main {
-    min-height: 80vh; 
+    min-height: 80vh;
 }
 
 .navbar{
-    max-height:300px;
+   /* max-height:300px;*/
+   height:auto;
+}
+
+.navbar-nav {
+    background-color: #00265aff;
+    padding-left: 50px;
 }
 
 .lead{
@@ -57,6 +63,31 @@ main {
 .gamename {
     width: 200px;
 }
+
+.tab-pane {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+    /* Show the active tab with full opacity */
+    .tab-pane.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+.cinzel-header {
+    font-family: "Cinzel", serif;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: font-size 0.3s ease;
+}
+
+    .cinzel-header:hover {
+        font-size: 400%;
+        
+    }
+
 /* RGO  style for reviews */
 .review-list {
     margin-top: 20px;

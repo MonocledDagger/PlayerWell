@@ -20,7 +20,8 @@ DROP TABLE IF EXISTS tblFriend;
 DROP TABLE IF EXISTS tblGuild;
 DROP TABLE IF EXISTS tblPlayerGuild;
 DROP TABLE IF EXISTS tblFriendComments;
-
+DROP TABLE IF EXISTS tblGuildComments;
+DROP TABLE IF EXISTS tblPostComments;
 
 
 

@@ -18,11 +18,11 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Friend.ReceiverID)
                     </th>
-                    <th></th>
+                    
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in @Model)
                 {
                     <tr>
                         <td>
@@ -34,11 +34,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
                         </td>
-                        @* <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                    </td> *@
+                   
                     </tr>
                 }
             </tbody>
@@ -46,35 +42,71 @@
     </div>
     <div id="friendsChat">
         <h4>Chat</h4>
-        <select name="friends" id="friends">
-            @{
-                var Friend = Model.FirstOrDefault();
-                if(Friend != null)
-                {
-                    int count = 0;
-                    foreach (var User in Friend.FriendsList)
+            <select name="friends" id="friends">
+                @{
+                    var Friend = Model.FirstOrDefault();
+                    if(Friend != null)
                     {
-                        <option value="@User.UserID">@User.UserName</option>
+                        <option>Select Value</option>
+                        foreach (var User in Friend.FriendsList)
+                        {
+                            <option value="@User.UserID">@User.UserName</option>
+                        }
+                    }
+                    else
+                    {
+                        <option>Empty</option>
                     }
                 }
-                else
-                {
-                    <option>Empty</option>
-                }
-            }
-        </select>       
+            </select>                                      
     </div>
 </div>
+
+@if(Friend != null)
+{
+    <div class="container py-3 chat-container">
+        <h4>Comments</h4>
+        @{
+            var currentPlayer = @Model.FirstOrDefault().User;
+            var currentUserId = currentPlayer.UserID;
+        }
+        <hr />
+        <div class="chat-box">
+            <!-- Chat Messages Section -->
+            <ul id="messagesList" class="chat-messages">
+            </ul>
+        </div>
+        <!-- Chat Input Section -->
+        <div class="chat-input">
+            <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
+            @{
+                int currentUser = @Model.FirstOrDefault().User.UserID;
+                string? name = @Model.FirstOrDefault().User.UserName;
+                if (name == null) { name = "1"; }
+            }
+            <input type="hidden" id="userName" value="@name" />
+            <input type="hidden" id="PlayerID" value="@currentUser" />
+            <button type="submit" id="sendButton" class="btn btn-primary">
+                <i class="fa fa-paper-plane"></i> Send
+            </button>
+        </div>
+        <!--Scripts needed for SignalR chat function!-->
+        <script src="~/js/signalr/dist/browser/signalr.js"></script>
+        <script src="~/js/chat3.js"></script>
+
+    </div>
+}
+
 <script>
     var friends = document.getElementById("friendsList");
-    friends.style.width = "35%";
-    friends.style.marginLeft = Math.round(window.screen.width / -10) + "px";
-    friends.style.marginRight = "0px";
-    friends.style.float = "left"
+    friends.style.marginLeft = "10px";
+    friends.style.marginRight = "10px";
+    friends.style.width = "60%"
+    friends.style.float = "left";
 
     var friendsChat = document.getElementById("friendsChat");
-    friendsChat.style.width = "60%";
-    friendsChat.style.marginLeft = "0px";
-    friendsChat.style.marginRight = "0px";
-    friendsChat.style.float = "right"
+    friendsChat.style.width = "25%"
+    friendsChat.style.float = "left";
+
 </script>
+

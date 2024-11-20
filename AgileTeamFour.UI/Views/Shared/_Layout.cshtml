@@ -12,16 +12,19 @@
     <title>@ViewData["Title"] - AgileTeamFour.UI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @* <link rel="stylesheet" href="~/css/sandstone.min.css" asp-append-version="true" /> *@
+   
     <link rel="stylesheet" href="~/AgileTeamFour.UI.styles.css" asp-append-version="true" />
 
     
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <section class="navigation">
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow">
+            <nav class="navbar navbar-expand-md navbar-dark box-shadow">
                 <div class="container-fluid">
                     <a class="">
                         <img src="~/images/Layout/Logo.png" alt="logo" onclick="location.href='@Url.Action("Index", "Home")'">
@@ -31,7 +34,7 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <div class="collapse navbar-collapse p-3" id="navbarSupportedContent" style="height:auto">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -74,11 +77,12 @@
                                           </a>
 
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" asp-controller="Friend" asp-action="Index">Friend-To-Friend</a>
                                                 <a class="dropdown-item" asp-controller="Friend" asp-action="MyApprovedIndex">Friends</a>
                                                 <a class="dropdown-item" asp-controller="Friend" asp-action="MyPendingIndex">Pending</a>
                    
                                                 <a class="dropdown-item" asp-controller="Friend" asp-action="MyBlockedIndex">Blocked</a>
-                                            <a class="dropdown-item" asp-controller="Friend" asp-action="Create">Send Request</a>
+                                                <a class="dropdown-item" asp-controller="Friend" asp-action="Create">Send Request</a>
                                                 <a class="dropdown-item" asp-controller="Friend" asp-action="MyIndex">All</a>
                                             </div>
                                         

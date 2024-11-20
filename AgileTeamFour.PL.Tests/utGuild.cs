@@ -11,7 +11,7 @@ namespace AgileTeamFour.PL.Tests
         public void LoadTest()
         {
             //Assert.AreEqual(3, dc.tblEvents.Count());
-            int expected = 1;
+            int expected = 3;
             var Events = base.LoadTest();
             Assert.AreEqual(expected, Events.Count());
 
@@ -29,7 +29,7 @@ namespace AgileTeamFour.PL.Tests
         public void InsertTest()
         {
 
-            //If program uses foreign keys, it is necessary to have foreign keys that match to primary keys in corresponding tables, in order to insert the values.
+           
             int? id = GameManager.Load().FirstOrDefault().GameID;
             if (id == null)
                 Assert.Fail("No valid GameID in Events Table");

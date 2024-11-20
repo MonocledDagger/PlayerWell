@@ -28,5 +28,7 @@ namespace AgileTeamFour.BL.Models
 
             public int AuthorId { get; set; }
             public List<Game> Games { get; set; } = new List<Game>();
+
+            public int? GuildId {  get; set; }
     }
 }

@@ -145,7 +145,8 @@ namespace AgileTeamFour.BL
                 using (AgileTeamFourEntities dc = new AgileTeamFourEntities())
                 {
                     var postsWithAverage = (from c in dc.tblPosts
-                                            join u in dc.tblUsers on c.AuthorID equals u.UserID orderby c.PostID descending
+                                            join u in dc.tblUsers on c.AuthorID equals u.UserID
+                                            orderby c.PostID descending
                                             select new
                                             {
                                                 c.PostID,
@@ -157,9 +158,12 @@ namespace AgileTeamFour.BL
                                                 u.IconPic,
                                                 u.Bio,
                                                 AverageStars = GetAverageStarsForUser(u.UserID),
-                                                ReviewSummary= GetReviewSummaryForUser(u.UserID)
-                })
-                                           .ToList();
+                                                ReviewSummary = GetReviewSummaryForUser(u.UserID),
+                                                Comments = PostCommentManager.LoadByPostId(c.AuthorID) // Use LoadByPostId
+                                            })
+                               .ToList();
+
+
 
                     postsWithAverage.ForEach(post => list.Add(new Post
                     {
@@ -172,11 +176,13 @@ namespace AgileTeamFour.BL
                         IconPic = post.IconPic,
                         Bio = post.Bio,
                         AverageStarsOutOf5 = post.AverageStars,
-                        ReviewSummary= post.ReviewSummary
+                        ReviewSummary = post.ReviewSummary,
+                        Comments = post.Comments // Ensure compatibility here
                     }));
-
-                    return list;
                 }
+
+                return list;
+            
             }
             catch (Exception)
             {

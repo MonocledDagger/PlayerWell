@@ -24,30 +24,35 @@
 
 <hr />
 <div class="container mb-5">
-    <h2> How it Works</h2>
+    <h2>How it Works</h2>
     <div class="row">
-        <div class="card mt-3 shadow-sm" style="width: 18rem;">
-            @* <img src="~/images/Exclamation.png" class="" alt="Step 1"> *@
-          <div class="card-body">
-            <p class="lead">Step 1: Choose a game and see events people are planning for it!</p>
-                <button type="button" class="btn btn-playerwell" onclick="location.href='@Url.Action("Index", "Game")'">See Games!</button>
-          </div>
-        </div>
-
-            <div class="card offset-md-2 mt-3 shadow-sm" style="width: 18rem;">
-            @* <img src="~/images/Question.png" class="" alt="Step 2"> *@
+        <!-- Step 1 Card -->
+        <div class="col-12 col-md-4 mt-3 d-flex align-items-stretch">
+            <div class="card shadow-sm w-100">
                 <div class="card-body">
-                    <p class="lead">Step 2: Sign up for an event!</p>
-                <button type="button" class="btn btn-playerwell" onclick="location.href='@Url.Action("Index", "Event")'">See All Events!</button>
+                    <p class="lead">Step 1: Choose a game and see events people are planning for it!</p>
+                    <button type="button" class="btn btn-playerwell" onclick="location.href='@Url.Action("Index", "Game")'">See Games!</button>
                 </div>
             </div>
+        </div>
 
-                <div class="card offset-md-2 mt-3 shadow-sm" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="Step 3">
-                    <div class="card-body">
-                        <p class="lead">Step 3: Game!</p>
-                    </div>
+        <!-- Step 2 Card -->
+        <div class="col-12 col-md-4 mt-3 d-flex align-items-stretch">
+            <div class="card shadow-sm w-100">
+                <div class="card-body">
+                    <p class="lead">Step 2: Sign up for an event!</p>
+                    <button type="button" class="btn btn-playerwell" onclick="location.href='@Url.Action("Index", "Event")'">See All Events!</button>
                 </div>
-     </div>
-</div>
+            </div>
+        </div>
 
+        <!-- Step 3 Card -->
+        <div class="col-12 col-md-4 mt-3 d-flex align-items-stretch">
+            <div class="card shadow-sm w-100">
+                <div class="card-body">
+                    <p class="lead">Step 3: Game!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

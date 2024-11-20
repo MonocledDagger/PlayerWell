@@ -11,7 +11,7 @@
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
-    <NameOfLastUsedPublishProfile>C:\Users\300085063\source\repos\AgileProject\AgileTeamFour.UI\Properties\PublishProfiles\dvdcentralapi-300085063 - Web Deploy1.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>S:\ClassData\Advanced Software Development\10152108_1_2024_Fall\300085063\AgileProject\AgileTeamFour.UI\Properties\PublishProfiles\dvdcentralapi-300085063 - Web Deploy1.pubxml</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_DbContextTypeFullName>AgileTeamFour.PL.AgileTeamFourEntities</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

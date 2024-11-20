@@ -8,5 +8,6 @@
     Platform VARCHAR(50),
     Description TEXT,
     DateTime DATETIME NOT NULL,
-    AuthorId INT NOT NULL
+    AuthorId INT NOT NULL, 
+    [GuildId] INT NULL
 );

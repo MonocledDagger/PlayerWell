@@ -65,6 +65,12 @@ namespace AgileTeamFour.Web.Controllers
             var game = GameManager.LoadByID(eventItem.GameID);
             var playerEvents = PlayerEventManager.LoadByEventID(id);
             var comments = CommentManager.LoadByEventID(id);
+            
+
+            var guild = eventItem.GuildId.HasValue
+            ? GuildManager.LoadByID(eventItem.GuildId.Value)
+            : null;
+
 
 
             // Count the number of players signed up
@@ -80,7 +86,8 @@ namespace AgileTeamFour.Web.Controllers
                 PlayerID = playerID,
                 currentPlayers = currentPlayers,
                 AuthorName = EventManager.GetAuthorName(id),
-                Users = UserManager.Load() ?? new List<User>()
+                Users = UserManager.Load() ?? new List<User>(),
+                Guild = guild
             };
 
 
@@ -95,6 +102,8 @@ namespace AgileTeamFour.Web.Controllers
         public ActionResult Create()
         {
             EventVM vm = new EventVM();
+
+            vm.Guilds = GuildManager.Load();
             ViewBag.Title = "Create an Event";
             if (Authenticate.IsAuthenticated(HttpContext))
             {
@@ -106,7 +115,7 @@ namespace AgileTeamFour.Web.Controllers
             else
             {
                 TempData["error"] = "Need to be logged in to Create an Event.";
-                return RedirectToAction("Index", "Event");//RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                return RedirectToAction("Index", "Event");
             }
 
         }
@@ -148,7 +157,8 @@ namespace AgileTeamFour.Web.Controllers
                         eventCreateVM.Event.Platform,
                         eventCreateVM.Event.Description,
                         eventCreateVM.Event.DateTime,
-                        eventCreateVM.Event.AuthorId);
+                        eventCreateVM.Event.AuthorId,
+                        eventCreateVM.Event.GuildId);
                     return RedirectToAction(nameof(Index));
                 }
                 return View(eventCreateVM);
@@ -215,6 +225,7 @@ namespace AgileTeamFour.Web.Controllers
                 eventItem.Platform = model.Event.Platform;
                 eventItem.Description = model.Event.Description;
                 eventItem.DateTime = model.Event.DateTime;
+                eventItem.GuildId = model.Event.GuildId;
 
                 // Save changes
                 EventManager.Update(eventItem);
@@ -355,25 +366,7 @@ namespace AgileTeamFour.Web.Controllers
             return RedirectToAction("Details", new { id = eventID });
         }
     
-        /* SignalR UI Hubs Folders, ChatHub.cs class takes over this function
-        [HttpPost]
-        public ActionResult AddComment(string commentText, int eventID, int playerID)
-        {
-            Comment comment = new Comment();
-            comment.TimePosted = DateTime.Now;
-            comment.AuthorID = playerID;
-            comment.EventID = eventID;
-            comment.Text = commentText;
-
-            if(commentText != null && commentText.Trim() != "")
-            {
-                CommentManager.Insert(comment);
-            }
-          
-            
-            return RedirectToAction("Details", new { id = eventID });
-        }
-        */
+        
         [HttpPost]
         public ActionResult InviteEvent(int eventID, string playerName)
         {   // Try adding the player and return a message with reault of attempt

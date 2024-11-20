@@ -49,8 +49,8 @@ namespace AgileTeamFour.BL.Tests
         public void LoadByIDTest()
         {
             Game game = new Game();
-            game = GameManager.LoadByID(66);
-            tblGame entity = dc.tblGames.Where(e => e.GameID == 66).FirstOrDefault();
+            game = GameManager.LoadByID(779);
+            tblGame entity = dc.tblGames.Where(e => e.GameID == 779).FirstOrDefault();
 
             Assert.AreEqual(game.GameID, entity.GameID);
             Assert.AreEqual(game.GameName, entity.GameName);
@@ -65,7 +65,7 @@ namespace AgileTeamFour.BL.Tests
         {
             Game game = new Game()
             {
-                GameID = 66,
+                GameID = 779,
                 GameName = "None",
                 Platform = "None",
                 Description = "None",
@@ -80,7 +80,7 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void DeleteTest()
         {
-            int result = GameManager.Delete(66, true);
+            int result = GameManager.Delete(779, true);
             Assert.AreNotEqual(result, 0);
         }
     }
