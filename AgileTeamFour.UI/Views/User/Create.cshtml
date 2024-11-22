@@ -15,23 +15,23 @@
 
             <div class="form-group">
                 <label asp-for="User.FirstName" class="control-label"></label>
-                <input asp-for="User.FirstName" class="form-control" />
-                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+                <input asp-for="User.FirstName" class="form-control" id="firstname" />
+                <span class="text-danger" id="firstnameError"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.LastName" class="control-label"></label>
-                <input asp-for="User.LastName" class="form-control" />
-                <span asp-validation-for="User.LastName" class="text-danger"></span>
+                <input asp-for="User.LastName" class="form-control" id="lastname" />
+                <span class="text-danger" id="lastnameError"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.UserName" class="control-label"></label>
-                <input asp-for="User.UserName" class="form-control" />
-                <span asp-validation-for="User.UserName" class="text-danger"></span>
+                <input asp-for="User.UserName" class="form-control" id="username" />
+                <span class="text-danger" id="usernameError"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.Password" class="control-label"></label>
                 <input asp-for="User.Password" type="password" class="form-control" id="Password" />
-                <span asp-validation-for="User.Password" class="text-danger" id="passwordError"></span>
+                <span class="text-danger" id="passwordError"></span>
             </div>
             <div class="form-group">
                 <label for="ConfirmPassword" class="control-label">Confirm Password</label>
@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label asp-for="User.Email" class="control-label"></label>
                 <input asp-for="User.Email" class="form-control" id="Email" />
-                <span asp-validation-for="User.Email" class="text-danger" id="emailError"></span>
+                <span class="text-danger" id="emailError"></span>
             </div>
             <div class="form-group">
                 <label for="ConfirmEmail" class="control-label">Confirm Email</label>
@@ -52,20 +52,19 @@
             <div class="form-group">
                 <label asp-for="User.IconPic" class="control-label"></label>
                 <img class="imagepropmedium" alt="User.IconPic" id="programimage" src="~/images/default.jpg" />
-                <span asp-validation-for="User.IconPic" class="text-danger"></span>
                 <input type="file" name="File" id="File" accept="image/*" onchange="loadFile(event)" />
                 <input type="hidden" asp-for="User.IconPic" />
+                <span class="text-danger" id="imageError"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="User.Bio" class="control-label"></label>
                 <input asp-for="User.Bio" class="form-control" />
-                <span asp-validation-for="User.Bio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User.DateOfBirth" class="control-label"></label>
-                <input asp-for="User.DateOfBirth" type="date" class="form-control" />
-                <span asp-validation-for="User.DateOfBirth" class="text-danger"></span>
+                <label class="control-label"></label>
+                <input type="date" class="form-control" id="dateofbirth" />
+                <span class="text-danger" id="dateofbirthError"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -102,6 +101,37 @@
     document.getElementById('userForm').addEventListener('submit', function (e) {
         let isValid = true;
 
+        // Check for empty entries
+        var firstName = document.getElementById('firstname').value.trim();
+        if (!firstName) {
+            isValid = false;
+            document.getElementById('firstnameError').textContent = 'First name is required.';
+        }
+
+        var lastName = document.getElementById('lastname').value.trim();
+        if (!lastName) {
+            isValid = false;
+            document.getElementById('lastnameError').textContent = 'Last name is required.';
+        }
+
+        var userName = document.getElementById('username').value.trim();
+        if (!userName) {
+            isValid = false;
+            document.getElementById('usernameError').textContent = 'User name is required.';
+        }
+
+        var email = document.getElementById('Email').value.trim();
+        if (!userName) {
+            isValid = false;
+            document.getElementById('emailError').textContent = 'Email address is required.';
+        }
+
+        var dateOfBirth = document.getElementById('dateofbirth').value.trim();
+        if (!dateOfBirth) {
+            isValid = false;
+            document.getElementById('dateofbirthError').textContent = 'Date of birth is required.';
+        }
+
         // Clear errors
         document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
 
@@ -120,7 +150,7 @@
         }
 
         // Confirm the email address meets the minimum requirements and matches the confirm email
-        const email = document.getElementById('Email').value.trim();
+        // const email = document.getElementById('Email').value.trim();
         const confirmEmail = document.getElementById('ConfirmEmail').value.trim();
         
         if (email.length < 6) {
