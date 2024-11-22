@@ -124,6 +124,11 @@ namespace AgileTeamFour.UI.Controllers
             {
                 ViewBag.Title = "Create a User";
 
+                // Check if username is taken already
+                if (UserManager.UsernameExists(userVM.User.UserName))
+                    ModelState.AddModelError("UserName", "The username already exists. Please choose another.");
+
+
                 if (userVM.File != null)
                 {
                     userVM.User.IconPic = userVM.File.FileName;

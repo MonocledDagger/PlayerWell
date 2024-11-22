@@ -378,5 +378,10 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
+
+        public static bool UsernameExists(string userName)
+        {    // return true if user exists with the propsed userName else return false
+             return Load().Where(u => u.UserName == userName).Any();
+        }
     }
 }
