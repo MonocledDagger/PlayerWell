@@ -135,9 +135,17 @@
         // Clear errors
         document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
 
+        // Confirm the username is at least 3 characters
+        var username = document.getElementById('username').value;
+        if (username.length < 3) {
+            isValid = false;
+            document.getElementById('usernameError').textContent = 'Usernames must be at least 3 charaters in length.';
+        }
+
+
         // Confirm the password meets the minimum requirements and matches the confirm password
-        const password = document.getElementById('Password').value;
-        const confirmPassword = document.getElementById('ConfirmPassword').value;
+        var password = document.getElementById('Password').value;
+        var confirmPassword = document.getElementById('ConfirmPassword').value;
 
         if (password.length < 8) {
             isValid = false;
@@ -150,7 +158,6 @@
         }
 
         // Confirm the email address meets the minimum requirements and matches the confirm email
-        // const email = document.getElementById('Email').value.trim();
         const confirmEmail = document.getElementById('ConfirmEmail').value.trim();
         
         if (email.length < 6) {
