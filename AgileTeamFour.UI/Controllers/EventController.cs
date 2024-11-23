@@ -22,7 +22,9 @@ namespace AgileTeamFour.Web.Controllers
             var eventDetailsVMs = events.Select(e => new EventDetailsVM
             {
                 Event = e, // Assign the event object
-                Game = GameManager.LoadByID(e.GameID) // Load Game object for each event
+                Game = GameManager.LoadByID(e.GameID), // Load Game object for each event
+                AuthorName = UserManager.LoadById(e.AuthorId).UserName, // Load AuthorName for Event Filtering
+                Guild = e.GuildId.HasValue ? GuildManager.LoadByID(e.GuildId.Value) : null // Check for null value before loading
             }).ToList();
 
             ViewBag.Title = "List of Events";
@@ -39,7 +41,9 @@ namespace AgileTeamFour.Web.Controllers
             var eventDetailsVMs = events.Select(e => new EventDetailsVM
             {
                 Event = e, // Assign the event object
-                Game = GameManager.LoadByID(e.GameID) // Load the corresponding Game object for each event
+                Game = GameManager.LoadByID(e.GameID), // Load the corresponding Game object for each event
+                AuthorName = UserManager.LoadById(e.AuthorId).UserName, // Load AuthorName for Event Filtering
+                Guild = e.GuildId.HasValue ? GuildManager.LoadByID(e.GuildId.Value) : null // Check for null value before loading
             }).ToList();
 
             ViewBag.Title = "List of Events";

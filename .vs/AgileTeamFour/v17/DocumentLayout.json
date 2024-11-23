@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\event\\index2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\projects\\agileteamfour\\agileteamfour.ui\\views\\shared\\components\\eventfilter\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\shared\\components\\eventfilter\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\projects\\agileteamfour\\agileteamfour.ui\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|c:\\projects\\agileteamfour\\agileteamfour.bl.models\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|solutionrelative:agileteamfour.bl.models\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\projects\\agileteamfour\\agileteamfour.ui\\viewmodels\\eventdetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\viewmodels\\eventdetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|c:\\projects\\agileteamfour\\agileteamfour.bl\\guildcommentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|solutionrelative:agileteamfour.bl\\guildcommentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|c:\\projects\\agileteamfour\\agileteamfour.bl.models\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|solutionrelative:agileteamfour.bl.models\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -114,15 +114,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Shared\\Components\\EventFilter\\Default.cshtml",
-              "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Shared\\Components\\EventFilter\\Default.cshtml",
-              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Shared\\Components\\EventFilter\\Default.cshtml",
-              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Shared\\Components\\EventFilter\\Default.cshtml",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACIAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-23T20:31:57.118Z",
+              "DocumentIndex": 3,
+              "Title": "GuildCommentManager.cs",
+              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\GuildCommentManager.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL\\GuildCommentManager.cs",
+              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\GuildCommentManager.cs",
+              "RelativeToolTip": "AgileTeamFour.BL\\GuildCommentManager.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAMwFEAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T21:15:21.21Z",
               "EditorCaption": ""
             },
             {
@@ -131,40 +131,42 @@
               "Title": "Index2.cshtml",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
-              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
-              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
+              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Event\\Index2.cshtml*",
+              "RelativeToolTip": "AgileTeamFour.UI\\Views\\Event\\Index2.cshtml*",
+              "ViewState": "AQIAACgAAAAAAAAAAAAkwDYAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-23T20:14:35.966Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "EventDetailsVM.cs",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\ViewModels\\EventDetailsVM.cs",
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\ViewModels\\EventDetailsVM.cs",
               "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\ViewModels\\EventDetailsVM.cs",
               "RelativeToolTip": "AgileTeamFour.UI\\ViewModels\\EventDetailsVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T20:01:44.271Z"
+              "WhenOpened": "2024-11-23T20:01:44.271Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "EventController.cs",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Controllers\\EventController.cs",
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Controllers\\EventController.cs",
               "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Controllers\\EventController.cs",
               "RelativeToolTip": "AgileTeamFour.UI\\Controllers\\EventController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAACkAAAAeAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAmwC0AAACBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T20:01:01.376Z"
+              "WhenOpened": "2024-11-23T20:01:01.376Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Events.cs",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\Events.cs",
               "RelativeDocumentMoniker": "AgileTeamFour.BL.Models\\Events.cs",
@@ -172,7 +174,8 @@
               "RelativeToolTip": "AgileTeamFour.BL.Models\\Events.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAQAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T20:00:28.282Z"
+              "WhenOpened": "2024-11-23T20:00:28.282Z",
+              "EditorCaption": ""
             }
           ]
         }
