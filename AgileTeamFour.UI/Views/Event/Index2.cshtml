@@ -11,6 +11,9 @@
 <p>
     <a class="btn btn-secondary" asp-area="" asp-controller="Event" asp-action="Index">View Cards</a>
 </p>
+<div>
+    @await Component.InvokeAsync("EventFilter") <!-- Calls a partial for the event filters in Views/Shared/Components-->
+</div>
 <table class="table table-hover">
     <thead>
         <tr>
