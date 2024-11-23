@@ -87,9 +87,15 @@
 </div>
 <!-- End Event filter component-->
 <div class="row">
-
-    @foreach (var item in Model)
-    {
+    @if (!Model.Any()) {
+    <tr>
+        <td colspan="10" class="text-center">
+                <h3>No Events Found. Change your Event Filters and Try Again..</h3>
+        </td>
+    </tr>
+    }
+    else {
+        @foreach (var item in Model) {
         <div class="col-md-4 hover-shadow">
             <div class="card mb-4" style="width: 100%;">
                 <img src="@item.Game.Picture" class="card-img-top" alt="@item.Event.Description">
@@ -103,6 +109,7 @@
                 </div>
             </div>
         </div>
+        }
     }
 </div>
 
