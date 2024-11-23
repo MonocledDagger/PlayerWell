@@ -1,7 +1,32 @@
 ﻿BEGIN
 	INSERT INTO tblEvents (EventID, GameID, EventName, Server, MaxPlayers, Type, Platform, Description, DateTime, AuthorId, GuildId)
 	VALUES
-	(1001, 23599, 'WoW Expansion Party', 'US East', 32, 'Raid', 'PC', 'Raid for the first day of the new Wow Expansion', '2024-08-12 19:00:00', 2,1),
-	(1002, 779, 'Weekly Social Meetup', 'Central', 25, 'Social', 'All', 'Meetup for the Current Game Members', '2024-11-11 04:30:00', 3,2),
-	(1003, 3070, 'Fallout: The Boardgame', 'Western', 4, 'Role Play', 'PC', 'A Fallout themed board game I need 3 more people to play with!', '2024-09-23 11:45:00', 4,2);
-END
+	(1001, 23599, 'WoW Expansion Party', 'US East', 32, 'Raid', 'PC', 'Raid for the first day of the new Wow Expansion', '2024-08-12 19:00:00', 2, 1),
+	(1002, 779, 'Weekly Social Meetup', 'Central', 25, 'Social', 'All', 'Meetup for the Current Game Members', '2024-11-11 04:30:00', 3, 2),
+	(1003, 3070, 'Fallout: The Boardgame', 'Western', 4, 'Role Play', 'PC', 'A Fallout themed board game I need 3 more people to play with!', '2024-09-23 11:45:00', 4,2 ),
+    (1004, 3081, 'Minecraft Building Contest', 'Global', 20, 'Contest', 'PC', 'Join us for a building contest to show off your creative skills!', '2024-09-12 17:00:00', 2, null),
+    (1005, 4082, 'Sims 4 Live Stream', 'Europe', 50, 'Stream', 'PC', 'Watch a live stream of The Sims 4 with live commentary.', '2024-10-05 15:00:00', 3, null),
+    (1006, 3083, 'Fortnite Battle Royale', 'NA West', 100, 'Battle Royale', 'PC', 'Join the ultimate Fortnite Battle Royale event!', '2024-09-30 19:30:00', 4, null),
+    (1007, 5084, 'League of Legends Tournament', 'Asia', 10, 'Tournament', 'PC', 'Compete in a League of Legends tournament and prove your skills.', '2024-11-18 10:00:00', 5, null),
+    (1008, 6085, 'GTA V Heist Night', 'US East', 16, 'Heist', 'PC', 'Join us for a night of heists in GTA V!', '2024-10-11 21:00:00', 6, null),
+    (1009, 7086, 'Hades Speedrun', 'Global', 10, 'Speedrun', 'PC', 'Compete in a Hades speedrun competition.', '2024-10-15 14:00:00', 2, null),
+    (1010, 8087, 'Among Us Game Night', 'Global', 10, 'Game Night', 'PC', 'Join us for a night of Among Us games!', '2024-11-21 18:00:00', 3, null),
+    (1011, 9088, 'Cyberpunk 2077 Roleplay', 'Global', 8, 'Roleplay', 'PC', 'Immerse yourself in a Cyberpunk 2077 roleplay session.', '2024-12-01 20:00:00', 4, null),
+    (1012, 10089, 'Overwatch Scrims', 'NA East', 12, 'Scrims', 'PC', 'Participate in Overwatch scrims to improve your skills.', '2024-10-08 22:00:00', 5, null),
+    (1013, 11090, 'Apex Legends Tournament', 'NA West', 60, 'Tournament', 'PC', 'Join the Apex Legends tournament and showcase your prowess.', '2024-09-25 13:00:00', 6, null),
+    (1014, 13092, 'Valorant Training Session', 'Global', 20, 'Training', 'PC', 'Attend a training session to improve your Valorant skills.', '2024-10-14 16:30:00', 2, null),
+    (1015, 14093, 'Destiny 2 Raid Night', 'EU', 30, 'Raid', 'PC', 'Join a raid night in Destiny 2.', '2024-11-03 20:30:00', 3, null),
+    (1016, 15094, 'RDR2 Roleplay Night', 'NA East', 8, 'Roleplay', 'PC', 'Immerse yourself in a Red Dead Redemption 2 roleplay session.', '2024-10-19 19:00:00', 4, null),
+    (1017, 16095, 'Witcher 3: Wild Hunt Stream', 'Global', 40, 'Stream', 'PC', 'Watch a live stream of The Witcher 3: Wild Hunt with live commentary.', '2024-10-26 18:00:00', 5, null),
+    (1018, 23599, 'WoW Dungeon Run', 'NA Central', 20, 'Dungeon', 'PC', 'Participate in a World of Warcraft dungeon run.', '2024-11-09 17:00:00', 6, null),
+    (1019, 779, 'Roblox Building Challenge', 'Global', 30, 'Challenge', 'PC', 'Join the Roblox building challenge and showcase your creativity.', '2024-12-05 15:00:00', 2, null),
+    (1020, 3070, 'Fallout 4 Exploration', 'NA West', 6, 'Exploration', 'PC', 'Explore the wastelands in Fallout 4.', '2024-11-30 13:00:00', 3, null),
+    (1021, 3081, 'Minecraft Survival Challenge', 'Global', 15, 'Challenge', 'PC', 'Compete in the Minecraft survival challenge.', '2024-10-01 11:00:00', 4, null),
+    (1022, 4082, 'Sims 4 Build Off', 'Global', 20, 'Build Off', 'PC', 'Show off your building skills in The Sims 4.', '2024-11-12 19:30:00', 5, null),
+    (1023, 3083, 'Fortnite Creative Mode', 'NA East', 25, 'Creative', 'PC', 'Create and share new game modes in Fortnite.', '2024-09-29 17:00:00', 6, null),
+    (1024, 5084, 'League of Legends ARAM', 'Global', 10, 'ARAM', 'PC', 'Join us for an ARAM match in League of Legends.', '2024-10-18 22:00:00', 2, null),
+    (1025, 6085, 'GTA V Roleplay', 'Global', 8, 'Roleplay', 'PC', 'Participate in a roleplay session in GTA V.', '2024-11-07 21:30:00', 3, null),
+    (1026, 7086, 'Hades Challenge Run', 'Global', 12, 'Challenge', 'PC', 'Take on unique challenges in Hades.', '2024-10-22 14:00:00', 4, null),
+    (1027, 8087, 'Among Us Weekly Meetup', 'Global', 10, 'Meetup', 'PC', 'Join our weekly Among Us meetup.', '2024-12-02 18:30:00', 5, null),
+    (1028, 9088, 'Cyberpunk 2077 Night City Tour', 'Global', 6, 'Tour', 'PC', 'Take a guided tour through Night City in Cyberpunk 2077.', '2024-11-15 20:00:00', 6, null);
+    END

@@ -459,6 +459,12 @@ tbody tr:hover a{
     color: #555;
 }
 
+.user-reviews {
+    max-height: 500px; 
+    overflow-y: auto; 
+    padding-right: 15px;
+}
+
 .review-container {
     border: 1px solid #ddd;
     max-width: 650px;

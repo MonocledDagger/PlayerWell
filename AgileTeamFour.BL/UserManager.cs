@@ -209,8 +209,8 @@ namespace AgileTeamFour.BL
                         Password = "harbor",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "will@them.com",
-                        IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person.",
+                        IconPic = "wheel.jpg",
+                        Bio = "Riley finds joy in the diverse worlds of gaming, from action-packed adventures to strategic puzzles. They enjoy engaging with the gaming community and sharing tips and insights.",
                         AccessLevel = "admin"
                     };
                     Insert(user);
@@ -224,8 +224,8 @@ namespace AgileTeamFour.BL
                         Password = "drift",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "glenn@them.com",
-                        IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person.",
+                        IconPic = "cat.jpg",
+                        Bio = "Alex is an avid gamer who enjoys exploring various genres and titles. They value teamwork and strategy in gameplay and always look for new challenges and experiences.",
                         AccessLevel = "user"
                     };
                     Insert(user);
@@ -239,8 +239,8 @@ namespace AgileTeamFour.BL
                         Password = "craft",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "ricardo@them.com",
-                        IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person.",
+                        IconPic = "tiger.jpg",
+                        Bio = "Casey spends their free time immersed in gaming worlds. They appreciate the creativity and effort that goes into developing games and enjoy sharing their experiences with others.",
                         AccessLevel = "admin"
                     };
                     Insert(user);
@@ -254,8 +254,8 @@ namespace AgileTeamFour.BL
                         Password = "price",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "james@them.com",
-                        IconPic = "images/harbor.png",
-                        Bio = " A bio written by a real person.",
+                        IconPic = "dragon.jpg",
+                        Bio = "Taylor is a dedicated gamer who appreciates both casual and competitive play. They enjoy connecting with other players and discovering new games and strategies.",
                         AccessLevel = "admin"
                     };
                     Insert(user);
@@ -269,23 +269,23 @@ namespace AgileTeamFour.BL
                         Password = "bill",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "bill@them.com",
-                        IconPic = "images/bill.png",
-                        Bio = " A bio written by a real person.",
+                        IconPic = "default.jpg",
+                        Bio = "Jordan enjoys gaming as a way to unwind and explore new stories. They are always on the lookout for exciting updates and fresh content in their favorite games.",
                         AccessLevel = "player"
                     };
                     Insert(user);
 
                     user = new User
                     {
-                        UserID = 5,
+                        UserID = 6,
                         UserName = "test",
                         FirstName = "Helpful",
                         LastName = "Debugger",
                         Password = "test",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "debug@them.com",
-                        IconPic = "images/bill.png",
-                        Bio = " A bio written by a real person.",
+                        IconPic = "dragon.jpg",
+                        Bio = "Morgan is passionate about gaming and loves to try out different game mechanics and genres. They believe in the importance of fair play and teamwork in the gaming community.",
                         AccessLevel = "player"
                     };
                     Insert(user);

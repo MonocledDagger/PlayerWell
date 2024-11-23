@@ -336,8 +336,11 @@
                 int pointsToAdd = CalculatePoints(review.StarsOutOf5);
                 score += pointsToAdd;
             }
-            return score;
+
+            // Calculate the level based on the score
+            return CalculateLevel(score);
         }
+
         public static int CalculatePoints(int stars)
         {
             switch (stars)
