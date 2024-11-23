@@ -73,6 +73,8 @@
 
         <!-- This is the end of the shell of the filter form for the events-->
         <button type="button" class="btn btn-primary mt-2" onclick="applyFilters()">Search</button>
+        <!-- Reset Button -->
+        <a class="btn btn-secondary mt-2" asp-controller="Event" asp-action="Index">Clear Filters </a>
     </div>
 </div>
 <!-- End Event filter component-->
@@ -173,7 +175,21 @@
             .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
             .join('&');
 
-        window.location.href = `/Event/Index?${query}`;
+        window.location.href = `/Event/Index2?${query}`;
     }
+
+    // Save the scroll position before the page unloads
+    window.addEventListener('beforeunload', function () {
+        localStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    // Restore the scroll position after the page loads
+    window.addEventListener('load', function () {
+        const scrollPosition = localStorage.getItem('scrollPosition');
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition, 10));
+        }
+    });
+
 </script>
 
