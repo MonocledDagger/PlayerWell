@@ -62,7 +62,7 @@ namespace AgileTeamFour.UI.Controllers
             var Currentuser = HttpContext.Session.GetObject<User>("user");
             var playerID = Currentuser?.UserID ?? 0;
 
-            var user = UserManager.LoadById(guildItem.GuildId);
+            var user = UserManager.LoadById(guildItem.LeaderId);
             var playerGuilds = PlayerGuildManager.LoadByGuildID(id);
             var Guildcomments = GuildCommentManager.LoadByGuildID(id);
 
