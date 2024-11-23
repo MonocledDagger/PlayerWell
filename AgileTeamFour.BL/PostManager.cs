@@ -189,6 +189,32 @@ namespace AgileTeamFour.BL
                 throw;
             }
         }
+        public static Post GetPostWithComments(int postId)
+        {
+            using (var dc = new AgileTeamFourEntities())
+            {
+                var post = dc.tblPosts
+                    .Where(p => p.PostID == postId)
+                    .Select(p => new Post
+                    {
+                        PostID = p.PostID,
+                        AuthorID = p.AuthorID,
+                        Text = p.Text,
+                        TimePosted = p.TimePosted,
+                        Comments = dc.tblPostComments
+                            .Where(c => c.PostID == postId)
+                            .Select(c => new PostComment
+                            {
+                                CommentID = c.CommentID,
+                                ParentCommentID = c.ParentCommentID,
+                                AuthorID = c.AuthorID,
+                                Text = c.Text,
+                                TimePosted = c.TimePosted
+                            }).ToList()
+                    }).FirstOrDefault();
+                return post;
+            }
+        }
 
         public static string GetReviewSummaryForUser(int userId)
         {

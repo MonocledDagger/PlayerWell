@@ -1,4 +1,5 @@
 ﻿
+using AgileTeamFour.PL;
 using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -14,8 +15,6 @@ namespace AgileTeamFour.Web.Controllers
             return View(PostManager.Load());
 
         }
-        [HttpGet]
-
         public IActionResult Create()
         {
             if (Authenticate.IsAuthenticated(HttpContext))
@@ -25,6 +24,7 @@ namespace AgileTeamFour.Web.Controllers
             else
             {
                 TempData["error"] = "Need to be logged in to Post";
+                
                 return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
 
@@ -33,29 +33,49 @@ namespace AgileTeamFour.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Post post)
+        public IActionResult Create(PostComment post)
         {
-
-            try
+            using (var dc = new AgileTeamFourEntities())
             {
-                User user = GetLoggedInUser();
-                ViewBag.Title = "Create a User";
 
-                post.AuthorID = user.UserID;
-                post.TimePosted = DateTime.Now;
-                // Set image to an empty string if it is null
-                post.Image = post.Image ?? "";
-                int result = PostManager.Insert(post);
-                return RedirectToAction(nameof(Index));
+                if (Authenticate.IsAuthenticated(HttpContext))
+                {   try
+                    {
+                        User user = GetLoggedInUser();
+                        ViewBag.Title = "Create a User";
+                        post.PostID=post.PostID;
+                        post.ParentCommentID=post.ParentCommentID;
+                        post.AuthorID = user.UserID;
+                        post.Text =post.Text;
+                        post.TimePosted = DateTime.Now;
+                        int result = PostCommentManager.Insert(post);
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Title = "Create";
+                        ViewBag.Error = ex.Message;
+                        return View(post);
+                    }
+
+
+
+                }
+                else
+                {
+                    TempData["error"] = "Need to be logged in to Post";
+                    return RedirectToAction("Index");
+                    //return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                }
+
+
+
+
+                
             }
-            catch (Exception ex)
-            {
-                ViewBag.Title = "Create";
-                ViewBag.Error = ex.Message;
-                return View(post);
-            }
+            
         }
-
+   
         private User GetLoggedInUser()
         {
             return HttpContext.Session.GetObject<User>("user");
