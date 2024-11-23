@@ -83,16 +83,16 @@
                 </tbody>
             </table>
             <br />
-
+    
             <h3>Events</h3>
 
             <div class="row">
-
+                @if(Model.Events != null){
                 @foreach (var item in Model.Events)
                 {
-                    <div class="col-md-4 hover-shadow">
-                        <div class="card mb-4" style="width: 100%;">
-                            <img src="@* @item.Game.Picture *@" class="card-img-top" alt="">
+                        <div class="col-md-4 hover-shadow">
+                            <div class="card mb-4" style="width: 100%;">
+                            @* Bad link causes exception <img src=" @item.Game.Picture " class="card-img-top" alt="">*@
                             <div class="card-body">
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.EventName)</h5>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
@@ -103,13 +103,12 @@
                             </div>
                         </div>
                     </div>
-                }
-            </div>
+            }}
         </div>
 
 
     </div>
-
+  
     <!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
 
     <div id="menu2" class="tab-pane fade">
@@ -231,7 +230,7 @@
         <hr />
         <br />
     </div>
-    
+
     
 
     <div>

@@ -174,7 +174,7 @@ namespace AgileTeamFour.BL
                             GuildName = entity.GuildName,
                             
                             Description = entity.Description,
-                            LeaderId = entity.LeaderId,
+                            LeaderId = entity.LeaderId
                             
 
                         };
