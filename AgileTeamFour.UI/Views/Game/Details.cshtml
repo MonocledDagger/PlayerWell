@@ -36,11 +36,11 @@
         </dd> *@
         
             <dd class="col-sm-10">
-                <img src="~/images/Games/@Model.Picture"
+                <img src="@Model.Picture"
+                     class="imagesmall"
                      id="movieimage"
                      alt="@Model.Description"
-                     onclick="on('/images/Games/@Model.Picture')"
-                     class="img-fluid" />
+                     onclick="on('@Model.Picture')" />
             </dd>
         
         <dt class = "col-sm-2">

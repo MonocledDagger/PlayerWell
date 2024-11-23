@@ -1,17 +1,18 @@
 ﻿@model IEnumerable<AgileTeamFour.BL.Models.Game>
 
 @{
-    ViewData["Title"] = "Games";
+    ViewData["Title"] = "Games From Previous Events";
 }
 
-<h1 class="text-center">Games</h1>
+<h1 class="text-center">Games From Previous Events</h1>
 
-<p class="text-center">
+@* <p class="text-center">
     <a class="btn btn-primary btn-lg ml-3" asp-action="Create">Create New</a>
 </p>
 <p>
     <a class="btn btn-secondary" asp-area="" asp-controller="Game" asp-action="IndexCard">View Cards</a>
-</p>
+</p> *@
+
 <table class="table table-hover table-striped">
     <thead>
         <tr>
@@ -64,13 +65,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Genre)
             </td>
-            <td>
-                    <a asp-action="Edit" asp-route-id="@item.GameID" class="btn btn-primary btn-sm btn-touching">Edit</a>|
-                    <a asp-action="Details" asp-route-id="@item.GameID" class="btn btn-primary btn-sm btn-touching">Details</a>|
-                    <a asp-action="Delete" asp-route-id="@item.GameID" class="btn btn-primary btn-sm btn-touching">Delete</a>
-                
-                
-            </td>
+                @if ((bool)TempData["IsAdmin"])
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.GameID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.GameID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.GameID })
+                    </td>
+                }
+
+                @if ((bool)TempData["IsAdmin"] == false)
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.GameID })
+                    </td>
+                }
+
         </tr>
 }
     </tbody>

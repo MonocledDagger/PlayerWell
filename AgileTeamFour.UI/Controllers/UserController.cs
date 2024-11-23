@@ -124,6 +124,11 @@ namespace AgileTeamFour.UI.Controllers
             {
                 ViewBag.Title = "Create a User";
 
+                // Check if username is taken already
+                if (UserManager.UsernameExists(userVM.User.UserName))
+                    ModelState.AddModelError("UserName", "The username already exists. Please choose another.");
+
+
                 if (userVM.File != null)
                 {
                     userVM.User.IconPic = userVM.File.FileName;
@@ -192,11 +197,7 @@ namespace AgileTeamFour.UI.Controllers
             if (Authenticate.IsAuthenticated(HttpContext, "admin"))
             {
                 UserVM userVM = new UserVM();
-
                 userVM.User = UserManager.LoadById(id);
-                // userVM.DegreeTypes = DegreeTypeManager.Load();
-                //ViewBag.Title = "Edit " + programVM.Program.Description;
-
                 return View(userVM);
             }
             if (Authenticate.IsAuthenticated(HttpContext, id))
@@ -204,9 +205,6 @@ namespace AgileTeamFour.UI.Controllers
                 UserVM userVM = new UserVM();
 
                 userVM.User = UserManager.LoadById(id);
-                // userVM.DegreeTypes = DegreeTypeManager.Load();
-                //ViewBag.Title = "Edit " + programVM.Program.Description;
-
                 return RedirectToAction("Edit2", "User", new { Id = id });
             }
             else if (Authenticate.IsAuthenticated(HttpContext))
