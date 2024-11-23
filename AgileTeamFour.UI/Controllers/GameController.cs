@@ -14,6 +14,9 @@ namespace AgileTeamFour.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "List of Games";
+
+            //Helps to determine which Edit, Details, and Delete links to display in view for those that are not admins
+            TempData["IsAdmin"] = Authenticate.IsAdmin(HttpContext); 
             return View(GameManager.Load());
 
         }
