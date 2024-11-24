@@ -22,7 +22,6 @@
             </label>
             <select id="game-dropdown" class="form-control d-none" name="gameName">
                 <option value="">-- Select Game --</option>
-                <!-- This is an example of what will populate dynamically -->
                 @foreach (var game in Model.Select(m => m.Game.GameName).Distinct())
                 {
                     <option value="@game">@game</option>
@@ -37,7 +36,6 @@
             </label>
             <select id="author-dropdown" class="form-control d-none" name="authorName">
                 <option value="">-- Select Author --</option>
-                <!-- This is an example of what will populate dynamically -->
                 @foreach (var author in Model.Select(m => m.AuthorName).Distinct())
                 {
                     <option value="@author">@author</option>
@@ -71,7 +69,6 @@
             </div>
         </div>
 
-        <!-- This is the end of the shell of the filter form for the events-->
         <button type="button" class="btn btn-primary mt-2" onclick="applyFilters()">Search</button>
         <!-- Reset Button -->
         <a class="btn btn-secondary mt-2" asp-controller="Event" asp-action="Index">Clear Filters </a>

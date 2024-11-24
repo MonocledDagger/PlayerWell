@@ -16,8 +16,6 @@ namespace AgileTeamFour.Web.Controllers
             {   // Case for admin gong to Reviews Index
                 ViewBag.Title = "List of Reviews";
                 List<Review> items = ReviewManager.Load();
-                GenerateReviews();
-                RemoveReviews();
                 return View(items);
             }  
             else if (Authenticate.IsAuthenticated(HttpContext))
@@ -25,8 +23,6 @@ namespace AgileTeamFour.Web.Controllers
                 ViewBag.Title = "Your Reviews";
                 User user = GetLoggedInUser();
                 List<Review> reviews = ReviewManager.LoadPlayerReviews(user.UserID).Where(r => r.ReviewText == "87|6#x4A|tkg").ToList();
-                GenerateReviews();
-                RemoveReviews();
                 return View("Players", reviews);
             }
             else
@@ -157,7 +153,7 @@ namespace AgileTeamFour.Web.Controllers
             }
         }
 
-        private void GenerateReviews()
+        public void GenerateReviews()
         {
             try
             {
@@ -169,7 +165,7 @@ namespace AgileTeamFour.Web.Controllers
             }
         }
 
-        private void RemoveReviews()
+        public void RemoveReviews()
         {
             try
             {
