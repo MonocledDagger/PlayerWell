@@ -163,7 +163,23 @@ namespace AgileTeamFour.UI.Controllers
             var userId = user?.UserID ?? 0;
 
             friendVM.Friend = new BL.Models.Friend();
+
+            // Load current user's friends, pending, and blocked by to exclude from list including self
             friendVM.Users = UserManager.Load();
+
+            // Load all friend related entries
+            List<Friend> allFriends = FriendManager.Load();
+
+            // Find any entries that have to do with the current user
+            var sendMatches = allFriends.Where(f => f.SenderID == userId).Select(f => f.ReceiverID).ToList();
+            var receiveMatches = allFriends.Where(f => f.ReceiverID == userId).Select(f => f.SenderID).ToList();
+
+            // Combine them together for simplicity
+            var combinedMatches = sendMatches.Concat(receiveMatches).Distinct().ToList();
+            combinedMatches.Add(userId); // Add yourself to the list of excluded users
+
+            // Filter the list to only Users that can recieve a friend request
+            friendVM.Users = friendVM.Users.Where(u => !combinedMatches.Contains(u.UserID)).ToList();
 
             if (Authenticate.IsAuthenticated(HttpContext))
             {
