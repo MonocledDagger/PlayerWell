@@ -27,6 +27,8 @@
                    class="username">@item.UserName &nbsp</a>
                 <span class="time-posted">@item.TimePosted</span>
             </div>
+
+
             <p class="post-content">@item.Text</p>
 
             <div class="rank-info">
@@ -60,22 +62,16 @@
                 </div>
             </div>
 
+            <div id="comment-section-@item.PostID" class="comment-section">
+              
 
+                <form asp-action="Create" method="post">
+                    <input type="hidden" name="PostID" value="@item.PostID" />
+                    <input type="hidden" name="ParentCommentID" value="" />
+                    <textarea name="Text" placeholder="Write a comment..."></textarea>
+                    <button type="submit">Post</button>
+                </form>
 
-
-
-
-
-
-            <div class="post-actions">
-                <button class="like-button" onclick="likePost(@item.PostID)">Like</button>
-                <button class="comment-button" onclick="toggleCommentSection(@item.PostID)">Comment</button>
-                <button class="respond-button">Send a Friend Request</button>
-            </div>
-
-            <div class="comment-section">
-                <textarea class="comment-input" placeholder="Write a comment..."></textarea>
-                <button class="submit-comment" onclick="submitComment(@item.PostID)">Post</button>
 
                 <!-- Render comments using the partial view -->
                 <div class="comments-list">
@@ -88,25 +84,101 @@
                     }
                 </div>
             </div>
-            
+  
         </div>
     }
 </div>
+<style>
+    .posts {
+        margin: 20px;
+    }
+
+    .post {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 20px;
+        
+    }
+
+    .comment {
+        margin-left: 20px;
+        padding: 10px;
+        border-left: 2px solid #ddd;
+        color:whitesmoke;
+    }
+
+    .replies {
+        margin-left: 20px;
+    }
+
+    textarea {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+</style>
 
 <script>
     function likePost(postId) {
         // Perform like functionality here
     }
 
-    function toggleCommentSection(postId) {
+    function toggleCommentSection(postId,autorID) {
         var commentSection = document.getElementById('comment-section-' + postId);
         commentSection.style.display = (commentSection.style.display === 'none') ? 'block' : 'none';
     }
 
     function submitComment(postId) {
-        var commentText = document.querySelector('#comment-section-' + postId + ' .comment-input').value;
-        // AJAX request to submit the comment (postId, commentText)
+        var commentText = document.querySelector('#comment-section-' + postId + ' .Text').value;
+       
+        if (!commentText.trim()) {
+            alert("Comment cannot be empty!");
+            return;
+        }
+        
+        var commentData = {
+            PostID: postId,
+            Text: commentText
+        };
+
+        // AJAX request to submit the comment
+        fetch('/PostComment/Create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(commentData),
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Expecting JSON response for the new comment
+                } else {
+                    throw new Error("Failed to submit the comment.");
+                }
+            })
+            .then(data => {
+                console.log(data); // Inspect the returned data
+                const commentList = document.querySelector('#comment-section-' + postId + ' .Text');
+
+                // Append the new comment to the list
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment-item');
+                newComment.innerHTML = `
+            <div class="comment-header">
+                <img class="comment-avatar" src="/images/${data.AuthorAvatarPic" alt="${data.UserName}'s Avatar" />
+                <span class="comment-author">${data.UserName}</span>
+                <span class="comment-time">${new Date(data.TimePosted).toLocaleString()}</span>
+            </div>
+            <p class="comment-text">${data.Text}</p>
+        `;
+                commentList.appendChild(newComment);
+
+                // Clear the input field
+                document.querySelector('#comment-section-' + postId + ' .comment-input').value = '';
+            });
+
     }
+
 
     function showReplyForm(commentId) {
         var replyForm = document.getElementById('reply-form-' + commentId);
@@ -115,8 +187,59 @@
 
     function submitReply(postId, parentCommentId) {
         var replyText = document.querySelector('#reply-form-' + parentCommentId + ' .reply-input').value;
-        // AJAX request to submit the reply (postId, replyText, parentCommentId)
+
+        if (!replyText.trim()) {
+            alert("Reply cannot be empty!");
+            return;
+        }
+
+        var replyData = {
+            PostID: postId,
+            ParentCommentID: parentCommentId,
+            Text: replyText
+        };
+
+        // AJAX request to submit the reply
+        fetch('/PostComment/CreateReply', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(replyData),
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Expecting JSON response for the new reply
+                } else {
+                    throw new Error("Failed to submit the reply.");
+                }
+            })
+            .then(data => {
+                // Assuming 'data' contains the newly added reply
+                const replyList = document.querySelector('#replies-list-' + parentCommentId);
+
+                // Append the new reply to the list
+                const newReply = document.createElement('div');
+                newReply.classList.add('reply-item');
+                newReply.innerHTML = `
+                    <div class="reply-header">
+                        <img class="reply-avatar" src="/images/${data.AuthorAvatarPic}" alt="${data.UserName}'s Avatar" />
+                        <span class="reply-author">${data.UserName}</span>
+                        <span class="reply-time">${data.TimePosted}</span>
+                    </div>
+                    <p class="reply-text">${data.Text}</p>
+                `;
+                replyList.appendChild(newReply);
+
+                // Clear the input field
+                document.querySelector('#reply-form-' + parentCommentId + ' .reply-input').value = '';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Failed to submit the reply. Please try again.");
+            });
     }
+
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />

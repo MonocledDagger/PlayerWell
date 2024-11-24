@@ -1,71 +1,119 @@
 ﻿
+using AgileTeamFour.BL;
+using AgileTeamFour.BL.Models;
+using AgileTeamFour.PL;
 using AgileTeamFour.UI.Models;
 using AgileTeamFour.UI.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace AgileTeamFour.Web.Controllers
 {
     public class PostCommentController : Controller
     {
-        public ActionResult Index()
-        {
+        
 
-            return View(PostCommentManager.Load());
 
-        }
+            public ActionResult Index()
+            {
+
+                return View(PostManager.Load());
+
+            }
         [HttpGet]
-
         public IActionResult Create()
+            {
+                if (Authenticate.IsAuthenticated(HttpContext))
+                {
+                    return View();
+                }
+                else
+                {
+                    TempData["error"] = "Need to be logged in to Post";
+
+                    return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                }
+
+
+
+            }
+
+      
+        [HttpPost]
+        public IActionResult Create(int postID, string text, int? parentCommentID)
         {
-            if (Authenticate.IsAuthenticated(HttpContext))
+            if (string.IsNullOrWhiteSpace(text))
             {
-                return View();
+                return BadRequest("Comment cannot be empty.");
             }
-            else
+            User user = GetLoggedInUser();
+            var newComment = new PostComment
             {
-                TempData["error"] = "Need to be logged in to Post";
-                return RedirectToAction("Login", "User", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
-            }
-
-
-
+                
+                PostID = postID,
+                Text = text,
+                ParentCommentID =0,
+                TimePosted = DateTime.Now,
+                AuthorID = user.UserID, 
+            };
+            int result = PostCommentManager.Insert(newComment);
+            
+            return RedirectToAction(nameof(Index));
         }
+
 
         [HttpPost]
-        public IActionResult Create(PostComment post)
+        public IActionResult CreateReply([FromBody] PostComment reply)
         {
-
             try
             {
-                User user = GetLoggedInUser();
-                ViewBag.Title = "Create a replay";
+                if (Authenticate.IsAuthenticated(HttpContext))
+                {
+                    User user = GetLoggedInUser();
+                    reply.AuthorID = user.UserID;
+                    reply.TimePosted = DateTime.Now;
 
-                post.AuthorID = user.UserID;
-                post.TimePosted = DateTime.Now;
-                // Set image to an empty string if it is null
-                //post.Image = post.Image ?? "";
-                int result = PostCommentManager.Insert(post);
-                return RedirectToAction(nameof(Index));
+                    if (string.IsNullOrWhiteSpace(reply.Text))
+                    {
+                        TempData["error"] = "Reply cannot be empty.";
+                        return RedirectToAction("Index");
+                    }
+
+                    int result = PostCommentManager.Insert(reply);
+
+                    if (result > 0)
+                    {
+                        
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["error"] = "Failed to save the reply.";
+                        return RedirectToAction("Index");
+                    }
+                }
+                else
+                {
+                    TempData["error"] = "Need to be logged in to Post";
+                    return RedirectToAction("Login", "User");
+                }
             }
             catch (Exception ex)
             {
-                ViewBag.Title = "Create";
-                ViewBag.Error = ex.Message;
-                return View(post);
+                TempData["error"] = $"Internal server error: {ex.Message}";
+                return RedirectToAction("Index");
             }
         }
 
+
         private User GetLoggedInUser()
-        {
-            return HttpContext.Session.GetObject<User>("user");
+            {
+                return HttpContext.Session.GetObject<User>("user");
+            }
         }
     }
-}
 
 
 
-
-
-    
 

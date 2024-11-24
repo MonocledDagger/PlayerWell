@@ -13,10 +13,12 @@ namespace AgileTeamFour.BL.Models
         public int AuthorID { get; set; }
         public DateTime TimePosted { get; set; }
         public string Text { get; set; }
-        public int? ParentCommentID { get; set; }
+        public int ParentCommentID { get; set; }
         public List<PostComment> Replies { get; set; } = new List<PostComment>();
         public PostComment Comments { get; set; }
-       
+        public string IconPic { get; set; }
+        public string UserName { get; set; }
+
     }
 
 

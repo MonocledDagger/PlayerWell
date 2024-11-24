@@ -1,77 +1,32 @@
 ﻿
-@* 
-
-
-
  @model AgileTeamFour.BL.Models.PostComment
 
- @model IEnumerable<AgileTeamFour.BL.Models.Post> 
-
-@{
-    ViewData["Title"] = "Posts";
-}
-
-<h1>@ViewData["Title"]</h1>
-
-<div class="activity-feed">
-    @foreach (var item in Model)
-    {
-        <div class="post-card">
-            <div class="user-info">
-                <img class="avatar" alt="UserName's Avatar"
-                     src="@Url.Content("~/images/" + item.IconPic)"
-                     onclick="on('@Url.Content("~/images/" + item.IconPic)')" />
-                <a asp-controller="User" asp-action="Details" asp-route-id="@item.AuthorID" class="username">
-                    @item.UserName &nbsp
-                </a>
-                <span class="time-posted">@item.TimePosted</span>
-            </div>
-            <p class="post-content">@item.Text</p>
-
-            <div class="comment-section">
-                <textarea class="comment-input" placeholder="Write a comment..."></textarea>
-                <button class="submit-comment" onclick="submitComment(@item.PostID)">Post</button>
-
-                <!-- Render comments using the partial view -->
-                <div class="comments-list">
-                    @if (item.Comments != null && item.Comments.Any())
-                    {
-                        @foreach (var comment in item.Comments)
-                        {
-                            @await Html.PartialAsync("_PostCommentPartial", comment)
-                        }
-                    }
-                </div>
-            </div>
-        </div>
-    }
-</div> *@
-
-
- 
-
-@model AgileTeamFour.BL.Models.PostComment
-@using System.Collections.Generic
-
-<div class="comment-item">
-    <span class="comment-author">@Model.AuthorID</span>: @Model.Text
-    <button onclick="showReplyForm(@Model.CommentID)">Reply</button>
-
-    <!-- Reply Form -->
-    <div id="reply-form-@Model.CommentID" class="reply-form" style="display:none;">
-        <textarea class="reply-input" placeholder="Write a reply..."></textarea>
-        <button onclick="submitReply(@Model.PostID, @Model.CommentID)">Submit Reply</button>
+<div class="comment">
+    <div class="comment-header">
+        <img class="avatar"
+             alt="UserName's Avatar"
+             src="@Url.Content("~/images/" + @Model.IconPic)"
+             onclick="on('@Url.Content("~/images/" + @Model.IconPic)')" />
+        <a asp-controller="User"
+           asp-action="Details"
+           class="username">@Model.UserName &nbsp</a>
+        <span class="time-posted">@Model.TimePosted</span>
+        <p>@Model.Text</p>
     </div>
 
-    <!-- Display nested replies -->
     <div class="replies">
-        @if (Model.Replies != null && Model.Replies.Any())
+        @foreach (var reply in Model.Replies)
         {
-            foreach (var reply in Model.Replies)
-            {
-                @await Html.PartialAsync("_PostCommentPartial", reply)
-            }
+            @await Html.PartialAsync("_PostCommentPartial", reply)
         }
     </div>
+
+    <!-- Reply Form -->
+    <form asp-action="Create" method="post">
+        <input type="hidden" name="PostID" value="@Model.PostID" />
+        <input type="hidden" name="ParentCommentID" value="@Model.CommentID" />
+        <textarea name="Text" placeholder="Reply..."></textarea>
+        <button type="submit">Reply</button>
+    </form>
 </div>
  
