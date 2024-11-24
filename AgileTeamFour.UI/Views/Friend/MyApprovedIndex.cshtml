@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AgileTeamFour.UI.ViewModels.FriendVM>
+﻿@model IEnumerable<AgileTeamFour.BL.Models.User>
 
 @{
     ViewData["Title"] = "MyIndex";
@@ -13,31 +13,56 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Friend.Status)
+                @Html.DisplayNameFor(model => model.IconPic)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.Friend.SenderID)
+                @Html.DisplayNameFor(model => model.UserName)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.Friend.ReceiverID)
+                @Html.DisplayNameFor(model => model.DateOfBirth)
             </th>
-            
+            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Friend.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserSender.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
-            </td>
-           
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="profile-photo" src="~/images/@(item.IconPic)"
+                         id="programimage"
+                         alt="@item.IconPic"
+                         onclick="on('/images/@(item.IconPic)')"
+                         class="imagepropsmall" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+
+                @if (TempData["UserID"] == null || item.UserID == (int)TempData["UserID"])
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details2", "User", new { id = item.UserID }, null) |
+                        @Html.ActionLink("Unfriend", "Unfriend", "User", new { id = item.UserID }, null) |
+                        @Html.ActionLink("Block", "Block", "User", new { id = item.UserID }, null) |
+                    </td>
+                }
+                @if (TempData["UserID"] != null && item.UserID != (int)TempData["UserID"])
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details2", "User", new { id = item.UserID }, null)
+                    </td>
+                }
+
+            </tr>
+        }
     </tbody>
 </table>
+
