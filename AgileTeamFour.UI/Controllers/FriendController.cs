@@ -85,21 +85,20 @@ namespace AgileTeamFour.UI.Controllers
             var userId = user?.UserID ?? 0;
 
             // Load Friends and filter by UserId
-            var friends = FriendManager.Load().Where(e => e.SenderID == userId & e.Status == "Approved" || e.ReceiverID == userId & e.Status == "Approved");
+            var friends = FriendManager.Load().Where(e => e.SenderID == userId & e.Status == "Approved"
+                                                  || e.ReceiverID == userId & e.Status == "Approved");
 
-            // Map each filtered event to the EventDetailsVM
-            var friendVMs = friends.Select(e => new FriendVM
-            {
-                Friend = e,
-                UserReceiver = UserManager.LoadById(e.SenderID),
-                UserSender = UserManager.LoadById(e.ReceiverID),
+            // Filter out the distint Ids for your friends
+            var friendIds = friends.SelectMany(f => new[] { f.SenderID, f.ReceiverID })
+                .Where(id => id != userId).Distinct().ToList();
 
-            }).ToList();
+            FriendVM friendVM = new FriendVM();
+            List<User> users = UserManager.Load().Where(u => friendIds.Contains(u.UserID)).ToList();
 
             ViewBag.Title = "Friends";
 
             // Pass the filtered list of EventDetailsVM to the view
-            return View(friendVMs);
+            return View(users);
         }
 
         public ActionResult MyPendingIndex()
