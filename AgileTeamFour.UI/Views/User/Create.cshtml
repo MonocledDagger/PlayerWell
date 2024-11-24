@@ -10,55 +10,61 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        
-            <form asp-action="Create" method="post" enctype="multipart/form-data">
-
+        <form asp-action="Create" method="post" enctype="multipart/form-data" id="userForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+
             <div class="form-group">
                 <label asp-for="User.FirstName" class="control-label"></label>
-                <input asp-for="User.FirstName" class="form-control" />
-                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+                <input asp-for="User.FirstName" class="form-control" id="firstname" />
+                <span class="text-danger" id="firstnameError"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.LastName" class="control-label"></label>
-                <input asp-for="User.LastName" class="form-control" />
-                <span asp-validation-for="User.LastName" class="text-danger"></span>
+                <input asp-for="User.LastName" class="form-control" id="lastname" />
+                <span class="text-danger" id="lastnameError"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.UserName" class="control-label"></label>
-                <input asp-for="User.UserName" class="form-control" />
-                <span asp-validation-for="User.UserName" class="text-danger"></span>
+                <input asp-for="User.UserName" class="form-control" id="username" />
+                <span class="text-danger" id="usernameError"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.Password" class="control-label"></label>
-                <input asp-for="User.Password" class="form-control" />
-                <span asp-validation-for="User.Password" class="text-danger"></span>
+                <input asp-for="User.Password" type="password" class="form-control" id="Password" />
+                <span class="text-danger" id="passwordError"></span>
+            </div>
+            <div class="form-group">
+                <label for="ConfirmPassword" class="control-label">Confirm Password</label>
+                <input type="password" class="form-control" id="ConfirmPassword" />
+                <span class="text-danger" id="confirmPasswordError"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.Email" class="control-label"></label>
-                <input asp-for="User.Email" class="form-control" />
-                <span asp-validation-for="User.Email" class="text-danger"></span>
+                <input asp-for="User.Email" class="form-control" id="Email" />
+                <span class="text-danger" id="emailError"></span>
             </div>
-
+            <div class="form-group">
+                <label for="ConfirmEmail" class="control-label">Confirm Email</label>
+                <input type="email" class="form-control" id="ConfirmEmail" />
+                <span class="text-danger" id="confirmEmailError"></span>
+            </div>
 
             <div class="form-group">
                 <label asp-for="User.IconPic" class="control-label"></label>
-                <img class="imagepropmedium" alt="User.IconPic" id="programimage" src="~/images/default-image.png" />
-                 <span asp-validation-for="User.IconPic" class="text-danger"></span>
+                <img class="imagepropmedium" alt="User.IconPic" id="programimage" src="~/images/default.jpg" />
                 <input type="file" name="File" id="File" accept="image/*" onchange="loadFile(event)" />
                 <input type="hidden" asp-for="User.IconPic" />
+                <span class="text-danger" id="imageError"></span>
             </div>
 
-           <div class="form-group">
+            <div class="form-group">
                 <label asp-for="User.Bio" class="control-label"></label>
                 <input asp-for="User.Bio" class="form-control" />
-                <span asp-validation-for="User.Bio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User.DateOfBirth" class="control-label"></label>
-                <input asp-for="User.DateOfBirth" class="form-control" />
-                <span asp-validation-for="User.DateOfBirth" class="text-danger"></span>
+                <label class="control-label"></label>
+                <input type="date" class="form-control" id="dateofbirth" />
+                <span class="text-danger" id="dateofbirthError"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -72,10 +78,13 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-@* RGO funtion to load file picture *@
+
 <script>
+    // Image preview script
     var loadFile = function (event) {
         var output = document.getElementById('programimage');
         var fileInput = document.getElementById('File');
@@ -87,4 +96,87 @@
         var iconPicField = document.querySelector('input[name="User.IconPic"]');
         iconPicField.value = fileInput.files[0].name;  // Save the file name to User.IconPic
     };
+
+    // Form validation scripts
+    document.getElementById('userForm').addEventListener('submit', function (e) {
+        let isValid = true;
+
+        // Check for empty entries
+        var firstName = document.getElementById('firstname').value.trim();
+        if (!firstName) {
+            isValid = false;
+            document.getElementById('firstnameError').textContent = 'First name is required.';
+        }
+
+        var lastName = document.getElementById('lastname').value.trim();
+        if (!lastName) {
+            isValid = false;
+            document.getElementById('lastnameError').textContent = 'Last name is required.';
+        }
+
+        var userName = document.getElementById('username').value.trim();
+        if (!userName) {
+            isValid = false;
+            document.getElementById('usernameError').textContent = 'User name is required.';
+        }
+
+        var email = document.getElementById('Email').value.trim();
+        if (!userName) {
+            isValid = false;
+            document.getElementById('emailError').textContent = 'Email address is required.';
+        }
+
+        var dateOfBirth = document.getElementById('dateofbirth').value.trim();
+        if (!dateOfBirth) {
+            isValid = false;
+            document.getElementById('dateofbirthError').textContent = 'Date of birth is required.';
+        }
+
+        // Clear errors
+        document.querySelectorAll('.text-danger').forEach(el => el.textContent = '');
+
+        // Confirm the username is at least 3 characters
+        var username = document.getElementById('username').value;
+        if (username.length < 3) {
+            isValid = false;
+            document.getElementById('usernameError').textContent = 'Usernames must be at least 3 charaters in length.';
+        }
+
+
+        // Confirm the password meets the minimum requirements and matches the confirm password
+        var password = document.getElementById('Password').value;
+        var confirmPassword = document.getElementById('ConfirmPassword').value;
+
+        if (password.length < 8) {
+            isValid = false;
+            document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long.';
+        }
+
+        if (password !== confirmPassword) {
+            isValid = false;
+            document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+        }
+
+        // Confirm the email address meets the minimum requirements and matches the confirm email
+        const confirmEmail = document.getElementById('ConfirmEmail').value.trim();
+        
+        if (email.length < 6) {
+        isValid = false;
+        document.getElementById('emailError').textContent = 'Email must be at least 6 characters long.';
+        }
+        if (!email.includes('@@')) {
+            isValid = false;
+            document.getElementById('emailError').textContent = 'Email must contain an "@@".';
+        }
+        if (!email.includes('.')) {
+            isValid = false;
+            document.getElementById('emailError').textContent = 'Email must contain a ".".';
+        }
+        if (email !== confirmEmail) {
+            isValid = false;
+            document.getElementById('confirmEmailError').textContent = 'Emails do not match.';
+        }
+
+        if (!isValid) e.preventDefault(); // Stop form submission if the validation fails for any reason
+    });
 </script>

@@ -14,7 +14,49 @@ namespace AgileTeamFour.Web.Controllers
 {
     public class EventController : Controller
     {
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var events = EventManager.Load(); // Load the events from the manager
+
+        //    // Map each Events object to EventDetailsVM
+        //    var eventDetailsVMs = events.Select(e => new EventDetailsVM
+        //    {
+        //        Event = e, // Assign the event object
+        //        Game = GameManager.LoadByID(e.GameID), // Load Game object for each event
+        //        AuthorName = UserManager.LoadById(e.AuthorId).UserName, // Load AuthorName for Event Filtering
+        //        Guild = e.GuildId.HasValue ? GuildManager.LoadByID(e.GuildId.Value) : null // Check for null value before loading
+        //    }).ToList();
+
+        //    ViewBag.Title = "List of Events";
+
+        //    // Pass the list of EventDetailsVM to the view
+        //    return View("Index", eventDetailsVMs);
+        //}
+
+        //public ActionResult Index2()
+        //{
+        //    var events = EventManager.Load(); // Load the events from the manager
+
+        //    // Map each Events object to EventDetailsVM
+        //    var eventDetailsVMs = events.Select(e => new EventDetailsVM
+        //    {
+        //        Event = e, // Assign the event object
+        //        Game = GameManager.LoadByID(e.GameID), // Load the corresponding Game object for each event
+        //        AuthorName = UserManager.LoadById(e.AuthorId).UserName, // Load AuthorName for Event Filtering
+        //        Guild = e.GuildId.HasValue ? GuildManager.LoadByID(e.GuildId.Value) : null // Check for null value before loading
+        //    }).ToList();
+
+        //    ViewBag.Title = "List of Events";
+
+        //    // Pass the list of EventDetailsVM to the view
+        //    return View(eventDetailsVMs);
+        //}
+
+        public ActionResult Index(string gameName,
+                                   string authorName,
+                                   string guildName,
+                                   DateTime? startDate,
+                                   DateTime? endDate)
         {
             var events = EventManager.Load(); // Load the events from the manager
 
@@ -22,16 +64,52 @@ namespace AgileTeamFour.Web.Controllers
             var eventDetailsVMs = events.Select(e => new EventDetailsVM
             {
                 Event = e, // Assign the event object
-                Game = GameManager.LoadByID(e.GameID) // Load Game object for each event
+                Game = GameManager.LoadByID(e.GameID), // Load the corresponding Game object for each event
+                AuthorName = UserManager.LoadById(e.AuthorId).UserName, // Load AuthorName for Event Filtering
+                Guild = e.GuildId.HasValue ? GuildManager.LoadByID(e.GuildId.Value) : null // Check for null value before loading
             }).ToList();
 
             ViewBag.Title = "List of Events";
 
+            // Check if any of the filters have been set
+            bool hasFilters = !string.IsNullOrEmpty(gameName) ||
+                              !string.IsNullOrEmpty(authorName) ||
+                              !string.IsNullOrEmpty(guildName) ||
+                              startDate.HasValue ||
+                              endDate.HasValue;
+
+            // Apply filters if any are provided
+            if (hasFilters)
+            {
+                // Start checks for event filtering passed back in the url through key value pairs
+                if (!string.IsNullOrEmpty(gameName))
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Game.GameName.Contains(gameName)).ToList();
+
+                if (!string.IsNullOrEmpty(authorName))
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.AuthorName.Contains(authorName)).ToList();
+
+                if (!string.IsNullOrEmpty(guildName) && guildName != "No Guild")
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Guild != null && e.Guild.GuildName.Contains(guildName)).ToList();
+                else if (guildName == "No Guild")
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Guild == null).ToList();
+
+                if (startDate.HasValue)
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Event.DateTime >= startDate.Value).ToList();
+
+                if (endDate.HasValue)
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Event.DateTime <= endDate.Value).ToList();
+            }
+
+
             // Pass the list of EventDetailsVM to the view
-            return View(eventDetailsVMs);
+            return View("Index", eventDetailsVMs);
         }
 
-        public ActionResult Index2()
+        public ActionResult Index2(string gameName,
+                                   string authorName,
+                                   string guildName,
+                                   DateTime? startDate,
+                                   DateTime? endDate)
         {
             var events = EventManager.Load(); // Load the events from the manager
 
@@ -39,14 +117,47 @@ namespace AgileTeamFour.Web.Controllers
             var eventDetailsVMs = events.Select(e => new EventDetailsVM
             {
                 Event = e, // Assign the event object
-                Game = GameManager.LoadByID(e.GameID) // Load the corresponding Game object for each event
+                Game = GameManager.LoadByID(e.GameID), // Load the corresponding Game object for each event
+                AuthorName = UserManager.LoadById(e.AuthorId).UserName, // Load AuthorName for Event Filtering
+                Guild = e.GuildId.HasValue ? GuildManager.LoadByID(e.GuildId.Value) : null // Check for null value before loading
             }).ToList();
 
             ViewBag.Title = "List of Events";
 
+            // Check if any of the filters have been set
+            bool hasFilters = !string.IsNullOrEmpty(gameName) ||
+                              !string.IsNullOrEmpty(authorName) ||
+                              !string.IsNullOrEmpty(guildName) ||
+                              startDate.HasValue ||
+                              endDate.HasValue;
+
+            // Apply filters if any are provided
+            if (hasFilters)
+            {
+                // Start checks for event filtering passed back in the url through key value pairs
+                if (!string.IsNullOrEmpty(gameName))
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Game.GameName.Contains(gameName)).ToList();
+
+                if (!string.IsNullOrEmpty(authorName))
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.AuthorName.Contains(authorName)).ToList();
+
+                if (!string.IsNullOrEmpty(guildName) && guildName != "No Guild")
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Guild != null && e.Guild.GuildName.Contains(guildName)).ToList();
+                else if (guildName == "No Guild")
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Guild == null).ToList();
+
+                if (startDate.HasValue)
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Event.DateTime >= startDate.Value).ToList();
+
+                if (endDate.HasValue)
+                    eventDetailsVMs = eventDetailsVMs.Where(e => e.Event.DateTime <= endDate.Value).ToList();
+            }
+
+
             // Pass the list of EventDetailsVM to the view
-            return View(eventDetailsVMs);
+            return View("Index2", eventDetailsVMs);
         }
+
 
 
 

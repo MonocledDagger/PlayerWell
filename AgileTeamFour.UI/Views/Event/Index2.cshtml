@@ -11,6 +11,82 @@
 <p>
     <a class="btn btn-secondary" asp-area="" asp-controller="Event" asp-action="Index">View Cards</a>
 </p>
+<!-- Start Event filter component-->
+<div>
+    <div id="search-filters" class="mb-3">
+        <h3>Filter Events</h3>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="filter-by-game" onclick="toggleDropdown('game-dropdown')" />
+                Game Name
+            </label>
+            <select id="game-dropdown" class="form-control d-none" name="gameName">
+                <option value="">-- Select Game --</option>
+                <!-- This is an example of what will populate dynamically -->
+                @foreach (var game in Model.Select(m => m.Game.GameName).Distinct())
+                {
+                    <option value="@game">@game</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="filter-by-author" onclick="toggleDropdown('author-dropdown')" />
+                Author Name
+            </label>
+            <select id="author-dropdown" class="form-control d-none" name="authorName">
+                <option value="">-- Select Author --</option>
+                <!-- This is an example of what will populate dynamically -->
+                @foreach (var author in Model.Select(m => m.AuthorName).Distinct())
+                {
+                    <option value="@author">@author</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="filter-by-guild" onclick="toggleDropdown('guild-dropdown')" />
+                Guild Name
+            </label>
+            <select id="guild-dropdown" class="form-control d-none" name="guildName">
+                <option value="">-- Select Guild --</option>
+                @foreach (var guild in Model.Select(m => m.Guild?.GuildName ?? "No Guild").Distinct())
+                {
+                    <option value="@guild">@guild</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="filter-by-date" onclick="toggleDropdown('date-dropdowns')" />
+                Event Date
+            </label>
+            <div id="date-dropdowns" class="d-none">
+                <label for="start-date">Search Start Date</label>
+                <input type="date" id="start-date" name="startDate" class="form-control mb-2" />
+                <label for="end-date">Search End Date</label>
+                <input type="date" id="end-date" name="endDate" class="form-control" />
+            </div>
+        </div>
+
+        <!-- This is the end of the shell of the filter form for the events-->
+        <button type="button" class="btn btn-primary mt-2" onclick="applyFilters()">Search</button>
+        <!-- Reset Button -->
+        <a class="btn btn-secondary mt-2" asp-controller="Event" asp-action="Index">Clear Filters </a>
+    </div>
+</div>
+<!-- End Event filter component-->
+@if (!Model.Any())
+{
+    <tr>
+        <td colspan="10" class="text-center">
+            <h3>No Events Found. Change your Event Filters and Try Again.</h3>
+        </td>
+    </tr>
+}
+else {
 <table class="table table-hover">
     <thead>
         <tr>
@@ -45,7 +121,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Event.EventID)
@@ -81,6 +157,47 @@
                 
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
+}
+
+<!-- Scripts for the event filtering -->
+<script>
+    function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.classList.toggle("d-none");
+    }
+
+    function applyFilters() {
+        const filters = {
+            gameName: document.getElementById('game-dropdown').value,
+            authorName: document.getElementById('author-dropdown').value,
+            guildName: document.getElementById('guild-dropdown').value,
+            startDate: document.getElementById('start-date').value,
+            endDate: document.getElementById('end-date').value
+        };
+
+        // Redirect to the controller with the selected filters as query parameters
+        const query = Object.entries(filters)
+            .filter(([key, value]) => value) // Exclude empty filters
+            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+            .join('&');
+
+        window.location.href = `/Event/Index2?${query}`;
+    }
+
+        // Save the scroll position before the page unloads
+    window.addEventListener('beforeunload', function () {
+        localStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    // Restore the scroll position after the page loads
+    window.addEventListener('load', function () {
+        const scrollPosition = localStorage.getItem('scrollPosition');
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition, 10));
+        }
+    });
+</script>
+

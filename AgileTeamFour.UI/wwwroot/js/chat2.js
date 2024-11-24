@@ -50,6 +50,11 @@ connection.on("ReceiveMessage2", function (username, AuthorID, guildID, message,
 
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
+    var GuildId = document.getElementsByName("GuildId")[0].value + "";
+    var GroupName = "g" + GuildId;
+    connection.invoke("JoinGroup", GroupName).catch(function (err) {
+        return console.error(err.toString());
+    });
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -60,9 +65,9 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var AuthorID = document.getElementsByName("PlayerID")[0].value + "";
     var GuildId = document.getElementsByName("GuildId")[0].value + "";
     var UserName = document.getElementById("userName").value + "";
+    var GroupName = "g" + GuildId;
     
-    
-    connection.invoke("SendMessage2", message, GuildId, AuthorID, UserName).catch(function (err) {
+    connection.invoke("SendMessage2", GroupName, message, GuildId, AuthorID, UserName).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();
