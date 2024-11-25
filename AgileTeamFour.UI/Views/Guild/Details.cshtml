@@ -87,11 +87,12 @@
             <h3>Events</h3>
 
             <div class="row">
-
-                @foreach (var item in Model.Events)
+                @if (Model.Events != null)
                 {
-                    <div class="col-md-4 hover-shadow">
-                        <div class="card mb-4" style="width: 100%;">
+                    @foreach (var item in Model.Events)
+                    {
+                        <div class="col-md-4 hover-shadow">
+                            <div class="card mb-4" style="width: 100%;">
                             <img src="" class="card-img-top" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.EventName)</h5>
@@ -103,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                }
+                }}
             </div>
         </div>
 

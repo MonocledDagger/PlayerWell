@@ -4,77 +4,121 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h2>Create New User</h2>
 
-<h4>User</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="container">
+    
         <form asp-action="Create" method="post" enctype="multipart/form-data" id="userForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="User.FirstName" class="control-label"></label>
-                <input asp-for="User.FirstName" class="form-control" id="firstname" />
-                <span class="text-danger" id="firstnameError"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.LastName" class="control-label"></label>
-                <input asp-for="User.LastName" class="form-control" id="lastname" />
-                <span class="text-danger" id="lastnameError"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.UserName" class="control-label"></label>
-                <input asp-for="User.UserName" class="form-control" id="username" />
-                <span class="text-danger" id="usernameError"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.Password" class="control-label"></label>
-                <input asp-for="User.Password" type="password" class="form-control" id="Password" />
-                <span class="text-danger" id="passwordError"></span>
-            </div>
-            <div class="form-group">
-                <label for="ConfirmPassword" class="control-label">Confirm Password</label>
-                <input type="password" class="form-control" id="ConfirmPassword" />
-                <span class="text-danger" id="confirmPasswordError"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.Email" class="control-label"></label>
-                <input asp-for="User.Email" class="form-control" id="Email" />
-                <span class="text-danger" id="emailError"></span>
-            </div>
-            <div class="form-group">
-                <label for="ConfirmEmail" class="control-label">Confirm Email</label>
-                <input type="email" class="form-control" id="ConfirmEmail" />
-                <span class="text-danger" id="confirmEmailError"></span>
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="User.UserName" class="control-label"></label>
+                        <input asp-for="User.UserName" class="form-control" id="username" />
+                        <span class="text-danger" id="usernameError"></span>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="User.IconPic" class="control-label"></label>
-                <img class="imagepropmedium" alt="User.IconPic" id="programimage" src="~/images/default.jpg" />
-                <input type="file" name="File" id="File" accept="image/*" onchange="loadFile(event)" />
-                <input type="hidden" asp-for="User.IconPic" />
-                <span class="text-danger" id="imageError"></span>
+
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="User.FirstName" class="control-label"></label>
+                        <input asp-for="User.FirstName" class="form-control" id="firstname" />
+                        <span class="text-danger" id="firstnameError"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="User.LastName" class="control-label"></label>
+                        <input asp-for="User.LastName" class="form-control" id="lastname" />
+                        <span class="text-danger" id="lastnameError"></span>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="User.Bio" class="control-label"></label>
-                <input asp-for="User.Bio" class="form-control" />
+            
+            <div class="row mt-4">
+                <div class=" col-md-4">
+                    <div class="form-group">
+                        <label asp-for="User.Password" class="control-label"></label>
+                        <input asp-for="User.Password" type="password" class="form-control" id="Password" />
+                        <span class="text-danger" id="passwordError"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="ConfirmPassword" class="control-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="ConfirmPassword" />
+                        <span class="text-danger" id="confirmPasswordError"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="control-label"></label>
-                <input type="date" class="form-control" id="dateofbirth" />
-                <span class="text-danger" id="dateofbirthError"></span>
+
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="User.Email" class="control-label"></label>
+                        <input asp-for="User.Email" class="form-control" id="Email" />
+                        <span class="text-danger" id="emailError"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="ConfirmEmail" class="control-label">Confirm Email</label>
+                        <input type="email" class="form-control" id="ConfirmEmail" />
+                        <span class="text-danger" id="confirmEmailError"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="User.IconPic" class="control-label"></label> <br />
+                        <img class="imagepropmedium" alt="User.IconPic" id="programimage" src="~/images/default.jpg" />
+                        <input type="file" name="File" id="File" accept="image/*" onchange="loadFile(event)" />
+                        <input type="hidden" asp-for="User.IconPic" />
+                        <span class="text-danger" id="imageError"></span>
+                    </div>
+                </div>
             </div>
+
+
+            <div class="row mt-4">
+                <div class="col-md-5">
+                    <div class="form-group">
+                            <label asp-for="User.Bio" class="control-label"></label>
+                            <textarea asp-for="User.Bio" rows="4" class="form-control"> </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label asp-for="User.DateOfBirth"></label>
+                        <label class="control-label"></label>
+                        <input type="date" class="form-control" id="dateofbirth" />
+                        <span class="text-danger" id="dateofbirthError"></span>
+                    </div>
+                </div>
+            </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-playerwell" />
+                </div>
         </form>
-    </div>
+    
 </div>
-
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-danger">Back to List</a>
 </div>
 
 @section Scripts {
