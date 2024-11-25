@@ -4,52 +4,67 @@
     ViewData["Title"] = "Details";
 }
 
-<h1 class="text-center">@Model.GameName</h1>
 
-<div>
+
+<div class="container">
+
+    <h1 class="text-decoration-underline">@Model.GameName</h1>
     <hr />
-    <dl class="row">
-         
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GameName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GameName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Platform)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Platform)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
-        @* <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Picture)
-        </dd> *@
+    <div class="row">
+        <div class="col-sm-4">
+            
+            <dl class="">
         
-            <dd class="col-sm-10">
-                <img src="@Model.Picture"
-                     class="imagesmall"
-                     id="movieimage"
-                     alt="@Model.Description"
-                     onclick="on('@Model.Picture')" />
-            </dd>
         
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
-    </dl>
+
+             
+                <dt class = "mt-3">
+                    @Html.DisplayNameFor(model => model.GameName)
+                </dt>
+                <dd class = "">
+                    @Html.DisplayFor(model => model.GameName)
+                </dd>
+        
+
+            
+                <dt class = "mt-3">
+                   @Html.DisplayNameFor(model => model.Platform)
+                </dt>
+                <dd class = "">
+                   @Html.DisplayFor(model => model.Platform)
+                </dd>
+            
+
+            
+                <dt class = "mt-3">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class = "">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            
+        
+                <dt class = "mt-3">
+                    @Html.DisplayNameFor(model => model.Genre)
+                </dt>
+                <dd class = "">
+                    @Html.DisplayFor(model => model.Genre)
+                </dd>
+            
+            </dl>
+        </div>
+
+            <div class="col-sm-8">
+                <dd class="">
+                    <img src="@Model.Picture"
+                         class="imagelarge"
+                         id="movieimage"
+                         alt="@Model.Description"
+                         onclick="on('@Model.Picture')" />
+                </dd>
+            </div>
+        </dl>
+    </div>
 </div>
 <div class="mb-3">
     <a class="btn btn-primary btn-lg ml-3" asp-area="" asp-controller="Event" asp-action="EventsForGame" asp-route-gameID="@Model.GameID">View Events</a>

@@ -4,335 +4,265 @@
     ViewData["Title"] = "Details";
 }
 
+@{
+    var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
+    bool isSignedUp = currentPlayer != null;
+    var currentUserId = Model.PlayerID;
+}
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#menu1">Participants</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#menu2">Chat</a>
+    </li>
+</ul>
+<div class="tab-content">
+    
+        <div id="home" class="tab-pane container active">
+            <h1 class="mt-3">@Model.Event.EventName</h1>
+            <hr />
+
+            <dl class="row">
+                <div class="col-sm-6">
+                    
+
+                    <dt class="">
+                        @Html.DisplayNameFor(model => model.Game.GameName)
+                    </dt>
+                    <dd class="">
+                        @Html.DisplayFor(model => model.Game.GameName)
+                    </dd>
+
+                    <dt class="">
+                        @Html.DisplayNameFor(model => model.Event.DateTime)
+                    </dt>
+                    <dd class="">
+                        @Html.DisplayFor(model => model.Event.DateTime)
+                    </dd>
+
+                    <dt class="">
+                        @Html.DisplayNameFor(model => model.Event.Server)
+                    </dt>
+                    <dd class="">
+                        @Html.DisplayFor(model => model.Event.Server)
+                    </dd>
+                    <dt class="">
+                        @Html.DisplayNameFor(model => model.Event.Description)
+                    </dt>
+                    <dd class="">
+                        @Html.DisplayFor(model => model.Event.Description)
+                    </dd>
+
+                    
 
 
-<div class="container">
-    <h1>@Model.Event.EventName</h1>
-    <hr />
+                </div>
+                <div class="col-sm-6">
+                    <dt class="">
+                    Current Number of Players
+                    </dt>
+                    <dd class="">
+                    @Html.DisplayFor(model => model.currentPlayers) Out of @Html.DisplayFor(model => model.Event.MaxPlayers)
+                    </dd>
+                    
+                    <dt class="">
+                        @Html.DisplayNameFor(model => model.Event.Type)
+                    </dt>
+                    <dd class="">
+                        @Html.DisplayFor(model => model.Event.Type)
+                    </dd>
+                    <dt class="">
+                        @Html.DisplayNameFor(model => model.Event.Platform)
+                    </dt>
+                    <dd class="">
+                        @Html.DisplayFor(model => model.Event.Platform)
+                    </dd>
 
-    <dl class="row">
-        <div class="col-sm-6">
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.EventID)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.EventID)
-            </dd>
+                    
+                    <dt class="">
+                        @Html.DisplayNameFor(model => model.AuthorName)
+                    </dt>
+                    <dd class="">
+                        @Html.DisplayFor(model => model.AuthorName)
+                    </dd>
 
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Game.GameName)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Game.GameName)
-            </dd>
+                <dt class="">
+                    @Html.DisplayNameFor(model => model.Event.GuildId)
+                </dt>
+                <dd class="">
+                    @Html.DisplayFor(model => model.Guild.GuildName)
+                </dd>
+                </div>
+            </dl>
 
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.EventName)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.EventName)
-            </dd>
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.Server)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.Server)
-            </dd>
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.Description)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.Description)
-            </dd>
-
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.GuildId)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Guild.GuildName)
-            </dd>
+            <hr />
+            <div class="container py-3">
 
 
-        </div>
-        <div class="col-sm-6">
-            <dt class="">
-                @Html.DisplayNameFor(model => model.currentPlayers)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.currentPlayers)
-            </dd>
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.MaxPlayers)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.MaxPlayers)
-            </dd>
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.Type)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.Type)
-            </dd>
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.Platform)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.Platform)
-            </dd>
-
-            <dt class="">
-                @Html.DisplayNameFor(model => model.Event.DateTime)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.Event.DateTime)
-            </dd>
-            <dt class="">
-                @Html.DisplayNameFor(model => model.AuthorName)
-            </dt>
-            <dd class="">
-                @Html.DisplayFor(model => model.AuthorName)
-            </dd>
-        </div>
-    </dl>
-</div>
-
-
-<hr />
-<div class="container">
-    <h3> Participants</h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PlayerEvents.First().UserName)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.PlayerEvents.First().Role)
-                </th>
-
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var playerEvent in Model.PlayerEvents)
-            {
-                <tr>
-                    <td>
-                        @playerEvent.UserName
-                    </td>
-
-                    <td>
-                        @playerEvent.Role
-                    </td>
-
-
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
-
-<!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
-
-
-<div class="container py-3 chat-container">
-    <h4>Comments</h4>
-    @{
-        var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
-        bool isSignedUp = currentPlayer != null;
-        var currentUserId = Model.PlayerID;
-    }
-    <hr />
-
-    <div class="chat-box">
-        <!-- Chat Messages Section -->
-        <ul id="messagesList" class="chat-messages">
-            @foreach (var comment in Model.Comments)
-            {
-                var author = @Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID);
-                var isCurrentUser = comment.AuthorID == currentUserId;
-                <li class="chat-message @(isCurrentUser ? "sent" : "received")">
-                    @if (!isCurrentUser)
-                    {
-                        <img class="avatar"
-                             alt="@author.UserName's Avatar"
-                             id="programimage"
-                             src="@Url.Content("~/images/" + author.IconPic)"
-                             onclick="on('@Url.Content("~/images/" + author.IconPic)')" />
-                    }
-                    <div class="message-content">
-                        <span class="message-author">@author.UserName</span>
-                        <p>@comment.Text</p>
-                        <small class="message-timestamp">@comment.TimePosted.ToString("hh:mm tt")</small>
-                    </div>
-                </li>
-
-
-            }
-        </ul>
-    </div>
-
-
-
-
-    @if (isSignedUp)
-    {
-        <!-- Chat Input Section -->
-        <div class="chat-input">
-            @*<form id="chatForm" asp-action="AddComment" method="post" asp-controller="Event" >*@
-                <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
-                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-                <input type="hidden" id="PlayerID" name="PlayerID" value="@Model.PlayerID" />
-                @{
-                    string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
-                    if (name == null) name = "1";
+                @if (Model.currentPlayers >= Model.Event.MaxPlayers && !isSignedUp)
+                {
+                    <p class="text-danger">This event is full. No more players can sign up.</p>
                 }
-                <input type="hidden" id="userName" value="@name"/>
-                @{int currentUser = @Model.PlayerID;}
-                <input type="hidden" id="CurrentUser" value="@currentUser"/>
-                <button type="submit" id="sendButton" class="btn btn-primary">
-                    <i class="fa fa-paper-plane"></i> Send
-                </button>
-            @*</form>*@
-        </div>
-        <!--Scripts needed for SignalR chat function!-->
-        <script src="~/js/signalr/dist/browser/signalr.js"></script>
-        <script src="~/js/chat.js"></script>
-    }
-
-
-    @* SignalR Scripts especially chat.js, and UI HUB ChatHub.cs, take over this submit function
-    <script>
-        document.getElementById("comment").addEventListener("keydown", function (event) {
-            if (event.key === "Enter" && !event.shiftKey) {
-                event.preventDefault();
-                document.getElementById("chatForm").submit();
-            }
-        });
-    </script>
-    *@
-
-
-@* <div class="container py-3">
-    <h4>Comments</h4>
-    @{
-        // Model.PlayerID is the ID of the User viewing the page if they are logged in
-        var currentPlayer = Model.PlayerEvents.FirstOrDefault(pe => pe.PlayerID == Model.PlayerID);
-        bool isSignedUp = currentPlayer != null;
-    }
-    <hr />
-    <br />
-    <ul id="messagesList">
-        @foreach (var comment in Model.Comments)
-        {
-            <li>@comment.Text - @{
-                    @Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID).UserName
-                }</li>
-        }
-    </ul>
-    <!-- Commented out.  Old comment section, does not update real-time like SignalR.  Requires page refresh to see updates.
-    @if (isSignedUp)
-    {
-                <hr />
-                <br />
-                <form asp-action="AddComment" method="post" asp-controller="Event">
-                    <label for="comment">Add Comment</label>
+                else if (isSignedUp)
+                {
+                    <p>You are signed up for this event as a @currentPlayer.Role.</p> <br />
+                    <form asp-action="InviteEvent" asp-controller="Event">
+                        <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                        <button type="submit" class="btn btn-primary">Invite Player</button>
+                        <input type="text" name="PlayerName" value="" placeholder="Enter a Player's Name" />
+                    </form>
+                    @* Check if there is an error message to display *@
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                    }
+                    @* Success message section (optional) *@
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success mt-2">@TempData["SuccessMessage"]</div>
+                    }
                     <br />
-                    <textarea name="CommentText" id="comment" rows="8" cols="75"></textarea>
-                    <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-                    <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
-                    <input type="submit" value="Submit"/>
-                </form>
-    } *@
+                    <form asp-action="LeaveEvent" asp-controller="Event">
+                        <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                        <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
+                        <button type="submit" class="btn btn-danger">Leave Event</button>
+                    </form>
+                }
+                else
+                {
+                    <h4>Sign up for this Event</h4>
+                    <form asp-action="SignUp" method="post">
+                        <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                        <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
 
-    <!--**********************************************************************************************************************************-->
-    <!--**********************************************************************************************************************************-->
-    <!--Signal R Comment Functions-->
-    @* @if (isSignedUp)
-    {
-        <div class="container">
-            <div class="row p-1">
-                <div class="col-5">User</div>
-                <input type="text" id="userName" value="@{
-                @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName
-}" readonly maxlength="55" />
+                        <div class="form-group">
+                            <label for="Role">Role</label>
+                            <input type="text" class="form-control" id="Role" name="Role" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                }
             </div>
-            <div class="row p-1">
-                <div>Message</div>
-                <textarea class="col-5" id="messageName" rows="8" cols="75"></textarea>
-            </div>
-            <div class="row p-1">
-                <div class="col-6 text-end">
-                    <input type="button" id="sendButton" value="Send Message" />
-                </div>
-            </div>
-
-            <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-            <input type="hidden" name="AuthorID" value="@Model.PlayerID" />
-        </div> 
-        <!--Scripts needed for SignalR chat function!-->
-        <script src="~/js/signalr/dist/browser/signalr.js"></script>
-        <script src="~/js/chat.js"></script>
-    *@
-    <!--Signal R Comment Functions-->
-    <!--**********************************************************************************************************************************-->
-    <!--**********************************************************************************************************************************-->
-    <hr />
-    <div class="container py-3">
-
-
-        @if (Model.currentPlayers >= Model.Event.MaxPlayers && !isSignedUp)
-        {
-            <p class="text-danger">This event is full. No more players can sign up.</p>
-        }
-        else if (isSignedUp)
-        {
-            <p>You are signed up for this event as a @currentPlayer.Role.</p> <br />
-            <form asp-action="InviteEvent" asp-controller="Event">
-                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-                <button type="submit" class="btn btn-primary">Invite Player</button>
-                <input type="text" name="PlayerName" value="" placeholder="Enter a Player's Name" />
-            </form>
-            @* Check if there is an error message to display *@
-            @if (TempData["ErrorMessage"] != null)
-            {
-                <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-            }
-            @* Success message section (optional) *@
-            @if (TempData["SuccessMessage"] != null)
-            {
-                <div class="alert alert-success mt-2">@TempData["SuccessMessage"]</div>
-            }
-            <br />
-            <form asp-action="LeaveEvent" asp-controller="Event">
-                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
-                <button type="submit" class="btn btn-danger">Leave Event</button>
-            </form>
-        }
-        else
-        {
-            <h4>Sign up for this Event</h4>
-            <form asp-action="SignUp" method="post">
-                <input type="hidden" name="EventID" value="@Model.Event.EventID" />
-                <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
-
-                <div class="form-group">
-                    <label for="Role">Role</label>
-                    <input type="text" class="form-control" id="Role" name="Role" />
-                </div>
-
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-            </form>
-        }
+        
     </div>
 
-    <hr />
-</div>
-<br />
-<div>
-    <a class="btn btn-secondary btn-sm ml-3" asp-area="" asp-controller="Event" asp-action="Edit" asp-route-id="@Model.Event.EventID">Edit</a>
 
-    <a class="btn btn-secondary btn-sm" asp-action="Index">Back to List</a>
+    <div id="menu1" class="tab-pane fade">
+        <div class="container">
+            <h3> Participants</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlayerEvents.First().UserName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlayerEvents.First().Role)
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var playerEvent in Model.PlayerEvents)
+                    {
+                        <tr>
+                            <td>
+                                @playerEvent.UserName
+                            </td>
+
+                            <td>
+                                @playerEvent.Role
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
+
+    <div id="menu2" class="tab-pane fade">
+        <div class="container py-3 chat-container">
+            <h4>Comments</h4>
+            
+            <hr />
+
+            <div class="chat-box">
+                <!-- Chat Messages Section -->
+                <ul id="messagesList" class="chat-messages">
+                    @foreach (var comment in Model.Comments)
+                    {
+                        var author = @Model.Users.FirstOrDefault(user => comment.AuthorID == user.UserID);
+                        var isCurrentUser = comment.AuthorID == currentUserId;
+                        <li class="chat-message @(isCurrentUser ? "sent" : "received")">
+                            @if (!isCurrentUser)
+                            {
+                                <img class="avatar"
+                                     alt="@author.UserName's Avatar"
+                                     id="programimage"
+                                     src="@Url.Content("~/images/" + author.IconPic)"
+                                     onclick="on('@Url.Content("~/images/" + author.IconPic)')" />
+                            }
+                            <div class="message-content">
+                                <span class="message-author">@author.UserName</span>
+                                <p>@comment.Text</p>
+                                <small class="message-timestamp">@comment.TimePosted.ToString("hh:mm tt")</small>
+                            </div>
+                        </li>
+
+
+                    }
+                </ul>
+            </div>
+
+
+
+
+            @if (isSignedUp)
+            {
+                <!-- Chat Input Section -->
+                <div class="chat-input">
+                    @*<form id="chatForm" asp-action="AddComment" method="post" asp-controller="Event" >*@
+                        <textarea name="CommentText" id="comment" rows="1" placeholder="Type a message..."></textarea>
+                        <input type="hidden" name="EventID" value="@Model.Event.EventID" />
+                        <input type="hidden" id="PlayerID" name="PlayerID" value="@Model.PlayerID" />
+                        @{
+                            string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
+                            if (name == null) name = "1";
+                        }
+                        <input type="hidden" id="userName" value="@name"/>
+                        @{int currentUser = @Model.PlayerID;}
+                        <input type="hidden" id="CurrentUser" value="@currentUser"/>
+                        <button type="submit" id="sendButton" class="btn btn-primary">
+                            <i class="fa fa-paper-plane"></i> Send
+                        </button>
+                    @*</form>*@
+                </div>
+                <!--Scripts needed for SignalR chat function!-->
+                <script src="~/js/signalr/dist/browser/signalr.js"></script>
+                <script src="~/js/chat.js"></script>
+            }
+        </div>
+    </div>
+
+        
+
+        <hr />
 </div>
+        <br />
+        <div>
+            <a class="btn btn-secondary btn-sm ml-3" asp-area="" asp-controller="Event" asp-action="Edit" asp-route-id="@Model.Event.EventID">Edit</a>
+
+            <a class="btn btn-secondary btn-sm" asp-action="Index">Back to List</a>
+        </div>
+
