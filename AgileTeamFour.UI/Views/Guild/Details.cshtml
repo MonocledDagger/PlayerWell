@@ -24,7 +24,7 @@
 
 <div class="tab-content">
     <div id="home" class="tab-pane container active">
-    
+
         <hr />
         <dl class="row">
 
@@ -34,22 +34,22 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Guild.GuildId)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Guild.GuildName)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Guild.GuildName)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Guild.Description)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Guild.Description)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.LeaderName)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.LeaderName)
             </dd>
         </dl>
@@ -66,7 +66,7 @@
                             @Html.DisplayNameFor(model => model.PlayerGuilds.First().UserName)
                         </th>
 
-                
+
                     </tr>
                 </thead>
                 <tbody>
@@ -77,38 +77,39 @@
                                 @playerGuild.UserName
                             </td>
 
-                    
+
                         </tr>
                     }
                 </tbody>
             </table>
             <br />
-    
+
             <h3>Events</h3>
 
             <div class="row">
-                @if(Model.Events != null){
+
                 @foreach (var item in Model.Events)
                 {
-                        <div class="col-md-4 hover-shadow">
-                            <div class="card mb-4" style="width: 100%;">
-                            @* Bad link causes exception <img src=" @item.Game.Picture " class="card-img-top" alt="">*@
+                    <div class="col-md-4 hover-shadow">
+                        <div class="card mb-4" style="width: 100%;">
+                            <img src="" class="card-img-top" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.EventName)</h5>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-                                
+
                                 <a asp-action="Details" asp-controller="Event" asp-route-id="@item.EventID" class="btn btn-primary btn-sm">Details</a>
-                                
+
 
                             </div>
                         </div>
                     </div>
-            }}
+                }
+            </div>
         </div>
 
 
     </div>
-  
+
     <!--RGO change chat container to make it look more like a chat add the avatar and Time Posted -->
 
     <div id="menu2" class="tab-pane fade">
@@ -188,7 +189,7 @@
         <div class="container py-3">
 
 
-        
+
             @if (isSignedUp)
             {
                 <p>You are a Member of this Guild</p> <br />
@@ -231,7 +232,7 @@
         <br />
     </div>
 
-    
+
 
     <div>
         <a asp-action="Edit" asp-route-id="@Model?.Guild.GuildId">Edit</a> |

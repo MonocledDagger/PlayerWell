@@ -76,6 +76,10 @@ namespace AgileTeamFour.UI.Controllers
                 if (TempData["returnUrl"] != null)
                     return Redirect(TempData["returnUrl"]?.ToString());
 
+                // Update pending player reviews when a user logs into their account
+                ReviewManager.CreatePlayerReviewsAfterEvent();
+                ReviewManager.DeleteIncompleteReviews();
+
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)

@@ -28,5 +28,9 @@
     (1025, 6085, 'GTA V Roleplay', 'Global', 8, 'Roleplay', 'PC', 'Participate in a roleplay session in GTA V.', '2024-11-07 21:30:00', 3, null),
     (1026, 7086, 'Hades Challenge Run', 'Global', 12, 'Challenge', 'PC', 'Take on unique challenges in Hades.', '2024-10-22 14:00:00', 4, null),
     (1027, 8087, 'Among Us Weekly Meetup', 'Global', 10, 'Meetup', 'PC', 'Join our weekly Among Us meetup.', '2024-12-02 18:30:00', 5, null),
-    (1028, 9088, 'Cyberpunk 2077 Night City Tour', 'Global', 6, 'Tour', 'PC', 'Take a guided tour through Night City in Cyberpunk 2077.', '2024-11-15 20:00:00', 6, null);
+    (1028, 9088, 'Cyberpunk 2077 Night City Tour', 'Global', 6, 'Tour', 'PC', 'Take a guided tour through Night City in Cyberpunk 2077.', '2024-11-15 20:00:00', 6, null),
+    -- Events in the past with participants to trigger pending reviews
+    (1033, 4082, 'Sims 4 Live Stream', 'Europe', 50, 'Stream', 'PC', 'Watch a live stream of The Sims 4 with live commentary.', '2024-11-05 15:00:00', 3, null),
+    (1030, 3083, 'Fortnite Battle Royale', 'NA West', 100, 'Battle Royale', 'PC', 'Join the ultimate Fortnite Battle Royale event!', '2024-11-08 19:30:00', 4, null),
+    (1040, 5084, 'League of Legends Tournament', 'Asia', 10, 'Tournament', 'PC', 'Compete in a League of Legends tournament and prove your skills.', '2024-11-18 10:00:00', 5, null);
     END
