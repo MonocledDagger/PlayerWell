@@ -16,6 +16,4 @@ public partial class tblPostComment
     public DateTime TimePosted { get; set; }
 
     public int ParentCommentID { get; set; }
-
-   
 }

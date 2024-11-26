@@ -75,7 +75,22 @@ namespace AgileTeamFour.Web.Controllers
             }
             
         }
-   
+        [HttpPost]
+        public IActionResult ToggleLike(int postId)
+        {
+            User user = GetLoggedInUser();
+            int userId = user.UserID; // Replace with actual user ID fetching logic
+            var isLiked = PostManager.ToggleLike(postId, userId);
+            return Json(new { isLiked });
+        }
+
+        [HttpGet]
+        public IActionResult GetLikes(int postId)
+        {
+            var likes = PostManager.GetPostLikes(postId);
+            return Json(likes);
+        }
+
         private User GetLoggedInUser()
         {
             return HttpContext.Session.GetObject<User>("user");

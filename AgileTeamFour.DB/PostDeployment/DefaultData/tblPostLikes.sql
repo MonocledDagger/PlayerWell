@@ -1,0 +1,6 @@
+﻿BEGIN
+	INSERT INTO tblPostLikes(LikeID,PostID,UserID,LikeDate)
+	VALUES
+	(1,103,2,'2024-08-13 02:21:12')
+	
+END

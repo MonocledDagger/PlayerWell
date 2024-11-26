@@ -61,6 +61,22 @@
                     </div>
                 </div>
             </div>
+            <div class="like-section">
+                <button class="like-button" onclick="toggleLike(@item.PostID)">
+                    <i id="like-icon-@item.PostID" class="fas fa-thumbs-up"></i>
+                    Like
+                </button>
+                <button class="show-likes-button" onclick="showLikes(@item.PostID)">
+                    Show Likes
+                </button>
+                <div id="likes-modal-@item.PostID" class="likes-modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="close-button" onclick="closeLikes(@item.PostID)">&times;</span>
+                        <h3>Users who liked this post:</h3>
+                        <ul id="likes-list-@item.PostID"></ul>
+                    </div>
+                </div>
+            </div>
 
             <div id="comment-section-@item.PostID" class="comment-section">
               
@@ -115,6 +131,39 @@
         width: 100%;
         margin-top: 10px;
     }
+
+   @*  css for likes *@
+   <style>
+    .likes-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        position: relative;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .liked {
+        color: blue;
+    }
+</style>
+
+
+
+
 
 </style>
 
@@ -239,6 +288,38 @@
                 alert("Failed to submit the reply. Please try again.");
             });
     }
+
+    //show likes
+        function toggleLike(postId) {
+        fetch(`/ Post / ToggleLike`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ postId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const likeIcon = document.getElementById(`like - icon - ${ postId } `);
+            likeIcon.classList.toggle("liked", data.isLiked);
+        })
+        .catch(error => console.error("Error:", error));
+    }
+
+    function showLikes(postId) {
+        fetch(`/ Post / GetLikes ? postId = ${ postId } `)
+            .then(response => response.json())
+            .then(likes => {
+                const likesList = document.getElementById(`likes - list - ${ postId } `);
+                likesList.innerHTML = likes.map(user => `< li > ${ user }</li > `).join("");
+                document.getElementById(`likes - modal - ${ postId } `).style.display = "block";
+            })
+            .catch(error => console.error("Error:", error));
+    }
+
+    function closeLikes(postId) {
+        document.getElementById(`likes - modal - ${ postId } `).style.display = "none";
+    }
+
+
 
 </script>
 

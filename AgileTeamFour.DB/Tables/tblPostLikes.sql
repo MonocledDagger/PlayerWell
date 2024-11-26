@@ -1,0 +1,7 @@
+﻿CREATE TABLE tblPostLikes (
+    LikeID INT PRIMARY KEY,
+    PostID INT NOT NULL,
+    UserID INT NOT NULL,
+    LikeDate DATETIME DEFAULT GETDATE()
+);
+

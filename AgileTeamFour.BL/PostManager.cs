@@ -19,12 +19,6 @@ namespace AgileTeamFour.BL
                     entity.Text =post.Text;
                     entity.Image=post.Image;
                     entity.TimePosted = post.TimePosted;
-    
-
-
-
-                  
-
                     dc.tblPosts.Add(entity);
                     results = dc.SaveChanges();
 
@@ -254,6 +248,41 @@ namespace AgileTeamFour.BL
             }
         }
 
+        public static List<string> GetPostLikes(int postId)
+        {
+            using (var dc = new AgileTeamFourEntities())
+            {
+                return dc.tblPostLikes
+                         .Where(like => like.PostID == postId)
+                         .Join(dc.tblUsers,
+                               like => like.UserID,
+                               user => user.UserID,
+                               (like, user) => user.UserName)
+                         .ToList();
+            }
+        }
+
+        public static bool ToggleLike(int postId, int userId)
+        {
+            using (var dc = new AgileTeamFourEntities())
+            {
+                var existingLike = dc.tblPostLikes.FirstOrDefault(like => like.PostID == postId && like.UserID == userId);
+                if (existingLike != null)
+                {
+                    dc.tblPostLikes.Remove(existingLike);
+                }
+                else
+                {
+                    dc.tblPostLikes.Add(new tblPostLike
+                    {
+                        PostID = postId,
+                        UserID = userId
+                    });
+                }
+                dc.SaveChanges();
+                return existingLike == null; // Return true if like was added
+            }
+        }
 
 
 
