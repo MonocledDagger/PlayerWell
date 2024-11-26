@@ -67,63 +67,50 @@ namespace AgileTeamFour.BL
         {
             using (var dc = new AgileTeamFourEntities())
             {
-                // Fetching the post comments and their responses
+                
                 var comments = dc.tblPostComments
-                                 .Where(pc => pc.PostID == postId && pc.ParentCommentID==0)
-                                 .Select(pc => new
-                                 {
-                                     ParentComment = pc,
-                                     // Fetch replies for each comment
-                                     Replies = dc.tblPostComments
-                                                 .Where(reply => reply.ParentCommentID == pc.CommentID)
-                                                 .Join(dc.tblUsers,
-                                                       reply => reply.AuthorID,
-                                                       user => user.UserID,
-                                                       (reply, user) => new PostComment
-                                                       {
-                                                           CommentID = reply.CommentID,
-                                                           PostID = reply.PostID,
-                                                           Text = reply.Text,
-                                                           TimePosted = reply.TimePosted,
-                                                           AuthorID = reply.AuthorID,
-                                                           UserName = user.UserName,
-                                                           IconPic = user.IconPic,
-                                                           // Fetch replies for nested replies
-                                                           Replies = dc.tblPostComments
-                                                                       .Where(subReply => subReply.ParentCommentID == reply.CommentID)
-                                                                       .Join(dc.tblUsers,
-                                                                             subReply => subReply.AuthorID,
-                                                                             user => user.UserID,
-                                                                             (subReply, user) => new PostComment
-                                                                             {
-                                                                                 CommentID = subReply.CommentID,
-                                                                                 PostID = subReply.PostID,
-                                                                                 Text = subReply.Text,
-                                                                                 TimePosted = subReply.TimePosted,
-                                                                                 AuthorID = subReply.AuthorID,
-                                                                                 UserName = user.UserName,
-                                                                                 IconPic = user.IconPic
-                                                                             }).ToList()
-                                                       }).ToList()
-                                 })
+                                 .Where(pc => pc.PostID == postId && pc.ParentCommentID == 0)
                                  .Join(dc.tblUsers,
-                                       pc => pc.ParentComment.AuthorID,
+                                       pc => pc.AuthorID,
                                        user => user.UserID,
                                        (pc, user) => new PostComment
                                        {
-                                           CommentID = pc.ParentComment.CommentID,
-                                           PostID = pc.ParentComment.PostID,
-                                           Text = pc.ParentComment.Text,
-                                           TimePosted = pc.ParentComment.TimePosted,
-                                           AuthorID = pc.ParentComment.AuthorID,
+                                           CommentID = pc.CommentID,
+                                           PostID = pc.PostID,
+                                           Text = pc.Text,
+                                           TimePosted = pc.TimePosted,
+                                           AuthorID = pc.AuthorID,
                                            UserName = user.UserName,
                                            IconPic = user.IconPic,
-                                           Replies = pc.Replies // Assign the replies to this comment
+                                           Replies = GetReplies(pc.CommentID) // Fetch all replies recursively
                                        })
                                  .ToList();
 
-                // Returning the comments with replies (including nested replies)
                 return comments;
+            }
+        }
+
+        private static List<PostComment> GetReplies(int parentCommentId)
+        {
+            using (var dc = new AgileTeamFourEntities())
+            {
+                return dc.tblPostComments
+                         .Where(reply => reply.ParentCommentID == parentCommentId)
+                         .Join(dc.tblUsers,
+                               reply => reply.AuthorID,
+                               user => user.UserID,
+                               (reply, user) => new PostComment
+                               {
+                                   CommentID = reply.CommentID,
+                                   PostID = reply.PostID,
+                                   Text = reply.Text,
+                                   TimePosted = reply.TimePosted,
+                                   AuthorID = reply.AuthorID,
+                                   UserName = user.UserName,
+                                   IconPic = user.IconPic,
+                                   Replies = GetReplies(reply.CommentID) 
+                               })
+                         .ToList();
             }
         }
 
