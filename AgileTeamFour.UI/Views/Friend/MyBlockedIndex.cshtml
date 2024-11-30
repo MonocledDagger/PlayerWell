@@ -10,30 +10,28 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Friend.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Friend.SenderID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Friend.ReceiverID)
-            </th>
+            <th> UserName</th>
+
+            <th> Status</th>
             
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+
+                <td>
+                    @foreach (var friend in item.MyFriends)
+                    {
+                        <span>@friend.UserName</span>
+
+                        <br />
+                    }
+                </td>
+             <td>
                 @Html.DisplayFor(modelItem => item.Friend.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserSender.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
-            </td>
+            </td> 
+            
             
         </tr>
 }
