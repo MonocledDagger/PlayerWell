@@ -12,6 +12,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>
                 Users
             </th>
@@ -25,14 +26,22 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @foreach (var friend in item.MyFriends)
-                    {
+                @foreach (var friend in item.MyFriends)
+                {
+                    <td>
+                        <img src="~/images/@(friend.IconPic)"
+                             id=""
+                             alt="@friend.IconPic"
+                             onclick="on('/images/@(friend.IconPic)')"
+                             class="imagepropsmall rounded-circle" />
+                    </td>
+
+                    <td>
                         <span>@friend.UserName</span>
 
                         <br />
-                    }
-                </td>
+                    </td>
+                }
                 <td>
                     @item.Friend.Status
                 </td>
