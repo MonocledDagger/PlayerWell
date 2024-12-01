@@ -517,3 +517,50 @@ tbody tr:hover a{
     cursor: pointer;
     font-weight: bold;
 }
+/*like button and comments on post view RGO*/
+.posts {
+    margin: 20px;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.comment {
+    margin-left: 20px;
+    padding: 10px;
+    border-left: 2px solid #ddd;
+    color: whitesmoke;
+}
+
+.replies {
+    margin-left: 20px;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.modal-content {
+    font-size: 22px;
+    color: royalblue;
+    font-weight: bold;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.liked {
+    background-color: yellow; 
+    color: black;
+    font-weight: bold;
+    border: 2px solid #ccc;
+}

@@ -261,11 +261,17 @@ namespace AgileTeamFour.BL
                          .ToList();
             }
         }
+      
 
-        public static bool ToggleLike(int postId, int userId)
+        public static bool toggleLike(int postId, int userId)
         {
             using (var dc = new AgileTeamFourEntities())
             {
+                tblPostLike entity = new tblPostLike();
+                entity.LikeID = dc.tblPostLikes.Any() ? dc.tblPostLikes.Max(s => s.LikeID) + 1 : 1;
+
+
+
                 var existingLike = dc.tblPostLikes.FirstOrDefault(like => like.PostID == postId && like.UserID == userId);
                 if (existingLike != null)
                 {
@@ -275,12 +281,13 @@ namespace AgileTeamFour.BL
                 {
                     dc.tblPostLikes.Add(new tblPostLike
                     {
+                        LikeID=entity.LikeID,
                         PostID = postId,
                         UserID = userId
                     });
                 }
                 dc.SaveChanges();
-                return existingLike == null; // Return true if like was added
+                return existingLike == null; 
             }
         }
 

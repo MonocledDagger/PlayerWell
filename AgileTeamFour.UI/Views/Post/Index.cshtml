@@ -7,11 +7,9 @@
     ViewData["Title"] = "Posts";
 }
 
-<h1>@ViewData["Title"]</h1>
-
 <div class="activity-feed">
     <p>
-        <a asp-action="Create" class="create-post-link">Create a New Post</a>
+        <a asp-action="CreateC" class="create-post-link">Create a New Post</a>
     </p>
     @foreach (var item in Model)
     {
@@ -62,21 +60,22 @@
                 </div>
             </div>
             <div class="like-section">
-                <button class="like-button" onclick="toggleLike(@item.PostID)">
-                    <i id="like-icon-@item.PostID" class="fas fa-thumbs-up"></i>
-                    Like
-                </button>
+                <button id="like-button-@item.PostID" class="like-button" onclick="toggleLike(@item.PostID)">
+    <i id="like-icon-@item.PostID" class="fas fa-thumbs-up"></i>
+    Like
+</button>
                 <button class="show-likes-button" onclick="showLikes(@item.PostID)">
                     Show Likes
                 </button>
                 <div id="likes-modal-@item.PostID" class="likes-modal" style="display:none;">
                     <div class="modal-content">
                         <span class="close-button" onclick="closeLikes(@item.PostID)">&times;</span>
-                        <h3>Users who liked this post:</h3>
+                        <p>Users who liked this post:</p>
                         <ul id="likes-list-@item.PostID"></ul>
                     </div>
                 </div>
             </div>
+
 
             <div id="comment-section-@item.PostID" class="comment-section">
               
@@ -104,73 +103,11 @@
         </div>
     }
 </div>
-<style>
-    .posts {
-        margin: 20px;
-    }
-
-    .post {
-        border: 1px solid #ccc;
-        padding: 15px;
-        margin-bottom: 20px;
-        
-    }
-
-    .comment {
-        margin-left: 20px;
-        padding: 10px;
-        border-left: 2px solid #ddd;
-        color:whitesmoke;
-    }
-
-    .replies {
-        margin-left: 20px;
-    }
-
-    textarea {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-   @*  css for likes *@
-   <style>
-    .likes-modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        border: 1px solid #ccc;
-        padding: 20px;
-        z-index: 1000;
-    }
-
-    .modal-content {
-        position: relative;
-    }
-
-    .close-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-    }
-
-    .liked {
-        color: blue;
-    }
-</style>
-
-
-
-
-
-</style>
 
 <script>
-    function likePost(postId) {
-        // Perform like functionality here
-    }
+
+   
+
 
     function toggleCommentSection(postId,autorID) {
         var commentSection = document.getElementById('comment-section-' + postId);
@@ -190,7 +127,7 @@
             Text: commentText
         };
 
-        // AJAX request to submit the comment
+        
         fetch('/PostComment/Create', {
             method: 'POST',
             headers: {
@@ -200,24 +137,25 @@
         })
             .then(response => {
                 if (response.ok) {
-                    return response.json(); // Expecting JSON response for the new comment
+                    return response.json(); 
                 } else {
                     throw new Error("Failed to submit the comment.");
                 }
             })
             .then(data => {
-                console.log(data); // Inspect the returned data
+                console.log(data); 
                 const commentList = document.querySelector('#comment-section-' + postId + ' .Text');
 
                 // Append the new comment to the list
                 const newComment = document.createElement('div');
                 newComment.classList.add('comment-item');
                 newComment.innerHTML = `
-            <div class="comment-header">
-                <img class="comment-avatar" src="/images/${data.AuthorAvatarPic" alt="${data.UserName}'s Avatar" />
-                <span class="comment-author">${data.UserName}</span>
-                <span class="comment-time">${new Date(data.TimePosted).toLocaleString()}</span>
-            </div>
+               <div class="comment-header">
+        <img class="comment-avatar" src="/images/${data.AuthorAvatarPic}" alt="${data.UserName}'s Avatar" />
+        <span class="comment-author">${data.UserName}</span>
+        <span class="comment-time">${new Date(data.TimePosted).toLocaleString()}</span>
+    </div>
+
             <p class="comment-text">${data.Text}</p>
         `;
                 commentList.appendChild(newComment);
@@ -258,13 +196,13 @@
         })
             .then(response => {
                 if (response.ok) {
-                    return response.json(); // Expecting JSON response for the new reply
+                    return response.json(); 
                 } else {
                     throw new Error("Failed to submit the reply.");
                 }
             })
             .then(data => {
-                // Assuming 'data' contains the newly added reply
+                
                 const replyList = document.querySelector('#replies-list-' + parentCommentId);
 
                 // Append the new reply to the list
@@ -289,35 +227,63 @@
             });
     }
 
-    //show likes
-        function toggleLike(postId) {
-        fetch(`/ Post / ToggleLike`, {
+    function toggleLike(postId) {
+        fetch('/Post/ToggleLike', {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({ postId })
         })
-        .then(response => response.json())
-        .then(data => {
-            const likeIcon = document.getElementById(`like - icon - ${ postId } `);
-            likeIcon.classList.toggle("liked", data.isLiked);
-        })
-        .catch(error => console.error("Error:", error));
-    }
-
-    function showLikes(postId) {
-        fetch(`/ Post / GetLikes ? postId = ${ postId } `)
             .then(response => response.json())
-            .then(likes => {
-                const likesList = document.getElementById(`likes - list - ${ postId } `);
-                likesList.innerHTML = likes.map(user => `< li > ${ user }</li > `).join("");
-                document.getElementById(`likes - modal - ${ postId } `).style.display = "block";
+            .then(data => {
+                if (!data.success) {
+                    alert(data.error); 
+                    return;
+                }
+
+
+                const likeButton = document.getElementById(`like-button-${postId}`);
+                if (likeButton) {
+                    if (data.isLiked) {
+                        likeButton.classList.add("liked");
+                        likeButton.innerHTML = `<i class="fas fa-thumbs-down"></i> Unlike`; 
+                    } else {
+                        likeButton.classList.remove("liked");
+                        likeButton.innerHTML = `<i class="fas fa-thumbs-up"></i> Like`; 
+                    }
+                }
+                // Call the function to show likes
+                showLikes(postId);
+
             })
             .catch(error => console.error("Error:", error));
     }
 
-    function closeLikes(postId) {
-        document.getElementById(`likes - modal - ${ postId } `).style.display = "none";
+
+    function showLikes(postId) {
+        fetch(`/Post/GetLikes?postId=${postId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json(); 
+            })
+            .then(likes => {
+                const likesList = document.getElementById(`likes-list-${postId}`);
+                likesList.innerHTML = likes.map(user => `<li>${user}</li>`).join("");
+                document.getElementById(`likes-modal-${postId}`).style.display = "block";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Failed to load likes. Please try again later.");
+            });
     }
+
+
+function closeLikes(postId) {
+    document.getElementById(`likes-modal-${postId}`).style.display = "none"; 
+}
 
 
 
