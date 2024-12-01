@@ -21,7 +21,7 @@ namespace AgileTeamFour.BL.Models
         [DisplayName("Date Of Birth")]
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
-        [DisplayName("Icon Pic")]
+        [DisplayName("Profile Picture")]
         public string IconPic { get; set; }
         public string Bio { get; set; }
         [DisplayName("Access Level")]

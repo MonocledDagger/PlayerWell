@@ -63,13 +63,14 @@ namespace AgileTeamFour.UI.Controllers
             // Load Friends and filter by UserId
             var friends = FriendManager.Load().Where(e => e.SenderID == userId || e.ReceiverID ==userId) ;
 
+            
             // Map each filtered event to the EventDetailsVM
-            var friendVMs = friends.Select(e => new FriendVM
+            var friendVMs = friends.Select(f => new FriendVM
             {
-                Friend = e,
-                UserReceiver = UserManager.LoadById(e.SenderID),
-                UserSender = UserManager.LoadById(e.ReceiverID),
-
+                Friend = f,
+                MyFriends = f.SenderID == userId
+        ? new List<User> { UserManager.LoadById(f.ReceiverID) }
+        : new List<User> { UserManager.LoadById(f.SenderID) }
             }).ToList();
 
             ViewBag.Title = "Friends";
@@ -110,12 +111,21 @@ namespace AgileTeamFour.UI.Controllers
             // Load Friends and filter by UserId
             var friends = FriendManager.Load().Where(e => e.SenderID == userId & e.Status=="Pending" || e.ReceiverID == userId & e.Status =="Pending");
 
+            var myFriends = friends.Select(f => 
+        f.SenderID == userId 
+            ? UserManager.LoadById(f.ReceiverID) 
+            : UserManager.LoadById(f.SenderID))
+        .ToList();
             // Map each filtered event to the EventDetailsVM
             var friendVMs = friends.Select(e => new FriendVM
             {
                 Friend = e,
                 UserSender = UserManager.LoadById(e.SenderID),
                 UserReceiver = UserManager.LoadById(e.ReceiverID),
+
+                MyFriends = e.SenderID == userId
+            ? new List<User> { UserManager.LoadById(e.ReceiverID) }
+            : new List<User> { UserManager.LoadById(e.SenderID) }
 
             }).ToList();
 
@@ -143,6 +153,9 @@ namespace AgileTeamFour.UI.Controllers
                 Friend = e,
                 UserReceiver = UserManager.LoadById(e.SenderID),
                 UserSender = UserManager.LoadById(e.ReceiverID),
+                MyFriends = e.SenderID == userId
+            ? new List<User> { UserManager.LoadById(e.ReceiverID) }
+            : new List<User> { UserManager.LoadById(e.SenderID) }
 
             }).ToList();
 

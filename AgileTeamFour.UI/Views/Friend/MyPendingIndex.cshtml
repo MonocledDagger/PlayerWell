@@ -12,30 +12,48 @@
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.Friend.Status)
+                UserName
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Friend.SenderID)
+                Status
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Friend.ReceiverID)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Friend.Status)
-            </td>
-            <td>
+            
+                @foreach (var friend in item.MyFriends)
+                {<td>
+                    <img src="~/images/@(friend.IconPic)"
+                         id=""
+                         alt="@friend.IconPic"
+                         onclick="on('/images/@(friend.IconPic)')"
+                         class="imagepropsmall rounded-circle" />
+                    </td>
+
+                 <td>
+                    <span>@friend.UserName</span>
+
+                    <br />
+                 </td>
+                }
+            
+            
+                <td>
+                        @Html.DisplayFor(modelItem => item.Friend.Status)
+                </td>
+           
+            @* <td>
                 @Html.DisplayFor(modelItem => item.UserSender.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
-            </td>
+            </td> *@
 
                
                 <td>

@@ -48,6 +48,11 @@ main {
     height:150px;
 }
 
+.imagelarge{
+    width:75%;
+    height:auto;
+}
+
 .btn-playerwell {
     color: #fff;
     background-color: #355baa;
