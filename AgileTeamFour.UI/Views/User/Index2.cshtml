@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<AgileTeamFour.BL.Models.User>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Players";
 }
 
-<h1>Index</h1>
+<h1 class="text-center">Players</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="text-center">
+    <a class="btn btn-primary btn-lg ml-3" asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -57,7 +57,7 @@
                 @if (TempData["UserID"] != null && item.UserID != (int)TempData["UserID"])
                 {
                     <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.UserID })
+                        <a asp-action="Details" class="btn btn-playerwell text-white" asp-route-id="@item.UserID">See Profile</a>
                     </td>
                 }
                               

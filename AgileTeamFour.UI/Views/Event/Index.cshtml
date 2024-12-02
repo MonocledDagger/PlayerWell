@@ -99,10 +99,14 @@
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Event.EventName)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Event.Description)</p>
-                    <a asp-action="Edit" asp-route-id="@item.Event.EventID" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.Event.EventID" class="btn btn-primary btn-sm">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.Event.EventID" class="btn btn-primary btn-sm">Delete</a>
-                    
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Details" asp-route-id="@item.Event.EventID" class="btn btn-primary btn"> See Details</a>
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@item.Event.EventID" class="btn btn-secondary btn-sm">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.Event.EventID" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

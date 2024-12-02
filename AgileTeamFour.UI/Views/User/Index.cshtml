@@ -57,9 +57,10 @@
                 @Html.DisplayFor(modelItem => item.DateOfBirth)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-                @Html.ActionLink("Deactivate", "Deactivate", new { id = item.UserID })
+                    <a asp-action="Details" asp-route-id="@item.UserID" class="btn btn-primary btn">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.UserID" class="btn btn-secondary btn">Edit</a>
+                    <a asp-action="Deactivate" asp-route-id="@item.UserID" class="btn btn-danger btn">Deactivate</a>
+                
             </td>
         </tr>
 }
