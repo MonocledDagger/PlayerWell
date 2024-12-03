@@ -25,11 +25,11 @@
                     @foreach (var friend in item.MyFriends)
                     {
                     <td>
-                        <img src="~/images/@(friend.IconPic)"
-                             id=""
+                        <img class="profile-photo" src="~/images/@(friend.IconPic)"
+                             id="programimage"
                              alt="@friend.IconPic"
                              onclick="on('/images/@(friend.IconPic)')"
-                             class="imagepropsmall rounded-circle" />
+                             class="imagepropsmall" />
                     </td>
                     <td>
                         <span>@friend.UserName</span>

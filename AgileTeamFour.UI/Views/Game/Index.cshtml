@@ -63,9 +63,9 @@
                     @if ((bool)TempData["IsAdmin"])
                     {
                         <td>
-                        
-                            <a asp-action="Edit" asp-route-id="@item.GameID" class="btn btn-Secondary btn">Edit</a>|
-                            <a asp-action="Details" asp-route-id="@item.GameID" class="btn btn-primary btn">Details</a> |
+                            <a asp-action="Details" asp-route-id="@item.GameID" class="btn btn-primary btn">Details</a>|
+                            <a asp-action="Edit" asp-route-id="@item.GameID" class="btn btn-secondary btn">Edit</a>|
+                             
                             <a asp-action="Delete" asp-route-id="@item.GameID" class="btn btn-danger btn">Delete</a>
                         
                         </td>

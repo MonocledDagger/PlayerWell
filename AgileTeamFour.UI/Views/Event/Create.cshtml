@@ -3,99 +3,101 @@
 @{
     ViewData["Title"] = "Create";
 }
+<div class="container shadow p-5 mb-5 ps-5 rounded">
+    
+    <h1>Create Event</h1>
 
-<h1>Create</h1>
 
-<h4>Events</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Event" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="Event" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <!-- Dynamic GameID Input -->
-            <div class="form-group">
-                <label asp-for="Event.GameID" class="control-label"></label>
-                <input type="text" id="gameSearch" class="form-control" placeholder="Search for a game..." />
-                <!-- Hidden input to store selected GameID -->
-                <input type="hidden" id="selectedGameId" name="Event.GameID" />
-                <!-- Hidden input to store selected GameName -->
-                <input type="hidden" id="selectedGameName" name="Game.GameName" />
-                <!-- Hidden input to store selected Game Genre -->
-                <input type="hidden" id="selectedGameGenre" name="Game.Genre" />
-                <!-- Hidden input to store selected Game Description -->
-                <input type="hidden" id="selectedGameDescription" name="Game.Description" />
-                <!-- Hidden input to store selected Game Image -->
-                <input type="hidden" id="selectedGameImage" name="Game.Picture" />
-                <!-- Hidden input to store selected Game Platform -->
-                <div id="gameDropdown" class="dropdown-menu" style="display:none;"></div>
-                <span asp-validation-for="Event.GameID" class="text-danger"></span>
-            </div>
-            <!-- Additional Game Information Section -->
-            <div class="form-group" id="gameInfoSection" style="display:none;">
-                <h4>Selected Game Details</h4>
-                <div id="gameImageContainer"></div>
-                <p><strong>Genres:</strong> <span id="gameGenres"></span></p>
-                <p><strong>Description:</strong></p>
-                <p id="gameDescription"></p>
-            </div>
-            <div class="form-group">
-                <label asp-for="Event.EventName" class="control-label"></label>
-                <input asp-for="Event.EventName" class="form-control" />
-                <span asp-validation-for="Event.EventName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Event.Description" class="control-label"></label>
-                <input asp-for="Event.Description" class="form-control" />
-                <span asp-validation-for="Event.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Event.Server" class="control-label"></label>
-                <input asp-for="Event.Server" class="form-control" />
-                <span asp-validation-for="Event.Server" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Event.MaxPlayers" class="control-label"></label>
-                <input asp-for="Event.MaxPlayers" class="form-control" type="number" min="1" />
-                <span asp-validation-for="Event.MaxPlayers" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Event.Type" class="control-label"></label>
-                <input asp-for="Event.Type" class="form-control" />
-                <span asp-validation-for="Event.Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Event.Platform" class="control-label"></label>
-                <input asp-for="Event.Platform" class="form-control" />
-                <span asp-validation-for="Event.Platform" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Event.DateTime" class="control-label"></label>
-                <input asp-for="Event.DateTime" class="form-control" />
-                <span asp-validation-for="Event.DateTime" class="text-danger"></span>
-            </div>
+                <!-- Dynamic GameID Input -->
+                <div class="form-group">
+                    <label asp-for="Event.GameID" class="control-label"></label>
+                    <input type="text" id="gameSearch" class="form-control" placeholder="Search for a game..." />
+                    <!-- Hidden input to store selected GameID -->
+                    <input type="hidden" id="selectedGameId" name="Event.GameID" />
+                    <!-- Hidden input to store selected GameName -->
+                    <input type="hidden" id="selectedGameName" name="Game.GameName" />
+                    <!-- Hidden input to store selected Game Genre -->
+                    <input type="hidden" id="selectedGameGenre" name="Game.Genre" />
+                    <!-- Hidden input to store selected Game Description -->
+                    <input type="hidden" id="selectedGameDescription" name="Game.Description" />
+                    <!-- Hidden input to store selected Game Image -->
+                    <input type="hidden" id="selectedGameImage" name="Game.Picture" />
+                    <!-- Hidden input to store selected Game Platform -->
+                    <div id="gameDropdown" class="dropdown-menu" style="display:none;"></div>
+                    <span asp-validation-for="Event.GameID" class="text-danger"></span>
+                </div>
+                <!-- Additional Game Information Section -->
+                <div class="form-group" id="gameInfoSection" style="display:none;">
+                    <h4>Selected Game Details</h4>
+                    <div id="gameImageContainer"></div>
+                    <p><strong>Genres:</strong> <span id="gameGenres"></span></p>
+                    <p><strong>Description:</strong></p>
+                    <p id="gameDescription"></p>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Event.EventName" class="control-label fs-5"></label>
+                    <input asp-for="Event.EventName" class="form-control" />
+                    <span asp-validation-for="Event.EventName" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Event.Description" class="control-label fs-5"></label>
+                    <input asp-for="Event.Description" class="form-control" />
+                    <span asp-validation-for="Event.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Event.Server" class="control-label fs-5"></label>
+                    <input asp-for="Event.Server" class="form-control" />
+                    <span asp-validation-for="Event.Server" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Event.MaxPlayers" class="control-label fs-5"></label>
+                    <input asp-for="Event.MaxPlayers" class="form-control" type="number" min="1" />
+                    <span asp-validation-for="Event.MaxPlayers" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Event.Type" class="control-label fs-5"></label>
+                    <input asp-for="Event.Type" class="form-control" />
+                    <span asp-validation-for="Event.Type" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Event.Platform" class="control-label fs-5"></label>
+                    <input asp-for="Event.Platform" class="form-control" />
+                    <span asp-validation-for="Event.Platform" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Event.DateTime" class="control-label fs-5"></label>
+                    <input asp-for="Event.DateTime" class="form-control" />
+                    <span asp-validation-for="Event.DateTime" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Event.GuildId" class="control-label"></label>
-                <select asp-for="Event.GuildId"
-                        class="form-control"
-                        multiple
-                        asp-items="@(new SelectList(Model.Guilds, "GuildId", "GuildName"))">
-                        <option value="">None</option>
-                </select>
-                <span asp-validation-for="Event.GuildId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group m-3">
+                    <label asp-for="Event.GuildId" class="control-label fs-5"></label>
+                    <select asp-for="Event.GuildId"
+                            class="form-control"
+                            multiple
+                            asp-items="@(new SelectList(Model.Guilds, "GuildId", "GuildName"))">
+                            <option value="">None</option>
+                    </select>
+                    <span asp-validation-for="Event.GuildId" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="m-2">
+        <a class=" btn btn-sm btn-secondary" asp-action="Index">Back to List</a>
+    </div>
 
+</div>
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script>
