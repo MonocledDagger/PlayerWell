@@ -5,10 +5,9 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (username, AuthorID, EventID, message, dateString) {
+connection.on("ReceiveMessage", function (username, IconPath, AuthorID, EventID, message, dateString) {
     var eventID = document.getElementsByName("EventID")[0].value + "";
-    if (eventID == EventID)
-    {
+    if (eventID == EventID) {
         //console.log("Receive method Javascript");
 
         const fragment = document.createDocumentFragment();
@@ -22,6 +21,20 @@ connection.on("ReceiveMessage", function (username, AuthorID, EventID, message, 
             CurrentUser = "received";
         li.classList.add("chat-message");
         li.classList.add(CurrentUser);
+
+
+        if (CurrentUser == "received") //Adding profile image to message
+        {
+            var img = document.createElement("img");
+            img.classList.add("avatar");
+            img.alt = username + "\'s Avatar";
+            img.src = "../images/" + IconPath;
+            img.onclick = () => { on("../images/" + IconPath); };
+
+            li.appendChild(img);
+        }
+
+
 
         var div = document.createElement("div")
         div.classList.add("message-content");
@@ -50,7 +63,11 @@ connection.on("ReceiveMessage", function (username, AuthorID, EventID, message, 
     }
     
 });
-
+function on(picture) {
+    console.log('On');
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("output").src = picture;
+}
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
     var EventID = document.getElementsByName("EventID")[0].value + "";
@@ -68,10 +85,11 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var AuthorID = document.getElementById("PlayerID").value + "";
     var EventID = document.getElementsByName("EventID")[0].value + "";
     var UserName = document.getElementById("userName").value + "";
+    var IconPath = document.getElementById("iconPath").value + "";
     var GroupName = "e" + EventID;
 
     //console.log(message + " : " + AuthorID + " : " + EventID + " : " + UserName);
-    connection.invoke("SendMessage", GroupName, message, EventID, AuthorID, UserName).catch(function (err) {
+    connection.invoke("SendMessage", GroupName, message, EventID, AuthorID, UserName, IconPath).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();

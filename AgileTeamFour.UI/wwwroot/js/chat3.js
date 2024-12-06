@@ -5,7 +5,7 @@ let groups = new Array();
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessageFriend", function (username, AuthorID, FriendSentToID, message, dateString) {
+connection.on("ReceiveMessageFriend", function (username, IconPath, AuthorID, FriendSentToID, message, dateString) {
     var authorID = document.getElementById("PlayerID").value + "";
     var friendID = document.getElementById("friends").value + "";
 
@@ -24,6 +24,17 @@ connection.on("ReceiveMessageFriend", function (username, AuthorID, FriendSentTo
             CurrentUser = "received";
         li.classList.add("chat-message");
         li.classList.add(CurrentUser);
+
+        if (CurrentUser == "received") //Adding profile image to message
+        {
+            var img = document.createElement("img");
+            img.classList.add("avatar");
+            img.alt = username + "\'s Avatar";
+            img.src = "../images/" + IconPath;
+            img.onclick = () => { on("../images/" + IconPath); };
+
+            li.appendChild(img);
+        }
 
         var div = document.createElement("div")
         div.classList.add("message-content");
@@ -48,6 +59,11 @@ connection.on("ReceiveMessageFriend", function (username, AuthorID, FriendSentTo
     }
  
 });
+function on(picture) {
+    console.log('On');
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("output").src = picture;
+}
 
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
@@ -61,6 +77,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var AuthorID = document.getElementById("PlayerID").value + "";
     var FriendID = document.getElementById("friends").value + "";
     var UserName = document.getElementById("userName").value + "";
+    var IconPath = document.getElementById("IconPath").value + "";
     var GroupName;
     if (AuthorID > FriendID) {
         var GroupName = "f" + AuthorID + FriendID;
@@ -68,7 +85,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     else {
         var GroupName = "f" + FriendID + AuthorID;
     }
-    connection.invoke("SendMessageFriend", GroupName, message, FriendID, AuthorID, UserName).catch(function (err) {
+    connection.invoke("SendMessageFriend", GroupName, message, FriendID, AuthorID, UserName, IconPath).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();

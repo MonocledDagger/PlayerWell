@@ -82,10 +82,12 @@
             @{
                 int currentUser = @Model.FirstOrDefault().User.UserID;
                 string? name = @Model.FirstOrDefault().User.UserName;
+                string? IconPath = @Model.FirstOrDefault().User.IconPic;
                 if (name == null) { name = "1"; }
             }
             <input type="hidden" id="userName" value="@name" />
             <input type="hidden" id="PlayerID" value="@currentUser" />
+            <input type="hidden" id="IconPath" value="IconPath" />
             <button type="submit" id="sendButton" class="btn btn-primary">
                 <i class="fa fa-paper-plane"></i> Send
             </button>

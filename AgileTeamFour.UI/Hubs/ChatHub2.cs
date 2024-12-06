@@ -6,7 +6,7 @@ namespace AgileTeamFour.UI.Hubs
 {
     public class ChatHub2 : Hub
     {
-        public async Task SendMessage2(string GroupName, string message, string guildID, string AuthorID, string UserName)
+        public async Task SendMessage2(string GroupName, string message, string guildID, string AuthorID, string UserName, string IconPath)
         {
             GuildComment comment = new GuildComment();
             comment.TimePosted = DateTime.Now;
@@ -16,7 +16,7 @@ namespace AgileTeamFour.UI.Hubs
 
             if (comment.Text != null && comment.Text.Trim() != "")
             {
-                await Clients.Group(GroupName).SendAsync("ReceiveMessage2", UserName.ToString(), comment.AuthorID, guildID, message, comment.TimePosted.ToString("hh:mm tt"));
+                await Clients.Group(GroupName).SendAsync("ReceiveMessage2", UserName.ToString(), IconPath, comment.AuthorID, guildID, message, comment.TimePosted.ToString("hh:mm tt"));
                 GuildCommentManager.Insert(comment);
             }
         }

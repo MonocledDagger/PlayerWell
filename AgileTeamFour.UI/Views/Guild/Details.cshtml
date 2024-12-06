@@ -218,14 +218,15 @@
                         <input type="hidden" name="GuildId" value="@Model.Guild.GuildId" />
                         <input type="hidden" name="PlayerID" value="@Model.PlayerID" />
                         @{
-                            string? name = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID).UserName;
+                            var getUser = @Model.Users.FirstOrDefault(user => user.UserID == Model.PlayerID);
+                            string? name = getUser.UserName;
+                            string? IconPath = getUser.IconPic;
                             if (name == null) name = "1";
-                        }
-                        <input type="hidden" id="userName" value="@name" />
-                        @{
                             int currentUser = @Model.PlayerID;
                         }
+                        <input type="hidden" id="userName" value="@name" />
                         <input type="hidden" id="CurrentUser" value="@currentUser" />
+                        <input type="hidden" id="iconPath" value="@IconPath" />
                         <button type="submit" id="sendButton" class="btn btn-primary">
                             <i class="fa fa-paper-plane"></i> Send
                         </button>

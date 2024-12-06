@@ -5,7 +5,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub2").build()
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage2", function (username, AuthorID, guildID, message, dateString) {
+connection.on("ReceiveMessage2", function (username, IconPath, AuthorID, guildID, message, dateString) {
 
     var GuildId = document.getElementsByName("GuildId")[0].value + "";
     if (GuildId == guildID)
@@ -23,6 +23,17 @@ connection.on("ReceiveMessage2", function (username, AuthorID, guildID, message,
             CurrentUser = "received";
         li.classList.add("chat-message");
         li.classList.add(CurrentUser);
+
+        if (CurrentUser == "received") //Adding profile image to message
+        {
+            var img = document.createElement("img");
+            img.classList.add("avatar");
+            img.alt = username + "\'s Avatar";
+            img.src = "../images/" + IconPath;
+            img.onclick = () => { on("../images/" + IconPath); };
+
+            li.appendChild(img);
+        }
 
         var div = document.createElement("div")
         div.classList.add("message-content");
@@ -65,9 +76,10 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var AuthorID = document.getElementsByName("PlayerID")[0].value + "";
     var GuildId = document.getElementsByName("GuildId")[0].value + "";
     var UserName = document.getElementById("userName").value + "";
+    var IconPath = document.getElementById("iconPath").value + "";
     var GroupName = "g" + GuildId;
     
-    connection.invoke("SendMessage2", GroupName, message, GuildId, AuthorID, UserName).catch(function (err) {
+    connection.invoke("SendMessage2", GroupName, message, GuildId, AuthorID, UserName, IconPath).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();
