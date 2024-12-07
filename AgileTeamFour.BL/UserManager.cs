@@ -278,14 +278,29 @@ namespace AgileTeamFour.BL
                     user = new User
                     {
                         UserID = 6,
-                        UserName = "test",
-                        FirstName = "Helpful",
-                        LastName = "Debugger",
+                        UserName = "MorganGames",
+                        FirstName = "Morgan",
+                        LastName = "Smith",
                         Password = "test",
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "debug@them.com",
                         IconPic = "dragon.jpg",
                         Bio = "Morgan is passionate about gaming and loves to try out different game mechanics and genres. They believe in the importance of fair play and teamwork in the gaming community.",
+                        AccessLevel = "player"
+                    };
+                    Insert(user);
+
+                    user = new User
+                    {
+                        UserID = 7,
+                        UserName = "Franklin",
+                        FirstName = "Frank",
+                        LastName = "Turplin",
+                        Password = "FrankMasta",
+                        DateOfBirth = new DateTime(1980, 4, 11),
+                        Email = "debug@them.com",
+                        IconPic = "default.jpg",
+                        Bio = "I'm just a guy, don't bother me",
                         AccessLevel = "player"
                     };
                     Insert(user);

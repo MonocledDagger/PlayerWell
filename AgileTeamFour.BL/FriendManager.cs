@@ -72,7 +72,7 @@ namespace AgileTeamFour.BL
                     {
                         // Generate new ID based on max current ID in the table
                         ID = dc.tblFriends.Any() ? dc.tblFriends.Max(s => s.ID) + 1 : 1,
-                        Status = "Pending",
+                        Status = friend.Status,
                         SenderID = friend.SenderID,
                         ReceiverID = friend.ReceiverID
                     };
@@ -282,13 +282,14 @@ namespace AgileTeamFour.BL
 
         public static void BlockPlayer(int friendId)
         {
-            //Use to Block a Player
+            //Use to Block a Player from friend invite
 
             using (var context = new AgileTeamFourEntities())
             {
                 var request = context.tblFriends.FirstOrDefault(f => f.ID == friendId);
                 if (request != null)
                 {
+                    
                     request.Status = "Blocked";
                     context.SaveChanges();
                 }

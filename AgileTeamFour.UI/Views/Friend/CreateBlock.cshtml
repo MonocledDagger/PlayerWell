@@ -1,0 +1,39 @@
+﻿@model AgileTeamFour.UI.ViewModels.FriendVM
+
+@{
+    ViewData["Title"] = "Block User";
+}
+<div class="container shadow p-5 mb-5 ps-5 rounded">
+    <h2> Block User</h2>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateBlock">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            
+
+                <div class="form-group">
+                    <h5>Select User to Block</h5>
+                    <select asp-for="Friend.SenderID"
+                            class="form-control"
+                            multiple
+                            asp-items="@(new MultiSelectList(Model.Users, "UserID", "UserName"))">
+                    </select>
+                    <span asp-validation-for="Friend.SenderID" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2 mt-3">
+                    <input type="submit" value="Block" class="btn btn-playerwell" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="m-2">
+        <a class="btn btn-secondary btn-sm" asp-action="Index">Back to List</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
