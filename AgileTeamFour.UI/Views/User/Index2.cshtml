@@ -46,12 +46,12 @@
                     @Html.DisplayFor(modelItem => item.DateOfBirth)                      
                 </td>
                               
-                @if (TempData["UserID"] == null || item.UserID == (int)TempData["UserID"])
+                @if (TempData["UserID"] != null && item.UserID == (int)TempData["UserID"])
                 {
                     <td>
                         @Html.ActionLink("Edit", "Edit2", new { id = item.UserID }) |
                         @Html.ActionLink("Details", "Details2", new { id = item.UserID }) |
-                        @Html.ActionLink("Deactivate", "Deactivate", new { id = item.UserID })
+                        @Html.ActionLink("Deactivate", "Deactivate", new { id = item.UserID, makeActive = false})
                     </td>
                 }
                 @if (TempData["UserID"] != null && item.UserID != (int)TempData["UserID"])

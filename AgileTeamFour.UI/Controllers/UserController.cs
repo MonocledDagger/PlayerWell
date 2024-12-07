@@ -367,7 +367,7 @@ namespace AgileTeamFour.UI.Controllers
             }
         }
 
-        public IActionResult Deactivate(int Id)
+        public IActionResult Deactivate(int Id, bool makeactive)
         {
             if (Authenticate.IsAuthenticated(HttpContext, Id) || Authenticate.IsAuthenticated(HttpContext, "admin"))
             {
@@ -378,15 +378,21 @@ namespace AgileTeamFour.UI.Controllers
                 return RedirectToAction("Index2", "User");
             }
         }
-
-
         [HttpPost, ActionName("Deactivate")]
-        public IActionResult DeactivatePost(int Id)
+        public IActionResult DeactivatePost(int Id, bool makeactive)
         {
             try
             {
                 User user = UserManager.LoadById(Id);
-                user.AccessLevel = "deactivated";
+                if(makeactive == true)
+                {
+                    user.AccessLevel = "player";
+                }
+                else
+                {
+                    user.AccessLevel = "deactivated";
+                }
+                
                 UserManager.Update(user);
                 return RedirectToAction(nameof(Index));
             }

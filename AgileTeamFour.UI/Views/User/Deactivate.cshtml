@@ -59,9 +59,17 @@
             @Html.DisplayFor(model => model.AccessLevel)
         </dd>
     </dl>
-
-    <form asp-action="Deactivate">
-        <input type="submit" value="Deactivate" class="btn btn-danger" /> |
+    @{
+        bool makeActive = false;
+        string valueText = "Deactivate";
+        if (@Model.AccessLevel.ToLower() == "deactivated")
+        {
+            makeActive = true;
+            valueText = "Reactivate";
+        }            
+    }
+    <form asp-action="Deactivate" asp-route-id="@Model.UserID" asp-route-makeactive=@makeActive>
+        <input type="submit" value=@valueText class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
 </div>
