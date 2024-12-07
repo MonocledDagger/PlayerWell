@@ -1,10 +1,10 @@
 ﻿@model AgileTeamFour.BL.Models.Game
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit " + @Model.GameName;
 }
 
-<h1>Edit Game</h1>
+<h1>Edit @Model.GameName</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">

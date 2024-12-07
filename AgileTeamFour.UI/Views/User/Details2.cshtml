@@ -1,5 +1,7 @@
 ﻿@model AgileTeamFour.UI.ViewModels.UserProfileVM;
-
+@{
+    ViewData["Title"] = @Model.CurrentUser.UserName;
+}
 <h1>@Model.CurrentUser.UserName's Profile</h1>
 
 <div class="profile-section">

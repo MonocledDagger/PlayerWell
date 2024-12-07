@@ -1,10 +1,10 @@
 ﻿@model AgileTeamFour.UI.ViewModels.UserVM
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit " + @Model.User.UserName;
 }
 
-<h1>Edit</h1>
+<h1>Edit @Model.User.UserName</h1>
 
 <h4>User</h4>
 <hr />

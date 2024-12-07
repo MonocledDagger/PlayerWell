@@ -1,10 +1,10 @@
 ﻿@model AgileTeamFour.UI.ViewModels.EventVM
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit " + @Model.Event.EventName;
 }
 
-<h1>Edit</h1>
+<h1>Edit @Model.Event.EventName</h1>
 
 <h4>Events</h4>
 <hr />

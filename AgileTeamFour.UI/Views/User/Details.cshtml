@@ -1,5 +1,7 @@
 ﻿@model AgileTeamFour.BL.Models.User
-
+@{
+    ViewData["Title"] = @Html.DisplayFor(model => model.UserName);
+}
 <h1>User Details: @Html.DisplayFor(model => model.UserName)</h1>
 
 <div>
