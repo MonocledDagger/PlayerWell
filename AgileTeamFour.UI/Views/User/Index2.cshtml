@@ -49,15 +49,17 @@
                 @if (TempData["UserID"] != null && item.UserID == (int)TempData["UserID"])
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit2", new { id = item.UserID }) |
-                        @Html.ActionLink("Details", "Details2", new { id = item.UserID }) |
+                        @* @Html.ActionLink("Edit", "Edit2", new { id = item.UserID }) *@
+                        <a asp-action="Edit2" class="btn btn-playerwell text-white" asp-route-id="@item.UserID">Edit</a>|
+                        <a asp-action="Details2" class="btn btn-playerwell text-white" asp-route-id="@item.UserID">See Profile</a>|
+                        
                         @Html.ActionLink("Deactivate", "Deactivate", new { id = item.UserID, makeActive = false})
                     </td>
                 }
                 @if (TempData["UserID"] != null && item.UserID != (int)TempData["UserID"])
                 {
                     <td>
-                        <a asp-action="Details" class="btn btn-playerwell text-white" asp-route-id="@item.UserID">See Profile</a>
+                        <a asp-action="Details2" class="btn btn-playerwell text-white" asp-route-id="@item.UserID">See Profile</a>
                     </td>
                 }
                               

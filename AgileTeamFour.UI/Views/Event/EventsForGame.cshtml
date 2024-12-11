@@ -2,13 +2,16 @@
 
 @{
     ViewData["Title"] = "EventsForGame";
+    var backgroundImage = Model.First().Game.Picture;
 }
-
-<h1>Events For @Model.First().Game.GameName</h1>
+<div class="background-container rounded" style="background-image: url('@backgroundImage'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container text-white">
+<h1 class="text-center bg-dark">Events For @Model.First().Game.GameName</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
+<div class="table-responsive">
 <table class="table">
     <thead>
         <tr>
@@ -70,11 +73,14 @@
                 @Html.DisplayFor(modelItem => item.Event.DateTime)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Event.EventID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Event.EventID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Event.EventID">Delete</a>
+                
+                <a asp-action="Details" class="btn btn-playerwell" asp-route-id="@item.Event.EventID">Event Page</a> 
+                
             </td>
         </tr>
 }
     </tbody>
 </table>
+        </div>
+</div>
+</div>
