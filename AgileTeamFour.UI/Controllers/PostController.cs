@@ -61,15 +61,23 @@ namespace AgileTeamFour.Web.Controllers
                 if (Authenticate.IsAuthenticated(HttpContext))
                 {   try
                     {
-                        User user = GetLoggedInUser();
-                        ViewBag.Title = "post";
-                        post.PostID=post.PostID;
-                        post.ParentCommentID=post.ParentCommentID;
-                        post.AuthorID = user.UserID;
-                        post.Text =post.Text;
-                        post.TimePosted = DateTime.Now;
-                        int result = PostCommentManager.Insert(post);
-                        return RedirectToAction("Index");
+                        if (post.Text == null)
+                        {
+                            TempData["error"] = "Text cannot be empty";
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            User user = GetLoggedInUser();
+                            ViewBag.Title = "post";
+                            post.PostID = post.PostID;
+                            post.ParentCommentID = post.ParentCommentID;
+                            post.AuthorID = user.UserID;
+                            post.Text = post.Text;
+                            post.TimePosted = DateTime.Now;
+                            int result = PostCommentManager.Insert(post);
+                            return RedirectToAction("Index");
+                        }
                     }
                     catch (Exception ex)
                     {
