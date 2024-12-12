@@ -12,6 +12,12 @@
            class="username">@Model.UserName &nbsp</a>
         <span class="time-posted">@Model.TimePosted</span>
         <p class="replay-text">@Model.Text</p>
+
+        <form method="post" action="/Post/DeleteReply">
+            <input type="hidden" name="replyId" value="@Model.CommentID" />
+            <button type="submit" class="delete-reply-button">Delete</button>
+        </form>
+
     </div>
 
     <div class="replies">

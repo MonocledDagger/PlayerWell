@@ -97,6 +97,52 @@ namespace AgileTeamFour.Web.Controllers
             
         }
         [HttpPost]
+
+        public IActionResult DeleteReply(int replyId)
+        {
+            using (var dc = new AgileTeamFourEntities())
+            {
+                if (Authenticate.IsAuthenticated(HttpContext))
+                {
+                    try
+                    {
+                        var reply = dc.tblPostComments.FirstOrDefault(c => c.CommentID == replyId);
+
+                        if (reply == null) 
+                        {
+                            TempData["error"] = "Reply not found.";
+                            return RedirectToAction("Index");
+                        }
+
+                        User user = GetLoggedInUser();
+
+                        if (reply.AuthorID != user.UserID) 
+                        {
+                            TempData["error"] = "You are not authorized to delete this reply.";
+                            return RedirectToAction("Index");
+                        }
+
+                        dc.tblPostComments.Remove(reply);
+                        dc.SaveChanges();
+
+                        TempData["success"] = "Reply deleted successfully.";
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        TempData["error"] = $"An error occurred: {ex.Message}";
+                        return RedirectToAction("Index");
+                    }
+                }
+                else
+                {
+                    TempData["error"] = "You need to be logged in to delete replies.";
+                    return RedirectToAction("Index");
+                }
+            }
+        }
+
+        [HttpPost]
         public IActionResult CreateC(Post post)
         {
             using (var dc = new AgileTeamFourEntities())
