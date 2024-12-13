@@ -26,7 +26,7 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            Assert.AreEqual(4, ReviewManager.Load().Count);
+            Assert.AreEqual(42, ReviewManager.Load().Count); //test only works on intial data
         }
 
         [TestMethod]

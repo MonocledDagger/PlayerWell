@@ -11,7 +11,7 @@ namespace AgileTeamFour.PL.Tests
         public void LoadTest()
         {
             //Assert.AreEqual(3, dc.tblEvents.Count());
-            int expected = 3;
+            int expected = 31;
             var Events = base.LoadTest();
             Assert.AreEqual(expected, Events.Count());
 

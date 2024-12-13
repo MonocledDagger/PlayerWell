@@ -63,6 +63,7 @@ namespace AgileTeamFour.BL
             }
         }
 
+
         public static List<PostComment> LoadByPostId(int postId)
         {
             using (var dc = new AgileTeamFourEntities())

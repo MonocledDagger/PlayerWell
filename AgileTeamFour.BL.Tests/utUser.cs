@@ -24,8 +24,10 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            //Seed only runs when making website. If you rebuild database and run test without running website, this returns false
-            Assert.AreEqual(6, UserManager.Load().Count);
+            //Seed only runs when after website for the first time.
+            //If you delete database and run test without running website,
+            //this returns false because there won't be any users in the table
+            Assert.AreEqual(7, UserManager.Load().Count);
         }
 
         [TestMethod]
@@ -41,7 +43,8 @@ namespace AgileTeamFour.BL.Tests
                 Password = "None",
                 IconPic = "None",
                 Bio = "None",
-                DateOfBirth = DateTime.Now
+                DateOfBirth = DateTime.Now,
+                AccessLevel = "Player"
             };
 
             int results = UserManager.Insert(player, true);
@@ -63,6 +66,7 @@ namespace AgileTeamFour.BL.Tests
             Assert.AreEqual(player.IconPic, entity.IconPic);
             Assert.AreEqual(player.Bio, entity.Bio);
             Assert.AreEqual(player.DateOfBirth, entity.DateOfBirth);
+            Assert.AreEqual(player.AccessLevel, entity.AccessLevel);
 
         }
 
@@ -79,7 +83,8 @@ namespace AgileTeamFour.BL.Tests
                 Password = "None",
                 IconPic = "None",
                 Bio = "None",
-                DateOfBirth = DateTime.Now
+                DateOfBirth = DateTime.Now,
+                AccessLevel = "Player"
             };
 
             int result = UserManager.Update(player, true);

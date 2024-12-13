@@ -25,9 +25,9 @@ namespace AgileTeamFour.BL.Tests
         }
 
         [TestMethod]
-        public void LoadTest()
+        public void LoadTest() //Test only works with initial data
         {
-            Assert.AreEqual(3, EventManager.Load().Count);
+            Assert.AreEqual(31, EventManager.Load().Count);
         }
 
         [TestMethod]

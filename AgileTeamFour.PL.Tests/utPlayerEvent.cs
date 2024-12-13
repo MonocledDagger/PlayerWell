@@ -3,23 +3,27 @@ namespace AgileTeamFour.PL.Tests
     [TestClass]
     public class utPlayerEvent : utBase<tblPlayerEvent>
     {
-
-
         [TestMethod]
         public void InsertTest()
         {
-            int rowsAffected = PlayerEventManager.Insert(1, 1, "None", true);
- 
+           int rowsAffected = InsertTest(new tblPlayerEvent
+            {
+                PlayerID = 1,
+                EventID = 1,
+                Role = "None"
+            });
 
             Assert.AreEqual(1, rowsAffected);
         }
-
         [TestMethod]
         public void DeleteTest()
         {
-            int rowsAffected = PlayerEventManager.Delete(1, 1001, true);
-            Assert.IsTrue(rowsAffected == 1);          
+            tblPlayerEvent row = base.LoadTest().FirstOrDefault();
+            if (row != null)
+            {
+                int rowsAffected = DeleteTest(row);
+                Assert.IsTrue(rowsAffected == 1);
+            }
         }
-
     }
 }

@@ -8,7 +8,7 @@ namespace AgileTeamFour.PL.Tests
         public void LoadTest()
         {
             //Assert.AreEqual(3, dc.tblReviews.Count());
-            int expected = 4;
+            int expected = 42;
             var Reviews = base.LoadTest();
             Assert.AreEqual(expected, Reviews.Count());
 

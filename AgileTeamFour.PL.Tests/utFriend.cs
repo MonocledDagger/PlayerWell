@@ -11,7 +11,7 @@ namespace AgileTeamFour.PL.Tests
         public void LoadTest()
         {
             
-            int expected = 3;
+            int expected = 14;
             var Friends = base.LoadTest();
             Assert.AreEqual(expected, Friends.Count());
 

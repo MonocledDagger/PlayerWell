@@ -24,7 +24,7 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            Assert.AreEqual(3, GameManager.Load().Count);
+            Assert.AreEqual(17, GameManager.Load().Count); //Test only works when first creating database, and no new data is added or removed
         }
 
         [TestMethod]

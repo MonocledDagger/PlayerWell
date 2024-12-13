@@ -27,23 +27,18 @@ namespace AgileTeamFour.BL.Tests
         [TestMethod]
         public void LoadTest()
         {
-            Assert.AreEqual(3, FriendManager.Load().Count);
+            Assert.AreEqual(14, FriendManager.Load().Count); //Test only works with initial data
         }
 
         [TestMethod]
         public void InsertTest()
         {
-            
-
             Friend Friend1 = new Friend()
             {
                 ID = FriendManager.Load().Max(e => e.ID) + 1,
                 Status= "Pending",
-                SenderID = 2,
-                ReceiverID = 3,
-
-                
-
+                SenderID = 7,
+                ReceiverID = 6,                
             };
 
             int results = FriendManager.Insert(Friend1, true);

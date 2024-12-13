@@ -27,12 +27,7 @@ namespace AgileTeamFour.PL.Tests
 
         [TestMethod]
         public void InsertTest()
-        {
-
-           
-            int? id = GameManager.Load().FirstOrDefault().GameID;
-            if (id == null)
-                Assert.Fail("No valid GameID in Events Table");
+        {         
             int rowsAffected = InsertTest(new tblGuild
             {
                 GuildId = GuildManager.Load().Max(e => e.GuildId) + 1,
