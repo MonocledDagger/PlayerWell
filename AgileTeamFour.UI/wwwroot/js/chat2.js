@@ -78,7 +78,8 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var UserName = document.getElementById("userName").value + "";
     var IconPath = document.getElementById("iconPath").value + "";
     var GroupName = "g" + GuildId;
-    
+    //Clear out inputted text after sending a message
+    document.getElementById("comment").value = "";
     connection.invoke("SendMessage2", GroupName, message, GuildId, AuthorID, UserName, IconPath).catch(function (err) {
         return console.error(err.toString());
     });

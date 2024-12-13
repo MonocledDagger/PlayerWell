@@ -13,12 +13,8 @@
                         @Html.DisplayNameFor(model => model.Friend.Status)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Friend.SenderID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Friend.ReceiverID)
-                    </th>
-                    
+                        Friend
+                    </th>                  
                 </tr>
             </thead>
             <tbody>
@@ -29,12 +25,16 @@
                             @Html.DisplayFor(modelItem => item.Friend.Status)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.UserSender.UserName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
-                        </td>
-                   
+                            @if (item.UserSender.UserID == item.User.UserID)
+                            {
+                                @Html.DisplayFor(modelItem => item.UserReceiver.UserName)
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.UserSender.UserName)
+                            }
+                            
+                        </td>                 
                     </tr>
                 }
             </tbody>

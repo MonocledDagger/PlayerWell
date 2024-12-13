@@ -85,6 +85,8 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     else {
         var GroupName = "f" + FriendID + AuthorID;
     }
+    //Clear out inputted text after sending a message
+    document.getElementById("comment").value = "";
     connection.invoke("SendMessageFriend", GroupName, message, FriendID, AuthorID, UserName, IconPath).catch(function (err) {
         return console.error(err.toString());
     });

@@ -88,6 +88,9 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     var IconPath = document.getElementById("iconPath").value + "";
     var GroupName = "e" + EventID;
 
+    //Clear out inputted text after sending a message
+    document.getElementById("comment").value = "";
+
     //console.log(message + " : " + AuthorID + " : " + EventID + " : " + UserName);
     connection.invoke("SendMessage", GroupName, message, EventID, AuthorID, UserName, IconPath).catch(function (err) {
         return console.error(err.toString());

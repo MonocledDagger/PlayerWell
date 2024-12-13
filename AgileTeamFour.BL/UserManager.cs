@@ -210,7 +210,7 @@ namespace AgileTeamFour.BL
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "will@them.com",
                         IconPic = "wheel.jpg",
-                        Bio = "Riley finds joy in the diverse worlds of gaming, from action-packed adventures to strategic puzzles. They enjoy engaging with the gaming community and sharing tips and insights.",
+                        Bio = " Will engages with the gaming community and shares tips and insights.",
                         AccessLevel = "admin"
                     };
                     Insert(user);
@@ -225,7 +225,7 @@ namespace AgileTeamFour.BL
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "glenn@them.com",
                         IconPic = "cat.jpg",
-                        Bio = "Alex is an avid gamer who enjoys exploring various genres and titles. They value teamwork and strategy in gameplay and always look for new challenges and experiences.",
+                        Bio = "Glen plays games casually to reduce stress and meet with people with common interests.",
                         AccessLevel = "user"
                     };
                     Insert(user);
@@ -240,7 +240,7 @@ namespace AgileTeamFour.BL
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "ricardo@them.com",
                         IconPic = "tiger.jpg",
-                        Bio = "Casey spends their free time immersed in gaming worlds. They appreciate the creativity and effort that goes into developing games and enjoy sharing their experiences with others.",
+                        Bio = "Ricardo likes joining events and showing up early.",
                         AccessLevel = "admin"
                     };
                     Insert(user);
@@ -255,7 +255,7 @@ namespace AgileTeamFour.BL
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "james@them.com",
                         IconPic = "dragon.jpg",
-                        Bio = "Taylor is a dedicated gamer who appreciates both casual and competitive play. They enjoy connecting with other players and discovering new games and strategies.",
+                        Bio = "Jimmy likes to prepare well and respond effectively to new challenges.",
                         AccessLevel = "admin"
                     };
                     Insert(user);
@@ -270,7 +270,7 @@ namespace AgileTeamFour.BL
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "bill@them.com",
                         IconPic = "default.jpg",
-                        Bio = "Jordan enjoys gaming as a way to unwind and explore new stories. They are always on the lookout for exciting updates and fresh content in their favorite games.",
+                        Bio = "Bill has been playing games actively for over a decade.",
                         AccessLevel = "player"
                     };
                     Insert(user);
@@ -285,7 +285,7 @@ namespace AgileTeamFour.BL
                         DateOfBirth = new DateTime(1990, 7, 15),
                         Email = "debug@them.com",
                         IconPic = "dragon.jpg",
-                        Bio = "Morgan is passionate about gaming and loves to try out different game mechanics and genres. They believe in the importance of fair play and teamwork in the gaming community.",
+                        Bio = "Morgan prefers playing games for stress relief, and does not invest much time into reading game strategy guides.",
                         AccessLevel = "player"
                     };
                     Insert(user);
@@ -300,7 +300,7 @@ namespace AgileTeamFour.BL
                         DateOfBirth = new DateTime(1980, 4, 11),
                         Email = "debug@them.com",
                         IconPic = "default.jpg",
-                        Bio = "I'm just a guy, don't bother me",
+                        Bio = "Frank tends to play the newest games that are trending, and follows new developments in the gaming community.",
                         AccessLevel = "player"
                     };
                     Insert(user);
