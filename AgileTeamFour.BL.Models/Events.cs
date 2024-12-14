@@ -23,6 +23,7 @@ namespace AgileTeamFour.BL.Models
             public string Type { get; set; }
             public string Platform { get; set; }
             public string Description { get; set; }
+            [DisplayFormat(DataFormatString = "{0:MMM dd yyyy @ hh:mm tt}")]
             [DisplayName("Event Time")]
             public DateTime DateTime { get; set; }
 

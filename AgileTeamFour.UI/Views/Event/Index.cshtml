@@ -99,6 +99,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Event.EventName)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Event.Description)</p>
+                    <h6 class="card-text">@Html.DisplayFor(modelItem => item.Event.DateTime)</h6>
 
                         <div class="d-flex justify-content-between">
                             <a asp-action="Details" asp-route-id="@item.Event.EventID" class="btn btn-primary btn"> See Details</a>

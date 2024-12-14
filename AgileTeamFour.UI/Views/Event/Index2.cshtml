@@ -88,9 +88,9 @@ else {
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>
+@*             <th>
                 @Html.DisplayNameFor(model => model.Event.EventID)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Game.GameName)
             </th>
@@ -121,9 +121,9 @@ else {
     <tbody>
     @foreach (var item in Model) {
         <tr>
-            <td>
+@*             <td>
                 @Html.DisplayFor(modelItem => item.Event.EventID)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.Game.GameName)
             </td>
