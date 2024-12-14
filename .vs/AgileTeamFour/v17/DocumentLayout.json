@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Projects\\AgileTeamFour\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|c:\\projects\\agileteamfour\\agileteamfour.bl\\usermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{147AB97D-2AC6-4B4C-ADA7-3957127A67B7}|AgileTeamFour.BL\\AgileTeamFour.BL.csproj|solutionrelative:agileteamfour.bl\\usermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|c:\\projects\\agileteamfour\\agileteamfour.bl.models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|solutionrelative:agileteamfour.bl.models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|c:\\projects\\agileteamfour\\agileteamfour.ui\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,8 +23,16 @@
       "RelativeMoniker": "D:0:0:{576627DE-1522-4C95-831C-40B660DB2CF5}|AgileTeamFour.UI\\AgileTeamFour.UI.csproj|solutionrelative:agileteamfour.ui\\views\\event\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|c:\\projects\\agileteamfour\\agileteamfour.bl.models\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29DEF9A7-D66C-4844-A48C-22526AB669A3}|AgileTeamFour.BL.Models\\AgileTeamFour.BL.Models.csproj|solutionrelative:agileteamfour.bl.models\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{F3ABF0AC-19F6-4EC1-BC26-7C24BFA41ACA}|AgileTeamFour.DB\\AgileTeamFour.DB.sqlproj|solutionrelative:AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 96,
-          "SelectedChildIndex": 22,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,7 +122,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "UserManager.cs",
+              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\UserManager.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL\\UserManager.cs",
+              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL\\UserManager.cs",
+              "RelativeToolTip": "AgileTeamFour.BL\\UserManager.cs",
+              "ViewState": "AQIAAC8BAAAAAAAAAAAAAEUBAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-14T02:07:11.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\User.cs",
+              "RelativeDocumentMoniker": "AgileTeamFour.BL.Models\\User.cs",
+              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\User.cs",
+              "RelativeToolTip": "AgileTeamFour.BL.Models\\User.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABYAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-14T02:05:19.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "tblEvents.sql ",
+              "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
+              "RelativeDocumentMoniker": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
+              "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
+              "RelativeToolTip": "AgileTeamFour.DB\\PostDeployment\\DefaultData\\tblEvents.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-12-14T01:53:27.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Events.cs",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.BL.Models\\Events.cs",
               "RelativeDocumentMoniker": "AgileTeamFour.BL.Models\\Events.cs",
@@ -119,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Event\\Index.cshtml",
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Event\\Index.cshtml",
@@ -132,26 +186,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Index2.cshtml",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
               "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
               "RelativeToolTip": "AgileTeamFour.UI\\Views\\Event\\Index2.cshtml",
-              "ViewState": "AQIAACYAAAAAAAAAAAApwG8AAAAQAAAA",
+              "ViewState": "AQIAAFkAAAAAAAAAAAApwG8AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-14T00:51:10.36Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "EventController.cs",
               "DocumentMoniker": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Controllers\\EventController.cs",
               "RelativeDocumentMoniker": "AgileTeamFour.UI\\Controllers\\EventController.cs",
               "ToolTip": "C:\\Projects\\AgileTeamFour\\AgileTeamFour.UI\\Controllers\\EventController.cs",
               "RelativeToolTip": "AgileTeamFour.UI\\Controllers\\EventController.cs",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAAAGUAAAANAAAA",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAAAJ0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-14T00:44:14.26Z",
               "EditorCaption": ""

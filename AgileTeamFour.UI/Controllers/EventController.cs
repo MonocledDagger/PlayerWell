@@ -101,7 +101,7 @@ namespace AgileTeamFour.Web.Controllers
                     eventDetailsVMs = eventDetailsVMs.Where(e => e.Event.DateTime <= endDate.Value).ToList();
             }
 
-            eventDetailsVMs = eventDetailsVMs.OrderBy(e => e.Event.DateTime).ToList();
+            eventDetailsVMs = eventDetailsVMs.OrderBy(e => e.Event.DateTime).Where(e => e.Event.DateTime >= DateTime.Now).ToList();
 
 
             // Pass the list of EventDetailsVM to the view
@@ -156,7 +156,7 @@ namespace AgileTeamFour.Web.Controllers
                     eventDetailsVMs = eventDetailsVMs.Where(e => e.Event.DateTime <= endDate.Value).ToList();
             }
 
-            eventDetailsVMs = eventDetailsVMs.OrderBy(e => e.Event.DateTime).ToList();
+            eventDetailsVMs = eventDetailsVMs.OrderBy(e => e.Event.DateTime).Where(e => e.Event.DateTime >= DateTime.Now).ToList();
 
 
             // Pass the list of EventDetailsVM to the view
