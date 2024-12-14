@@ -218,12 +218,12 @@ namespace AgileTeamFour.BL
                     user = new User
                     {
                         UserID = 2,
-                        UserName = "glenn",
-                        FirstName = "Glenn",
+                        UserName = "glen",
+                        FirstName = "Glen",
                         LastName = "Lehrer",
                         Password = "drift",
                         DateOfBirth = new DateTime(1996, 4, 18),
-                        Email = "glenn@them.com",
+                        Email = "glen@them.com",
                         IconPic = "cat.jpg",
                         Bio = "Glen plays games casually to reduce stress and meet with people with common interests.",
                         AccessLevel = "user"
