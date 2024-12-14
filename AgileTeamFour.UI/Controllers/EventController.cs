@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
@@ -428,7 +429,7 @@ namespace AgileTeamFour.Web.Controllers
                 var existingPlayer = playerList.FirstOrDefault(pe => pe.PlayerID == PlayerID);
 
 
-                //PlayerID is gotten from session when the page loads. See ActionResult Details.
+                // The PlayerID is retrieved from session when the page loads. See ActionResult Details.
                 if (PlayerID == 0)
                 {
                     //If User isn't signed in
@@ -447,6 +448,10 @@ namespace AgileTeamFour.Web.Controllers
                 }
                 else
                 {
+                    if (Role == null || Role.IsNullOrEmpty())
+                    {
+                        Role = "Participant";
+                    }
                     // Insert the new player event
                     PlayerEventManager.Insert(PlayerID, EventID, Role);
 
